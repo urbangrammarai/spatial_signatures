@@ -1,0 +1,11 @@
+# Book settings
+title: Urban Grammar Spatial Signatures
+author: Dani Arribas-Bel, Martin Fleischmann
+logo: logo.jpeg
+
+execute:
+  execute_notebooks: "off"
+repository:
+  url: https://github.com/urbangrammarai/spatial_signatures
+launch_buttons:
+  binderhub_url: https://mybinder.org

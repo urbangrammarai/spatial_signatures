@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode
+
+# Sphinx
+book/_build
+
+# dask
+dask-worker-space
