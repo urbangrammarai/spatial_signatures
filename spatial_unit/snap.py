@@ -5,7 +5,7 @@ import operator
 import geopandas as gpd
 
 
-def get_extrapolated_line(coords, tolerance):
+def get_extrapolated_line(coords, tolerance, point=False):
     """
     Creates a line extrapoled in p1->p2 direction.
     """
@@ -90,6 +90,8 @@ def get_extrapolated_line(coords, tolerance):
                 )
             ),
         )
+    if point:
+        return b
     return pygeos.linestrings([a, b])
 
 
@@ -120,30 +122,39 @@ def line_to_line(gdf, target, tolerance):
     tree = pygeos.STRtree(geom)
     inp, res = tree.query_bulk(points, predicate="intersects")
     unique, counts = np.unique(inp, return_counts=True)
-    ends = res[np.isin(inp, unique[counts == 1])]
+    ends = np.unique(res[np.isin(inp, unique[counts == 1])])
 
     new_geoms = []
     # iterate over cul-de-sac-like segments and attempt to snap them to street network
-    for line in ends:  # DASKify
+    for line in ends:
 
         l_coords = pygeos.get_coordinates(geom[line])
 
         start = pygeos.points(l_coords[0])
         end = pygeos.points(l_coords[-1])
 
-        first = list(tree.query(start))
-        second = list(tree.query(end))
+        first = list(tree.query(start, predicate="intersects"))
+        second = list(tree.query(end, predicate="intersects"))
         first.remove(line)
         second.remove(line)
 
         if first and not second:
-            new_geoms.append(extend_line(l_coords, target, tolerance))
+            snapped = extend_line(l_coords, target, tolerance)
+            new_geoms.append(
+                pygeos.linestrings(extend_line(snapped, target, 0.00001, snap=False))
+            )
         elif not first and second:
-            new_geoms.append(extend_line(np.flip(l_coords, axis=0), target, tolerance))
+            snapped = extend_line(np.flip(l_coords, axis=0), target, tolerance)
+            new_geoms.append(
+                pygeos.linestrings(extend_line(snapped, target, 0.00001, snap=False))
+            )
         elif not first and not second:
             one_side = extend_line(l_coords, target, tolerance)
-            one_coo = pygeos.get_coordinates(one_side)
-            new_geoms.append(extend_line(np.flip(one_coo, axis=0), target, tolerance))
+            one_side_e = extend_line(one_side, target, 0.00001, snap=False)
+            snapped = extend_line(np.flip(one_side_e, axis=0), target, tolerance)
+            new_geoms.append(
+                pygeos.linestrings(extend_line(snapped, target, 0.00001, snap=False))
+            )
 
     df = df.drop(ends)
     final = gpd.GeoSeries(new_geoms).explode().reset_index(drop=True)
@@ -153,32 +164,72 @@ def line_to_line(gdf, target, tolerance):
     )
 
 
-def extend_line(coords, target, tolerance):
+def extend_line(coords, target, tolerance, snap=True):
     """
     Extends a line geometry to snap on the target within a tolerance.
     """
+    if snap:
+        extrapolation = get_extrapolated_line(
+            coords[-4:] if len(coords.shape) == 1 else coords[-2:].flatten(), tolerance
+        )
+        int_idx = target.sindex.query(extrapolation, predicate="intersects")
+        intersection = pygeos.intersection(
+            target.iloc[int_idx].geometry.values.data, extrapolation
+        )
+        if intersection.size > 0:
+            if len(intersection) > 1:
+                distances = {}
+                ix = 0
+                for p in intersection:
+                    distance = pygeos.distance(p, pygeos.points(coords[-1]))
+                    distances[ix] = distance
+                    ix = ix + 1
+                minimal = min(distances.items(), key=operator.itemgetter(1))[0]
+                new_point_coords = pygeos.get_coordinates(intersection[minimal])
+
+            else:
+                new_point_coords = pygeos.get_coordinates(intersection[0])
+            coo = np.append(coords, new_point_coords)
+            new = np.reshape(coo, (int(len(coo) / 2), 2))
+
+            return new
+        return coords
+
     extrapolation = get_extrapolated_line(
-        coords[-4:] if len(coords.shape) == 1 else coords[-2:].flatten(), tolerance
+        coords[-4:] if len(coords.shape) == 1 else coords[-2:].flatten(),
+        tolerance,
+        point=True,
     )
-    int_idx = target.sindex.query(extrapolation, predicate="intersects")
-    intersection = pygeos.intersection(
-        target.iloc[int_idx].geometry.values.data, extrapolation
-    )
-    if intersection.size > 0:
-        if len(intersection) > 1:
-            distances = {}
-            ix = 0
-            for p in intersection:
-                distance = pygeos.distance(p, pygeos.points(coords[-1]))
-                distances[ix] = distance
-                ix = ix + 1
-            minimal = min(distances.items(), key=operator.itemgetter(1))[0]
-            new_point_coords = pygeos.get_coordinates(intersection[minimal])
+    return np.vstack([coords, extrapolation])
 
-        else:
-            new_point_coords = pygeos.get_coordinates(intersection[0])
-        coo = np.append(coords, new_point_coords)
-        new = pygeos.linestrings(np.reshape(coo, (int(len(coo) / 2), 2)))
 
-        return new
-    return pygeos.linestrings(coords)
+def close_gaps(df, tolerance):
+    geom = df.geometry.values.data
+    coords = pygeos.get_coordinates(geom)
+    indices = pygeos.get_num_coordinates(geom)
+
+    # generate a list of start and end coordinates and create point geometries
+    edges = [0]
+    i = 0
+    for ind in indices:
+        ix = i + ind
+        edges.append(ix - 1)
+        edges.append(ix)
+        i = ix
+    edges = edges[:-1]
+    points = pygeos.points(np.unique(coords[edges], axis=0))
+
+    buffered = pygeos.buffer(points, tolerance)
+
+    dissolved = pygeos.union_all(buffered)
+
+    exploded = [
+        pygeos.get_geometry(dissolved, i)
+        for i in range(pygeos.get_num_geometries(dissolved))
+    ]
+
+    centroids = pygeos.centroid(exploded)
+
+    snapped = pygeos.snap(geom, pygeos.union_all(centroids), tolerance)
+
+    return snapped

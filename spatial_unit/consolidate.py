@@ -218,16 +218,18 @@ def topology(gdf):
 
     Parameters
     ----------
-    gdf : GeoDataFrame
+    gdf : GeoDataFrame, GeoSeries, array of pygeos geometries
         (Multi)LineString data of street network
     """
+    if isinstance(gdf, (gpd.GeoDataFrame, gpd.GeoSeries)):
+        # explode to avoid MultiLineStrings
+        # double reset index due to the bug in GeoPandas explode
+        df = gdf.reset_index(drop=True).explode().reset_index(drop=True)
 
-    # explode to avoid MultiLineStrings
-    # double reset index due to the bug in GeoPandas explode
-    df = gdf.reset_index(drop=True).explode().reset_index(drop=True)
-
-    # get underlying pygeos geometry
-    geom = df.geometry.values.data
+        # get underlying pygeos geometry
+        geom = df.geometry.values.data
+    else:
+        geom = gdf
 
     # extract array of coordinates and number per geometry
     coords = pygeos.get_coordinates(geom)
@@ -250,35 +252,37 @@ def topology(gdf):
     unique, counts = np.unique(inp, return_counts=True)
     merge = res[np.isin(inp, unique[counts == 2])]
 
-    # filter duplications and create a dictionary with indication of components to be merged together
-    dups = [item for item, count in collections.Counter(merge).items() if count > 1]
-    split = np.split(merge, len(merge) / 2)
-    components = {}
-    for i, a in enumerate(split):
-        if a[0] in dups or a[1] in dups:
-            if a[0] in components.keys():
-                i = components[a[0]]
-            elif a[1] in components.keys():
-                i = components[a[1]]
-        components[a[0]] = i
-        components[a[1]] = i
+    if len(merge) > 0:
+        # filter duplications and create a dictionary with indication of components to be merged together
+        dups = [item for item, count in collections.Counter(merge).items() if count > 1]
+        split = np.split(merge, len(merge) / 2)
+        components = {}
+        for i, a in enumerate(split):
+            if a[0] in dups or a[1] in dups:
+                if a[0] in components.keys():
+                    i = components[a[0]]
+                elif a[1] in components.keys():
+                    i = components[a[1]]
+            components[a[0]] = i
+            components[a[1]] = i
 
-    # iterate through components and create new geometries
-    new = []
-    for c in set(components.values()):
-        keys = []
-        for item in components.items():
-            if item[1] == c:
-                keys.append(item[0])
-        new.append(pygeos.line_merge(pygeos.union_all(geom[keys])))
+        # iterate through components and create new geometries
+        new = []
+        for c in set(components.values()):
+            keys = []
+            for item in components.items():
+                if item[1] == c:
+                    keys.append(item[0])
+            new.append(pygeos.line_merge(pygeos.union_all(geom[keys])))
 
-    # remove incorrect geometries and append fixed versions
-    df = df.drop(merge)
-    final = gpd.GeoSeries(new).explode().reset_index(drop=True)
-    return df.append(
-        gpd.GeoDataFrame({df.geometry.name: final}, geometry=df.geometry.name),
-        ignore_index=True,
-    )
+        # remove incorrect geometries and append fixed versions
+        df = df.drop(merge)
+        final = gpd.GeoSeries(new).explode().reset_index(drop=True)
+        return df.append(
+            gpd.GeoDataFrame({df.geometry.name: final}, geometry=df.geometry.name),
+            ignore_index=True,
+        )
+    return gdf
 
 
 def measure_network(xy, user, pwd, host, port, buffer, area, circom, cons=True):
