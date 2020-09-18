@@ -96,6 +96,9 @@ def get_extrapolated_line(coords, tolerance, point=False):
 
 
 def line_to_line(gdf, target, tolerance):
+    """ Extends lines from gdf to target within a set tolerance
+   
+    """
     # explode to avoid MultiLineStrings
     # double reset index due to the bug in GeoPandas explode
     df = gdf.reset_index(drop=True).explode().reset_index(drop=True)
@@ -204,6 +207,11 @@ def extend_line(coords, target, tolerance, snap=True):
 
 
 def close_gaps(df, tolerance):
+    """Close gaps in LineString geometry where it should be contiguous.
+
+    Snaps both lines to a centroid of a gap in between.
+
+    """
     geom = df.geometry.values.data
     coords = pygeos.get_coordinates(geom)
     indices = pygeos.get_num_coordinates(geom)
