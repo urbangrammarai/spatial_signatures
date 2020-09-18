@@ -3,7 +3,7 @@ build-book:
 	rm -rf book/_build
 	# list folders with notebooks here. Notebooks must be present in _toc.yml.
 	cp -r spatial_unit book/spatial_unit
-	cp -r spatial_unit book/clusters
+	cp -r clusters book/clusters
 	jupyter-book build book
 	cp -r book/_build/html docs
 	rm -rf book/spatial_unit
