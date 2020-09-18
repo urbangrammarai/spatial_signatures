@@ -14,7 +14,6 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -24,11 +23,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -38,6 +34,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Enclosed tessellation (proof of a concept)" href="enclosed_tessellation.html" />
     <link rel="prev" title="Intro" href="../intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,6 +84,38 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
   </a>
  </li>
 </ul>
@@ -186,9 +215,10 @@
                 
   <div class="section" id="exploration-of-tessellation">
 <h1>Exploration of tessellation<a class="headerlink" href="#exploration-of-tessellation" title="Permalink to this headline">¶</a></h1>
+<p>In search of an optimal spatial unit, this notebook explores several options of tessellation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 
@@ -204,21 +234,21 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_connection_url</span><span class="p">)</span>
 <span class="n">engine</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.base.Engine._trans_ctx at 0x7f81ec0569d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sqlalchemy.engine.base.Engine._trans_ctx at 0x7f81ec0569d0&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">352125.32</span><span class="p">,</span> <span class="mf">492802.86</span>  <span class="c1"># coordinates in epsg 27700</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">352125.32</span><span class="p">,</span> <span class="mf">492802.86</span>  <span class="c1"># coordinates in epsg 27700</span>
 <span class="n">buffer</span> <span class="o">=</span> <span class="mi">5000</span>  <span class="c1"># radius in [m]</span>
 </pre></div>
 </div>
@@ -226,7 +256,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openroads_200803_topological WHERE ST_DWithin(geometry, ST_SetSRID(ST_Point(</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">), 27700), </span><span class="si">{</span><span class="n">buffer</span><span class="si">}</span><span class="s1">)&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openroads_200803_topological WHERE ST_DWithin(geometry, ST_SetSRID(ST_Point(</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">), 27700), </span><span class="si">{</span><span class="n">buffer</span><span class="si">}</span><span class="s1">)&#39;</span>
 
 <span class="n">roads</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
 </pre></div>
@@ -235,12 +265,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_5_1.png" src="../_images/unit_5_1.png" />
@@ -248,7 +278,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openmap_buildings_200814 WHERE ST_DWithin(geometry, ST_SetSRID(ST_Point(</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">), 27700), </span><span class="si">{</span><span class="n">buffer</span><span class="si">}</span><span class="s1">)&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openmap_buildings_200814 WHERE ST_DWithin(geometry, ST_SetSRID(ST_Point(</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">), 27700), </span><span class="si">{</span><span class="n">buffer</span><span class="si">}</span><span class="s1">)&#39;</span>
 
 <span class="n">buildings</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
 <span class="n">buildings</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -256,7 +286,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_6_1.png" src="../_images/unit_6_1.png" />
@@ -264,40 +294,40 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(7834, 3)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7834, 3)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limit</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">momepy</span> <span class="k">as</span> <span class="nn">mm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">momepy</span> <span class="k">as</span> <span class="nn">mm</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span>
 </pre></div>
 </div>
 </div>
@@ -399,19 +429,19 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roads</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">roads</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tes_rd</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tes_rd</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">roads</span><span class="p">,</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Inward offset...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inward offset...
 Discretization...
  33%|███▎      | 758/2271 [00:00&lt;00:00, 7524.43it/s]Generating input point array...
 100%|██████████| 2271/2271 [00:00&lt;00:00, 6093.07it/s]
@@ -429,20 +459,20 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roads_tessellation</span> <span class="o">=</span> <span class="n">tes_rd</span><span class="o">.</span><span class="n">tessellation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roads_tessellation</span> <span class="o">=</span> <span class="n">tes_rd</span><span class="o">.</span><span class="n">tessellation</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">roads_tessellation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">roads_tessellation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">roads</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_15_1.png" src="../_images/unit_15_1.png" />
@@ -450,19 +480,19 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buildings</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">buildings</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tes_blg</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">buildings</span><span class="p">,</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tes_blg</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">buildings</span><span class="p">,</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Inward offset...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inward offset...
 Discretization...
   7%|▋         | 540/7834 [00:00&lt;00:01, 5394.51it/s]Generating input point array...
 100%|██████████| 7834/7834 [00:02&lt;00:00, 3899.12it/s]
@@ -480,20 +510,20 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">blg_tessellation</span> <span class="o">=</span> <span class="n">tes_blg</span><span class="o">.</span><span class="n">tessellation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blg_tessellation</span> <span class="o">=</span> <span class="n">tes_blg</span><span class="o">.</span><span class="n">tessellation</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">blg_tessellation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">blg_tessellation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="n">buildings</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_19_1.png" src="../_images/unit_19_1.png" />
@@ -501,26 +531,26 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">union</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">unary_union</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">union</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">unary_union</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="n">roads</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">union</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;contains&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="n">roads</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">union</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;contains&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="p">[</span><span class="o">~</span><span class="n">roads</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="p">[</span><span class="o">~</span><span class="n">roads</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_22_1.png" src="../_images/unit_22_1.png" />
@@ -528,33 +558,33 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">country_roads</span> <span class="o">=</span> <span class="n">roads</span><span class="p">[</span><span class="o">~</span><span class="n">roads</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_roads</span> <span class="o">=</span> <span class="n">roads</span><span class="p">[</span><span class="o">~</span><span class="n">roads</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ind</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">country_roads</span><span class="o">.</span><span class="n">uID</span> <span class="o">=</span> <span class="n">country_roads</span><span class="o">.</span><span class="n">uID</span> <span class="o">+</span> <span class="mi">10000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_roads</span><span class="o">.</span><span class="n">uID</span> <span class="o">=</span> <span class="n">country_roads</span><span class="o">.</span><span class="n">uID</span> <span class="o">+</span> <span class="mi">10000</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mixed</span> <span class="o">=</span> <span class="n">country_roads</span><span class="p">[[</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">buildings</span><span class="p">[[</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mixed</span> <span class="o">=</span> <span class="n">country_roads</span><span class="p">[[</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">buildings</span><span class="p">[[</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tes_mix</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">mixed</span><span class="p">,</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tes_mix</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">mixed</span><span class="p">,</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Inward offset...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inward offset...
 Discretization...
   1%|          | 96/8192 [00:00&lt;00:08, 926.40it/s]Generating input point array...
 100%|██████████| 8192/8192 [00:02&lt;00:00, 3284.89it/s]
@@ -566,21 +596,20 @@ Dissolving Voronoi polygons...
 Building R-tree...
 Identifying edge cells...
 Cutting...
-
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_tessellation</span> <span class="o">=</span> <span class="n">tes_mix</span><span class="o">.</span><span class="n">tessellation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mixed_tessellation</span> <span class="o">=</span> <span class="n">tes_mix</span><span class="o">.</span><span class="n">tessellation</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">mixed_tessellation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="n">mixed</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_27_1.png" src="../_images/unit_27_1.png" />
@@ -588,21 +617,21 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">total_bounds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">total_bounds</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pts</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pts</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">total</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">100</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">total</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">100</span><span class="p">):</span>
@@ -613,27 +642,27 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pts</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pts</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">pts</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">pts</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">union</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">pts</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">pts</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">union</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">markersize</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">markersize</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">buildings</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_33_1.png" src="../_images/unit_33_1.png" />
@@ -641,14 +670,14 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">buildings</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">buildings</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">))</span>
 <span class="n">grid</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grid</span><span class="p">[</span><span class="s1">&#39;uID&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">100000</span>
 </pre></div>
 </div>
@@ -656,7 +685,7 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix for momepy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix for momepy</span>
 <span class="n">grid</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -664,14 +693,14 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_grid</span> <span class="o">=</span> <span class="n">buildings</span><span class="p">[[</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_grid</span> <span class="o">=</span> <span class="n">buildings</span><span class="p">[[</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_grid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_grid</span>
 </pre></div>
 </div>
 </div>
@@ -761,12 +790,12 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tes_grid</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">buildings_grid</span><span class="p">,</span> <span class="n">limit</span><span class="p">),</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tes_grid</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tessellation</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">buildings_grid</span><span class="p">,</span> <span class="n">limit</span><span class="p">),</span> <span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">segment</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Inward offset...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inward offset...
 Discretization...
   4%|▍         | 526/12953 [00:00&lt;00:02, 5258.59it/s]Generating input point array...
 100%|██████████| 12953/12953 [00:03&lt;00:00, 3282.79it/s]
@@ -784,14 +813,14 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grid_tessellation</span> <span class="o">=</span> <span class="n">tes_grid</span><span class="o">.</span><span class="n">tessellation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_tessellation</span> <span class="o">=</span> <span class="n">tes_grid</span><span class="o">.</span><span class="n">tessellation</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">grid_tessellation</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">buildings_grid</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
 <img alt="../_images/unit_40_1.png" src="../_images/unit_40_1.png" />
@@ -799,7 +828,7 @@ Cutting...
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_grid</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;units.gpkg&#39;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s1">&#39;buildings_grid&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings_grid</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;units.gpkg&#39;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s1">&#39;buildings_grid&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
 <span class="n">grid_tessellation</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;units.gpkg&#39;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s1">&#39;grid_tessellation&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
 <span class="n">buildings</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;units.gpkg&#39;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s1">&#39;buildings&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
 <span class="n">roads</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;units.gpkg&#39;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
@@ -842,6 +871,7 @@ Cutting...
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">Intro</a>
+    <a class='right-next' id="next-link" href="enclosed_tessellation.html" title="next page">Enclosed tessellation (proof of a concept)</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

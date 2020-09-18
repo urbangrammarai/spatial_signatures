@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Geo-chunking Great Britain &#8212; Urban Grammar Spatial Signatures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Trial of clustering on OpenMap and MasterMap data" href="../clusters/mastermap_openmap_cluster.html" />
+    <link rel="prev" title="Generate enclosures for the Great Britain" href="Generate_enclosures.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar Spatial Signatures</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spatial_unit/chunk_uk.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/spatial_unit/chunk_uk.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geo-chunking-local-authority-districts">
+   Geo-chunking Local Authority Districts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data">
+     Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#topology-w">
+     Topology:
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       W
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regionalisation">
+     Regionalisation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#writing-labels-out">
+     Writing labels out
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="geo-chunking-great-britain">
+<h1>Geo-chunking Great Britain<a class="headerlink" href="#geo-chunking-great-britain" title="Permalink to this headline">¶</a></h1>
+<p>To efficiently analyse whole Great Britain, we need to subdivide it into reasonable chunks. For that, we will use local authority polygons combined into contiguous groups of ~ 100k buildings.</p>
+<p>Let’s start with the retrieval of our building layer from the database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PWD&#39;</span><span class="p">)</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">)</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_connection_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openmap_buildings_200814&#39;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(14309868, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Local authority districts are available as <code class="docutils literal notranslate"><span class="pre">geojson</span></code> from ArcGIS open data portal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;https://opendata.arcgis.com/datasets/7f83b82ef6ce46d3a5635d371e8a3e7c_0.geojson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to make sure that both layers use the same CRS.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To speedup spatial query counting the number of buildings within each disttrict, we use only centroids instead of building polygons.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">centroid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The calculation of builidngs per polygon is a simple query using spatial index and getting counts per each unique index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inp</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query_bulk</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">)</span>
+
+<span class="n">u</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">auth</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="s1">&#39;counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+<span class="n">auth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/chunk_uk_11_1.png" src="../_images/chunk_uk_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/local_authorities.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span><span class="p">[</span><span class="s1">&#39;counts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count       368.000000
+mean      38885.456522
+std       26273.929125
+min         484.000000
+25%       23604.250000
+50%       34107.500000
+75%       43683.000000
+max      228957.000000
+Name: counts, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="geo-chunking-local-authority-districts">
+<h2>Geo-chunking Local Authority Districts<a class="headerlink" href="#geo-chunking-local-authority-districts" title="Permalink to this headline">¶</a></h2>
+<p>On this section we will create a partition of the UK that groups spatially contiguous local authorities (LADs) in <em>regions</em> that have similar number of buildings. For that, we will employ a regionalisation algorithm that instead of requiring the number of regions uses a floor threshold for the minimum number of building counts and tries to generate groups <em>around</em> that number (but above).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">mapclassify</span> <span class="kn">import</span> <span class="n">greedy</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">Queen</span><span class="p">,</span> <span class="n">KNN</span><span class="p">,</span> <span class="n">W</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;local_authorities.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we need to install <a class="reference external" href="https://github.com/pysal/region"><code class="docutils literal notranslate"><span class="pre">region</span></code></a> for this operation. The library is not part of <code class="docutils literal notranslate"><span class="pre">gds_env:5.0</span></code> as it has been phased out in benefit of <a class="reference external" href="https://github.com/pysal/spopt"><code class="docutils literal notranslate"><span class="pre">spopt</span></code></a>, which will eventually be part of PySAL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! pip install region</span>
+<span class="kn">import</span> <span class="nn">region</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data">
+<h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
+<p>We currently only have building counts for GB:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">auth</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">auth</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">(),</span> <span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/chunk_uk_20_1.png" src="../_images/chunk_uk_20_1.png" />
+</div>
+</div>
+<p>So, for now, we will remove Northern Ireland for this regionalisation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="topology-w">
+<h3>Topology: <code class="docutils literal notranslate"><span class="pre">W</span></code><a class="headerlink" href="#topology-w" title="Permalink to this headline">¶</a></h3>
+<p>To be able to build spatially constrained clusters, we need a way to capture topological relationships between local authorities. Spatial weights matrices come to the rescue here. Ideally, we need one that will give us contiguity relationships, but also that connects <em>every</em> observation. In a geography like ours, this must come from a combination of more than one criterium.</p>
+<p>Our starting point is based on queen contiguity:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> w_queen = Queen.from_dataframe(auth)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 23s, sys: 2.7 s, total: 1min 26s
+Wall time: 1min 25s
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 7 disconnected components.
+ There are 6 islands with ids: 43, 49, 319, 326, 328, 346.
+  warnings.warn(message)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This produces a matrix with six islands -observations with no neighbors. To connect these to the rest of the graph, we are going to generate a nearest neighbor matrix, and use it for islands.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> w_k1 = KNN.from_dataframe(auth, k=1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 851 ms, sys: 4.04 ms, total: 855 ms
+Wall time: 857 ms
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 83 disconnected components.
+  warnings.warn(message)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our resulting matrix will be a queen contiguity one with islands connected to their nearest neighbor (and viceversa, for symmetry).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighbors</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">w_queen</span><span class="o">.</span><span class="n">neighbors</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">w_queen</span><span class="o">.</span><span class="n">islands</span><span class="p">:</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">w_k1</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">neighbors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we are ready to regionalise!</p>
+</div>
+<div class="section" id="regionalisation">
+<h3>Regionalisation<a class="headerlink" href="#regionalisation" title="Permalink to this headline">¶</a></h3>
+<p>The Max-P algorithms requires four hyper-parameters:</p>
+<ol class="simple">
+<li><p>Topology: we’ll use <code class="docutils literal notranslate"><span class="pre">w</span></code></p></li>
+<li><p>Non-spatial features: to help the compactness of the regions, we will use the coordinates of each polygon’s centroid</p></li>
+<li><p>A variable to guide the number of regions (<code class="docutils literal notranslate"><span class="pre">spatiall_extensive_attr</span></code>): we will use the building count (<code class="docutils literal notranslate"><span class="pre">counts</span></code>) in <code class="docutils literal notranslate"><span class="pre">auth</span></code> with a flipped sign</p></li>
+<li><p>A floor <code class="docutils literal notranslate"><span class="pre">threshold</span></code> to ensure no region has at least that value of the <code class="docutils literal notranslate"><span class="pre">spatiall_extensive_attr</span></code>: following our estimates for Dask performance, we will use a maximum number of 200,000 (-200,000)</p></li>
+</ol>
+<p>First, let’s pull out centroid coords:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cents</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">xys</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="n">cents</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                        <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="n">cents</span><span class="o">.</span><span class="n">y</span>
+                       <span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="n">auth</span><span class="o">.</span><span class="n">index</span>
+                      <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can set up and run the optimisation. We are specifying that areas have a minimum of 100,000 buildings. By the nature of MaxP, it will try to create clusters <em>roughly</em> that amount, but the only guarantee is to be above the floor threshold. This is a relatively fast run:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">region.max_p_regions.heuristics</span> <span class="kn">import</span> <span class="n">MaxPRegionsHeu</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MaxPRegionsHeu</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123445</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit_from_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> 
+                 <span class="n">xys</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                 <span class="n">spatially_extensive_attr</span><span class="o">=</span><span class="n">auth</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                 <span class="n">threshold</span><span class="o">=</span><span class="mi">100000</span>
+                <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 57.5 s, sys: 84.6 ms, total: 57.6 s
+Wall time: 57.4 s
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>NOTE</strong>: I tried the following config which I <em>interpret</em> to impose two restrictions, a floor and a ceiling, but discarded it as the results are not significantly better and running time is considerably higher and the upper limit does not seem to apply.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">region.max_p_regions.heuristics</span> <span class="kn">import</span> <span class="n">MaxPRegionsHeu</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MaxPRegionsHeu</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123445</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit_from_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> 
+                 <span class="n">xys</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                 <span class="n">spatially_extensive_attr</span><span class="o">=</span><span class="n">auth</span><span class="p">[[</span><span class="s2">&quot;counts&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">neg_counts</span><span class="o">=-</span><span class="n">auth</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> 
+                 <span class="n">threshold</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">150000</span><span class="p">,</span> <span class="o">-</span><span class="mi">200000</span><span class="p">])</span>
+                <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 57min 51s, sys: 841 ms, total: 57min 52s
+Wall time: 57min 51s
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>The resulting labels can be further explored:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> regions&quot;</span>\
+       <span class="sa">f</span><span class="s2">&quot; and </span><span class="si">{</span><span class="n">sizes</span><span class="p">[</span><span class="n">sizes</span><span class="o">&gt;</span><span class="mi">200000</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> are above 200,000 buildings&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 103 regions and 11 are above 200,000 buildings
+</pre></div>
+</div>
+</div>
+</div>
+<p>Number of LADs per region and the number of buildings they include:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+<span class="n">region_stats</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;n_lads&quot;</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span>
+                                 <span class="s2">&quot;n_buildings&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+                                <span class="p">})</span>
+<span class="n">region_stats</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>n_lads</th>
+      <td>103.0</td>
+      <td>3.572816</td>
+      <td>1.280333</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>n_buildings</th>
+      <td>103.0</td>
+      <td>138930.563107</td>
+      <td>35537.366693</td>
+      <td>100123.0</td>
+      <td>114334.5</td>
+      <td>128942.0</td>
+      <td>149196.0</td>
+      <td>256398.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Distribution of number of buildings by region:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">region_stats</span><span class="p">[</span><span class="s2">&quot;n_buildings&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">200000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.lines.Line2D at 0x7f69bde704d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/chunk_uk_43_1.png" src="../_images/chunk_uk_43_1.png" />
+</div>
+</div>
+<p>And the spatial layout of the regions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lbls</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;lbls&quot;</span><span class="p">,</span>
+          <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+         <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/chunk_uk_45_1.png" src="../_images/chunk_uk_45_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="writing-labels-out">
+<h3>Writing labels out<a class="headerlink" href="#writing-labels-out" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lbls</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)[[</span><span class="s2">&quot;lad20cd&quot;</span><span class="p">,</span> <span class="s2">&quot;lbls&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;chunking_labels.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./spatial_unit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Generate_enclosures.html" title="previous page">Generate enclosures for the Great Britain</a>
+    <a class='right-next' id="next-link" href="../clusters/mastermap_openmap_cluster.html" title="next page">Trial of clustering on OpenMap and MasterMap data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

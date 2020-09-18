@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Generate enclosures for the Great Britain &#8212; Urban Grammar Spatial Signatures</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geo-chunking Great Britain" href="chunk_uk.html" />
+    <link rel="prev" title="Generating enclosures (proof of a concept)" href="Parallelized_enclosures.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar Spatial Signatures</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spatial_unit/Generate_enclosures.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/spatial_unit/Generate_enclosures.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-enclosures">
+   Generate enclosures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-level">
+     First level
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-barriers">
+     Additional barriers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#preprocess-railways">
+       Preprocess railways
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#subdivide-enclosures">
+       Subdivide enclosures
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="generate-enclosures-for-the-great-britain">
+<h1>Generate enclosures for the Great Britain<a class="headerlink" href="#generate-enclosures-for-the-great-britain" title="Permalink to this headline">¶</a></h1>
+<p>This notebook generates <em>enclosures</em> for the area of Great Britain based on set barriers. Note that the final version is different from the <a class="reference internal" href="Parallelized_enclosures.html"><span class="doc std std-doc">proof of a concept</span></a>. It does not use dask since we found that parallelisation is not necessary and it uses different preprocessing steps for railway.</p>
+<p>Used barriers:</p>
+<ul class="simple">
+<li><p>road network (OS OpenRoads)</p></li>
+<li><p>railway network (OS OpenMap Local)</p></li>
+<li><p>rivers (OS OpenRivers)</p></li>
+<li><p>coastline (OS Strategi®)</p></li>
+</ul>
+<p>Connect to db:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PWD&#39;</span><span class="p">)</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">)</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)</span>
+
+<span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_connection_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load initial data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openroads_200803_topological&#39;</span>
+<span class="n">roads</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2min 7s, sys: 4.94 s, total: 2min 12s
+Wall time: 2min 17s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># filter out tunnels</span>
+<span class="n">roads</span> <span class="o">=</span> <span class="n">roads</span><span class="p">[</span><span class="n">roads</span><span class="o">.</span><span class="n">roadStructure</span> <span class="o">!=</span> <span class="s1">&#39;Road In Tunnel&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1.65 s, sys: 18.1 ms, total: 1.67 s
+Wall time: 1.66 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM gb_coastline_2016&#39;</span>
+<span class="n">coastline</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 330 ms, sys: 7.78 ms, total: 337 ms
+Wall time: 378 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="generate-enclosures">
+<h2>Generate enclosures<a class="headerlink" href="#generate-enclosures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="first-level">
+<h3>First level<a class="headerlink" href="#first-level" title="Permalink to this headline">¶</a></h3>
+<p>The first level enclosures are composed of road network and external boundary, which in our case is a coastline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">polygonize</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+
+<span class="kn">from</span> <span class="nn">snap</span> <span class="kn">import</span> <span class="n">line_to_line</span><span class="p">,</span> <span class="n">close_gaps</span>
+<span class="kn">from</span> <span class="nn">consolidate</span> <span class="kn">import</span> <span class="n">topology</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There three simple steps:</p>
+<ol class="simple">
+<li><p>merge layers to a single GeoSeries.</p></li>
+<li><p>union geometries to a single MultiLineString. That helps with precision of <code class="docutils literal notranslate"><span class="pre">polygonize</span></code>.</p></li>
+<li><p>polygonize data and save them as GeometryArray.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">barriers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">roads</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">coastline</span><span class="o">.</span><span class="n">geometry</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 25.5 ms, sys: 0 ns, total: 25.5 ms
+Wall time: 23 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">unioned</span> <span class="o">=</span> <span class="n">barriers</span><span class="o">.</span><span class="n">unary_union</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14min 16s, sys: 7.33 s, total: 14min 23s
+Wall time: 14min 13s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">polygons</span> <span class="o">=</span> <span class="n">polygonize</span><span class="p">(</span><span class="n">unioned</span><span class="p">)</span>
+<span class="n">enclosures</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">polygons</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">roads</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 4s, sys: 482 ms, total: 1min 4s
+Wall time: 1min 3s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="additional-barriers">
+<h3>Additional barriers<a class="headerlink" href="#additional-barriers" title="Permalink to this headline">¶</a></h3>
+<p>Additional barriers are used to further subdivide those generated above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openmap_railwaytrack_200824&#39;</span>
+<span class="n">railway</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.95 s, sys: 15.8 ms, total: 2.97 s
+Wall time: 3.06 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM openrivers_200909&#39;</span>
+<span class="n">rivers</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9.97 s, sys: 190 ms, total: 10.2 s
+Wall time: 10.8 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocess-railways">
+<h4>Preprocess railways<a class="headerlink" href="#preprocess-railways" title="Permalink to this headline">¶</a></h4>
+<p>Railways are not optimal input. OS OpenMap Local is cartographic resource and LineStrings representing railways are split into multiple pieces, sometimes even with gaps in between. Moreover, there is almost always a gap where railways cross roads. All that needs to be fixed, otherwise we won’t get enclosed geometry.</p>
+<p>The first step is to clean topology - remove nodes of a degree 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">railway_topo</span> <span class="o">=</span> <span class="n">topology</span><span class="p">(</span><span class="n">railway</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4min 42s, sys: 7.19 ms, total: 4min 42s
+Wall time: 4min 42s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second step closes gaps between LineStrings and then fixes resulting topology again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">closed</span> <span class="o">=</span> <span class="n">close_gaps</span><span class="p">(</span><span class="n">railway_topo</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5min 8s, sys: 506 ms, total: 5min 8s
+Wall time: 5min 7s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">closed_topo</span> <span class="o">=</span> <span class="n">topology</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">closed</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 10.6 s, sys: 3.96 ms, total: 10.6 s
+Wall time: 10.6 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we extend lines to adjacent road geometry to close the area.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">extended_topo</span> <span class="o">=</span> <span class="n">line_to_line</span><span class="p">(</span><span class="n">closed_topo</span><span class="p">,</span> <span class="n">roads</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13.5 s, sys: 19.5 ms, total: 13.5 s
+Wall time: 13.5 s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="subdivide-enclosures">
+<h4>Subdivide enclosures<a class="headerlink" href="#subdivide-enclosures" title="Permalink to this headline">¶</a></h4>
+<p>With the preprocessed data, we can subdivide first level enclosures into final ones.</p>
+<p>Due to the current transition between pygeos and shapely 2.0, we are using here private <code class="docutils literal notranslate"><span class="pre">_pygeos_to_shapely</span></code> function from GeoPandas. That will not be needed in future.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dask.bag</span> <span class="k">as</span> <span class="nn">db</span>
+
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">geopandas._vectorized</span> <span class="kn">import</span> <span class="n">_pygeos_to_shapely</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need a single GeoSeries of additional barriers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">additional</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">rivers</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">extended_topo</span><span class="o">.</span><span class="n">geometry</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.93 ms, sys: 36 µs, total: 3.96 ms
+Wall time: 2.6 ms
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using spatial index, we link additional barriers to existing enclosures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">sindex</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">enclosures</span><span class="p">)</span><span class="o">.</span><span class="n">sindex</span>
+<span class="n">inp</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">sindex</span><span class="o">.</span><span class="n">query_bulk</span><span class="p">(</span><span class="n">additional</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 27.8 s, sys: 43.9 ms, total: 27.9 s
+Wall time: 27.7 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unique enclosure indices in <code class="docutils literal notranslate"><span class="pre">res</span></code> mark those enclosures which needs to be subdivided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 12.2 ms, sys: 2 µs, total: 12.2 ms
+Wall time: 10.6 ms
+</pre></div>
+</div>
+</div>
+</div>
+<p>We loop over polygons and generate new geometry using additional barriers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">)):</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">enclosures</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># get enclosure polygon</span>
+    <span class="n">crossing</span> <span class="o">=</span> <span class="n">inp</span><span class="p">[</span><span class="n">res</span><span class="o">==</span><span class="n">i</span><span class="p">]</span>  <span class="c1"># get relevant additional barriers</span>
+    <span class="n">buf</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>  <span class="c1"># to avoid floating point errors</span>
+    <span class="n">crossing_ins</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">additional</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">crossing</span><span class="p">])</span>  <span class="c1"># keeping only parts of additional barriers within polygon</span>
+    <span class="n">union</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">union_all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">crossing_ins</span><span class="p">,</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">boundary</span><span class="p">(</span><span class="n">poly</span><span class="p">)))</span>  <span class="c1"># union</span>
+    <span class="n">polygons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">polygonize</span><span class="p">(</span><span class="n">_pygeos_to_shapely</span><span class="p">(</span><span class="n">union</span><span class="p">))))</span>  <span class="c1"># polygonize</span>
+    <span class="n">within</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">covered_by</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="n">polygons</span><span class="p">),</span> <span class="n">buf</span><span class="p">)</span>  <span class="c1"># keep only those within original polygon</span>
+    <span class="n">new</span> <span class="o">+=</span> <span class="nb">list</span><span class="p">(</span><span class="n">polygons</span><span class="p">[</span><span class="n">within</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d3682898384d4f3993a0c74de276aec5", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3min 7s, sys: 607 ms, total: 3min 7s
+Wall time: 3min 6s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we replace those polygons which needed subdivision with a new geometry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">final_enclosures</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">enclosures</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">unique</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">new</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 334 ms, sys: 5 µs, total: 334 ms
+Wall time: 331 ms
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we save it to a file, let’s check the difference between initial and final enclosures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_enclosures</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(735372,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enclosures</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(619191,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">final_enclosures</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">roads</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/enclosures.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.81 s, sys: 626 ms, total: 5.43 s
+Wall time: 6.81 s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./spatial_unit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Parallelized_enclosures.html" title="previous page">Generating enclosures (proof of a concept)</a>
+    <a class='right-next' id="next-link" href="chunk_uk.html" title="next page">Geo-chunking Great Britain</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
