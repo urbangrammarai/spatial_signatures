@@ -132,7 +132,10 @@ class Tessellation:
         )
         width = bounds[2] - bounds[0]
         leng = bounds[3] - bounds[1]
-        hull = series.geometry[[0]].buffer(width if width > leng else leng)
+        hull = series.geometry[[0]].buffer(2 * width if width > leng else 2 * leng)
+        # pygeos bug fix
+        if (hull.type == "MultiPolygon").any():
+            hull = hull.explode()
         hull_p, hull_ix = self._dense_point_array(
             hull.values.data, distance=pygeos.length(limit) / 100, index=hull.index
         )
@@ -204,7 +207,7 @@ class Tessellation:
 
 
 def enclosed_tessellation(
-    barriers, buildings, limit, unique_id="uID", enclosure_id="eID", enclosures=None
+    buildings, barriers=None, limit=None, unique_id="uID", enclosure_id="eID", enclosures=None
 ):
     """Enclosed tessellation
 
@@ -237,7 +240,7 @@ def enclosed_tessellation(
     """
 
     # get barrier-based polygons (enclosures)
-    if not enclosures:
+    if enclosures is None:
         polygons = polygonize(
             barriers.geometry.append(gpd.GeoSeries([limit.boundary])).unary_union
         )
@@ -282,7 +285,7 @@ def enclosed_tessellation(
     clean_blocks = gpd.GeoDataFrame(geometry=enclosures)
     clean_blocks[enclosure_id] = range(len(enclosures))
     clean_blocks = clean_blocks.drop(splits)
-    clean_blocks.loc[single, "uID"] = clean_blocks.loc[single].eID.apply(
+    clean_blocks.loc[single, "uID"] = clean_blocks.loc[single][enclosure_id].apply(
         lambda ix: buildings.iloc[res[inp == ix][0]][unique_id]
     )
     tessellation = pd.concat(new)

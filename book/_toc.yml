@@ -7,6 +7,7 @@
     - file: spatial_unit/Parallelized_enclosures
     - file: spatial_unit/Generate_enclosures
     - file: spatial_unit/chunk_uk
+    - file: spatial_unit/chunked_enclosed_tessellation
 
 - chapter: Cluster analysis
   sections:
