@@ -1,0 +1,19 @@
+.bd-sidebar nav ul.nav a:hover, .bd-sidebar nav ul.nav li.active>a, .bd-sidebar nav ul.nav li.active>a:hover {
+    color: #055e52;
+}
+
+.bd-toc nav a:hover, .bd-toc nav li.active>a.active {
+    color: #055e52;
+}
+
+.bd-toc nav li.active>a.active {
+    border-left: 2px solid #0ea48f;
+}
+
+main.bd-content #main-content a, main.bd-content #main-content a:visited {
+    color: #0ea48f;
+}
+
+#urban-grammar-ai-research-project img {
+    display: inline;
+}
