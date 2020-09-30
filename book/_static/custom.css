@@ -15,5 +15,5 @@ main.bd-content #main-content a, main.bd-content #main-content a:visited {
 }
 
 #urban-grammar-ai-research-project img {
-    display: inline;
+    display: inline!important;
 }
