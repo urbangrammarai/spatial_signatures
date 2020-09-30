@@ -1,5 +1,12 @@
 - file: intro
 
+- chapter: Project
+  sections:
+    - url: http://urbangrammarai.github.io
+      title: Project homepage
+    - url: http://urbangrammarai.github.io/data_processing
+      title: WP1 - Data processing
+
 - chapter: Spatial unit
   sections:
     - file: spatial_unit/unit
