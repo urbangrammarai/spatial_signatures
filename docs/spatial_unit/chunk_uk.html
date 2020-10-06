@@ -147,6 +147,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   Cluster analysis
  </span>
 </p>
@@ -743,6 +755,24 @@ Wall time: 57min 51s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunks</span> <span class="o">=</span> <span class="n">districts</span><span class="o">.</span><span class="n">dissolve</span><span class="p">(</span><span class="s1">&#39;lbls&#39;</span><span class="p">)</span>
 <span class="n">chunks</span><span class="p">[</span><span class="s1">&#39;chunkID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chunks</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunks</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;chunkID&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/local_auth_chunks.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/ipykernel_launcher.py:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  &quot;&quot;&quot;Entry point for launching an IPython kernel.
 </pre></div>
 </div>
 </div>

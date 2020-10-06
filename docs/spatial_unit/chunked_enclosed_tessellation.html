@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Trial of clustering on OpenMap and MasterMap data" href="../clusters/mastermap_openmap_cluster.html" />
+    <link rel="next" title="Cross-chunk indices" href="../measuring/cross-chunk_indices.html" />
     <link rel="prev" title="Geo-chunking Great Britain" href="chunk_uk.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -142,6 +142,18 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Generate enclosed tessellation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
   </a>
  </li>
 </ul>
@@ -310,6 +322,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
@@ -326,6 +339,7 @@
     <span class="n">blg</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/buildings/blg_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
     <span class="n">enclosures</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/enclosures/encl_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
     <span class="n">tess</span> <span class="o">=</span> <span class="n">enclosed_tessellation</span><span class="p">(</span><span class="n">buildings</span><span class="o">=</span><span class="n">blg</span><span class="p">,</span> <span class="n">enclosures</span><span class="o">=</span><span class="n">enclosures</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">unique_id</span><span class="o">=</span><span class="s2">&quot;uID&quot;</span><span class="p">,</span> <span class="n">enclosure_id</span><span class="o">=</span><span class="s2">&quot;enclosureID&quot;</span><span class="p">)</span>
+    <span class="n">tess</span><span class="p">[</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">enclosures</span><span class="o">.</span><span class="n">enclosureID</span><span class="p">,</span> <span class="n">tess</span><span class="o">.</span><span class="n">enclosureID</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
     <span class="n">tess</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/tessellation/tess_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -480,7 +494,7 @@ distributed.nanny - WARNING - Restarting worker
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="chunk_uk.html" title="previous page">Geo-chunking Great Britain</a>
-    <a class='right-next' id="next-link" href="../clusters/mastermap_openmap_cluster.html" title="next page">Trial of clustering on OpenMap and MasterMap data</a>
+    <a class='right-next' id="next-link" href="../measuring/cross-chunk_indices.html" title="next page">Cross-chunk indices</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
