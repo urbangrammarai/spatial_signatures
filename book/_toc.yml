@@ -19,6 +19,7 @@
 - chapter: Populating units with data
   sections:
     - file: measuring/cross-chunk_indices
+    - file: measuring/morphometrics
 
 - chapter: Cluster analysis
   sections:
