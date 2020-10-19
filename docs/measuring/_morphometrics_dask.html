@@ -1,0 +1,1210 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_morphometrics_dask.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_morphometrics_dask.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install git+git://github.com/jsignell/dask-geopandas.git</span>
+<span class="c1"># !pip install git+git://github.com/geopandas/geopandas.git</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span> <span class="k">as</span> <span class="nn">dask_geopandas</span>
+<span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">Queen</span>
+
+<span class="kn">from</span> <span class="nn">momepy_utils</span> <span class="kn">import</span> <span class="n">_circle_radius</span><span class="p">,</span> <span class="n">get_corners</span><span class="p">,</span> <span class="n">squareness</span><span class="p">,</span> <span class="n">elongation</span><span class="p">,</span> <span class="n">centroid_corner</span><span class="p">,</span> <span class="n">solar_orientation_poly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/pyarrow/compat.py:25: FutureWarning: pyarrow.compat has been deprecated and will be removed in a future release
+  &quot;future release&quot;, FutureWarning)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:45727</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>14</li>
+  <li><b>Cores: </b>28</li>
+  <li><b>Memory: </b>84.28 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;.*initial implementation of Parquet.*&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;.*Assigning CRS to a GeoDataFrame without a geometry*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">chunk_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="mi">103</span><span class="p">):</span>
+    <span class="n">blg</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/buildings/blg_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">tess</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="n">blg</span> <span class="o">=</span> <span class="n">blg</span><span class="o">.</span><span class="n">rename_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span>
+    <span class="n">tess</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">rename_geometry</span><span class="p">(</span><span class="s1">&#39;tessellation&#39;</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">blg</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    
+    <span class="n">ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">area</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbPer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">length</span>
+    <span class="n">exterior_area</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">series</span><span class="p">:</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">polygons</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbCoA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exterior_area</span> <span class="o">-</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span>
+
+    <span class="n">hull</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">exterior</span>
+
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbCCo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbCor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">get_corners</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbSqu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">squareness</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="n">bbox</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">minimum_rotated_rectangle</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbERI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">bbox</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbPer&#39;</span><span class="p">])</span>
+
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbElo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">elongation</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    
+    <span class="k">def</span> <span class="nf">_centroid_corner</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+        <span class="n">ccd</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">centroid_corner</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ccd</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    
+    <span class="n">ddf</span><span class="p">[[</span><span class="s1">&#39;ssbCCM&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCCD&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="n">_centroid_corner</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">]}))</span>
+    
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stbOri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">solar_orientation_poly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="n">hull</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">exterior</span>
+
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcLAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+    
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">area</span>
+    
+
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sscCCo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">bbox</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">minimum_rotated_rectangle</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sscERI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">bbox</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+    
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stcOri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">solar_orientation_poly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sicCAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span>
+    
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stbCeA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stbOri&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stcOri&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "fa9011b7ea774008aa95add89878fcc3", "version_major": 2, "version_minor": 0}
+</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+Exception in thread AsyncProcess Dask Worker process (from Nanny) watch process join:
+Traceback (most recent call last):
+  File &quot;/opt/conda/lib/python3.7/threading.py&quot;, line 926, in _bootstrap_inner
+    self.run()
+  File &quot;/opt/conda/lib/python3.7/threading.py&quot;, line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File &quot;/opt/conda/lib/python3.7/site-packages/distributed/process.py&quot;, line 234, in _watch_process
+    assert exitcode is not None
+AssertionError
+
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Worker process still alive after 1 seconds, killing
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+distributed.nanny - WARNING - Restarting worker
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">encl</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/enclosures/encl_*.pq&quot;</span><span class="p">)</span>
+
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">area</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">length</span>
+
+<span class="n">hull</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">exterior</span>
+
+<span class="n">radius</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lseCCo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">bbox</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">minimum_rotated_rectangle</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lseERI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">bbox</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">])</span>
+
+<span class="n">longest_axis</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lseCWA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longest_axis</span> <span class="o">*</span> <span class="p">((</span><span class="mi">4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lteOri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">solar_orientation_poly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="n">encl_df</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="c1"># make 3d geometry 2d</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">encl_df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">get_num_coordinates</span><span class="p">(</span><span class="n">encl_df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">pygeos</span><span class="o">.</span><span class="n">polygons</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">counts</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])],</span> <span class="n">crs</span><span class="o">=</span><span class="n">encl_df</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="n">inp</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">encl_df</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query_bulk</span><span class="p">(</span><span class="n">encl_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">)</span>
+<span class="n">indices</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;lteWNB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">]</span>
+
+<span class="n">tess</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_*.pq&quot;</span><span class="p">)</span>
+<span class="n">encl_counts</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">merged</span> <span class="o">=</span> <span class="n">encl_df</span><span class="p">[[</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">,</span> <span class="s1">&#39;ldeAre&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">encl_counts</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">)</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;lieWCe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span>
+<span class="n">encl_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/enclosures.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

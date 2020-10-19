@@ -1,5 +1,12 @@
 - file: intro
 
+- chapter: Project
+  sections:
+    - url: http://urbangrammarai.github.io
+      title: Project homepage
+    - url: http://urbangrammarai.github.io/data_processing
+      title: WP1 - Data processing
+
 - chapter: Spatial unit
   sections:
     - file: spatial_unit/unit
@@ -8,6 +15,11 @@
     - file: spatial_unit/Generate_enclosures
     - file: spatial_unit/chunk_uk
     - file: spatial_unit/chunked_enclosed_tessellation
+
+- chapter: Populating units with data
+  sections:
+    - file: measuring/cross-chunk_indices
+    - file: measuring/morphometrics
 
 - chapter: Cluster analysis
   sections:

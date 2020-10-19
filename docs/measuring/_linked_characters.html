@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_linked_characters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_linked_characters.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">Queen</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">libpysal</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">as_completed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:34253</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>8</li>
+  <li><b>Cores: </b>8</li>
+  <li><b>Memory: </b>84.28 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/cross-chunk_indices.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+<span class="c1">#     Street Alignment</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;orient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">Orientation</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;edgeID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">))</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID_values</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;edgeID_primary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">inds</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">edgeID_keys</span><span class="p">,</span> <span class="n">keys</span><span class="p">)]</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;stbSAl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">StreetAlignment</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> 
+                                             <span class="n">edges</span><span class="p">,</span> 
+                                             <span class="s1">&#39;stbOri&#39;</span><span class="p">,</span> 
+                                             <span class="n">left_network_id</span><span class="o">=</span><span class="s1">&#39;edgeID_primary&#39;</span><span class="p">,</span> 
+                                             <span class="n">right_network_id</span><span class="o">=</span><span class="s1">&#39;edgeID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+<span class="c1">#     Area Covered by each edge</span>
+
+    <span class="n">vals</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">))}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">keys</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">edgeID_keys</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">area_sums</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">area_sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;sdsAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">area_sums</span>
+    
+<span class="c1">#     Building per meter</span>
+    <span class="n">bpm</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">inds</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">edges</span><span class="o">.</span><span class="n">sdsLen</span><span class="p">):</span>
+        <span class="n">bpm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">l</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;sisBpM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bpm</span>
+    
+<span class="c1">#     Cell area</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;sddAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">nodeID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">nid</span><span class="p">:</span> <span class="n">cells</span><span class="p">[</span><span class="n">cells</span><span class="o">.</span><span class="n">nodeID</span> <span class="o">==</span> <span class="n">nid</span><span class="p">]</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    
+<span class="c1">#     Area covered by neighboring edges + count of reached cells</span>
+    <span class="n">edges_W</span> <span class="o">=</span> <span class="n">Queen</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    
+    <span class="n">areas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">reached_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)):</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">edges_W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1">#     areas</span>
+        <span class="n">areas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">sdsAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbors</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="c1">#     reached cells</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+             <span class="n">ids</span> <span class="o">+=</span> <span class="n">vals</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">reached_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
+
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;misCel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reached_cells</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;mdsAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">areas</span>
+    
+<span class="c1">#     Area covered by neighboring (3 steps) edges + count of reached cells</span>
+
+    <span class="n">edges_W3</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">edges_W</span><span class="p">)</span>
+    
+    <span class="n">areas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">reached_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)):</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">edges_W3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1">#     areas</span>
+        <span class="n">areas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">sdsAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbors</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="c1">#     reached cells</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+             <span class="n">ids</span> <span class="o">+=</span> <span class="n">vals</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">reached_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
+
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;lisCel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reached_cells</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;ldsAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">areas</span>
+
+<span class="c1"># Link together</span>
+    
+    <span class="n">e_to_link</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sdsAre&#39;</span><span class="p">,</span> <span class="s1">&#39;sisBpM&#39;</span><span class="p">,</span> <span class="s1">&#39;misCel&#39;</span><span class="p">,</span> <span class="s1">&#39;mdsAre&#39;</span><span class="p">,</span> <span class="s1">&#39;lisCel&#39;</span><span class="p">,</span> <span class="s1">&#39;ldsAre&#39;</span><span class="p">]</span>
+    <span class="n">n_to_link</span> <span class="o">=</span> <span class="s1">&#39;sddAre&#39;</span>
+
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nodes</span><span class="p">[[</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="s1">&#39;sddAre&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">edgeID_keys</span><span class="p">,</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID_values</span><span class="p">):</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">edges</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">keys</span><span class="p">][</span><span class="n">e_to_link</span><span class="p">]</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">cells</span><span class="p">[</span><span class="n">e_to_link</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cells</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+<span class="c1"># Reached neighbors and area on 3 topological steps on tessellation</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcRea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+<span class="c1">#     save</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 0 processed sucessfully in 608.3578481674194 seconds.
+Chunk 3 processed sucessfully in 639.6974849700928 seconds.
+Chunk 2 processed sucessfully in 699.4198045730591 seconds.
+Chunk 1 processed sucessfully in 714.4028966426849 seconds.
+Chunk 7 processed sucessfully in 808.675190448761 seconds.
+Chunk 4 processed sucessfully in 861.5772285461426 seconds.
+Chunk 5 processed sucessfully in 1249.2704949378967 seconds.
+Chunk 11 processed sucessfully in 560.9693295955658 seconds.
+Chunk 10 processed sucessfully in 640.4673058986664 seconds.
+Chunk 9 processed sucessfully in 730.4281566143036 seconds.
+Chunk 8 processed sucessfully in 817.270895242691 seconds.
+Chunk 6 processed sucessfully in 1427.0969700813293 seconds.
+Chunk 13 processed sucessfully in 804.1610832214355 seconds.
+Chunk 12 processed sucessfully in 1149.9492144584656 seconds.
+Chunk 14 processed sucessfully in 788.4258589744568 seconds.
+Chunk 15 processed sucessfully in 771.2644803524017 seconds.
+Chunk 16 processed sucessfully in 713.4622275829315 seconds.
+Chunk 17 processed sucessfully in 701.3565175533295 seconds.
+Chunk 18 processed sucessfully in 695.3388531208038 seconds.
+Chunk 19 processed sucessfully in 792.5599434375763 seconds.
+Chunk 20 processed sucessfully in 679.1908304691315 seconds.
+Chunk 21 processed sucessfully in 585.542694568634 seconds.
+Chunk 23 processed sucessfully in 569.1329276561737 seconds.
+Chunk 22 processed sucessfully in 616.7080790996552 seconds.
+Chunk 25 processed sucessfully in 586.3682172298431 seconds.
+Chunk 28 processed sucessfully in 593.6186916828156 seconds.
+Chunk 27 processed sucessfully in 768.0758256912231 seconds.
+Chunk 24 processed sucessfully in 942.9625244140625 seconds.
+Chunk 26 processed sucessfully in 924.3872952461243 seconds.
+Chunk 29 processed sucessfully in 698.4587860107422 seconds.
+Chunk 31 processed sucessfully in 683.1847748756409 seconds.
+Chunk 30 processed sucessfully in 775.9588477611542 seconds.
+Chunk 33 processed sucessfully in 669.6966166496277 seconds.
+Chunk 34 processed sucessfully in 619.9160101413727 seconds.
+Chunk 36 processed sucessfully in 586.0688056945801 seconds.
+Chunk 32 processed sucessfully in 1064.6108467578888 seconds.
+Chunk 35 processed sucessfully in 783.4187767505646 seconds.
+Chunk 37 processed sucessfully in 812.2681007385254 seconds.
+Chunk 39 processed sucessfully in 689.8028564453125 seconds.
+Chunk 43 processed sucessfully in 669.6097385883331 seconds.
+Chunk 41 processed sucessfully in 830.6970419883728 seconds.
+Chunk 42 processed sucessfully in 812.155665397644 seconds.
+Chunk 44 processed sucessfully in 694.9346005916595 seconds.
+Chunk 38 processed sucessfully in 1210.3513324260712 seconds.
+Chunk 46 processed sucessfully in 762.4901328086853 seconds.
+Chunk 45 processed sucessfully in 830.4840402603149 seconds.
+Chunk 40 processed sucessfully in 1284.4842483997345 seconds.
+Chunk 47 processed sucessfully in 607.2258014678955 seconds.
+Chunk 49 processed sucessfully in 729.3481738567352 seconds.
+Chunk 48 processed sucessfully in 746.239622592926 seconds.
+Chunk 51 processed sucessfully in 731.522260427475 seconds.
+Chunk 50 processed sucessfully in 834.769110918045 seconds.
+Chunk 52 processed sucessfully in 573.2798771858215 seconds.
+Chunk 55 processed sucessfully in 612.5524668693542 seconds.
+Chunk 53 processed sucessfully in 731.214991569519 seconds.
+Chunk 54 processed sucessfully in 736.130791425705 seconds.
+Chunk 57 processed sucessfully in 694.0929801464081 seconds.
+Chunk 58 processed sucessfully in 689.7639243602753 seconds.
+Chunk 56 processed sucessfully in 807.6864392757416 seconds.
+Chunk 59 processed sucessfully in 745.7603611946106 seconds.
+Chunk 60 processed sucessfully in 664.07541680336 seconds.
+Chunk 63 processed sucessfully in 720.3201248645782 seconds.
+Chunk 62 processed sucessfully in 795.3342881202698 seconds.
+Chunk 66 processed sucessfully in 853.8057034015656 seconds.
+Chunk 65 processed sucessfully in 881.1899962425232 seconds.
+Chunk 61 processed sucessfully in 1265.405544757843 seconds.
+Chunk 68 processed sucessfully in 855.157680273056 seconds.
+Chunk 64 processed sucessfully in 1127.2428705692291 seconds.
+Chunk 69 processed sucessfully in 741.9772613048553 seconds.
+Chunk 67 processed sucessfully in 1120.6305174827576 seconds.
+Chunk 70 processed sucessfully in 870.4359586238861 seconds.
+Chunk 72 processed sucessfully in 688.1437079906464 seconds.
+Chunk 71 processed sucessfully in 776.0648081302643 seconds.
+Chunk 74 processed sucessfully in 699.2000954151154 seconds.
+Chunk 73 processed sucessfully in 835.7219552993774 seconds.
+Chunk 78 processed sucessfully in 634.7636857032776 seconds.
+Chunk 77 processed sucessfully in 745.660462141037 seconds.
+Chunk 76 processed sucessfully in 867.8722755908966 seconds.
+Chunk 75 processed sucessfully in 986.4505760669708 seconds.
+Chunk 81 processed sucessfully in 584.8170056343079 seconds.
+Chunk 79 processed sucessfully in 709.2457644939423 seconds.
+Chunk 82 processed sucessfully in 732.7868075370789 seconds.
+Chunk 80 processed sucessfully in 875.5471262931824 seconds.
+Chunk 84 processed sucessfully in 640.5730764865875 seconds.
+Chunk 83 processed sucessfully in 807.8595879077911 seconds.
+Chunk 86 processed sucessfully in 819.9628689289093 seconds.
+Chunk 85 processed sucessfully in 948.437228679657 seconds.
+Chunk 87 processed sucessfully in 809.8173928260803 seconds.
+Chunk 88 processed sucessfully in 820.0680532455444 seconds.
+Chunk 90 processed sucessfully in 636.8419897556305 seconds.
+Chunk 91 processed sucessfully in 679.9017136096954 seconds.
+Chunk 93 processed sucessfully in 594.2010881900787 seconds.
+Chunk 94 processed sucessfully in 618.2903592586517 seconds.
+Chunk 89 processed sucessfully in 1200.1189868450165 seconds.
+Chunk 96 processed sucessfully in 642.0877594947815 seconds.
+Chunk 92 processed sucessfully in 1002.110102891922 seconds.
+Chunk 95 processed sucessfully in 722.7125730514526 seconds.
+Chunk 97 processed sucessfully in 701.1370568275452 seconds.
+Chunk 99 processed sucessfully in 760.324126958847 seconds.
+Chunk 100 processed sucessfully in 708.1934447288513 seconds.
+Chunk 98 processed sucessfully in 1072.1483752727509 seconds.
+Chunk 102 processed sucessfully in 735.0181646347046 seconds.
+Chunk 101 processed sucessfully in 1285.937772512436 seconds.
+CPU times: user 20min 34s, sys: 2min 20s, total: 22min 54s
+Wall time: 3h 3min 10s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
