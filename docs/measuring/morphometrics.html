@@ -1,0 +1,1142 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Urban morphometrics &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Trial of clustering on OpenMap and MasterMap data" href="../clusters/mastermap_openmap_cluster.html" />
+    <link rel="prev" title="Cross-chunk indices" href="cross-chunk_indices.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Urban morphometrics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/morphometrics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/morphometrics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#individual-elements">
+   Individual elements
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measuring-buildings-and-enclosed-cells">
+     Measuring buildings and enclosed cells
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measuring-enclosures">
+     Measuring enclosures
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-spatial-weights-w">
+   Generate spatial weights (W)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spatial-distribution-and-network-analysis">
+   Spatial distribution and network analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#link-elements-together">
+   Link elements together
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inter-element-characters">
+   Inter-element characters
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="urban-morphometrics">
+<h1>Urban morphometrics<a class="headerlink" href="#urban-morphometrics" title="Permalink to this headline">¶</a></h1>
+<p>Morpohometric assessment measure wide range of characters of urban form to derive a complex description of built-up patterns composed of enclosed tessellation, buildings and street network.</p>
+<p>All algorithms used within this notebook are part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code> Python toolkit and can be used from there. We have extracted them from <code class="docutils literal notranslate"><span class="pre">momepy</span></code>, adapted for <code class="docutils literal notranslate"><span class="pre">dask</span></code> and <code class="docutils literal notranslate"><span class="pre">pygeos</span></code> and used in raw form tailored directly to our use case. The algorithms which were enhanced are pushed back to momepy and will be part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code> 0.4.0.</p>
+<p>All steps within this notebook are parallelised using <code class="docutils literal notranslate"><span class="pre">dask</span></code>. The first part, which measures aspects of individual elements (does not require to know the context) uses pre-release of <code class="docutils literal notranslate"><span class="pre">dask-geopandas</span></code>. The rest uses <code class="docutils literal notranslate"><span class="pre">dask</span></code> to manage parallel iteration over geo-chunks with single-core algorithms.</p>
+<p>Some functions are imported from a <code class="docutils literal notranslate"><span class="pre">momepy_utils.py</span></code> file stored wihtin this directory. Those are either helper functions taken directly from momepy or their enhanced versions, all which will be included in the next release of momepy.</p>
+<div class="section" id="individual-elements">
+<h2>Individual elements<a class="headerlink" href="#individual-elements" title="Permalink to this headline">¶</a></h2>
+<p>Note: Requires dask-geopandas and current master of geopandas to support dask version.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install git+git://github.com/jsignell/dask-geopandas.git</span>
+<span class="c1"># !pip install git+git://github.com/geopandas/geopandas.git</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span> <span class="k">as</span> <span class="nn">dask_geopandas</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">libpysal</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">as_completed</span>
+<span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">Queen</span>
+<span class="kn">from</span> <span class="nn">momepy_utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_circle_radius</span><span class="p">,</span>
+    <span class="n">centroid_corner</span><span class="p">,</span>
+    <span class="n">elongation</span><span class="p">,</span>
+    <span class="n">get_corners</span><span class="p">,</span>
+    <span class="n">get_edge_ratios</span><span class="p">,</span>
+    <span class="n">get_nodes</span><span class="p">,</span>
+    <span class="n">solar_orientation_poly</span><span class="p">,</span>
+    <span class="n">squareness</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are using a single machine wihtin this notebook with 14 cores, so we start local dask cluster with 14 workers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">14</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dask-geopandas</span></code> is still under development and raises few warnigns at the moment, all which can be ignored.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;.*initial implementation of Parquet.*&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;.*Assigning CRS to a GeoDataFrame without a geometry*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="measuring-buildings-and-enclosed-cells">
+<h3>Measuring buildings and enclosed cells<a class="headerlink" href="#measuring-buildings-and-enclosed-cells" title="Permalink to this headline">¶</a></h3>
+<p>In the first step, we iterate over geo-chunks, merge enclosed tessellation and buildings to a single <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> and convert it to <code class="docutils literal notranslate"><span class="pre">dask.GeoDataFrame</span></code>. The rest of the code is mostly an extraction from momepy source code adapted for dask.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">chunk_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="mi">103</span><span class="p">):</span>
+    
+    <span class="c1"># Load data and merge them together</span>
+    <span class="n">blg</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/buildings/blg_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">tess</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="n">blg</span> <span class="o">=</span> <span class="n">blg</span><span class="o">.</span><span class="n">rename_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span>
+    <span class="n">tess</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">rename_geometry</span><span class="p">(</span><span class="s1">&#39;tessellation&#39;</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">blg</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;uID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Convert to dask.GeoDataFrame</span>
+    <span class="n">ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    
+    <span class="c1">## Measure morphometric characters</span>
+    <span class="c1"># Building area</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">area</span>
+    
+    <span class="c1"># Building perimeter</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbPer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">length</span>
+    
+    <span class="c1"># Courtyard area</span>
+    <span class="n">exterior_area</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">series</span><span class="p">:</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">polygons</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbCoA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exterior_area</span> <span class="o">-</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Circular compactness</span>
+    <span class="n">hull</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">exterior</span>
+
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbCCo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Corners</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbCor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">get_corners</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Squareness</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbSqu&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">squareness</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Equivalent rectangular index</span>
+    <span class="n">bbox</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">minimum_rotated_rectangle</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbERI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">bbox</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbPer&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Elongation</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;ssbElo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">elongation</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Centroid corner mean distance and deviation</span>
+    <span class="k">def</span> <span class="nf">_centroid_corner</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+        <span class="n">ccd</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">centroid_corner</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ccd</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    
+    <span class="n">ddf</span><span class="p">[[</span><span class="s1">&#39;ssbCCM&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCCD&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="n">_centroid_corner</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">]}))</span>
+    
+    <span class="c1"># Solar orientation</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stbOri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">solar_orientation_poly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Tessellation longest axis length</span>
+    <span class="n">hull</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">exterior</span>
+
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcLAL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+    
+    <span class="c1"># Tessellation area</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">area</span>
+    
+    <span class="c1"># Circular compactness</span>
+    <span class="n">radius</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sscCCo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Equivalent rectangular index</span>
+    <span class="n">bbox</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">minimum_rotated_rectangle</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sscERI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">bbox</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">ddf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+    
+    <span class="c1"># Solar orientation</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stcOri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">solar_orientation_poly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Covered area ratio</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sicCAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Building-cell alignment</span>
+    <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stbCeA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stbOri&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ddf</span><span class="p">[</span><span class="s1">&#39;stcOri&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+    
+    <span class="c1"># Compute all characters using dask</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+    
+    <span class="c1"># Save to parquet file</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="measuring-enclosures">
+<h3>Measuring enclosures<a class="headerlink" href="#measuring-enclosures" title="Permalink to this headline">¶</a></h3>
+<p>All enclosures are loaded as a single dask.GeoDataFrame and measured at once.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Load data</span>
+<span class="n">encl</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/enclosures/encl_*.pq&quot;</span><span class="p">)</span>
+
+<span class="c1"># Area</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">area</span>
+
+<span class="c1"># Perimeter</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">length</span>
+
+<span class="c1"># Circular compacntess</span>
+<span class="n">hull</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">convex_hull</span><span class="o">.</span><span class="n">exterior</span>
+
+<span class="n">radius</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">))</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lseCCo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Equivalent rectangular index</span>
+<span class="n">bbox</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">g</span><span class="o">.</span><span class="n">minimum_rotated_rectangle</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lseERI&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">bbox</span><span class="o">.</span><span class="n">area</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">bbox</span><span class="o">.</span><span class="n">length</span> <span class="o">/</span> <span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">])</span>
+
+<span class="c1"># Compactness-weighted axis</span>
+<span class="n">longest_axis</span> <span class="o">=</span> <span class="n">hull</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">_circle_radius</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">coords</span><span class="p">)),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lseCWA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">longest_axis</span> <span class="o">*</span> <span class="p">((</span><span class="mi">4</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">((</span><span class="n">encl</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Solar orientation</span>
+<span class="n">encl</span><span class="p">[</span><span class="s1">&#39;lteOri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bbox</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">g</span><span class="p">:</span> <span class="n">solar_orientation_poly</span><span class="p">(</span><span class="n">g</span><span class="p">),</span> <span class="n">meta</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute data and return geopandas.GeoDataFrame</span>
+<span class="n">encl_df</span> <span class="o">=</span> <span class="n">encl</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="c1"># Weighted number of neighbors</span>
+<span class="n">inp</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">encl_df</span><span class="o">.</span><span class="n">sindex</span><span class="o">.</span><span class="n">query_bulk</span><span class="p">(</span><span class="n">encl_df</span><span class="o">.</span><span class="n">geometry</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">)</span>
+<span class="n">indices</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;lteWNB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;ldePer&#39;</span><span class="p">]</span>
+
+<span class="c1"># Load complete enclosed tessellation as a dask.GeoDataFrame</span>
+<span class="n">tess</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_*.pq&quot;</span><span class="p">)</span>
+
+<span class="c1"># Measure weighted cells within enclosure</span>
+<span class="n">encl_counts</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+<span class="n">merged</span> <span class="o">=</span> <span class="n">encl_df</span><span class="p">[[</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">,</span> <span class="s1">&#39;ldeAre&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">encl_counts</span><span class="p">[[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">)</span>
+<span class="n">encl_df</span><span class="p">[</span><span class="s1">&#39;lieWCe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">merged</span><span class="p">[</span><span class="s1">&#39;ldeAre&#39;</span><span class="p">]</span>
+
+<span class="c1"># Save data to parquet</span>
+<span class="n">encl_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/enclosures.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now close dask client.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="generate-spatial-weights-w">
+<h2>Generate spatial weights (W)<a class="headerlink" href="#generate-spatial-weights-w" title="Permalink to this headline">¶</a></h2>
+<p>Subsequent steps will require understanding of the context of each tessellation cell in a form of spatial weights matrices (Queen contiguity and Queen contiguty of inclusive 3rd order). We generate them beforehand and store as <code class="docutils literal notranslate"><span class="pre">npz</span></code> files representing sparse matrix.</p>
+<p>Each geo-chunk is loaded together with relevant cross-chunk tessellation cells (to avoid edge effect). We use dask to parallelise the iteration. Number of workers is smaller now to ensure enough memory for each chunk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First we have to specify a function doing the processing itself, where the only attribure is the <code class="docutils literal notranslate"><span class="pre">chunk_id</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_w</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="c1"># load cells of a chunk</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">Queen</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;tessellation&#39;</span><span class="p">)</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+    
+    <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">save_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">sparse</span><span class="p">)</span>
+    <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">save_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">,</span> <span class="n">w3</span><span class="o">.</span><span class="n">sparse</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we use dask to iterate over all 103 chunks. The following script sends first 8 chunks to dask together and then submits a new chunk as soon as any of previous finishes (courtesy of Matthew Rocklin). That way we process only 8 chunks at once ensuring that we the cluster will not run out of memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">generate_w</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">generate_w</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="spatial-distribution-and-network-analysis">
+<h2>Spatial distribution and network analysis<a class="headerlink" href="#spatial-distribution-and-network-analysis" title="Permalink to this headline">¶</a></h2>
+<p>To measure spatial distribution of we use single-core algorithm and parallelise iteration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will need to load street network data from PostGIS datatabase, so we establish a connection which will be used within the loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/cross-chunk_indices.pq&#39;</span><span class="p">)</span>
+<span class="n">chunks</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/local_auth_chunks.pq&#39;</span><span class="p">)</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PWD&#39;</span><span class="p">)</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">)</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)</span>
+
+<span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Within the same function below we measure spatial distribution of elements and network-based characters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="c1"># load cells of a chunk</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># read W</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+    
+    <span class="c1"># alignment</span>
+    <span class="k">def</span> <span class="nf">alignment</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;stbOri&#39;</span><span class="p">):</span>
+        <span class="n">orientations</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">orientation</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">orientations</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">orientation</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mtbAli&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">alignment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+
+    <span class="c1"># mean neighbour distance</span>
+    <span class="k">def</span> <span class="nf">neighbor_distance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">geom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mtbNDi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">neighbor_distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># weighted neighbours</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mtcWNe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))],</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">length</span>
+    
+    <span class="c1"># area covered by neighbours</span>
+    <span class="k">def</span> <span class="nf">area_covered</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">area</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mdcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">area_covered</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># read W3</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+      
+    <span class="c1"># weighted reached enclosures</span>
+    <span class="k">def</span> <span class="nf">weighted_reached_enclosures</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">,</span> <span class="n">enclosure_id</span><span class="o">=</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+        <span class="n">vicinity</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">area</span><span class="p">,</span> <span class="n">enclosure_id</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">vicinity</span><span class="p">[</span><span class="n">enclosure_id</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">vicinity</span><span class="p">[</span><span class="n">area</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcWRE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">weighted_reached_enclosures</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># mean interbuilding distance</span>
+    <span class="c1"># define adjacency list from lipysal</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">focal</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">neighbor</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;focal&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbor&#39;</span><span class="p">])</span>
+
+
+    <span class="k">def</span> <span class="nf">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">,</span> <span class="n">neighbours</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># Reached neighbors and area on 3 topological steps on tessellation</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcRea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+
+    <span class="c1"># Save cells to parquet keeping only within-chunk data not the additional neighboring</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Load street network for an extended chunk area</span>
+    <span class="n">chunk_area</span> <span class="o">=</span> <span class="n">chunks</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>  <span class="c1"># we extend the area by 5km to minimise edge effect</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_connection_url</span><span class="p">)</span>
+    <span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT * FROM openroads_200803_topological WHERE ST_Intersects(geometry, ST_GeomFromText(&#39;</span><span class="si">{</span><span class="n">chunk_area</span><span class="o">.</span><span class="n">wkt</span><span class="si">}</span><span class="s2">&#39;,27700))&quot;</span>
+    <span class="n">streets</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Street profile (measures width, width deviation and openness)</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="n">street_profile</span><span class="p">(</span><span class="n">streets</span><span class="p">,</span> <span class="n">blg</span><span class="p">)</span>
+    <span class="n">streets</span><span class="p">[</span><span class="s1">&#39;sdsSPW&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">streets</span><span class="p">[</span><span class="s1">&#39;sdsSWD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">streets</span><span class="p">[</span><span class="s1">&#39;sdsSPO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># Street segment length</span>
+    <span class="n">streets</span><span class="p">[</span><span class="s1">&#39;sdsLen&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">streets</span><span class="o">.</span><span class="n">length</span>
+    
+    <span class="c1"># Street segment linearity</span>
+    <span class="n">streets</span><span class="p">[</span><span class="s1">&#39;sssLin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">Linearity</span><span class="p">(</span><span class="n">streets</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+    
+    <span class="c1"># Convert geopadnas.GeoDataFrame to networkx.Graph for network analysis</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">gdf_to_nx</span><span class="p">(</span><span class="n">streets</span><span class="p">)</span>
+    
+    <span class="c1"># Node degree</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">node_degree</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    
+    <span class="c1"># Subgraph analysis (meshedness, proportion of 0, 3 and 4 way intersections, local closeness)</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span>
+        <span class="n">G</span><span class="p">,</span>
+        <span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">meshedness</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">cds_length</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+        <span class="n">degree</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span>
+        <span class="n">length</span><span class="o">=</span><span class="s2">&quot;mm_len&quot;</span><span class="p">,</span>
+        <span class="n">mean_node_degree</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">proportion</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+        <span class="n">cyclomatic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">edge_node_ratio</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">local_closeness</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">closeness_weight</span><span class="o">=</span><span class="s2">&quot;mm_len&quot;</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    
+    <span class="c1"># Cul-de-sac length</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">cds_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ldsCDL&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Square clustering</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">clustering</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;xcnSCl&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Mean node distance</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">mean_node_dist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mtdMDi&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># Convert networkx.Graph back to GeoDataFrames and W (denoting relationships between nodes)</span>
+    <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">sw</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">nx_to_gdf</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">spatial_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Generate inclusive higher order weights</span>
+    <span class="n">edges_w3</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">gdf</span><span class="o">=</span><span class="n">edges</span><span class="p">)</span>
+    
+    <span class="c1"># Mean segment length</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s2">&quot;ldsMSL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">SegmentsLength</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">spatial_weights</span><span class="o">=</span><span class="n">edges_w3</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+    
+    <span class="c1"># Generate inclusive higher order weights</span>
+    <span class="n">nodes_w5</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">sw</span><span class="p">)</span>
+    
+    <span class="c1"># Node density</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;lddNDe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">NodeDensity</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">nodes_w5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+    
+    <span class="c1"># Weighter node density</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;linWID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">NodeDensity</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">nodes_w5</span><span class="p">,</span> <span class="n">weighted</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_degree</span><span class="o">=</span><span class="s2">&quot;degree&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+    
+    <span class="c1"># Save to parquets</span>
+    <span class="n">edges</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again we use dask to iterate over all 103 chunks. The following script sends first 8 chunks to dask together and then submits a new chunk as soon as any of previous finishes. That way we process only 8 chunks at once ensuring that we the cluster will not run out of memory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="link-elements-together">
+<h2>Link elements together<a class="headerlink" href="#link-elements-together" title="Permalink to this headline">¶</a></h2>
+<p>For the further analysis, we need to link data measured on individual elements together. We link cells to edges based on the proportion of overlap (if a cell intersects more than one edge) and nodes based on proximity (with a restriction - node has to be on linked edge). Enclosures are linked based on enclosure ID.</p>
+<p>As above, we define a single-core function and use dask to manage parallel iteration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">link</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;edgeID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_edge_ratios</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;nodeID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_nodes</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="s1">&#39;edgeID&#39;</span><span class="p">,</span> <span class="s1">&#39;node_start&#39;</span><span class="p">,</span> <span class="s1">&#39;node_end&#39;</span><span class="p">)</span>
+    
+    <span class="n">characters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sdsSPW&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsSWD&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsSPO&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsLen&#39;</span><span class="p">,</span> <span class="s1">&#39;sssLin&#39;</span><span class="p">,</span> <span class="s1">&#39;ldsMSL&#39;</span><span class="p">]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID</span><span class="p">:</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">edges</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())][</span><span class="n">characters</span><span class="p">]</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">cells</span><span class="p">[</span><span class="n">characters</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cells</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]),</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;degree&#39;</span><span class="p">:</span> <span class="s1">&#39;mtdDeg&#39;</span><span class="p">,</span> <span class="s1">&#39;meshedness&#39;</span><span class="p">:</span> <span class="s1">&#39;lcdMes&#39;</span><span class="p">,</span> <span class="s1">&#39;proportion_3&#39;</span><span class="p">:</span> <span class="s1">&#39;linP3W&#39;</span><span class="p">,</span> <span class="s1">&#39;proportion_4&#39;</span><span class="p">:</span> <span class="s1">&#39;linP4W&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;proportion_0&#39;</span><span class="p">:</span> <span class="s1">&#39;linPDE&#39;</span><span class="p">,</span> <span class="s1">&#39;local_closeness&#39;</span><span class="p">:</span> <span class="s1">&#39;lcnClo&#39;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+    
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;edgeID_keys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;edgeID_values&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    
+    <span class="n">cells</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;edgeID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Enclosures are linked via simple attribute join and since the operation is does not require any computation, it is done as a simple loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">enclosures</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/enclosures.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">chunk_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">enclosures</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neighbors&#39;</span><span class="p">]),</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    
+    <span class="n">cells</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inter-element-characters">
+<h2>Inter-element characters<a class="headerlink" href="#inter-element-characters" title="Permalink to this headline">¶</a></h2>
+<p>The remaining morphometric characters are based on a relations between multiple elements. The implementation mirrors the approach above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="c1"># Load data</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Street Alignment</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;orient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">Orientation</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;edgeID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">))</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID_values</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;edgeID_primary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">inds</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">edgeID_keys</span><span class="p">,</span> <span class="n">keys</span><span class="p">)]</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;stbSAl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">StreetAlignment</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> 
+                                             <span class="n">edges</span><span class="p">,</span> 
+                                             <span class="s1">&#39;stbOri&#39;</span><span class="p">,</span> 
+                                             <span class="n">left_network_id</span><span class="o">=</span><span class="s1">&#39;edgeID_primary&#39;</span><span class="p">,</span> 
+                                             <span class="n">right_network_id</span><span class="o">=</span><span class="s1">&#39;edgeID&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">series</span>
+   
+    <span class="c1"># Area Covered by each edge</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:[]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">))}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">keys</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">edgeID_keys</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="n">vals</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">area_sums</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">area_sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;sdsAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">area_sums</span>
+    
+    <span class="c1"># Building per meter</span>
+    <span class="n">bpm</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">inds</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vals</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">edges</span><span class="o">.</span><span class="n">sdsLen</span><span class="p">):</span>
+        <span class="n">bpm</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">l</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;sisBpM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bpm</span>
+    
+    <span class="c1"># Cell area</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;sddAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">nodeID</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">nid</span><span class="p">:</span> <span class="n">cells</span><span class="p">[</span><span class="n">cells</span><span class="o">.</span><span class="n">nodeID</span> <span class="o">==</span> <span class="n">nid</span><span class="p">]</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    
+    <span class="c1"># Area covered by neighboring edges + count of reached cells</span>
+    <span class="n">edges_W</span> <span class="o">=</span> <span class="n">Queen</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+    
+    <span class="n">areas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">reached_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)):</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">edges_W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1">#     areas</span>
+        <span class="n">areas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">sdsAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbors</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="c1">#     reached cells</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+             <span class="n">ids</span> <span class="o">+=</span> <span class="n">vals</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">reached_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
+
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;misCel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reached_cells</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;mdsAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">areas</span>
+    
+    <span class="c1"># Area covered by neighboring (3 steps) edges + count of reached cells</span>
+    <span class="n">edges_W3</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">edges_W</span><span class="p">)</span>
+    
+    <span class="n">areas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">reached_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)):</span>
+        <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">edges_W3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1">#     areas</span>
+        <span class="n">areas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">sdsAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbors</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="c1">#     reached cells</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+             <span class="n">ids</span> <span class="o">+=</span> <span class="n">vals</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">reached_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
+
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;lisCel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reached_cells</span>
+    <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;ldsAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">areas</span>
+
+    <span class="c1"># Link together </span>
+    <span class="n">e_to_link</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sdsAre&#39;</span><span class="p">,</span> <span class="s1">&#39;sisBpM&#39;</span><span class="p">,</span> <span class="s1">&#39;misCel&#39;</span><span class="p">,</span> <span class="s1">&#39;mdsAre&#39;</span><span class="p">,</span> <span class="s1">&#39;lisCel&#39;</span><span class="p">,</span> <span class="s1">&#39;ldsAre&#39;</span><span class="p">]</span>
+    <span class="n">n_to_link</span> <span class="o">=</span> <span class="s1">&#39;sddAre&#39;</span>
+
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nodes</span><span class="p">[[</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="s1">&#39;sddAre&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cells</span><span class="o">.</span><span class="n">edgeID_keys</span><span class="p">,</span> <span class="n">cells</span><span class="o">.</span><span class="n">edgeID_values</span><span class="p">):</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">edges</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">keys</span><span class="p">][</span><span class="n">e_to_link</span><span class="p">]</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># weighted by the proportion</span>
+    <span class="n">cells</span><span class="p">[</span><span class="n">e_to_link</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cells</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="c1"># Reached neighbors and area on 3 topological steps on tessellation</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+    
+    <span class="c1"># Reached cells in 3 topological steps</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcRea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># Reached area in 3 topological steps</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># Save</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point, all primary morphometric characters are measured and stored in a chunked parquet.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="cross-chunk_indices.html" title="previous page">Cross-chunk indices</a>
+    <a class='right-next' id="next-link" href="../clusters/mastermap_openmap_cluster.html" title="next page">Trial of clustering on OpenMap and MasterMap data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

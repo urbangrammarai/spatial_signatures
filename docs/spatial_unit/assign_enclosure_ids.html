@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Generate enclosed tessellation &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -53,8 +53,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cross-chunk indices" href="../measuring/cross-chunk_indices.html" />
-    <link rel="prev" title="Geo-chunking Great Britain" href="chunk_uk.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -113,7 +111,7 @@
   Spatial unit
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="unit.html">
    Exploration of tessellation
@@ -139,8 +137,8 @@
    Geo-chunking Great Britain
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="chunked_enclosed_tessellation.html">
    Generate enclosed tessellation
   </a>
  </li>
@@ -211,7 +209,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/spatial_unit/chunked_enclosed_tessellation.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/spatial_unit/assign_enclosure_ids.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -249,7 +247,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/spatial_unit/chunked_enclosed_tessellation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/spatial_unit/assign_enclosure_ids.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -270,12 +268,7 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#start-dask">
-   Start dask
-  </a>
- </li>
+            <ul class="simple nav section-nav flex-column">
 </ul>
 
         </nav>
@@ -287,74 +280,29 @@
         
               <div>
                 
-  <div class="section" id="generate-enclosed-tessellation">
-<h1>Generate enclosed tessellation<a class="headerlink" href="#generate-enclosed-tessellation" title="Permalink to this headline">¶</a></h1>
-<p>This notebook generates enclosed tessellation for the whole Great Britain within <a class="reference internal" href="Generate_enclosures.html"><span class="doc std std-doc">enclosures</span></a>.</p>
-<div class="section" id="start-dask">
-<h2>Start dask<a class="headerlink" href="#start-dask" title="Permalink to this headline">¶</a></h2>
-<p>Enclosed tessellation is a <code class="docutils literal notranslate"><span class="pre">dask</span></code>-based parallelised algorithm, so let’s start a client first.</p>
-<div class="cell docutils container">
+  <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
-<span class="n">client</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table style="border: 2px solid white;">
-<tr>
-<td style="vertical-align: top; border: 0px solid white">
-<h3 style="text-align: left;">Client</h3>
-<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:38895</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
-</ul>
-</td>
-<td style="vertical-align: top; border: 0px solid white">
-<h3 style="text-align: left;">Cluster</h3>
-<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
-  <li><b>Workers: </b>7</li>
-  <li><b>Cores: </b>28</li>
-  <li><b>Memory: </b>84.28 GB</li>
-</ul>
-</td>
-</tr>
-</table></div></div>
-</div>
-<p>Function for <code class="docutils literal notranslate"><span class="pre">enclosed_tessellation</span></code> is loaded from <code class="docutils literal notranslate"><span class="pre">tessellation.py</span></code> in the same directory. In the future, it will be part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
-
-<span class="kn">from</span> <span class="nn">tessellation</span> <span class="kn">import</span> <span class="n">enclosed_tessellation</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The function loads <a class="reference internal" href="chunk_uk.html"><span class="doc std std-doc">pre-chunked</span></a> parquet files of buildings and enclosures, generates enclosed tessellation as saves it to another parquet file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="k">for</span> <span class="n">chunk_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="mi">103</span><span class="p">):</span>
-    <span class="n">blg</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/buildings/blg_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
     <span class="n">enclosures</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/enclosures/encl_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
-    <span class="n">tess</span> <span class="o">=</span> <span class="n">enclosed_tessellation</span><span class="p">(</span><span class="n">buildings</span><span class="o">=</span><span class="n">blg</span><span class="p">,</span> <span class="n">enclosures</span><span class="o">=</span><span class="n">enclosures</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">unique_id</span><span class="o">=</span><span class="s2">&quot;uID&quot;</span><span class="p">,</span> <span class="n">enclosure_id</span><span class="o">=</span><span class="s2">&quot;enclosureID&quot;</span><span class="p">)</span>
+    <span class="n">tess</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/tessellation/tess_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
     <span class="n">tess</span><span class="p">[</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">enclosures</span><span class="o">.</span><span class="n">enclosureID</span><span class="p">,</span> <span class="n">tess</span><span class="o">.</span><span class="n">enclosureID</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
     <span class="n">tess</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/tessellation/tess_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">restart</span><span class="p">()</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "c670237a757d4cb6a418bfb213a2148f", "version_major": 2, "version_minor": 0}
+{"model_id": "442e8c2c10da40e29d3ff5a5622f24b7", "version_major": 2, "version_minor": 0}
 </script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/ipykernel_launcher.py:5: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
 
 This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
@@ -362,111 +310,11 @@ This metadata specification does not yet make stability promises.  We do not yet
 To further ignore this warning, you can do: 
 import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
   &quot;&quot;&quot;
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
-distributed.nanny - WARNING - Restarting worker
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4min 42s, sys: 1min 6s, total: 5min 49s
+Wall time: 8min 15s
 </pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -499,8 +347,6 @@ distributed.nanny - WARNING - Restarting worker
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="chunk_uk.html" title="previous page">Geo-chunking Great Britain</a>
-    <a class='right-next' id="next-link" href="../measuring/cross-chunk_indices.html" title="next page">Cross-chunk indices</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
