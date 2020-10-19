@@ -3,7 +3,7 @@ import math
 
 import numpy as np
 import pygeos
-
+import pandas as pd
 # Smallest enclosing circle - Library (Python)
 
 # Copyright (c) 2017 Project Nayuki
@@ -504,3 +504,64 @@ def _getPoint2(pt, bearing, dist):
     x = pt[0] + dist * math.cos(bearing)
     y = pt[1] + dist * math.sin(bearing)
     return (x, y)
+
+
+def get_edge_ratios(df, edges):
+    """
+    df: cells/buildngs
+    edges: network
+    """
+    
+    # intersection-based join
+    buff = edges.buffer(0.01)  # to avoid floating point error
+    inp, res = buff.sindex.query_bulk(df.geometry, predicate='intersects')
+    intersections = df.iloc[inp].reset_index(drop=True).intersection(buff.iloc[res].reset_index(drop=True))
+    mask = intersections.area > 0.0001
+    intersections = intersections[mask]
+    inp = inp[mask]
+    lengths = intersections.area
+    grouped = lengths.groupby(inp)
+    totals = grouped.sum()
+    ints_vect = []
+    for name, group in grouped:
+        ratios = group / totals.loc[name]
+        ints_vect.append({res[item[0]]: item[1] for item in ratios.iteritems()})
+    
+    edge_dicts = pd.Series(ints_vect, index=totals.index)
+    
+    # nearest neighbor join
+    nans = df.index[~df.index.isin(edge_dicts.index)]
+    buffered = df.loc[nans].buffer(500)
+    additional = []
+    for i in range(len(buffered)):
+        geom = buffered.geometry.iloc[i]
+        query = edges.sindex.query(geom)
+        b = 500
+        while query.size == 0:
+            query = edges.sindex.query(geom.buffer(b))
+            b += 500
+        additional.append({edges.iloc[query].distance(geom).idxmin(): 1})
+
+    additional = pd.Series(additional, index=nans)
+    return pd.concat([edge_dicts, additional]).sort_index()
+
+
+def get_nodes(df, nodes, edges, node_id, edge_id, startID, endID):
+    nodes = nodes.set_index('nodeID')
+    
+    node_ids = []
+
+    for edge_dict, geom in zip(df[edge_id], df.geometry):
+        edge = edges.iloc[max(edge_dict, key=edge_dict.get)]
+        startID = edge.node_start
+        start = nodes.loc[startID].geometry
+        sd = geom.distance(start)
+        endID = edge.node_end
+        end = nodes.loc[endID].geometry
+        ed = geom.distance(end)
+        if sd > ed:
+            node_ids.append(endID)
+        else:
+            node_ids.append(startID)
+    
+    return pd.Series(node_ids, index=df.index)
