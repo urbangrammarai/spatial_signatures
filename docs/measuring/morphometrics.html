@@ -352,6 +352,7 @@
 <span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">libpysal</span>
 <span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">pygeos</span>
@@ -712,22 +713,25 @@
     
     <span class="c1"># mean interbuilding distance</span>
     <span class="c1"># define adjacency list from lipysal</span>
-    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">focal</span><span class="p">]</span>
         <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">neighbor</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
     <span class="p">)</span>
-    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;focal&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbor&#39;</span><span class="p">])</span>
 
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span>
+            <span class="n">adj_list</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;focal&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;neighbor&quot;</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span>
+        <span class="p">)</span>
+    <span class="n">ibd</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sub</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ibd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">))]))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">ibd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
-        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">,</span> <span class="n">neighbours</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ibd</span>
     
     <span class="c1"># Reached neighbors and area on 3 topological steps on tessellation</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcRea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
