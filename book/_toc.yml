@@ -16,6 +16,11 @@
     - file: spatial_unit/chunk_uk
     - file: spatial_unit/chunked_enclosed_tessellation
 
+- chapter: Populating units with data
+  sections:
+    - file: measuring/cross-chunk_indices
+    - file: measuring/morphometrics
+
 - chapter: Cluster analysis
   sections:
     - file: clusters/mastermap_openmap_cluster

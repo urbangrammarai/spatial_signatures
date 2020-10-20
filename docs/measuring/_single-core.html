@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_single-core.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_single-core.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">libpysal</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">as_completed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:39469</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>8</li>
+  <li><b>Cores: </b>8</li>
+  <li><b>Memory: </b>84.28 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/cross-chunk_indices.pq&#39;</span><span class="p">)</span>
+<span class="c1"># chunks = geopandas.read_parquet(&#39;../../urbangrammar_samba/spatial_signatures/local_auth_chunks.pq&#39;)</span>
+
+<span class="c1"># user = os.environ.get(&#39;DB_USER&#39;)</span>
+<span class="c1"># pwd = os.environ.get(&#39;DB_PWD&#39;)</span>
+<span class="c1"># host = os.environ.get(&#39;DB_HOST&#39;)</span>
+<span class="c1"># port = os.environ.get(&#39;DB_PORT&#39;)</span>
+
+<span class="c1"># db_connection_url = f&quot;postgres+psycopg2://{user}:{pwd}@{host}:{port}/built_env&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="c1"># load cells of a chunk</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># read W</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+    
+    <span class="c1"># alignment</span>
+    <span class="k">def</span> <span class="nf">alignment</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;stbOri&#39;</span><span class="p">):</span>
+        <span class="n">orientations</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">orientation</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">orientations</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">orientation</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mtbAli&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">alignment</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+
+    <span class="c1"># mean neighbour distance</span>
+    <span class="k">def</span> <span class="nf">neighbor_distance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">geom</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mtbNDi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">neighbor_distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># weighted neighbours</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mtcWNe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))],</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">length</span>
+    
+    <span class="c1"># area covered by neighbours</span>
+    <span class="k">def</span> <span class="nf">area_covered</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">area</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mdcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">area_covered</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># read W3 here</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+      
+    <span class="c1"># weighted reached enclosures</span>
+    <span class="k">def</span> <span class="nf">weighted_reached_enclosures</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">area</span><span class="o">=</span><span class="s1">&#39;sdcAre&#39;</span><span class="p">,</span> <span class="n">enclosure_id</span><span class="o">=</span><span class="s1">&#39;enclosureID&#39;</span><span class="p">):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+        <span class="n">vicinity</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="n">area</span><span class="p">,</span> <span class="n">enclosure_id</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">vicinity</span><span class="p">[</span><span class="n">enclosure_id</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">vicinity</span><span class="p">[</span><span class="n">area</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcWRE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">weighted_reached_enclosures</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># mean interbuilding distance - it takes ages</span>
+    <span class="c1"># define adjacency list from lipysal</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">focal</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">neighbor</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;focal&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbor&#39;</span><span class="p">])</span>
+
+
+    <span class="k">def</span> <span class="nf">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">,</span> <span class="n">neighbours</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    
+    <span class="c1"># Reached neighbors and area on 3 topological steps on tessellation</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcRea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcAre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">sdcAre</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+
+<span class="c1">#     chunk_area = chunks.geometry.iloc[chunk_id].buffer(5000)</span>
+<span class="c1">#     engine = create_engine(db_connection_url)</span>
+<span class="c1">#     sql = f&quot;SELECT * FROM openroads_200803_topological WHERE ST_Intersects(geometry, ST_GeomFromText(&#39;{chunk_area.wkt}&#39;,27700))&quot;</span>
+<span class="c1">#     streets = geopandas.read_postgis(sql, engine, geom_col=&#39;geometry&#39;)</span>
+    
+<span class="c1">#     sp = street_profile(streets, blg)</span>
+<span class="c1">#     streets[&#39;sdsSPW&#39;] = sp[0]</span>
+<span class="c1">#     streets[&#39;sdsSWD&#39;] = sp[1]</span>
+<span class="c1">#     streets[&#39;sdsSPO&#39;] = sp[2]</span>
+    
+<span class="c1">#     streets[&#39;sdsLen&#39;] = streets.length</span>
+<span class="c1">#     streets[&#39;sssLin&#39;] = momepy.Linearity(streets).series</span>
+    
+<span class="c1">#     G = momepy.gdf_to_nx(streets)</span>
+<span class="c1">#     G = momepy.node_degree(G)</span>
+<span class="c1">#     G = momepy.subgraph(</span>
+<span class="c1">#         G,</span>
+<span class="c1">#         radius=5,</span>
+<span class="c1">#         meshedness=True,</span>
+<span class="c1">#         cds_length=False,</span>
+<span class="c1">#         mode=&quot;sum&quot;,</span>
+<span class="c1">#         degree=&quot;degree&quot;,</span>
+<span class="c1">#         length=&quot;mm_len&quot;,</span>
+<span class="c1">#         mean_node_degree=False,</span>
+<span class="c1">#         proportion={0: True, 3: True, 4: True},</span>
+<span class="c1">#         cyclomatic=False,</span>
+<span class="c1">#         edge_node_ratio=False,</span>
+<span class="c1">#         gamma=False,</span>
+<span class="c1">#         local_closeness=True,</span>
+<span class="c1">#         closeness_weight=&quot;mm_len&quot;,</span>
+<span class="c1">#         verbose=False</span>
+<span class="c1">#     )</span>
+<span class="c1">#     G = momepy.cds_length(G, radius=3, name=&quot;ldsCDL&quot;, verbose=False)</span>
+<span class="c1">#     G = momepy.clustering(G, name=&quot;xcnSCl&quot;)</span>
+<span class="c1">#     G = momepy.mean_node_dist(G, name=&quot;mtdMDi&quot;, verbose=False)</span>
+    
+<span class="c1">#     nodes, edges, sw = momepy.nx_to_gdf(G, spatial_weights=True)</span>
+    
+<span class="c1">#     edges_w3 = momepy.sw_high(k=3, gdf=edges)</span>
+    
+<span class="c1">#     edges[&quot;ldsMSL&quot;] = momepy.SegmentsLength(edges, spatial_weights=edges_w3, mean=True, verbose=False).series</span>
+    
+<span class="c1">#     nodes_w5 = momepy.sw_high(k=5, weights=sw)</span>
+    
+<span class="c1">#     nodes[&quot;lddNDe&quot;] = momepy.NodeDensity(nodes, edges, nodes_w5, verbose=False).series</span>
+    
+<span class="c1">#     nodes[&quot;linWID&quot;] = momepy.NodeDensity(nodes, edges, nodes_w5, weighted=True, node_degree=&quot;degree&quot;, verbose=False).series</span>
+    
+<span class="c1">#     edges.to_parquet(f&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_{chunk_id}.pq&quot;)</span>
+<span class="c1">#     nodes.to_parquet(f&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_{chunk_id}.pq&quot;)</span>
+
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">measure</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 28 processed sucessfully.
+Chunk 34 processed sucessfully.
+Chunk 29 processed sucessfully.
+Chunk 31 processed sucessfully.
+Chunk 33 processed sucessfully.
+Chunk 35 processed sucessfully.
+Chunk 30 processed sucessfully.
+Chunk 36 processed sucessfully.
+Chunk 39 processed sucessfully.
+Chunk 37 processed sucessfully.
+Chunk 41 processed sucessfully.
+Chunk 43 processed sucessfully.
+Chunk 32 processed sucessfully.
+Chunk 42 processed sucessfully.
+Chunk 44 processed sucessfully.
+Chunk 47 processed sucessfully.
+Chunk 45 processed sucessfully.
+Chunk 46 processed sucessfully.
+Chunk 48 processed sucessfully.
+Chunk 38 processed sucessfully.
+Chunk 49 processed sucessfully.
+Chunk 51 processed sucessfully.
+Chunk 50 processed sucessfully.
+Chunk 52 processed sucessfully.
+Chunk 40 processed sucessfully.
+Chunk 55 processed sucessfully.
+Chunk 53 processed sucessfully.
+Chunk 54 processed sucessfully.
+Chunk 56 processed sucessfully.
+Chunk 57 processed sucessfully.
+Chunk 58 processed sucessfully.
+Chunk 60 processed sucessfully.
+Chunk 59 processed sucessfully.
+Chunk 63 processed sucessfully.
+Chunk 62 processed sucessfully.
+Chunk 65 processed sucessfully.
+Chunk 68 processed sucessfully.
+Chunk 66 processed sucessfully.
+Chunk 69 processed sucessfully.
+Chunk 70 processed sucessfully.
+Chunk 72 processed sucessfully.
+Chunk 64 processed sucessfully.
+Chunk 71 processed sucessfully.
+Chunk 61 processed sucessfully.
+Chunk 67 processed sucessfully.
+Chunk 74 processed sucessfully.
+Chunk 73 processed sucessfully.
+Chunk 79 processed sucessfully.
+Chunk 78 processed sucessfully.
+Chunk 81 processed sucessfully.
+Chunk 77 processed sucessfully.
+Chunk 75 processed sucessfully.
+Chunk 76 processed sucessfully.
+Chunk 80 processed sucessfully.
+Chunk 84 processed sucessfully.
+Chunk 82 processed sucessfully.
+Chunk 83 processed sucessfully.
+Chunk 87 processed sucessfully.
+Chunk 86 processed sucessfully.
+Chunk 90 processed sucessfully.
+Chunk 88 processed sucessfully.
+Chunk 85 processed sucessfully.
+Chunk 91 processed sucessfully.
+Chunk 93 processed sucessfully.
+Chunk 94 processed sucessfully.
+Chunk 96 processed sucessfully.
+Chunk 97 processed sucessfully.
+Chunk 95 processed sucessfully.
+Chunk 92 processed sucessfully.
+Chunk 100 processed sucessfully.
+Chunk 99 processed sucessfully.
+Chunk 89 processed sucessfully.
+Chunk 102 processed sucessfully.
+Chunk 98 processed sucessfully.
+Chunk 101 processed sucessfully.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tracemalloc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">tracemalloc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="n">ret</span> <span class="o">=</span> <span class="n">measure</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
+
+<span class="n">current</span><span class="p">,</span> <span class="n">peak</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">get_traced_memory</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current memory usage is </span><span class="si">{</span><span class="n">current</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="si">}</span><span class="s2">MB; Peak was </span><span class="si">{</span><span class="n">peak</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="si">}</span><span class="s2">MB&quot;</span><span class="p">)</span>
+<span class="n">tracemalloc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.7/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 4 disconnected components.
+ There are 2 islands with ids: 157186, 164512.
+  warnings.warn(message)
+/opt/conda/lib/python3.7/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 4 disconnected components.
+ There are 2 islands with ids: 157186, 164512.
+  warnings.warn(message)
+/opt/conda/lib/python3.7/site-packages/libpysal/weights/weights.py:309: UserWarning: {} islands in this weights matrix. Conversion to an adjacency list will drop these observations!
+  &quot;{} islands in this weights matrix. Conversion to an &quot;
+/opt/conda/lib/python3.7/site-packages/ipykernel_launcher.py:80: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current memory usage is 157.117712MB; Peak was 1419.861516MB
+CPU times: user 4h 2min 5s, sys: 6min 51s, total: 4h 8min 56s
+Wall time: 3h 47min 37s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tracemalloc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Current memory usage is 56.681588MB; Peak was 1160.209484MB
+CPU times: user 11min 40s, sys: 53.6 s, total: 12min 34s
+Wall time: 11min 15s</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Excluding IBD
+</pre></div>
+</div>
+<p>Current memory usage is 38.199543MB; Peak was 1145.271618MB
+CPU times: user 1h 41min 3s, sys: 7.36 s, total: 1h 41min 11s
+Wall time: 1h 41min 16s</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Including IBD
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
