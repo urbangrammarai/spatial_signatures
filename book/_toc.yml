@@ -20,6 +20,7 @@
   sections:
     - file: measuring/cross-chunk_indices
     - file: measuring/morphometrics
+    - file: measuring/accessibility
 
 - chapter: Cluster analysis
   sections:
