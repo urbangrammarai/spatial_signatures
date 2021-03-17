@@ -8,3 +8,4 @@ dependencies:
   - pip
   - pip:
       - jupyter-book==0.7.3
+      - sphinxcontrib-bibtex<2.0.0
