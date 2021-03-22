@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Create inscribed circles &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_inscribed_circle.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_inscribed_circle.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="create-inscribed-circles">
+<h1>Create inscribed circles<a class="headerlink" href="#create-inscribed-circles" title="Permalink to this headline">¶</a></h1>
+<p>This notebook creates a center and a radius of a maximum inscribed circle of each enclosed tessellation cell.</p>
+<p>It requires custom piece of code within pygeos. Therefore, we use a custom docker container based on <code class="docutils literal notranslate"><span class="pre">docker/Dockerfile</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">as_completed</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">())</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44843</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>4</li>
+  <li><b>Cores: </b>16</li>
+  <li><b>Memory: </b>134.91 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_circle</span><span class="p">(</span><span class="n">chunk</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+    <span class="kn">import</span> <span class="nn">pygeos</span>
+    <span class="n">gpd</span><span class="o">.</span><span class="n">_compat</span><span class="o">.</span><span class="n">USE_PYGEOS</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/tessellation/tess_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hindex&#39;</span><span class="p">,</span> <span class="s1">&#39;tessellation&#39;</span><span class="p">])</span>
+    <span class="n">geoms</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">insc</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">constructive</span><span class="o">.</span><span class="n">maximum_inscribed_circle</span><span class="p">(</span><span class="n">geoms</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">lenghts</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="n">insc</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">insc</span><span class="p">)[::</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">({</span><span class="s1">&#39;hindex&#39;</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">hindex</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="n">lenghts</span><span class="p">},</span> <span class="n">geometry</span><span class="o">=</span><span class="n">points</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">res</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/inscribed_circle/circle_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">workers</span><span class="o">=</span><span class="mi">16</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">_circle</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">_circle</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 11 processed sucessfully in 75.18252611160278 seconds.
+Chunk 3 processed sucessfully in 79.87826347351074 seconds.
+Chunk 0 processed sucessfully in 86.3075304031372 seconds.
+Chunk 2 processed sucessfully in 89.55268573760986 seconds.
+Chunk 10 processed sucessfully in 90.74024438858032 seconds.
+Chunk 1 processed sucessfully in 97.34478044509888 seconds.
+Chunk 9 processed sucessfully in 100.90103268623352 seconds.
+Chunk 15 processed sucessfully in 108.83816909790039 seconds.
+Chunk 13 processed sucessfully in 111.28670144081116 seconds.
+Chunk 7 processed sucessfully in 112.3213279247284 seconds.
+Chunk 8 processed sucessfully in 115.32112979888916 seconds.
+Chunk 14 processed sucessfully in 122.33609461784363 seconds.
+Chunk 4 processed sucessfully in 127.47185468673706 seconds.
+Chunk 17 processed sucessfully in 79.50266242027283 seconds.
+Chunk 18 processed sucessfully in 74.23960661888123 seconds.
+Chunk 16 processed sucessfully in 86.40599298477173 seconds.
+Chunk 12 processed sucessfully in 167.05304145812988 seconds.
+Chunk 20 processed sucessfully in 79.75736093521118 seconds.
+Chunk 21 processed sucessfully in 80.58741903305054 seconds.
+Chunk 22 processed sucessfully in 80.6435329914093 seconds.
+Chunk 25 processed sucessfully in 72.32591104507446 seconds.
+Chunk 23 processed sucessfully in 79.83560848236084 seconds.
+Chunk 19 processed sucessfully in 105.1453025341034 seconds.
+Chunk 5 processed sucessfully in 195.1716525554657 seconds.
+Chunk 28 processed sucessfully in 73.44700741767883 seconds.
+Chunk 6 processed sucessfully in 207.29619550704956 seconds.
+Chunk 24 processed sucessfully in 106.48440980911255 seconds.
+Chunk 27 processed sucessfully in 102.46933102607727 seconds.
+Chunk 26 processed sucessfully in 128.02418613433838 seconds.
+Chunk 29 processed sucessfully in 88.51605463027954 seconds.
+Chunk 30 processed sucessfully in 88.9432635307312 seconds.
+Chunk 31 processed sucessfully in 94.05712509155273 seconds.
+Chunk 36 processed sucessfully in 76.88225984573364 seconds.
+Chunk 34 processed sucessfully in 85.03011465072632 seconds.
+Chunk 33 processed sucessfully in 93.47328281402588 seconds.
+Chunk 35 processed sucessfully in 93.31725096702576 seconds.
+Chunk 39 processed sucessfully in 84.95077896118164 seconds.
+Chunk 37 processed sucessfully in 103.69995832443237 seconds.
+Chunk 43 processed sucessfully in 78.75121450424194 seconds.
+Chunk 41 processed sucessfully in 98.14898085594177 seconds.
+Chunk 32 processed sucessfully in 151.09507703781128 seconds.
+Chunk 44 processed sucessfully in 82.31604027748108 seconds.
+Chunk 42 processed sucessfully in 114.99541783332825 seconds.
+Chunk 47 processed sucessfully in 82.50904440879822 seconds.
+Chunk 46 processed sucessfully in 99.27299094200134 seconds.
+Chunk 45 processed sucessfully in 102.41146564483643 seconds.
+Chunk 52 processed sucessfully in 73.63012290000916 seconds.
+Chunk 49 processed sucessfully in 94.9011583328247 seconds.
+Chunk 40 processed sucessfully in 158.7320909500122 seconds.
+Chunk 50 processed sucessfully in 96.84051871299744 seconds.
+Chunk 48 processed sucessfully in 101.36079668998718 seconds.
+Chunk 38 processed sucessfully in 171.39834427833557 seconds.
+Chunk 51 processed sucessfully in 94.71584892272949 seconds.
+Chunk 55 processed sucessfully in 71.53085708618164 seconds.
+Chunk 53 processed sucessfully in 93.04612755775452 seconds.
+Chunk 54 processed sucessfully in 96.173100233078 seconds.
+Chunk 56 processed sucessfully in 99.22452998161316 seconds.
+Chunk 57 processed sucessfully in 92.65790843963623 seconds.
+Chunk 58 processed sucessfully in 91.41398882865906 seconds.
+Chunk 59 processed sucessfully in 91.25998950004578 seconds.
+Chunk 60 processed sucessfully in 86.61306047439575 seconds.
+Chunk 63 processed sucessfully in 89.7208001613617 seconds.
+Chunk 62 processed sucessfully in 107.36594891548157 seconds.
+Chunk 69 processed sucessfully in 96.30247735977173 seconds.
+Chunk 65 processed sucessfully in 112.9035873413086 seconds.
+Chunk 68 processed sucessfully in 113.88563823699951 seconds.
+Chunk 66 processed sucessfully in 120.90739822387695 seconds.
+Chunk 70 processed sucessfully in 105.3549063205719 seconds.
+Chunk 72 processed sucessfully in 85.64587545394897 seconds.
+Chunk 71 processed sucessfully in 107.28501224517822 seconds.
+Chunk 74 processed sucessfully in 88.7121856212616 seconds.
+Chunk 61 processed sucessfully in 163.17906045913696 seconds.
+Chunk 67 processed sucessfully in 147.67236065864563 seconds.
+Chunk 64 processed sucessfully in 162.09181380271912 seconds.
+Chunk 73 processed sucessfully in 117.76950526237488 seconds.
+Chunk 76 processed sucessfully in 105.27343320846558 seconds.
+Chunk 78 processed sucessfully in 80.98367524147034 seconds.
+Chunk 75 processed sucessfully in 114.53599977493286 seconds.
+Chunk 77 processed sucessfully in 101.85784840583801 seconds.
+Chunk 79 processed sucessfully in 78.74561047554016 seconds.
+Chunk 81 processed sucessfully in 81.6527853012085 seconds.
+Chunk 82 processed sucessfully in 88.69246315956116 seconds.
+Chunk 80 processed sucessfully in 102.27177405357361 seconds.
+Chunk 84 processed sucessfully in 86.50438046455383 seconds.
+Chunk 83 processed sucessfully in 112.60691523551941 seconds.
+Chunk 90 processed sucessfully in 72.91517686843872 seconds.
+Chunk 86 processed sucessfully in 100.6086437702179 seconds.
+Chunk 93 processed sucessfully in 74.9451117515564 seconds.
+Chunk 91 processed sucessfully in 82.35606026649475 seconds.
+Chunk 88 processed sucessfully in 110.23749661445618 seconds.
+Chunk 94 processed sucessfully in 75.01656985282898 seconds.
+Chunk 87 processed sucessfully in 120.26353168487549 seconds.
+Chunk 96 processed sucessfully in 73.48248147964478 seconds.
+Chunk 85 processed sucessfully in 132.50018501281738 seconds.
+Chunk 95 processed sucessfully in 89.38614797592163 seconds.
+Chunk 92 processed sucessfully in 109.92542171478271 seconds.
+Chunk 97 processed sucessfully in 79.90889811515808 seconds.
+Chunk 99 processed sucessfully in 72.52620553970337 seconds.
+Chunk 89 processed sucessfully in 143.69170308113098 seconds.
+Chunk 102 processed sucessfully in 58.38040852546692 seconds.
+Chunk 100 processed sucessfully in 68.74128866195679 seconds.
+Chunk 98 processed sucessfully in 98.71787142753601 seconds.
+Chunk 101 processed sucessfully in 97.21494770050049 seconds.
+CPU times: user 19.2 s, sys: 2.08 s, total: 21.2 s
+Wall time: 11min 48s
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
