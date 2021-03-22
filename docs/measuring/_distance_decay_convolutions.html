@@ -1,0 +1,1040 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_distance_decay_convolutions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_distance_decay_convolutions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">Queen</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/sp_sig_concept/barcelona/data.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>uID</th>
+      <th>tessellation</th>
+      <th>eID</th>
+      <th>buildings</th>
+      <th>tID</th>
+      <th>stcOri</th>
+      <th>stbOri</th>
+      <th>stbCeA</th>
+      <th>sdcLAL</th>
+      <th>sdcAre</th>
+      <th>...</th>
+      <th>linWID</th>
+      <th>sddAre</th>
+      <th>ldeAre</th>
+      <th>ldePer</th>
+      <th>lseCCo</th>
+      <th>lseERI</th>
+      <th>lseCWA</th>
+      <th>lteOri</th>
+      <th>lteWNB</th>
+      <th>lieWCe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>32004.0</td>
+      <td>POLYGON ((432134.537 4581026.154, 432114.514 4...</td>
+      <td>0</td>
+      <td>POLYGON ((432150.502 4581030.798, 432148.781 4...</td>
+      <td>0</td>
+      <td>15.895018</td>
+      <td>15.799296</td>
+      <td>0.095722</td>
+      <td>48.296441</td>
+      <td>943.168405</td>
+      <td>...</td>
+      <td>0.059999</td>
+      <td>2118.532010</td>
+      <td>4732.699661</td>
+      <td>306.482011</td>
+      <td>0.426154</td>
+      <td>0.999427</td>
+      <td>55.541969</td>
+      <td>15.977199</td>
+      <td>0.019577</td>
+      <td>0.001690</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>32005.0</td>
+      <td>POLYGON ((432143.300 4581011.416, 432142.423 4...</td>
+      <td>0</td>
+      <td>POLYGON ((432141.079 4581028.136, 432143.721 4...</td>
+      <td>1</td>
+      <td>15.959191</td>
+      <td>15.987675</td>
+      <td>0.028484</td>
+      <td>45.972443</td>
+      <td>714.761540</td>
+      <td>...</td>
+      <td>0.056307</td>
+      <td>3833.421785</td>
+      <td>4732.699661</td>
+      <td>306.482011</td>
+      <td>0.426154</td>
+      <td>0.999427</td>
+      <td>55.541969</td>
+      <td>15.977199</td>
+      <td>0.019577</td>
+      <td>0.001690</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>32006.0</td>
+      <td>POLYGON ((432119.125 4581004.320, 432141.346 4...</td>
+      <td>0</td>
+      <td>POLYGON ((432148.111 4581012.778, 432148.341 4...</td>
+      <td>2</td>
+      <td>16.159193</td>
+      <td>16.121226</td>
+      <td>0.037966</td>
+      <td>43.656880</td>
+      <td>364.162654</td>
+      <td>...</td>
+      <td>0.059999</td>
+      <td>2118.532010</td>
+      <td>4732.699661</td>
+      <td>306.482011</td>
+      <td>0.426154</td>
+      <td>0.999427</td>
+      <td>55.541969</td>
+      <td>15.977199</td>
+      <td>0.019577</td>
+      <td>0.001690</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>32007.0</td>
+      <td>POLYGON ((432148.249 4581003.971, 432148.271 4...</td>
+      <td>0</td>
+      <td>POLYGON ((432159.642 4581004.302, 432160.339 4...</td>
+      <td>3</td>
+      <td>15.822243</td>
+      <td>15.772435</td>
+      <td>0.049808</td>
+      <td>43.632135</td>
+      <td>339.135425</td>
+      <td>...</td>
+      <td>0.056307</td>
+      <td>3833.421785</td>
+      <td>4732.699661</td>
+      <td>306.482011</td>
+      <td>0.426154</td>
+      <td>0.999427</td>
+      <td>55.541969</td>
+      <td>15.977199</td>
+      <td>0.019577</td>
+      <td>0.001690</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>32008.0</td>
+      <td>POLYGON ((432148.624 4580987.010, 432147.673 4...</td>
+      <td>0</td>
+      <td>POLYGON ((432155.041 4580997.493, 432155.961 4...</td>
+      <td>4</td>
+      <td>15.764376</td>
+      <td>15.595811</td>
+      <td>0.168565</td>
+      <td>43.835958</td>
+      <td>269.075657</td>
+      <td>...</td>
+      <td>0.049137</td>
+      <td>1593.936143</td>
+      <td>4732.699661</td>
+      <td>306.482011</td>
+      <td>0.426154</td>
+      <td>0.999427</td>
+      <td>55.541969</td>
+      <td>15.977199</td>
+      <td>0.019577</td>
+      <td>0.001690</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>82370</th>
+      <td>56448.0</td>
+      <td>POLYGON ((427288.332 4577151.951, 427302.223 4...</td>
+      <td>5852</td>
+      <td>POLYGON ((427233.783 4576977.073, 427229.417 4...</td>
+      <td>82370</td>
+      <td>26.262159</td>
+      <td>25.469061</td>
+      <td>0.793098</td>
+      <td>255.669487</td>
+      <td>26790.544600</td>
+      <td>...</td>
+      <td>0.010598</td>
+      <td>80307.253955</td>
+      <td>26790.544600</td>
+      <td>691.439531</td>
+      <td>0.521836</td>
+      <td>0.981490</td>
+      <td>96.298206</td>
+      <td>26.262159</td>
+      <td>0.005785</td>
+      <td>0.000037</td>
+    </tr>
+    <tr>
+      <th>82371</th>
+      <td>NaN</td>
+      <td>POLYGON ((427407.654 4577101.819, 427405.996 4...</td>
+      <td>5853</td>
+      <td>None</td>
+      <td>82371</td>
+      <td>24.875500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>130.127525</td>
+      <td>969.276342</td>
+      <td>...</td>
+      <td>0.008765</td>
+      <td>95125.787387</td>
+      <td>969.276342</td>
+      <td>278.452869</td>
+      <td>0.072882</td>
+      <td>0.800889</td>
+      <td>139.655956</td>
+      <td>24.875500</td>
+      <td>0.014365</td>
+      <td>0.001032</td>
+    </tr>
+    <tr>
+      <th>82372</th>
+      <td>NaN</td>
+      <td>POLYGON ((427194.177 4576961.126, 427213.001 4...</td>
+      <td>5854</td>
+      <td>None</td>
+      <td>82372</td>
+      <td>25.573647</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>120.740314</td>
+      <td>1850.795707</td>
+      <td>...</td>
+      <td>0.009042</td>
+      <td>20724.432870</td>
+      <td>1850.795707</td>
+      <td>271.054890</td>
+      <td>0.161646</td>
+      <td>0.972958</td>
+      <td>105.066393</td>
+      <td>25.573647</td>
+      <td>0.011068</td>
+      <td>0.000540</td>
+    </tr>
+    <tr>
+      <th>82373</th>
+      <td>NaN</td>
+      <td>POLYGON ((427480.333 4577076.215, 427501.055 4...</td>
+      <td>5855</td>
+      <td>None</td>
+      <td>82373</td>
+      <td>24.886939</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>41.457723</td>
+      <td>184.444164</td>
+      <td>...</td>
+      <td>0.011411</td>
+      <td>126712.007579</td>
+      <td>184.444164</td>
+      <td>89.941273</td>
+      <td>0.136636</td>
+      <td>0.814098</td>
+      <td>37.661417</td>
+      <td>24.886939</td>
+      <td>0.033355</td>
+      <td>0.005422</td>
+    </tr>
+    <tr>
+      <th>82374</th>
+      <td>NaN</td>
+      <td>POLYGON ((426836.909 4583807.381, 426836.623 4...</td>
+      <td>5857</td>
+      <td>None</td>
+      <td>82374</td>
+      <td>11.951556</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>239.735278</td>
+      <td>869.472548</td>
+      <td>...</td>
+      <td>0.028205</td>
+      <td>12903.849147</td>
+      <td>869.472548</td>
+      <td>518.924789</td>
+      <td>0.019262</td>
+      <td>0.309730</td>
+      <td>292.855351</td>
+      <td>11.951556</td>
+      <td>0.005781</td>
+      <td>0.001150</td>
+    </tr>
+  </tbody>
+</table>
+<p>82375 rows × 70 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> W = momepy.sw_high(k=10, weights=Queen.from_dataframe(gdf, geom_col=&#39;tessellation&#39;))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 3 disconnected components.
+  warnings.warn(message)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3min 10s, sys: 5.96 s, total: 3min 16s
+Wall time: 3min 15s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stcOri&#39;</span><span class="p">,</span> <span class="s1">&#39;stbOri&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;stbCeA&#39;</span><span class="p">,</span> <span class="s1">&#39;sdcLAL&#39;</span><span class="p">,</span> <span class="s1">&#39;sdcAre&#39;</span><span class="p">,</span> <span class="s1">&#39;sscCCo&#39;</span><span class="p">,</span> <span class="s1">&#39;sscERI&#39;</span><span class="p">,</span> <span class="s1">&#39;sicCAR&#39;</span><span class="p">,</span> <span class="s1">&#39;mtbAli&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;mtbNDi&#39;</span><span class="p">,</span> <span class="s1">&#39;mtcWNe&#39;</span><span class="p">,</span> <span class="s1">&#39;mdcAre&#39;</span><span class="p">,</span> <span class="s1">&#39;ltbIBD&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;stcSAl&#39;</span><span class="p">,</span> <span class="s1">&#39;ltcWRE&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;sdbAre&#39;</span><span class="p">,</span> <span class="s1">&#39;sdbPer&#39;</span><span class="p">,</span> <span class="s1">&#39;sdbCoA&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCCo&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCor&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbSqu&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ssbERI&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbElo&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCCM&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCCD&#39;</span><span class="p">,</span> <span class="s1">&#39;mtbSWR&#39;</span><span class="p">,</span> <span class="s1">&#39;ldbPWL&#39;</span><span class="p">,</span> <span class="s1">&#39;stbSAl&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;libNCo&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsLen&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsSPW&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsSPO&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsSWD&#39;</span><span class="p">,</span> <span class="s1">&#39;sssLin&#39;</span><span class="p">,</span> <span class="s1">&#39;sdsAre&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;sisBpM&#39;</span><span class="p">,</span> <span class="s1">&#39;misRea&#39;</span><span class="p">,</span> <span class="s1">&#39;mdsAre&#39;</span><span class="p">,</span> <span class="s1">&#39;ldsMSL&#39;</span><span class="p">,</span> <span class="s1">&#39;degree&#39;</span><span class="p">,</span> <span class="s1">&#39;meshedness&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;proportion_3&#39;</span><span class="p">,</span> <span class="s1">&#39;proportion_4&#39;</span><span class="p">,</span> <span class="s1">&#39;proportion_0&#39;</span><span class="p">,</span> <span class="s1">&#39;local_closeness&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ldsCDL&#39;</span><span class="p">,</span> <span class="s1">&#39;xcnSCl&#39;</span><span class="p">,</span> <span class="s1">&#39;mtdMDi&#39;</span><span class="p">,</span> <span class="s1">&#39;lddNDe&#39;</span><span class="p">,</span> <span class="s1">&#39;linWID&#39;</span><span class="p">,</span> <span class="s1">&#39;sddAre&#39;</span><span class="p">,</span> <span class="s1">&#39;ldeAre&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ldePer&#39;</span><span class="p">,</span> <span class="s1">&#39;lseCCo&#39;</span><span class="p">,</span> <span class="s1">&#39;lseERI&#39;</span><span class="p">,</span> <span class="s1">&#39;lseCWA&#39;</span><span class="p">,</span> <span class="s1">&#39;lteOri&#39;</span><span class="p">,</span> <span class="s1">&#39;lteWNB&#39;</span><span class="p">,</span> <span class="s1">&#39;lieWCe&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;uID&#39;, &#39;tessellation&#39;, &#39;eID&#39;, &#39;buildings&#39;, &#39;tID&#39;, &#39;stcOri&#39;, &#39;stbOri&#39;,
+       &#39;stbCeA&#39;, &#39;sdcLAL&#39;, &#39;sdcAre&#39;, &#39;sscCCo&#39;, &#39;sscERI&#39;, &#39;sicCAR&#39;, &#39;mtbAli&#39;,
+       &#39;mtbNDi&#39;, &#39;mtcWNe&#39;, &#39;mdcAre&#39;, &#39;ltbIBD&#39;, &#39;edgeID_keys&#39;, &#39;edgeID_values&#39;,
+       &#39;edgeID_primary&#39;, &#39;stcSAl&#39;, &#39;ltcWRE&#39;, &#39;edgeID_keys2&#39;, &#39;edgeID_values2&#39;,
+       &#39;nodeID&#39;, &#39;sdbAre&#39;, &#39;sdbPer&#39;, &#39;sdbCoA&#39;, &#39;ssbCCo&#39;, &#39;ssbCor&#39;, &#39;ssbSqu&#39;,
+       &#39;ssbERI&#39;, &#39;ssbElo&#39;, &#39;ssbCCM&#39;, &#39;ssbCCD&#39;, &#39;mtbSWR&#39;, &#39;ldbPWL&#39;, &#39;stbSAl&#39;,
+       &#39;libNCo&#39;, &#39;sdsLen&#39;, &#39;sdsSPW&#39;, &#39;sdsSPO&#39;, &#39;sdsSWD&#39;, &#39;sssLin&#39;, &#39;sdsAre&#39;,
+       &#39;sisBpM&#39;, &#39;misRea&#39;, &#39;mdsAre&#39;, &#39;ldsMSL&#39;, &#39;degree&#39;, &#39;meshedness&#39;,
+       &#39;proportion_3&#39;, &#39;proportion_4&#39;, &#39;proportion_0&#39;, &#39;local_closeness&#39;,
+       &#39;ldsCDL&#39;, &#39;xcnSCl&#39;, &#39;mtdMDi&#39;, &#39;lddNDe&#39;, &#39;linWID&#39;, &#39;sddAre&#39;, &#39;ldeAre&#39;,
+       &#39;ldePer&#39;, &#39;lseCCo&#39;, &#39;lseERI&#39;, &#39;lseCWA&#39;, &#39;lteOri&#39;, &#39;lteWNB&#39;, &#39;lieWCe&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;stbOri&#39;</span><span class="p">,</span> <span class="s1">&#39;stcOri&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">characters</span><span class="p">],</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">convolutions</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+    <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># measure convolutions</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">geom</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">total</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">vicinity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vicinity</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+    <span class="n">distance_decay</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">distance</span>
+    
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">vicinity</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">sorter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">]</span>
+        <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">distance_decay</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">]</span>
+        <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+        <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+        <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▍         | 3287/82375 [00:03&lt;01:35, 832.16it/s]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">eb93da7c8f5e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">vicinity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">distance</span> <span class="o">=</span> <span class="n">vicinity</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">distance_decay</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">distance</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/ops/common.py</span> in <span class="ni">new_method</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span>         <span class="n">other</span> <span class="o">=</span> <span class="n">item_from_zerodim</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> 
+<span class="ne">---&gt; </span><span class="mi">65</span>         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span> 
+<span class="g g-Whitespace">     </span><span class="mi">67</span>     <span class="k">return</span> <span class="n">new_method</span>
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/ops/__init__.py</span> in <span class="ni">wrapper</span><span class="nt">(left, right)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">arithmetic_op</span><span class="p">(</span><span class="n">lvalues</span><span class="p">,</span> <span class="n">rvalues</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span> 
+<span class="ne">--&gt; </span><span class="mi">345</span>         <span class="k">return</span> <span class="n">left</span><span class="o">.</span><span class="n">_construct_result</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">res_name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span> 
+<span class="g g-Whitespace">    </span><span class="mi">347</span>     <span class="n">wrapper</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">op_name</span>
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">_construct_result</span><span class="nt">(self, result, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2767</span>         <span class="c1"># We do not pass dtype to ensure that the Series constructor</span>
+<span class="g g-Whitespace">   </span><span class="mi">2768</span>         <span class="c1">#  does inference in the case where `result` has object-dtype.</span>
+<span class="ne">-&gt; </span><span class="mi">2769</span>         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constructor</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2770</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2771</span> 
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, index, dtype, name, copy, fastpath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span>                     <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">327</span>                 <span class="n">data</span> <span class="o">=</span> <span class="n">sanitize_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">raise_cast_failure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span> 
+<span class="g g-Whitespace">    </span><span class="mi">329</span>                 <span class="n">data</span> <span class="o">=</span> <span class="n">SingleBlockManager</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/construction.py</span> in <span class="ni">sanitize_array</span><span class="nt">(data, index, dtype, copy, raise_cast_failure)</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>             <span class="n">subarr</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">asarray_tuplesafe</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span> 
+<span class="ne">--&gt; </span><span class="mi">500</span>     <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">is_extension_array_dtype</span><span class="p">(</span><span class="n">subarr</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_extension_array_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>         <span class="c1"># This is to prevent mixed-type Series getting all casted to</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>         <span class="c1"># NumPy string type, e.g. NaN --&gt; &#39;-1#IND&#39;.</span>
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/dtypes/common.py</span> in <span class="ni">is_extension_array_dtype</span><span class="nt">(arr_or_dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1504</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1505</span><span class="s2">     dtype = getattr(arr_or_dtype, &quot;dtype&quot;, arr_or_dtype)</span>
+<span class="ne">-&gt; </span><span class="mi">1506</span><span class="s2">     return isinstance(dtype, ExtensionDtype) or registry.find(dtype) is not None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1507</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1508</span><span class="s2"> </span>
+
+<span class="nn">/opt/conda/lib/python3.8/site-packages/pandas/core/dtypes/base.py</span> in <span class="ni">find</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span><span class="s2">         if not isinstance(dtype, str):</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span><span class="s2">             dtype_type = dtype</span>
+<span class="ne">--&gt; </span><span class="mi">427</span><span class="s2">             if not isinstance(dtype, type):</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span><span class="s2">                 dtype_type = type(dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span><span class="s2">             if issubclass(dtype_type, ExtensionDtype):</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> conv = pd.DataFrame(convolutions, index=data.index)
+<span class="o">%</span><span class="k">time</span> exploded = pd.concat([pd.DataFrame(conv[c].to_list(), columns=[c + &#39;_q1&#39;, c + &#39;_q2&#39;,c + &#39;_q3&#39;]) for c in characters], axis=1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 21 ms, sys: 25 µs, total: 21 ms
+Wall time: 20.5 ms
+CPU times: user 197 ms, sys: 23 µs, total: 197 ms
+Wall time: 196 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exploded</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>stbOri_q1</th>
+      <th>stbOri_q2</th>
+      <th>stbOri_q3</th>
+      <th>stcOri_q1</th>
+      <th>stcOri_q2</th>
+      <th>stcOri_q3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.895282</td>
+      <td>16.122137</td>
+      <td>21.086960</td>
+      <td>15.913145</td>
+      <td>16.159552</td>
+      <td>18.765073</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>15.873016</td>
+      <td>16.118106</td>
+      <td>16.835803</td>
+      <td>15.907666</td>
+      <td>16.151942</td>
+      <td>16.760080</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15.863236</td>
+      <td>16.099679</td>
+      <td>16.656384</td>
+      <td>15.896767</td>
+      <td>16.141307</td>
+      <td>16.636830</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>15.888549</td>
+      <td>16.114714</td>
+      <td>16.556512</td>
+      <td>15.927605</td>
+      <td>16.141307</td>
+      <td>16.484717</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>15.886815</td>
+      <td>16.104481</td>
+      <td>16.571949</td>
+      <td>15.927605</td>
+      <td>16.141307</td>
+      <td>16.465360</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">exploded</span><span class="p">[</span><span class="s1">&#39;stcOri_q1&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/geopandas/plotting.py:644: UserWarning: The GeoDataFrame you are attempting to plot is empty. Nothing has been displayed.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_distance_decay_convolutions_11_2.png" src="../_images/_distance_decay_convolutions_11_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># centroid to polygon</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">exploded</span><span class="p">[</span><span class="s1">&#39;stcOri_q1&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="n">exploded</span><span class="p">[</span><span class="s1">&#39;stcOri_q1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_distance_decay_convolutions_12_1.png" src="../_images/_distance_decay_convolutions_12_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orig_conv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/sp_sig_concept/barcelona/convolutions.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orig_conv</span><span class="p">[</span><span class="s1">&#39;stcOri_q1&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_distance_decay_convolutions_14_1.png" src="../_images/_distance_decay_convolutions_14_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conv3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/sp_sig_concept/barcelona/convolutions_q3.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conv3</span><span class="p">[</span><span class="s1">&#39;stcOri_q1&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_distance_decay_convolutions_16_1.png" src="../_images/_distance_decay_convolutions_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conv10</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/sp_sig_concept/barcelona/convolutions_q10.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conv10</span><span class="p">[</span><span class="s1">&#39;stcOri_q1&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_distance_decay_convolutions_18_1.png" src="../_images/_distance_decay_convolutions_18_1.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_fix_IBD.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_fix_IBD.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+
+<span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span> <span class="k">as</span> <span class="nn">dask_geopandas</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">libpysal</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">as_completed</span>
+<span class="kn">from</span> <span class="nn">libpysal.weights</span> <span class="kn">import</span> <span class="n">Queen</span>
+<span class="kn">from</span> <span class="nn">momepy_utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">_circle_radius</span><span class="p">,</span>
+    <span class="n">centroid_corner</span><span class="p">,</span>
+    <span class="n">elongation</span><span class="p">,</span>
+    <span class="n">get_corners</span><span class="p">,</span>
+    <span class="n">get_edge_ratios</span><span class="p">,</span>
+    <span class="n">get_nodes</span><span class="p">,</span>
+    <span class="n">solar_orientation_poly</span><span class="p">,</span>
+    <span class="n">squareness</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fix</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># read W</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+
+    <span class="c1"># read W3</span>
+    <span class="n">w3</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+
+    <span class="c1"># mean interbuilding distance</span>
+    <span class="c1"># define adjacency list from lipysal</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">focal</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">neighbor</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
+    <span class="p">)</span>
+
+    <span class="n">G</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">W</span><span class="o">.</span><span class="n">from_adjlist</span><span class="p">(</span><span class="n">adj_list</span><span class="p">)</span><span class="o">.</span><span class="n">to_networkx</span><span class="p">()</span>
+    <span class="n">ibd</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sub</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ibd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">))]))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">ibd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ibd</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stbCeA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;stbOri&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;stcOri&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:44035</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>8</li>
+  <li><b>Cores: </b>8</li>
+  <li><b>Memory: </b>84.28 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/cross-chunk_indices.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">fix</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">fix</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 0 processed sucessfully in 447.46562814712524 seconds.
+Chunk 3 processed sucessfully in 507.42181158065796 seconds.
+Chunk 2 processed sucessfully in 573.2159600257874 seconds.
+Chunk 1 processed sucessfully in 613.3537275791168 seconds.
+Chunk 7 processed sucessfully in 672.8189880847931 seconds.
+Chunk 4 processed sucessfully in 755.1138219833374 seconds.
+Chunk 5 processed sucessfully in 953.9436428546906 seconds.
+Chunk 9 processed sucessfully in 571.8970487117767 seconds.
+Chunk 11 processed sucessfully in 499.3399028778076 seconds.
+Chunk 10 processed sucessfully in 550.8861644268036 seconds.
+Chunk 8 processed sucessfully in 715.9609048366547 seconds.
+Chunk 6 processed sucessfully in 1273.713731765747 seconds.
+Chunk 13 processed sucessfully in 656.2928922176361 seconds.
+Chunk 12 processed sucessfully in 871.6294603347778 seconds.
+Chunk 15 processed sucessfully in 533.1612844467163 seconds.
+Chunk 14 processed sucessfully in 663.3884124755859 seconds.
+Chunk 17 processed sucessfully in 502.4270431995392 seconds.
+Chunk 16 processed sucessfully in 515.6093747615814 seconds.
+Chunk 18 processed sucessfully in 466.7139093875885 seconds.
+Chunk 19 processed sucessfully in 605.6663839817047 seconds.
+Chunk 20 processed sucessfully in 521.5601308345795 seconds.
+Chunk 21 processed sucessfully in 504.26969623565674 seconds.
+Chunk 25 processed sucessfully in 481.722220659256 seconds.
+Chunk 23 processed sucessfully in 505.1920485496521 seconds.
+Chunk 22 processed sucessfully in 513.7891862392426 seconds.
+Chunk 26 processed sucessfully in 686.1976737976074 seconds.
+Chunk 24 processed sucessfully in 701.8874018192291 seconds.
+Chunk 28 processed sucessfully in 463.0159492492676 seconds.
+Chunk 27 processed sucessfully in 646.6873433589935 seconds.
+Chunk 29 processed sucessfully in 522.6094884872437 seconds.
+Chunk 31 processed sucessfully in 534.5763649940491 seconds.
+Chunk 30 processed sucessfully in 670.5830986499786 seconds.
+Chunk 34 processed sucessfully in 509.4605977535248 seconds.
+Chunk 33 processed sucessfully in 549.8115885257721 seconds.
+Chunk 36 processed sucessfully in 454.0665874481201 seconds.
+Chunk 35 processed sucessfully in 588.8072667121887 seconds.
+Chunk 32 processed sucessfully in 895.9076147079468 seconds.
+Chunk 37 processed sucessfully in 612.6703388690948 seconds.
+Chunk 39 processed sucessfully in 569.4942083358765 seconds.
+Chunk 41 processed sucessfully in 592.769341468811 seconds.
+Chunk 43 processed sucessfully in 528.88516497612 seconds.
+Chunk 44 processed sucessfully in 505.7223505973816 seconds.
+Chunk 38 processed sucessfully in 944.7392473220825 seconds.
+Chunk 42 processed sucessfully in 677.09810090065 seconds.
+Chunk 45 processed sucessfully in 598.7779824733734 seconds.
+Chunk 40 processed sucessfully in 1010.4358248710632 seconds.
+Chunk 47 processed sucessfully in 510.1842563152313 seconds.
+Chunk 46 processed sucessfully in 651.8834619522095 seconds.
+Chunk 49 processed sucessfully in 588.2904205322266 seconds.
+Chunk 48 processed sucessfully in 613.229918718338 seconds.
+Chunk 51 processed sucessfully in 526.904581785202 seconds.
+Chunk 50 processed sucessfully in 641.4025781154633 seconds.
+Chunk 52 processed sucessfully in 459.600702047348 seconds.
+Chunk 55 processed sucessfully in 484.04935216903687 seconds.
+Chunk 53 processed sucessfully in 646.7392621040344 seconds.
+Chunk 54 processed sucessfully in 608.9158475399017 seconds.
+Chunk 57 processed sucessfully in 512.7875607013702 seconds.
+Chunk 56 processed sucessfully in 602.2920417785645 seconds.
+Chunk 58 processed sucessfully in 539.4200580120087 seconds.
+Chunk 60 processed sucessfully in 535.303986787796 seconds.
+Chunk 59 processed sucessfully in 619.5414953231812 seconds.
+Chunk 63 processed sucessfully in 514.3034405708313 seconds.
+Chunk 62 processed sucessfully in 654.9941301345825 seconds.
+Chunk 66 processed sucessfully in 725.4848279953003 seconds.
+Chunk 68 processed sucessfully in 654.4135768413544 seconds.
+Chunk 61 processed sucessfully in 1035.8589420318604 seconds.
+Chunk 64 processed sucessfully in 914.1321396827698 seconds.
+Chunk 67 processed sucessfully in 919.4993374347687 seconds.
+Chunk 70 processed sucessfully in 628.3792781829834 seconds.
+Chunk 72 processed sucessfully in 565.5116045475006 seconds.
+Chunk 71 processed sucessfully in 683.724632024765 seconds.
+Chunk 74 processed sucessfully in 590.0270216464996 seconds.
+Chunk 73 processed sucessfully in 741.29816365242 seconds.
+Chunk 75 processed sucessfully in 761.913568019867 seconds.
+Chunk 78 processed sucessfully in 562.4252872467041 seconds.
+Chunk 77 processed sucessfully in 629.114645242691 seconds.
+Chunk 76 processed sucessfully in 699.8029050827026 seconds.
+Chunk 79 processed sucessfully in 518.0937235355377 seconds.
+Chunk 81 processed sucessfully in 459.0993764400482 seconds.
+Chunk 80 processed sucessfully in 674.7524218559265 seconds.
+Chunk 82 processed sucessfully in 612.3010330200195 seconds.
+Chunk 84 processed sucessfully in 531.9830794334412 seconds.
+Chunk 83 processed sucessfully in 650.899717092514 seconds.
+Chunk 86 processed sucessfully in 658.7197225093842 seconds.
+Chunk 85 processed sucessfully in 749.3662829399109 seconds.
+Chunk 87 processed sucessfully in 659.6169321537018 seconds.
+Chunk 88 processed sucessfully in 677.8168416023254 seconds.
+Chunk 90 processed sucessfully in 536.4627513885498 seconds.
+Chunk 91 processed sucessfully in 582.7870421409607 seconds.
+Chunk 93 processed sucessfully in 500.91535663604736 seconds.
+Chunk 94 processed sucessfully in 532.7164251804352 seconds.
+Chunk 89 processed sucessfully in 957.7014017105103 seconds.
+Chunk 96 processed sucessfully in 515.4793531894684 seconds.
+Chunk 92 processed sucessfully in 831.1941196918488 seconds.
+Chunk 95 processed sucessfully in 608.8655824661255 seconds.
+Chunk 97 processed sucessfully in 553.4653294086456 seconds.
+Chunk 99 processed sucessfully in 641.2093222141266 seconds.
+Chunk 100 processed sucessfully in 629.9536726474762 seconds.
+Chunk 98 processed sucessfully in 846.8287360668182 seconds.
+Chunk 102 processed sucessfully in 589.2162170410156 seconds.
+Chunk 101 processed sucessfully in 996.653085231781 seconds.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
