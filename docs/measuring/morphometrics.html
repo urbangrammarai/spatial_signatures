@@ -308,6 +308,11 @@
    Inter-element characters
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolution">
+   Convolution
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -324,7 +329,12 @@
 <p>Morpohometric assessment measure wide range of characters of urban form to derive a complex description of built-up patterns composed of enclosed tessellation, buildings and street network.</p>
 <p>All algorithms used within this notebook are part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code> Python toolkit and can be used from there. We have extracted them from <code class="docutils literal notranslate"><span class="pre">momepy</span></code>, adapted for <code class="docutils literal notranslate"><span class="pre">dask</span></code> and <code class="docutils literal notranslate"><span class="pre">pygeos</span></code> and used in raw form tailored directly to our use case. The algorithms which were enhanced are pushed back to momepy and will be part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code> 0.4.0.</p>
 <p>All steps within this notebook are parallelised using <code class="docutils literal notranslate"><span class="pre">dask</span></code>. The first part, which measures aspects of individual elements (does not require to know the context) uses pre-release of <code class="docutils literal notranslate"><span class="pre">dask-geopandas</span></code>. The rest uses <code class="docutils literal notranslate"><span class="pre">dask</span></code> to manage parallel iteration over geo-chunks with single-core algorithms.</p>
-<p>Some functions are imported from a <code class="docutils literal notranslate"><span class="pre">momepy_utils.py</span></code> file stored wihtin this directory. Those are either helper functions taken directly from momepy or their enhanced versions, all which will be included in the next release of momepy.</p>
+<p>Some functions are imported from a <code class="docutils literal notranslate"><span class="pre">momepy_utils.py</span></code> file stored wihtin this directory. Those are either helper functions taken directly from momepy or their enhanced versions, all which will be included in the next release of momepy:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_edge_ratios</span></code> is implemented in momepy 0.4.0 as <code class="docutils literal notranslate"><span class="pre">get_network_ratio</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_nodes</span></code> is included in <code class="docutils literal notranslate"><span class="pre">get_node_id</span></code></p></li>
+<li><p>remaining functions have been used to refactor existing momepy classes.</p></li>
+</ul>
 <div class="section" id="individual-elements">
 <h2>Individual elements<a class="headerlink" href="#individual-elements" title="Permalink to this headline">¶</a></h2>
 <p>Note: Requires dask-geopandas and current master of geopandas to support dask version.</p>
@@ -347,6 +357,7 @@
 <span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">libpysal</span>
 <span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">pygeos</span>
@@ -707,22 +718,25 @@
     
     <span class="c1"># mean interbuilding distance</span>
     <span class="c1"># define adjacency list from lipysal</span>
-    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">to_adjlist</span><span class="p">(</span><span class="n">remove_symmetric</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">adj_list</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">focal</span><span class="p">]</span>
         <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">buildings</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">adj_list</span><span class="o">.</span><span class="n">neighbor</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
     <span class="p">)</span>
-    <span class="n">adj_list</span> <span class="o">=</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;focal&#39;</span><span class="p">,</span> <span class="s1">&#39;neighbor&#39;</span><span class="p">])</span>
 
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span>
+            <span class="n">adj_list</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;focal&quot;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;neighbor&quot;</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span>
+        <span class="p">)</span>
+    <span class="n">ibd</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sub</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ibd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">))]))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">ibd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
-        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w3</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">adj_list</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">,</span> <span class="n">neighbours</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">mean_interbuilding_distance</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltbIBD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ibd</span>
     
     <span class="c1"># Reached neighbors and area on 3 topological steps on tessellation</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ltcRea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">w3</span><span class="o">.</span><span class="n">cardinalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))]</span>
@@ -1082,6 +1096,85 @@
 </div>
 </div>
 <p>At this point, all primary morphometric characters are measured and stored in a chunked parquet.</p>
+</div>
+<div class="section" id="convolution">
+<h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
+<p>Morphometric variables are an input of cluster analysis, which should result in delineation of spatial signatures. However, primary morphometric characters can’t be used directly. We have to understand them in context. For that reason, we introduce a convolution step. Each of the characters above will be expressed as first, second (median) and third quartile within 3 topological steps on enclosed tessellation. Resulting convolutional data will be then used as an input of cluster analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convolute</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+   
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_cells</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_cells</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_cells</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># read W</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w3_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+
+    <span class="c1"># list characters</span>
+    <span class="n">characters</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">]</span>
+    
+    <span class="c1"># prepare dictionary to store results</span>
+    <span class="n">convolutions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+        <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        
+    <span class="c1"># measure convolutions</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">neighbours</span> <span class="o">+=</span> <span class="n">w</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="n">vicinity</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+            <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">vicinity</span><span class="p">[</span><span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">],</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;midpoint&#39;</span><span class="p">))</span>
+    
+    <span class="c1"># save convolutions to parquet file</span>
+    <span class="n">conv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">convolutions</span><span class="p">)</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conv</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;_q1&#39;</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;_q2&#39;</span><span class="p">,</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;_q3&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">exploded</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">keep</span><span class="p">]</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/convolutions/conv_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="n">workers</span><span class="p">,</span> <span class="n">threads_per_worker</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">))</span>
+<span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">convolute</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">workers</span><span class="p">)]</span>
+<span class="n">ac</span> <span class="o">=</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">futures</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">finished_future</span> <span class="ow">in</span> <span class="n">ac</span><span class="p">:</span>
+    <span class="c1"># submit new future </span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">convolute</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+        <span class="n">ac</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_future</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">finished_future</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
