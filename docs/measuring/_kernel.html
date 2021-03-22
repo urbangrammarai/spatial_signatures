@@ -1,0 +1,1097 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_kernel.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_kernel.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">libpysal</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunks</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/local_auth_chunks.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+
+<span class="n">glasgow</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">4.27</span><span class="p">,</span> <span class="mf">55.83</span><span class="p">)],</span> <span class="n">crs</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">27700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chunks</span><span class="p">[</span><span class="n">chunks</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">glasgow</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>geometry</th>
+      <th>chunkID</th>
+    </tr>
+    <tr>
+      <th>lbls</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>68.0</th>
+      <td>POLYGON ((258955.030 656912.605, 258946.637 65...</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_68.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_68.pq&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hindex&quot;</span><span class="p">,</span> <span class="s2">&quot;stbOri&quot;</span><span class="p">,</span> <span class="s2">&quot;stcOri&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>tessellation</th>
+      <th>buildings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>c068e577346t0002</td>
+      <td>MULTIPOLYGON Z (((256782.415 646457.307 0.000,...</td>
+      <td>POLYGON ((256717.210 646474.040, 256714.370 64...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>c068e577346t0000</td>
+      <td>POLYGON Z ((255624.146 645761.736 0.000, 25650...</td>
+      <td>POLYGON ((256769.200 646379.070, 256787.930 64...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c068e577346t0001</td>
+      <td>POLYGON Z ((256905.432 646533.038 0.000, 25688...</td>
+      <td>POLYGON ((256863.140 646723.810, 256854.900 64...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>c068e526845t0000</td>
+      <td>POLYGON ((257438.174 648051.856, 257469.010 64...</td>
+      <td>POLYGON ((257490.140 647931.190, 257497.380 64...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>c068e526845t0001</td>
+      <td>POLYGON ((257514.148 647924.784, 257513.854 64...</td>
+      <td>POLYGON ((257514.540 647956.240, 257504.690 64...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>155604</th>
+      <td>c068e526038t0000</td>
+      <td>POLYGON ((241781.030 686446.750, 241761.320 68...</td>
+      <td>POLYGON ((241766.950 686484.410, 241777.520 68...</td>
+    </tr>
+    <tr>
+      <th>155605</th>
+      <td>c068e032023t0000</td>
+      <td>POLYGON ((242486.000 687123.000, 242477.500 68...</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>155606</th>
+      <td>c068e032017t0000</td>
+      <td>POLYGON ((242777.030 687232.830, 242768.070 68...</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>155607</th>
+      <td>c068e032018t0000</td>
+      <td>POLYGON ((242761.310 687311.400, 242792.610 68...</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>155608</th>
+      <td>c068e526078t0000</td>
+      <td>POLYGON ((242690.860 687532.740, 242692.450 68...</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<p>155609 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centr</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">tessellation</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span>
+<span class="o">%</span><span class="k">time</span> W = momepy.sw_high(k=10, weights=libpysal.weights.Queen.from_dataframe(gdf, geom_col=&#39;tessellation&#39;))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
+ There are 27 disconnected components.
+ There are 13 islands with ids: 152026, 152062, 154264, 154294, 154833, 154874, 154880, 155088, 155160, 155238, 155286, 155322, 155434.
+  warnings.warn(message)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5min 29s, sys: 12.4 s, total: 5min 42s
+Wall time: 5min 41s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">zs</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">norm</span>
+    <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">zs</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd462b6de80&gt;]
+</pre></div>
+</div>
+<img alt="../_images/_kernel_10_1.png" src="../_images/_kernel_10_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">gdf</span>
+
+<span class="n">decay</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_gauss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_200</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_500</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">k_50</span> <span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">geom</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">centr</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">total</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">vicinity</span> <span class="o">=</span> <span class="n">centr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vicinity</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+    <span class="n">distance_decay</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">distance</span>
+    
+<span class="c1">#     kernel = gaussian(distance)</span>
+<span class="c1">#     kernel_200 = gaussian(distance, 200)</span>
+<span class="c1">#     kernel_500 = gaussian(distance, 500)</span>
+<span class="c1">#     kernel_50 = gaussian(distance, 50)</span>
+    
+    <span class="n">values</span> <span class="o">=</span> <span class="n">vicinity</span><span class="p">[</span><span class="s2">&quot;stbOri&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">sorter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">]</span>
+    <span class="n">nan_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nan_mask</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="n">decay</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">#         k_gauss.append(np.array([np.nan] * 3))</span>
+<span class="c1">#         k_200.append(np.array([np.nan] * 3))</span>
+<span class="c1">#         k_500.append(np.array([np.nan] * 3))</span>
+<span class="c1">#         k_50.append(np.array([np.nan] * 3))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">distance_decay</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
+        <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+        <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+        <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+        <span class="n">decay</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
+        
+<span class="c1">#         sample_weight = kernel.values[sorter][~nan_mask]</span>
+<span class="c1">#         weighted_quantiles = np.cumsum(sample_weight) - 0.5 * sample_weight</span>
+<span class="c1">#         weighted_quantiles /= np.sum(sample_weight)</span>
+<span class="c1">#         interpolate = np.interp([.25, .5, .75], weighted_quantiles, values[~nan_mask])</span>
+<span class="c1">#         k_gauss.append(interpolate)</span>
+        
+<span class="c1">#         sample_weight = kernel_200.values[sorter][~nan_mask]</span>
+<span class="c1">#         weighted_quantiles = np.cumsum(sample_weight) - 0.5 * sample_weight</span>
+<span class="c1">#         weighted_quantiles /= np.sum(sample_weight)</span>
+<span class="c1">#         interpolate = np.interp([.25, .5, .75], weighted_quantiles, values[~nan_mask])</span>
+<span class="c1">#         k_200.append(interpolate)</span>
+        
+<span class="c1">#         sample_weight = kernel_500.values[sorter][~nan_mask]</span>
+<span class="c1">#         weighted_quantiles = np.cumsum(sample_weight) - 0.5 * sample_weight</span>
+<span class="c1">#         weighted_quantiles /= np.sum(sample_weight)</span>
+<span class="c1">#         interpolate = np.interp([.25, .5, .75], weighted_quantiles, values[~nan_mask])</span>
+<span class="c1">#         k_500.append(interpolate)</span>
+        
+<span class="c1">#         sample_weight = kernel_50.values[sorter][~nan_mask]</span>
+<span class="c1">#         weighted_quantiles = np.cumsum(sample_weight) - 0.5 * sample_weight</span>
+<span class="c1">#         weighted_quantiles /= np.sum(sample_weight)</span>
+<span class="c1">#         interpolate = np.interp([.25, .5, .75], weighted_quantiles, values[~nan_mask])</span>
+<span class="c1">#         k_50.append(interpolate)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "d4eb8708bcb3474db18bfea6c25d8f1e", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">decay</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decay</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_12_1.png" src="../_images/_kernel_12_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decay</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_13_1.png" src="../_images/_kernel_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_gauss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_gauss</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_gauss</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_14_1.png" src="../_images/_kernel_14_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_gauss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_gauss</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_gauss</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_15_1.png" src="../_images/_kernel_15_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_200</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_200</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_16_1.png" src="../_images/_kernel_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_200</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_200</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_17_1.png" src="../_images/_kernel_17_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_500</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_500</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_500</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_18_1.png" src="../_images/_kernel_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_500</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_500</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_500</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_19_1.png" src="../_images/_kernel_19_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_50</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">k_50</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_50</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_20_1.png" src="../_images/_kernel_20_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>tessellation</th>
+      <th>buildings</th>
+      <th>stbOri</th>
+      <th>stcOri</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>c068e577346t0002</td>
+      <td>MULTIPOLYGON Z (((256782.415 646457.307 0.000,...</td>
+      <td>POLYGON ((256717.210 646474.040, 256714.370 64...</td>
+      <td>30.611388</td>
+      <td>1.759669</td>
+      <td>POINT (255631.771 646222.608)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>c068e577346t0000</td>
+      <td>POLYGON Z ((255624.146 645761.736 0.000, 25650...</td>
+      <td>POLYGON ((256769.200 646379.070, 256787.930 64...</td>
+      <td>5.092415</td>
+      <td>13.337640</td>
+      <td>POINT (256758.154 646029.196)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c068e577346t0001</td>
+      <td>POLYGON Z ((256905.432 646533.038 0.000, 25688...</td>
+      <td>POLYGON ((256863.140 646723.810, 256854.900 64...</td>
+      <td>18.643296</td>
+      <td>8.958339</td>
+      <td>POINT (258002.595 646973.577)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>c068e526845t0000</td>
+      <td>POLYGON ((257438.174 648051.856, 257469.010 64...</td>
+      <td>POLYGON ((257490.140 647931.190, 257497.380 64...</td>
+      <td>44.114866</td>
+      <td>34.322206</td>
+      <td>POINT (257447.277 647949.602)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>c068e526845t0001</td>
+      <td>POLYGON ((257514.148 647924.784, 257513.854 64...</td>
+      <td>POLYGON ((257514.540 647956.240, 257504.690 64...</td>
+      <td>41.058015</td>
+      <td>43.656199</td>
+      <td>POINT (257577.167 648086.097)</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>155604</th>
+      <td>c068e526038t0000</td>
+      <td>POLYGON ((241781.030 686446.750, 241761.320 68...</td>
+      <td>POLYGON ((241766.950 686484.410, 241777.520 68...</td>
+      <td>21.670448</td>
+      <td>20.780939</td>
+      <td>POINT (241776.435 686473.102)</td>
+    </tr>
+    <tr>
+      <th>155605</th>
+      <td>c068e032023t0000</td>
+      <td>POLYGON ((242486.000 687123.000, 242477.500 68...</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>40.236358</td>
+      <td>POINT (242478.333 687131.333)</td>
+    </tr>
+    <tr>
+      <th>155606</th>
+      <td>c068e032017t0000</td>
+      <td>POLYGON ((242777.030 687232.830, 242768.070 68...</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>32.503126</td>
+      <td>POINT (242764.674 687246.077)</td>
+    </tr>
+    <tr>
+      <th>155607</th>
+      <td>c068e032018t0000</td>
+      <td>POLYGON ((242761.310 687311.400, 242792.610 68...</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>44.467063</td>
+      <td>POINT (242768.475 687279.405)</td>
+    </tr>
+    <tr>
+      <th>155608</th>
+      <td>c068e526078t0000</td>
+      <td>POLYGON ((242690.860 687532.740, 242692.450 68...</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>0.963616</td>
+      <td>POINT (242744.560 687543.953)</td>
+    </tr>
+  </tbody>
+</table>
+<p>155609 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s2">&quot;tessellation&quot;</span><span class="p">)</span>
+
+<span class="c1"># pdecay = []</span>
+<span class="n">pk_gauss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pk_200</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pk_500</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">pk_50</span> <span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">geom</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(),</span> <span class="n">total</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">vicinity</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">vicinity</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+<span class="c1">#     distance_decay = 1 / distance</span>
+    
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+    <span class="n">kernel_200</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">kernel_500</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">kernel_50</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    
+    <span class="n">values</span> <span class="o">=</span> <span class="n">vicinity</span><span class="p">[</span><span class="s2">&quot;stbOri&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">sorter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">]</span>
+    <span class="n">nan_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nan_mask</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+<span class="c1">#         pdecay.append(np.array([np.nan] * 3))</span>
+        <span class="n">pk_gauss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">pk_200</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">pk_500</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">pk_50</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+<span class="c1">#         sample_weight = distance_decay.values[sorter][~nan_mask]</span>
+<span class="c1">#         weighted_quantiles = np.cumsum(sample_weight) - 0.5 * sample_weight</span>
+<span class="c1">#         weighted_quantiles /= np.sum(sample_weight)</span>
+<span class="c1">#         interpolate = np.interp([.25, .5, .75], weighted_quantiles, values[~nan_mask])</span>
+<span class="c1">#         pdecay.append(interpolate)</span>
+        
+        <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
+        <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+        <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+        <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+        <span class="n">pk_gauss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
+        
+        <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">kernel_200</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
+        <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+        <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+        <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+        <span class="n">pk_200</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
+        
+        <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">kernel_500</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
+        <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+        <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+        <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+        <span class="n">pk_500</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
+        
+        <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">kernel_50</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
+        <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+        <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+        <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+        <span class="n">pk_50</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "c8e872bfad304f14abd7f5017527dca2", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_gauss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_gauss</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_gauss</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_23_1.png" src="../_images/_kernel_23_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_200</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_200</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_24_1.png" src="../_images/_kernel_24_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_500</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_500</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_500</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_25_1.png" src="../_images/_kernel_25_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_50</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_50</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_50</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_26_1.png" src="../_images/_kernel_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_gauss</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_gauss</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_gauss</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_27_1.png" src="../_images/_kernel_27_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_200</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_200</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_200</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_28_1.png" src="../_images/_kernel_28_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_500</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_500</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_500</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_29_1.png" src="../_images/_kernel_29_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pk_50</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pk_50</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pk_50</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_kernel_30_1.png" src="../_images/_kernel_30_1.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
