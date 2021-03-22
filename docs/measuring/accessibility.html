@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Accessibility-based characters &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NDVI" href="GHS-composite-S2_ndvi.html" />
+    <link rel="prev" title="Urban morphometrics" href="morphometrics.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/accessibility.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/accessibility.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-network">
+   Create network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-nearest-pois">
+   Find nearest POIs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#attach-distant-nodes">
+   Attach distant nodes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measure-accessiblity-characters">
+   Measure accessiblity characters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Attach distant nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="accessibility-based-characters">
+<h1>Accessibility-based characters<a class="headerlink" href="#accessibility-based-characters" title="Permalink to this headline">¶</a></h1>
+<p>Linking points of interest and similar point-based data to enclosed tessellation using network accessibility approach.</p>
+<p>For each enclosed tessellation cell, we want to know how many POIs are within 15 minutes walking distance (translated to 1200m). Furhtemore, we want to know how far is the closes one.</p>
+<p>We use <a class="reference external" href="http://udst.github.io/pandana/"><code class="docutils literal notranslate"><span class="pre">pandana</span></code></a> package to generate accessibility characters. Pandana uses efficient <a class="reference external" href="https://en.wikipedia.org/wiki/Contraction_hierarchies">contraction hierarchies</a> algorithm to measure the shortes path in a network. Therefore, we link each enclosed cell to a node of a network (the actual linking has been already done in <span class="xref myst">previous steps</span>). Then we link each POI to a node of network and compute distances between nodes. Resulting values are then transferred from nodes back to tessellation. Note that all tessellation cells attached to a single node will share the same value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">pandana</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="create-network">
+<h2>Create network<a class="headerlink" href="#create-network" title="Permalink to this headline">¶</a></h2>
+<p>Load both parts of street network, i.e. nodes and edges (output of <code class="docutils literal notranslate"><span class="pre">momepy.nx_to_gdf</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_0.pq&#39;</span><span class="p">)</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_0.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create <code class="docutils literal notranslate"><span class="pre">pandana.Network</span></code> object. We already have all necessary in our two GeoDataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;nodeID&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">network</span> <span class="o">=</span> <span class="n">pandana</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> 
+                          <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_start&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_end&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[[</span><span class="s1">&#39;mm_len&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.84 s, sys: 137 ms, total: 4.98 s
+Wall time: 407 ms
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="find-nearest-pois">
+<h2>Find nearest POIs<a class="headerlink" href="#find-nearest-pois" title="Permalink to this headline">¶</a></h2>
+<p>Load points of interest, clip the to the extent of the chunk, link to <code class="docutils literal notranslate"><span class="pre">network</span></code> and find nearest to each network node.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/pois/GEOLYTIX - RetailPoints/geolytix_retailpoints_v17_202008.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pois</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pois</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">pois</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_n</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+<span class="n">pois</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">pois</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                 <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                 <span class="n">maxitems</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                 <span class="n">x_col</span> <span class="o">=</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> 
+                 <span class="n">y_col</span> <span class="o">=</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 52.8 ms, sys: 8.15 ms, total: 61 ms
+Wall time: 53.3 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.01 s, sys: 120 ms, total: 3.13 s
+Wall time: 2.68 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are interested in a distance to the nearest (if wihtin 15 minutes threshold) and number of POIs within the threshold.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;food&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">markersize</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/accessibility_15_1.png" src="../_images/accessibility_15_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_distance</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;food_distance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_distance</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;food_distance&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">markersize</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="s1">&#39;markersize&#39;</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/accessibility_18_1.png" src="../_images/accessibility_18_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="attach-distant-nodes">
+<h2>Attach distant nodes<a class="headerlink" href="#attach-distant-nodes" title="Permalink to this headline">¶</a></h2>
+<p>Some nodes are further away than 15 minutes from a POI, but we are intereseted how far they are. Therefore, we run pandana again, for a single item but a large distance ensuring each node gets attached.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                 <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                 <span class="n">maxitems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">x_col</span> <span class="o">=</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> 
+                 <span class="n">y_col</span> <span class="o">=</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 50.4 ms, sys: 12.9 ms, total: 63.3 ms
+Wall time: 56.2 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.28 s, sys: 33 ms, total: 2.31 s
+Wall time: 151 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">markersize</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">01</span><span class="p">),</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">,</span> <span class="n">missing_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;markersize&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/accessibility_23_1.svg" src="../_images/accessibility_23_1.svg" /></div>
+</div>
+<p>Although there are still some nodes which are not connected, that is likely due to disconections of the network.</p>
+</div>
+<div class="section" id="measure-accessiblity-characters">
+<h2>Measure accessiblity characters<a class="headerlink" href="#measure-accessiblity-characters" title="Permalink to this headline">¶</a></h2>
+<p>Now, we measure accessibility to:</p>
+<ul class="simple">
+<li><p>supermarkets (using Geolytix data)</p></li>
+<li><p>listed buildings</p></li>
+<li><p>FHRS points</p></li>
+<li><p>cultural venues</p></li>
+</ul>
+<p>Cultural venues are often both points and polygons, therefore we remove duplicates.</p>
+<p>Pandana is multi-threaded, therefore we do not need to use <code class="docutils literal notranslate"><span class="pre">dask</span></code> to parallelise the operation on a single machine. It is also a memory-heavy operation, so we would not fit with multiple processes anyway.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">supermarkets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/pois/GEOLYTIX - RetailPoints/geolytix_retailpoints_v17_202008.csv&#39;</span><span class="p">)</span>
+<span class="n">listed</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/pois/listed_buildings/listed_buildings_gb.pq&#39;</span><span class="p">)</span>
+<span class="n">fhrs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/fhrs/Data/fhrs_location_20200528.csv&#39;</span><span class="p">)</span>
+<span class="n">culture</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/pois/culture_gb.pq&#39;</span><span class="p">)</span>
+
+<span class="n">supermarkets</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">supermarkets</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">supermarkets</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> <span class="n">supermarkets</span><span class="o">.</span><span class="n">bng_n</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+<span class="n">fhrs</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">fhrs</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">fhrs</span><span class="o">.</span><span class="n">bng_east</span><span class="p">,</span> <span class="n">fhrs</span><span class="o">.</span><span class="n">bng_north</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+
+<span class="n">culture</span> <span class="o">=</span> <span class="n">culture</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">inp</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">STRtree</span><span class="p">(</span><span class="n">culture</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">query_bulk</span><span class="p">(</span><span class="n">culture</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;contains_properly&#39;</span><span class="p">)</span>
+<span class="n">culture</span> <span class="o">=</span> <span class="n">culture</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+<span class="n">culture</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">culture</span><span class="o">.</span><span class="n">centroid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="mi">103</span><span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;nodeID&#39;</span><span class="p">)</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">pandana</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> 
+                          <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_start&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_end&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[[</span><span class="s1">&#39;mm_len&#39;</span><span class="p">]])</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">precompute</span><span class="p">(</span><span class="mi">1200</span><span class="p">)</span>
+
+    <span class="n">supermarkets_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">supermarkets</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">supermarkets_c</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">supermarkets_c</span><span class="o">.</span><span class="n">bng_n</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">1000</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">supermarkets_c</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">supermarkets_c</span><span class="p">),</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;supermarkets_counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">listed_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">listed</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;listed&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">listed_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">listed_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;listed&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">10000</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">listed_c</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10000</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">listed_c</span><span class="p">),</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;listed_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;listed_counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="n">fhrs_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">fhrs</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;fhrs&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">fhrs_c</span><span class="o">.</span><span class="n">bng_east</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">fhrs_c</span><span class="o">.</span><span class="n">bng_north</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;fhrs&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">10000</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fhrs_c</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10000</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">fhrs_c</span><span class="p">),</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;fhrs_counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">culture_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">culture</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;culture&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">culture_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">culture_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;culture&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">500</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">culture_c</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">500</span> <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">culture_c</span><span class="p">),</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;culture_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;culture_counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[[</span><span class="s1">&#39;hindex&#39;</span><span class="p">,</span> <span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">,</span> <span class="s1">&#39;supermarkets_counts&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;listed_nearest&#39;</span><span class="p">,</span> <span class="s1">&#39;listed_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;fhrs_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;culture_nearest&#39;</span><span class="p">,</span> <span class="s1">&#39;culture_counts&#39;</span>
+          <span class="p">]</span>
+         <span class="p">]</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/accessibility/access_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Attach distant nodes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="mi">103</span><span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;nodeID&#39;</span><span class="p">)</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">pandana</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> 
+                          <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_start&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_end&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[[</span><span class="s1">&#39;mm_len&#39;</span><span class="p">]])</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">precompute</span><span class="p">(</span><span class="mi">50000</span><span class="p">)</span>
+
+    <span class="n">supermarkets_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">supermarkets</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">supermarkets_c</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">supermarkets_c</span><span class="o">.</span><span class="n">bng_n</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+
+    <span class="n">listed_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">listed</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;listed&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">listed_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">listed_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;listed&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;listed_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+
+
+    <span class="n">fhrs_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">fhrs</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;fhrs&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">fhrs_c</span><span class="o">.</span><span class="n">bng_east</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">fhrs_c</span><span class="o">.</span><span class="n">bng_north</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;fhrs&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+
+    <span class="n">culture_c</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">culture</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;culture&#39;</span><span class="p">,</span>
+                     <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                     <span class="n">maxitems</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                     <span class="n">x_col</span> <span class="o">=</span> <span class="n">culture_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> 
+                     <span class="n">y_col</span> <span class="o">=</span> <span class="n">culture_c</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">50000</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;culture&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;culture_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span>
+
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+    
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/accessibility/access_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">acc</span><span class="p">[</span><span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">]</span>
+    <span class="n">acc</span><span class="p">[</span><span class="s1">&#39;listed_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;listed_nearest&#39;</span><span class="p">]</span>
+    <span class="n">acc</span><span class="p">[</span><span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">]</span>
+    <span class="n">acc</span><span class="p">[</span><span class="s1">&#39;culture_nearest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;culture_nearest&#39;</span><span class="p">]</span>
+    <span class="n">acc</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/accessibility/access_</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="morphometrics.html" title="previous page">Urban morphometrics</a>
+    <a class='right-next' id="next-link" href="GHS-composite-S2_ndvi.html" title="next page">NDVI</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

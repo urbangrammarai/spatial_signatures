@@ -1,0 +1,5867 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.svg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <p class="caption collapsible-parent">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/measuring/_pandana.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/measuring/_pandana.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="simple nav section-nav flex-column">
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">pandana</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/edges/edges_0.pq&#39;</span><span class="p">)</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/nodes/nodes_0.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>endNode</th>
+      <th>startNode</th>
+      <th>roadNumberTOID</th>
+      <th>roadNameTOID</th>
+      <th>fictitious</th>
+      <th>roadClassification</th>
+      <th>roadFunction</th>
+      <th>formOfWay</th>
+      <th>length</th>
+      <th>...</th>
+      <th>sdsSPW</th>
+      <th>sdsSWD</th>
+      <th>sdsSPO</th>
+      <th>sdsLen</th>
+      <th>sssLin</th>
+      <th>mm_len</th>
+      <th>cdsbool</th>
+      <th>node_start</th>
+      <th>node_end</th>
+      <th>ldsMSL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>id8993B8C2-8791-4A8E-88FF-92B4F37BC8D0</td>
+      <td>id6F90D901-B76D-4113-BD00-8DF0A379F309</td>
+      <td>idC4496F14-8282-4AC7-845C-4A009DDAE1D0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>Unknown</td>
+      <td>Restricted Local Access Road</td>
+      <td>Single Carriageway</td>
+      <td>88.0</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>87.808687</td>
+      <td>1.000000</td>
+      <td>87.808687</td>
+      <td>True</td>
+      <td>1</td>
+      <td>2</td>
+      <td>17016.678014</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>id92B7F473-8B31-46EA-B189-6EAD5B76CEBE</td>
+      <td>idF2EF7D94-D45A-4A84-BE8F-DFBA7F50C1C2</td>
+      <td>idC4496F14-8282-4AC7-845C-4A009DDAE1D0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>Unknown</td>
+      <td>Minor Road</td>
+      <td>Single Carriageway</td>
+      <td>391.0</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>391.474319</td>
+      <td>0.959234</td>
+      <td>391.474319</td>
+      <td>False</td>
+      <td>1</td>
+      <td>9</td>
+      <td>18793.636719</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>idA2EE705E-7128-4D0C-A31F-8BF1D2E6E2A4</td>
+      <td>idC4496F14-8282-4AC7-845C-4A009DDAE1D0</td>
+      <td>idDDEF1BD0-DE4A-48C1-81FC-D6BF7688B759</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>Classified Unnumbered</td>
+      <td>Minor Road</td>
+      <td>Single Carriageway</td>
+      <td>604.0</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>603.774574</td>
+      <td>0.984533</td>
+      <td>603.774574</td>
+      <td>False</td>
+      <td>1</td>
+      <td>11</td>
+      <td>19705.388405</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>id84E854F9-2B95-4DBE-B93F-E0D829E528BC</td>
+      <td>id24F530D4-1C83-4411-B7DD-DECDEC5AA33B</td>
+      <td>idE7B49047-2BFC-4C59-A307-8EF48E291602</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>Unknown</td>
+      <td>Restricted Local Access Road</td>
+      <td>Single Carriageway</td>
+      <td>538.0</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>537.558107</td>
+      <td>0.951726</td>
+      <td>537.558107</td>
+      <td>True</td>
+      <td>3</td>
+      <td>4</td>
+      <td>537.558107</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>id01763645-03A8-4867-AE4D-C42B6D59237F</td>
+      <td>id6B948C88-F536-46E4-88B7-5336A8458F04</td>
+      <td>idAE8BDE55-ED77-48D2-A4C2-B7AD8D205DD9</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+      <td>Classified Unnumbered</td>
+      <td>Minor Road</td>
+      <td>Single Carriageway</td>
+      <td>1232.0</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1231.708362</td>
+      <td>0.981847</td>
+      <td>1231.708362</td>
+      <td>True</td>
+      <td>5</td>
+      <td>6</td>
+      <td>10963.994498</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>36835</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>45.471575</td>
+      <td>0.000000</td>
+      <td>45.471575</td>
+      <td>False</td>
+      <td>29353</td>
+      <td>29353</td>
+      <td>1019.972808</td>
+    </tr>
+    <tr>
+      <th>36836</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>69.013309</td>
+      <td>0.000000</td>
+      <td>69.013309</td>
+      <td>False</td>
+      <td>29360</td>
+      <td>29360</td>
+      <td>3873.534504</td>
+    </tr>
+    <tr>
+      <th>36837</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>110.250673</td>
+      <td>0.000000</td>
+      <td>110.250673</td>
+      <td>False</td>
+      <td>29363</td>
+      <td>29363</td>
+      <td>469.311446</td>
+    </tr>
+    <tr>
+      <th>36838</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>564.662865</td>
+      <td>0.841884</td>
+      <td>564.662865</td>
+      <td>True</td>
+      <td>29367</td>
+      <td>29368</td>
+      <td>564.662865</td>
+    </tr>
+    <tr>
+      <th>36839</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1173.720857</td>
+      <td>0.787779</td>
+      <td>1173.720857</td>
+      <td>True</td>
+      <td>29370</td>
+      <td>29371</td>
+      <td>1173.720857</td>
+    </tr>
+  </tbody>
+</table>
+<p>36840 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>degree</th>
+      <th>meshedness</th>
+      <th>proportion_3</th>
+      <th>proportion_4</th>
+      <th>proportion_0</th>
+      <th>local_closeness</th>
+      <th>ldsCDL</th>
+      <th>xcnSCl</th>
+      <th>mtdMDi</th>
+      <th>nodeID</th>
+      <th>geometry</th>
+      <th>lddNDe</th>
+      <th>linWID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3</td>
+      <td>0.000000</td>
+      <td>0.615385</td>
+      <td>0.0</td>
+      <td>0.384615</td>
+      <td>2.851308e-07</td>
+      <td>6531.554622</td>
+      <td>0.0</td>
+      <td>361.019193</td>
+      <td>1</td>
+      <td>POINT (359039.550 453425.010)</td>
+      <td>0.001520</td>
+      <td>0.001870</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>0.000000</td>
+      <td>0.600000</td>
+      <td>0.0</td>
+      <td>0.400000</td>
+      <td>2.291050e-07</td>
+      <td>2393.686651</td>
+      <td>0.0</td>
+      <td>87.808687</td>
+      <td>2</td>
+      <td>POINT (359084.300 453500.560)</td>
+      <td>0.001299</td>
+      <td>0.001559</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>-0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>6.333892e-08</td>
+      <td>537.558107</td>
+      <td>0.0</td>
+      <td>537.558107</td>
+      <td>3</td>
+      <td>POINT (363680.480 450222.480)</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>-0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>6.333892e-08</td>
+      <td>537.558107</td>
+      <td>0.0</td>
+      <td>537.558107</td>
+      <td>4</td>
+      <td>POINT (364119.000 450486.000)</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>0.000000</td>
+      <td>0.583333</td>
+      <td>0.0</td>
+      <td>0.416667</td>
+      <td>6.789676e-08</td>
+      <td>4908.223156</td>
+      <td>0.0</td>
+      <td>2405.357018</td>
+      <td>5</td>
+      <td>POINT (363280.000 451159.000)</td>
+      <td>0.000998</td>
+      <td>0.001164</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29366</th>
+      <td>1</td>
+      <td>-0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>6.029854e-08</td>
+      <td>564.662865</td>
+      <td>0.0</td>
+      <td>564.662865</td>
+      <td>29367</td>
+      <td>POINT (365769.620 434272.790)</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>29367</th>
+      <td>1</td>
+      <td>-0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>6.029854e-08</td>
+      <td>564.662865</td>
+      <td>0.0</td>
+      <td>564.662865</td>
+      <td>29368</td>
+      <td>POINT (366245.000 434272.000)</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>29368</th>
+      <td>1</td>
+      <td>0.047619</td>
+      <td>0.692308</td>
+      <td>0.0</td>
+      <td>0.307692</td>
+      <td>4.781596e-07</td>
+      <td>973.476486</td>
+      <td>0.0</td>
+      <td>559.895797</td>
+      <td>29369</td>
+      <td>POINT (365371.510 435986.690)</td>
+      <td>0.069466</td>
+      <td>0.096184</td>
+    </tr>
+    <tr>
+      <th>29369</th>
+      <td>1</td>
+      <td>-0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>2.900890e-08</td>
+      <td>1173.720857</td>
+      <td>0.0</td>
+      <td>1173.720857</td>
+      <td>29370</td>
+      <td>POINT (365424.120 435067.560)</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>29370</th>
+      <td>1</td>
+      <td>-0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>1.000000</td>
+      <td>2.900890e-08</td>
+      <td>1173.720857</td>
+      <td>0.0</td>
+      <td>1173.720857</td>
+      <td>29371</td>
+      <td>POINT (366245.000 434642.000)</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>29371 rows × 13 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;nodeID&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nodeID
+1        359039.55
+2        359084.30
+3        363680.48
+4        364119.00
+5        363280.00
+           ...    
+29367    365769.62
+29368    366245.00
+29369    365371.51
+29370    365424.12
+29371    366245.00
+Length: 29371, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">network</span> <span class="o">=</span> <span class="n">pandana</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">nodes</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> 
+                          <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_start&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[</span><span class="s1">&#39;node_end&#39;</span><span class="p">],</span> <span class="n">edges</span><span class="p">[[</span><span class="s1">&#39;mm_len&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">network</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandana.network.Network at 0x7fa43478f850&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> network.shortest_path_length(23876, 2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.29 ms, sys: 3.26 ms, total: 11.5 ms
+Wall time: 9.9 ms
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36525.228
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Int64Index([    1,     2,     3,     4,     5,     6,     7,     8,     9,
+               10,
+            ...
+            29362, 29363, 29364, 29365, 29366, 29367, 29368, 29369, 29370,
+            29371],
+           dtype=&#39;int64&#39;, name=&#39;nodeID&#39;, length=29371)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/pois/GEOLYTIX - RetailPoints/geolytix_retailpoints_v17_202008.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pois</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">pois</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">pois</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_n</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pois</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">pois</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pois</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(226, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                 <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                 <span class="n">maxitems</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                 <span class="n">x_col</span> <span class="o">=</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_e</span><span class="p">,</span> 
+                 <span class="n">y_col</span> <span class="o">=</span> <span class="n">pois</span><span class="o">.</span><span class="n">bng_n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;supermarkets&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.55 s, sys: 706 ms, total: 9.25 s
+Wall time: 3.39 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+      <th>41</th>
+      <th>42</th>
+      <th>43</th>
+      <th>44</th>
+      <th>45</th>
+      <th>46</th>
+      <th>47</th>
+      <th>48</th>
+      <th>49</th>
+      <th>50</th>
+      <th>51</th>
+      <th>52</th>
+      <th>53</th>
+      <th>54</th>
+      <th>55</th>
+      <th>56</th>
+      <th>57</th>
+      <th>58</th>
+      <th>59</th>
+      <th>60</th>
+      <th>61</th>
+      <th>62</th>
+      <th>63</th>
+      <th>64</th>
+      <th>65</th>
+      <th>66</th>
+      <th>67</th>
+      <th>68</th>
+      <th>69</th>
+      <th>70</th>
+      <th>71</th>
+      <th>72</th>
+      <th>73</th>
+      <th>74</th>
+      <th>75</th>
+      <th>76</th>
+      <th>77</th>
+      <th>78</th>
+      <th>79</th>
+      <th>80</th>
+      <th>81</th>
+      <th>82</th>
+      <th>83</th>
+      <th>84</th>
+      <th>85</th>
+      <th>86</th>
+      <th>87</th>
+      <th>88</th>
+      <th>89</th>
+      <th>90</th>
+      <th>91</th>
+      <th>92</th>
+      <th>93</th>
+      <th>94</th>
+      <th>95</th>
+      <th>96</th>
+      <th>97</th>
+      <th>98</th>
+      <th>99</th>
+      <th>100</th>
+      <th>poi1</th>
+      <th>poi2</th>
+      <th>poi3</th>
+      <th>poi4</th>
+      <th>poi5</th>
+      <th>poi6</th>
+      <th>poi7</th>
+      <th>poi8</th>
+      <th>poi9</th>
+      <th>poi10</th>
+      <th>poi11</th>
+      <th>poi12</th>
+      <th>poi13</th>
+      <th>poi14</th>
+      <th>poi15</th>
+      <th>poi16</th>
+      <th>poi17</th>
+      <th>poi18</th>
+      <th>poi19</th>
+      <th>poi20</th>
+      <th>poi21</th>
+      <th>poi22</th>
+      <th>poi23</th>
+      <th>poi24</th>
+      <th>poi25</th>
+      <th>poi26</th>
+      <th>poi27</th>
+      <th>poi28</th>
+      <th>poi29</th>
+      <th>poi30</th>
+      <th>poi31</th>
+      <th>poi32</th>
+      <th>poi33</th>
+      <th>poi34</th>
+      <th>poi35</th>
+      <th>poi36</th>
+      <th>poi37</th>
+      <th>poi38</th>
+      <th>poi39</th>
+      <th>poi40</th>
+      <th>poi41</th>
+      <th>poi42</th>
+      <th>poi43</th>
+      <th>poi44</th>
+      <th>poi45</th>
+      <th>poi46</th>
+      <th>poi47</th>
+      <th>poi48</th>
+      <th>poi49</th>
+      <th>poi50</th>
+      <th>poi51</th>
+      <th>poi52</th>
+      <th>poi53</th>
+      <th>poi54</th>
+      <th>poi55</th>
+      <th>poi56</th>
+      <th>poi57</th>
+      <th>poi58</th>
+      <th>poi59</th>
+      <th>poi60</th>
+      <th>poi61</th>
+      <th>poi62</th>
+      <th>poi63</th>
+      <th>poi64</th>
+      <th>poi65</th>
+      <th>poi66</th>
+      <th>poi67</th>
+      <th>poi68</th>
+      <th>poi69</th>
+      <th>poi70</th>
+      <th>poi71</th>
+      <th>poi72</th>
+      <th>poi73</th>
+      <th>poi74</th>
+      <th>poi75</th>
+      <th>poi76</th>
+      <th>poi77</th>
+      <th>poi78</th>
+      <th>poi79</th>
+      <th>poi80</th>
+      <th>poi81</th>
+      <th>poi82</th>
+      <th>poi83</th>
+      <th>poi84</th>
+      <th>poi85</th>
+      <th>poi86</th>
+      <th>poi87</th>
+      <th>poi88</th>
+      <th>poi89</th>
+      <th>poi90</th>
+      <th>poi91</th>
+      <th>poi92</th>
+      <th>poi93</th>
+      <th>poi94</th>
+      <th>poi95</th>
+      <th>poi96</th>
+      <th>poi97</th>
+      <th>poi98</th>
+      <th>poi99</th>
+      <th>poi100</th>
+    </tr>
+    <tr>
+      <th>nodeID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="o">~</span><span class="n">results</span><span class="o">.</span><span class="n">poi1</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+      <th>25</th>
+      <th>26</th>
+      <th>27</th>
+      <th>28</th>
+      <th>29</th>
+      <th>30</th>
+      <th>31</th>
+      <th>32</th>
+      <th>33</th>
+      <th>34</th>
+      <th>35</th>
+      <th>36</th>
+      <th>37</th>
+      <th>38</th>
+      <th>39</th>
+      <th>40</th>
+      <th>41</th>
+      <th>42</th>
+      <th>43</th>
+      <th>44</th>
+      <th>45</th>
+      <th>46</th>
+      <th>47</th>
+      <th>48</th>
+      <th>49</th>
+      <th>50</th>
+      <th>51</th>
+      <th>52</th>
+      <th>53</th>
+      <th>54</th>
+      <th>55</th>
+      <th>56</th>
+      <th>57</th>
+      <th>58</th>
+      <th>59</th>
+      <th>60</th>
+      <th>61</th>
+      <th>62</th>
+      <th>63</th>
+      <th>64</th>
+      <th>65</th>
+      <th>66</th>
+      <th>67</th>
+      <th>68</th>
+      <th>69</th>
+      <th>70</th>
+      <th>71</th>
+      <th>72</th>
+      <th>73</th>
+      <th>74</th>
+      <th>75</th>
+      <th>76</th>
+      <th>77</th>
+      <th>78</th>
+      <th>79</th>
+      <th>80</th>
+      <th>81</th>
+      <th>82</th>
+      <th>83</th>
+      <th>84</th>
+      <th>85</th>
+      <th>86</th>
+      <th>87</th>
+      <th>88</th>
+      <th>89</th>
+      <th>90</th>
+      <th>91</th>
+      <th>92</th>
+      <th>93</th>
+      <th>94</th>
+      <th>95</th>
+      <th>96</th>
+      <th>97</th>
+      <th>98</th>
+      <th>99</th>
+      <th>100</th>
+      <th>poi1</th>
+      <th>poi2</th>
+      <th>poi3</th>
+      <th>poi4</th>
+      <th>poi5</th>
+      <th>poi6</th>
+      <th>poi7</th>
+      <th>poi8</th>
+      <th>poi9</th>
+      <th>poi10</th>
+      <th>poi11</th>
+      <th>poi12</th>
+      <th>poi13</th>
+      <th>poi14</th>
+      <th>poi15</th>
+      <th>poi16</th>
+      <th>poi17</th>
+      <th>poi18</th>
+      <th>poi19</th>
+      <th>poi20</th>
+      <th>poi21</th>
+      <th>poi22</th>
+      <th>poi23</th>
+      <th>poi24</th>
+      <th>poi25</th>
+      <th>poi26</th>
+      <th>poi27</th>
+      <th>poi28</th>
+      <th>poi29</th>
+      <th>poi30</th>
+      <th>poi31</th>
+      <th>poi32</th>
+      <th>poi33</th>
+      <th>poi34</th>
+      <th>poi35</th>
+      <th>poi36</th>
+      <th>poi37</th>
+      <th>poi38</th>
+      <th>poi39</th>
+      <th>poi40</th>
+      <th>poi41</th>
+      <th>poi42</th>
+      <th>poi43</th>
+      <th>poi44</th>
+      <th>poi45</th>
+      <th>poi46</th>
+      <th>poi47</th>
+      <th>poi48</th>
+      <th>poi49</th>
+      <th>poi50</th>
+      <th>poi51</th>
+      <th>poi52</th>
+      <th>poi53</th>
+      <th>poi54</th>
+      <th>poi55</th>
+      <th>poi56</th>
+      <th>poi57</th>
+      <th>poi58</th>
+      <th>poi59</th>
+      <th>poi60</th>
+      <th>poi61</th>
+      <th>poi62</th>
+      <th>poi63</th>
+      <th>poi64</th>
+      <th>poi65</th>
+      <th>poi66</th>
+      <th>poi67</th>
+      <th>poi68</th>
+      <th>poi69</th>
+      <th>poi70</th>
+      <th>poi71</th>
+      <th>poi72</th>
+      <th>poi73</th>
+      <th>poi74</th>
+      <th>poi75</th>
+      <th>poi76</th>
+      <th>poi77</th>
+      <th>poi78</th>
+      <th>poi79</th>
+      <th>poi80</th>
+      <th>poi81</th>
+      <th>poi82</th>
+      <th>poi83</th>
+      <th>poi84</th>
+      <th>poi85</th>
+      <th>poi86</th>
+      <th>poi87</th>
+      <th>poi88</th>
+      <th>poi89</th>
+      <th>poi90</th>
+      <th>poi91</th>
+      <th>poi92</th>
+      <th>poi93</th>
+      <th>poi94</th>
+      <th>poi95</th>
+      <th>poi96</th>
+      <th>poi97</th>
+      <th>poi98</th>
+      <th>poi99</th>
+      <th>poi100</th>
+    </tr>
+    <tr>
+      <th>nodeID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>184</th>
+      <td>396.881012</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>13845.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>447.692993</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>13845.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>831.643982</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>13845.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>417.605988</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>13845.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>31.136000</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>13845.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>29339</th>
+      <td>63.528999</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>14795.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29340</th>
+      <td>734.531982</td>
+      <td>790.632019</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>3517.0</td>
+      <td>8863.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29345</th>
+      <td>531.981018</td>
+      <td>1133.817993</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>8863.0</td>
+      <td>8864.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29350</th>
+      <td>928.036011</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>8863.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29364</th>
+      <td>877.020996</td>
+      <td>1200.000000</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>1200.0</td>
+      <td>15222.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>19543 rows × 200 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(29371, 12)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zipfile</span>
+
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/fhrs/fhrs_location_20200528_0.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/fhrs/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhrs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/fhrs/Data/fhrs_location_20200528.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BusinessID</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>bng_east</th>
+      <th>bng_north</th>
+      <th>utm29_east</th>
+      <th>utm29_north</th>
+      <th>utm30_east</th>
+      <th>utm30_north</th>
+      <th>utm31_east</th>
+      <th>utm31_north</th>
+      <th>utm_zone</th>
+      <th>date_created</th>
+      <th>date_updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>51.840311</td>
+      <td>-0.634672</td>
+      <td>494159.3436</td>
+      <td>216625.1394</td>
+      <td>1.075836e+06</td>
+      <td>5776434.811</td>
+      <td>662947.2937</td>
+      <td>5745922.713</td>
+      <td>662947.2937</td>
+      <td>5745922.713</td>
+      <td>30.0</td>
+      <td>2012-11-22</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>51.914273</td>
+      <td>-1.054004</td>
+      <td>465163.7254</td>
+      <td>224393.1735</td>
+      <td>1.046116e+06</td>
+      <td>5781394.193</td>
+      <td>633842.5939</td>
+      <td>5753292.773</td>
+      <td>633842.5939</td>
+      <td>5753292.773</td>
+      <td>30.0</td>
+      <td>2012-11-22</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.000000e+00</td>
+      <td>0.000</td>
+      <td>0.0000</td>
+      <td>0.000</td>
+      <td>0.0000</td>
+      <td>0.000</td>
+      <td>NaN</td>
+      <td>2012-11-22</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>51.762521</td>
+      <td>-0.744901</td>
+      <td>486714.3979</td>
+      <td>207837.3419</td>
+      <td>1.069245e+06</td>
+      <td>5766934.601</td>
+      <td>655622.2705</td>
+      <td>5737031.704</td>
+      <td>655622.2705</td>
+      <td>5737031.704</td>
+      <td>30.0</td>
+      <td>2012-11-22</td>
+      <td>2018-12-26</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>51.795047</td>
+      <td>-0.716069</td>
+      <td>488640.4326</td>
+      <td>211489.2210</td>
+      <td>1.070818e+06</td>
+      <td>5770769.654</td>
+      <td>657498.3679</td>
+      <td>5740710.457</td>
+      <td>657498.3679</td>
+      <td>5740710.457</td>
+      <td>30.0</td>
+      <td>2012-11-22</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5122160</th>
+      <td>883771</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.000000e+00</td>
+      <td>0.000</td>
+      <td>0.0000</td>
+      <td>0.000</td>
+      <td>0.0000</td>
+      <td>0.000</td>
+      <td>NaN</td>
+      <td>2020-05-01</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5122161</th>
+      <td>1014862</td>
+      <td>52.633659</td>
+      <td>-1.130756</td>
+      <td>458925.5825</td>
+      <td>304342.1474</td>
+      <td>1.032123e+06</td>
+      <td>5860641.674</td>
+      <td>626498.9755</td>
+      <td>5833159.625</td>
+      <td>626498.9755</td>
+      <td>5833159.625</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5122162</th>
+      <td>1014863</td>
+      <td>52.646938</td>
+      <td>-1.075170</td>
+      <td>462668.4778</td>
+      <td>305866.0147</td>
+      <td>1.035712e+06</td>
+      <td>5862528.654</td>
+      <td>630220.8779</td>
+      <td>5834735.509</td>
+      <td>630220.8779</td>
+      <td>5834735.509</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5122163</th>
+      <td>1014864</td>
+      <td>55.761562</td>
+      <td>-4.696288</td>
+      <td>230919.6035</td>
+      <td>655316.2701</td>
+      <td>7.699701e+05</td>
+      <td>6187931.219</td>
+      <td>393561.5047</td>
+      <td>6180845.309</td>
+      <td>393561.5047</td>
+      <td>6180845.309</td>
+      <td>30.0</td>
+      <td>2020-04-25</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5122164</th>
+      <td>1014865</td>
+      <td>55.639553</td>
+      <td>-4.814533</td>
+      <td>222951.0199</td>
+      <td>642038.1479</td>
+      <td>7.633777e+05</td>
+      <td>6173911.049</td>
+      <td>385787.4574</td>
+      <td>6167457.148</td>
+      <td>385787.4574</td>
+      <td>6167457.148</td>
+      <td>30.0</td>
+      <td>2020-04-25</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5122165 rows × 14 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhrs</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">fhrs</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">fhrs</span><span class="o">.</span><span class="n">bng_east</span><span class="p">,</span> <span class="n">fhrs</span><span class="o">.</span><span class="n">bng_north</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+<span class="n">fhrs</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">fhrs</span><span class="p">,</span> <span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">nodes</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>BusinessID</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>bng_east</th>
+      <th>bng_north</th>
+      <th>utm29_east</th>
+      <th>utm29_north</th>
+      <th>utm30_east</th>
+      <th>utm30_north</th>
+      <th>utm31_east</th>
+      <th>utm31_north</th>
+      <th>utm_zone</th>
+      <th>date_created</th>
+      <th>date_updated</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9701</th>
+      <td>9702</td>
+      <td>54.062427</td>
+      <td>-2.808224</td>
+      <td>347197.0236</td>
+      <td>463243.5660</td>
+      <td>905014.4319</td>
+      <td>6008215.413</td>
+      <td>512552.0064</td>
+      <td>5990484.364</td>
+      <td>512552.0064</td>
+      <td>5990484.364</td>
+      <td>30.0</td>
+      <td>2012-12-04</td>
+      <td>NaN</td>
+      <td>POINT (347197.024 463243.566)</td>
+    </tr>
+    <tr>
+      <th>10456</th>
+      <td>10457</td>
+      <td>54.062427</td>
+      <td>-2.808224</td>
+      <td>347197.0236</td>
+      <td>463243.5660</td>
+      <td>905014.4319</td>
+      <td>6008215.413</td>
+      <td>512552.0064</td>
+      <td>5990484.364</td>
+      <td>512552.0064</td>
+      <td>5990484.364</td>
+      <td>30.0</td>
+      <td>2012-12-04</td>
+      <td>NaN</td>
+      <td>POINT (347197.024 463243.566)</td>
+    </tr>
+    <tr>
+      <th>26768</th>
+      <td>26769</td>
+      <td>53.785455</td>
+      <td>-2.882616</td>
+      <td>341944.1558</td>
+      <td>432485.7927</td>
+      <td>902818.8556</td>
+      <td>5977029.630</td>
+      <td>507733.9756</td>
+      <td>5959658.103</td>
+      <td>507733.9756</td>
+      <td>5959658.103</td>
+      <td>30.0</td>
+      <td>2012-12-04</td>
+      <td>2013-08-02</td>
+      <td>POINT (341944.156 432485.793)</td>
+    </tr>
+    <tr>
+      <th>59187</th>
+      <td>59188</td>
+      <td>53.695757</td>
+      <td>-2.663756</td>
+      <td>356270.7503</td>
+      <td>422349.0931</td>
+      <td>918104.6854</td>
+      <td>5968335.802</td>
+      <td>522201.0009</td>
+      <td>5949724.801</td>
+      <td>522201.0009</td>
+      <td>5949724.801</td>
+      <td>30.0</td>
+      <td>2012-12-03</td>
+      <td>2015-10-13</td>
+      <td>POINT (356270.750 422349.093)</td>
+    </tr>
+    <tr>
+      <th>59192</th>
+      <td>59193</td>
+      <td>53.698222</td>
+      <td>-2.543989</td>
+      <td>364180.8003</td>
+      <td>422556.1628</td>
+      <td>925972.6827</td>
+      <td>5969322.572</td>
+      <td>530106.9896</td>
+      <td>5950043.102</td>
+      <td>530106.9896</td>
+      <td>5950043.102</td>
+      <td>30.0</td>
+      <td>2012-12-03</td>
+      <td>NaN</td>
+      <td>POINT (364180.800 422556.163)</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5121290</th>
+      <td>1014269</td>
+      <td>53.723186</td>
+      <td>-2.723289</td>
+      <td>352371.0112</td>
+      <td>425439.0794</td>
+      <td>913911.0446</td>
+      <td>5971032.445</td>
+      <td>518258.3786</td>
+      <td>5952759.461</td>
+      <td>518258.3786</td>
+      <td>5952759.461</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+      <td>POINT (352371.011 425439.079)</td>
+    </tr>
+    <tr>
+      <th>5121291</th>
+      <td>1014270</td>
+      <td>53.700197</td>
+      <td>-2.686137</td>
+      <td>354797.7548</td>
+      <td>422857.1018</td>
+      <td>916585.6894</td>
+      <td>5968697.108</td>
+      <td>520721.0865</td>
+      <td>5950212.014</td>
+      <td>520721.0865</td>
+      <td>5950212.014</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+      <td>POINT (354797.755 422857.102)</td>
+    </tr>
+    <tr>
+      <th>5121294</th>
+      <td>970397</td>
+      <td>53.916988</td>
+      <td>-3.013678</td>
+      <td>333518.0122</td>
+      <td>447235.1405</td>
+      <td>892961.2415</td>
+      <td>5990901.858</td>
+      <td>499101.6305</td>
+      <td>5974285.858</td>
+      <td>499101.6305</td>
+      <td>5974285.858</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+      <td>POINT (333518.012 447235.140)</td>
+    </tr>
+    <tr>
+      <th>5121295</th>
+      <td>1014273</td>
+      <td>53.901691</td>
+      <td>-2.779944</td>
+      <td>348850.9744</td>
+      <td>445338.8370</td>
+      <td>908435.6259</td>
+      <td>5990527.301</td>
+      <td>514458.5242</td>
+      <td>5972606.280</td>
+      <td>514458.5242</td>
+      <td>5972606.280</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+      <td>POINT (348850.974 445338.837)</td>
+    </tr>
+    <tr>
+      <th>5121301</th>
+      <td>1014279</td>
+      <td>53.853386</td>
+      <td>-2.746106</td>
+      <td>351017.7642</td>
+      <td>439940.4409</td>
+      <td>911129.7243</td>
+      <td>5985358.781</td>
+      <td>516701.0436</td>
+      <td>5967239.399</td>
+      <td>516701.0436</td>
+      <td>5967239.399</td>
+      <td>30.0</td>
+      <td>2020-04-30</td>
+      <td>NaN</td>
+      <td>POINT (351017.764 439940.441)</td>
+    </tr>
+  </tbody>
+</table>
+<p>41290 rows × 15 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">network</span><span class="o">.</span><span class="n">set_pois</span><span class="p">(</span><span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;food&#39;</span><span class="p">,</span>
+                 <span class="n">maxdist</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                 <span class="n">maxitems</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+                 <span class="n">x_col</span> <span class="o">=</span> <span class="n">fhrs</span><span class="o">.</span><span class="n">bng_east</span><span class="p">,</span> 
+                 <span class="n">y_col</span> <span class="o">=</span> <span class="n">fhrs</span><span class="o">.</span><span class="n">bng_north</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.3 s, sys: 13.8 ms, total: 15.4 s
+Wall time: 15.3 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nearest_pois</span><span class="p">(</span><span class="n">distance</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span>
+                               <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;food&#39;</span><span class="p">,</span>
+                               <span class="n">num_pois</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span>
+                               <span class="n">include_poi_ids</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4min 4s, sys: 8.5 s, total: 4min 12s
+Wall time: 3min 59s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="p">[</span><span class="s1">&#39;food&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;food&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">markersize</span><span class="o">=</span><span class="p">(</span><span class="o">.</span><span class="mi">2</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;quantiles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_pandana_29_1.png" src="../_images/_pandana_29_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes</span><span class="o">.</span><span class="n">food</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/_pandana_30_1.png" src="../_images/_pandana_30_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fhrs</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(41290, 15)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tess</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_0.pq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">90</span><span class="o">-</span><span class="n">ad644ce44c46</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">tess</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_0.pq&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">tes</span>
+
+<span class="ne">NameError</span>: name &#39;tes&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tess</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;uID&#39;, &#39;tessellation&#39;, &#39;enclosureID&#39;, &#39;buildings&#39;, &#39;sdbAre&#39;, &#39;sdbPer&#39;,
+       &#39;sdbCoA&#39;, &#39;ssbCCo&#39;, &#39;ssbCor&#39;, &#39;ssbSqu&#39;, &#39;ssbERI&#39;, &#39;ssbElo&#39;, &#39;ssbCCM&#39;,
+       &#39;ssbCCD&#39;, &#39;stbOri&#39;, &#39;sdcLAL&#39;, &#39;sdcAre&#39;, &#39;sscCCo&#39;, &#39;sscERI&#39;, &#39;stcOri&#39;,
+       &#39;sicCAR&#39;, &#39;stbCeA&#39;, &#39;mtbAli&#39;, &#39;mtbNDi&#39;, &#39;mtcWNe&#39;, &#39;mdcAre&#39;, &#39;ltcWRE&#39;,
+       &#39;ltbIBD&#39;, &#39;nodeID&#39;, &#39;sdsSPW&#39;, &#39;sdsSWD&#39;, &#39;sdsSPO&#39;, &#39;sdsLen&#39;, &#39;sssLin&#39;,
+       &#39;ldsMSL&#39;, &#39;mtdDeg&#39;, &#39;lcdMes&#39;, &#39;linP3W&#39;, &#39;linP4W&#39;, &#39;linPDE&#39;, &#39;lcnClo&#39;,
+       &#39;ldsCDL&#39;, &#39;xcnSCl&#39;, &#39;mtdMDi&#39;, &#39;lddNDe&#39;, &#39;linWID&#39;, &#39;edgeID_keys&#39;,
+       &#39;edgeID_values&#39;, &#39;edgeID_primary&#39;, &#39;stbSAl&#39;, &#39;sddAre&#39;, &#39;sdsAre&#39;,
+       &#39;sisBpM&#39;, &#39;misCel&#39;, &#39;mdsAre&#39;, &#39;lisCel&#39;, &#39;ldsAre&#39;, &#39;ltcRea&#39;, &#39;ltcAre&#39;,
+       &#39;ldeAre&#39;, &#39;ldePer&#39;, &#39;lseCCo&#39;, &#39;lseERI&#39;, &#39;lseCWA&#39;, &#39;lteOri&#39;, &#39;lteWNB&#39;,
+       &#39;lieWCe&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">momepy_utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_nodes</span><span class="p">,</span>
+    <span class="n">get_edge_ratios</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="o">%</span><span class="k">time</span> tess[&#39;edgeID&#39;] = get_edge_ratios(tess, edges)
+<span class="o">%</span><span class="k">time</span> tess[&#39;nodeID&#39;] = get_nodes(tess, nodes.reset_index(), edges, &#39;nodeID&#39;, &#39;edgeID&#39;, &#39;node_start&#39;, &#39;node_end&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1min 48s, sys: 114 ms, total: 1min 48s
+Wall time: 1min 48s
+CPU times: user 1min 17s, sys: 0 ns, total: 1min 17s
+Wall time: 1min 17s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tess</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;nodeID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> tess.plot(&#39;food&#39;, figsize=(20, 20), markersize=(.2))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 34 s, sys: 201 ms, total: 34.2 s
+Wall time: 34 s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/_pandana_36_2.png" src="../_images/_pandana_36_2.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./measuring"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
