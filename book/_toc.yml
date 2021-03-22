@@ -22,6 +22,7 @@
     - file: measuring/cross-chunk_indices
     - file: measuring/morphometrics
     - file: measuring/accessibility
+    - file: measuring/GHS-composite-S2_ndvi
 
 - chapter: Cluster analysis
   sections:
