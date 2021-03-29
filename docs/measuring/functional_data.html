@@ -53,6 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessibility-based characters" href="accessibility.html" />
+    <link rel="prev" title="Urban morphometrics" href="morphometrics.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -150,7 +152,7 @@
   Populating units with data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="cross-chunk_indices.html">
    Cross-chunk indices
@@ -159,6 +161,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="morphometrics.html">
    Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Functional data
   </a>
  </li>
  <li class="toctree-l1">
@@ -321,6 +328,7 @@
 <h1>Functional data<a class="headerlink" href="#functional-data" title="Permalink to this headline">¶</a></h1>
 <p>This notebook links various functional layers to ET cells across GB.</p>
 <p>## Population estimates</p>
+<p>Population estimates are linked using area weighted interpolation based on building geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
@@ -721,6 +729,7 @@ Chunk 102 processed sucessfully in 8.125576972961426 seconds.
 </div>
 <div class="section" id="night-lights">
 <h2>Night lights<a class="headerlink" href="#night-lights" title="Permalink to this headline">¶</a></h2>
+<p>Night lights are merged using zonal statistics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nl</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/functional_data/employment/night_lights_osgb.tif&quot;</span><span class="p">)</span>
@@ -1948,6 +1957,7 @@ Chunk 101 processed sucessfully in 210.63564276695251 seconds.
 </div>
 <div class="section" id="worplace-population-by-industry">
 <h2>Worplace population by industry<a class="headerlink" href="#worplace-population-by-industry" title="Permalink to this headline">¶</a></h2>
+<p>Worplace population is linked using area weighted interpolation based on building geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wpz</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/functional_data/employment/workplace/workplace_by_industry_gb.pq&#39;</span><span class="p">)</span>
@@ -2079,6 +2089,7 @@ Chunk 102 processed sucessfully in 4.633718013763428 seconds.
 </div>
 <div class="section" id="corine-land-cover">
 <h2>CORINE Land cover<a class="headerlink" href="#corine-land-cover" title="Permalink to this headline">¶</a></h2>
+<p>CORINE Land cover is linked using area weighted interpolation based on tessellation geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corine</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/functional_data/land_use/corine/corine_gb.pq&quot;</span><span class="p">)</span>
@@ -2994,6 +3005,7 @@ Chunk 102 processed sucessfully in 4.633718013763428 seconds.
 </div>
 <div class="section" id="retail-centres">
 <h2>Retail centres<a class="headerlink" href="#retail-centres" title="Permalink to this headline">¶</a></h2>
+<p>CDRC Retail centres are linked as a distance to the nearest one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">retail</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/functional_data/retail_centres/Pre Release.zip!Retail_Centres_UK.gpkg&quot;</span><span class="p">)</span>
@@ -3189,6 +3201,7 @@ Chunk 87 processed sucessfully in 784.9089789390564 seconds.
 </div>
 <div class="section" id="water">
 <h2>Water<a class="headerlink" href="#water" title="Permalink to this headline">¶</a></h2>
+<p>Water is measured as a distance to the nearest one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
@@ -3275,6 +3288,8 @@ Chunk 87 processed sucessfully in 784.9089789390564 seconds.
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="morphometrics.html" title="previous page">Urban morphometrics</a>
+    <a class='right-next' id="next-link" href="accessibility.html" title="next page">Accessibility-based characters</a>
 
         </div>
         
