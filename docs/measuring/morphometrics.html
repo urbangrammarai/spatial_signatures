@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Accessibility-based characters" href="accessibility.html" />
+    <link rel="next" title="Functional data" href="functional_data.html" />
     <link rel="prev" title="Cross-chunk indices" href="cross-chunk_indices.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -161,6 +161,11 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functional_data.html">
+   Functional data
   </a>
  </li>
  <li class="toctree-l1">
@@ -329,6 +334,11 @@
      Generate weights of 10th order
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#measure-distance-decay-weighted-convolutions">
+     Measure distance-decay weighted convolutions
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -356,7 +366,7 @@
 </ul>
 <div class="section" id="individual-elements">
 <h2>Individual elements<a class="headerlink" href="#individual-elements" title="Permalink to this headline">¶</a></h2>
-<p>Note: Requires dask-geopandas and current master of geopandas to support dask version.</p>
+<p>Note: Requires dask-geopandas and current master of geopandas to support dask version or <code class="docutils literal notranslate"><span class="pre">gds_py:6.0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install git+git://github.com/jsignell/dask-geopandas.git</span>
@@ -406,26 +416,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table style="border: 2px solid white;">
-<tr>
-<td style="vertical-align: top; border: 0px solid white">
-<h3 style="text-align: left;">Client</h3>
-<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:36097</li>
-  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
-</ul>
-</td>
-<td style="vertical-align: top; border: 0px solid white">
-<h3 style="text-align: left;">Cluster</h3>
-<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
-  <li><b>Workers: </b>14</li>
-  <li><b>Cores: </b>28</li>
-  <li><b>Memory: </b>134.91 GB</li>
-</ul>
-</td>
-</tr>
-</table></div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">dask-geopandas</span></code> is still under development and raises few warnigns at the moment, all which can be ignored.</p>
 <div class="cell docutils container">
@@ -1139,7 +1129,7 @@
 </div>
 <div class="section" id="convolution">
 <h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
-<p>Morphometric variables are an input of cluster analysis, which should result in delineation of spatial signatures. However, primary morphometric characters can’t be used directly. We have to understand them in context. For that reason, we introduce a convolution step. Each of the characters above will be expressed as first, second (median) and third quartile within 3 topological steps on enclosed tessellation. Resulting convolutional data will be then used as an input of cluster analysis.</p>
+<p>Morphometric variables are an input of cluster analysis, which should result in delineation of spatial signatures. However, primary morphometric characters can’t be used directly. We have to understand them in context. For that reason, we introduce a convolution step. Each of the characters above will be expressed as a distance-decay-weighted first, second (median) and third quartile within 10 topological steps on enclosed tessellation. Distance is measured between centres of maximum inscribed circles of each geometry. Resulting convolutional data will be then used as an input of cluster analysis.</p>
 <div class="section" id="generate-weights-of-10th-order">
 <h3>Generate weights of 10th order<a class="headerlink" href="#generate-weights-of-10th-order" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -1179,59 +1169,8 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ea9a2e7fcd9c4d84b09821b9511eb0cf", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 0 processed sucessfully in 316.37095499038696 seconds.
-Chunk 1 processed sucessfully in 491.681759595871 seconds.
-Chunk 2 processed sucessfully in 431.6562063694 seconds.
-Chunk 3 processed sucessfully in 415.92933177948 seconds.
-Chunk 4 processed sucessfully in 703.5903306007385 seconds.
-Chunk 5 processed sucessfully in 622.5808844566345 seconds.
-Chunk 6 processed sucessfully in 972.744900226593 seconds.
-Chunk 7 processed sucessfully in 582.5596327781677 seconds.
-Chunk 8 processed sucessfully in 649.1616985797882 seconds.
-Chunk 9 processed sucessfully in 489.80875730514526 seconds.
-Chunk 10 processed sucessfully in 440.14411187171936 seconds.
-Chunk 11 processed sucessfully in 410.46586871147156 seconds.
-Chunk 12 processed sucessfully in 723.2832217216492 seconds.
-Chunk 13 processed sucessfully in 523.529534816742 seconds.
-Chunk 14 processed sucessfully in 608.9691398143768 seconds.
-Chunk 15 processed sucessfully in 431.5302448272705 seconds.
-Chunk 16 processed sucessfully in 359.5892493724823 seconds.
-Chunk 17 processed sucessfully in 356.1692316532135 seconds.
-Chunk 18 processed sucessfully in 363.9447720050812 seconds.
-Chunk 19 processed sucessfully in 422.09540605545044 seconds.
-Chunk 20 processed sucessfully in 440.3369314670563 seconds.
-Chunk 21 processed sucessfully in 520.4324748516083 seconds.
-Chunk 22 processed sucessfully in 433.4581091403961 seconds.
-Chunk 23 processed sucessfully in 473.68613290786743 seconds.
-Chunk 24 processed sucessfully in 514.4364762306213 seconds.
-Chunk 25 processed sucessfully in 384.3659420013428 seconds.
-Chunk 26 processed sucessfully in 561.0015258789062 seconds.
-Chunk 27 processed sucessfully in 522.7717218399048 seconds.
-Chunk 28 processed sucessfully in 405.17521572113037 seconds.
-Chunk 29 processed sucessfully in 400.2644863128662 seconds.
-Chunk 30 processed sucessfully in 683.7991404533386 seconds.
-Chunk 31 processed sucessfully in 377.3410851955414 seconds.
-Chunk 32 processed sucessfully in 709.951803445816 seconds.
-Chunk 33 processed sucessfully in 392.99678206443787 seconds.
-Chunk 34 processed sucessfully in 369.2902057170868 seconds.
-Chunk 35 processed sucessfully in 467.20433378219604 seconds.
-Chunk 36 processed sucessfully in 311.1378049850464 seconds.
-Chunk 38 processed sucessfully in 728.8909161090851 seconds.
-Chunk 39 processed sucessfully in 472.73110246658325 seconds.
-Chunk 40 processed sucessfully in 857.3202881813049 seconds.
-Chunk 41 processed sucessfully in 462.12418603897095 seconds.
-Chunk 42 processed sucessfully in 469.5953435897827 seconds.
-Chunk 43 processed sucessfully in 433.78106570243835 seconds.
-Chunk 44 processed sucessfully in 403.88263988494873 seconds.
-Chunk 45 processed sucessfully in 481.71834993362427 seconds.
-Chunk 46 processed sucessfully in 556.1396548748016 seconds.
-</pre></div>
 </div>
-</div>
-</div>
+<p>#### Generate distance weights within 10th order</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_distance_w</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
@@ -1274,128 +1213,10 @@ Chunk 46 processed sucessfully in 556.1396548748016 seconds.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "be445fa59de245aa8bb91d803a6284c1", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 0 processed sucessfully in 198.621652841568 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 17 disconnected components.
- There are 7 islands with ids: 129987, 133329, 154196, 164082, 173764, 174296, 178630.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 1 processed sucessfully in 246.69801259040833 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 8 disconnected components.
- There are 2 islands with ids: 128344, 155326.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 2 processed sucessfully in 224.87160181999207 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 5 islands with ids: 111576, 115679, 130190, 135459, 144200.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 3 processed sucessfully in 211.8876757621765 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 9 disconnected components.
- There are 3 islands with ids: 197896, 219887, 225719.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 4 processed sucessfully in 341.19576501846313 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 216 disconnected components.
- There are 162 islands with ids: 234211, 234213, 234707, 234708, 234725, 234783, 234785, 234789, 234796, 234801, 234803, 234810, 234870, 234958, 234965, 234969, 234983, 235019, 235024, 235042, 235045, 235047, 235055, 235058, 235059, 235062, 235063, 235066, 235067, 235071, 235076, 235077, 235080, 235082, 235089, 235094, 235101, 235104, 235106, 235107, 235111, 235120, 235121, 235138, 235142, 235143, 235146, 235148, 235149, 235150, 235152, 235155, 235157, 235158, 235167, 235168, 235169, 235175, 235179, 235188, 235190, 235214, 235216, 235217, 235220, 235221, 235226, 235229, 235230, 235235, 235242, 235250, 235255, 235271, 235285, 235287, 235315, 235321, 235338, 235348, 235362, 235388, 235393, 235399, 235409, 235413, 235425, 235441, 235442, 235443, 235444, 235445, 235446, 235447, 235453, 235455, 235461, 235462, 235464, 235465, 235471, 235472, 235490, 235491, 235493, 235501, 235502, 235503, 235506, 235511, 235516, 235517, 235537, 235541, 235557, 235559, 235566, 235567, 235572, 235593, 235597, 235603, 235609, 235615, 235658, 235672, 235679, 235683, 235692, 235709, 235714, 235721, 235731, 235738, 235743, 235744, 235751, 235752, 235753, 235754, 235761, 235762, 235766, 235767, 235768, 235786, 235787, 235789, 235790, 235792, 235793, 235794, 235795, 235798, 235800, 235809, 235839, 235840, 235854, 235873, 235874, 235875.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 5 processed sucessfully in 396.4719624519348 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 17 disconnected components.
- There are 7 islands with ids: 261627, 261628, 265375, 270336, 271107, 273452, 325283.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 6 processed sucessfully in 504.87192392349243 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 6 islands with ids: 146067, 157019, 178978, 179921, 196088, 201462.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 7 processed sucessfully in 282.91939425468445 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 9 disconnected components.
- There are 5 islands with ids: 149961, 156543, 186429, 210738, 211707.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 8 processed sucessfully in 308.07550287246704 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 6 islands with ids: 131784, 144438, 145139, 148759, 178003, 182317.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 9 processed sucessfully in 250.7905731201172 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 6 disconnected components.
- There is 1 island with id: 163162.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 10 processed sucessfully in 221.5810604095459 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 7 disconnected components.
- There are 2 islands with ids: 119450, 134297.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 11 processed sucessfully in 210.34161281585693 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 8 disconnected components.
- There are 4 islands with ids: 209165, 209170, 213280, 230710.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 12 processed sucessfully in 391.3736517429352 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 14 disconnected components.
- There are 8 islands with ids: 141991, 141993, 170904, 171323, 172109, 172779, 173220, 189518.
-  warnings.warn(message)
-</pre></div>
 </div>
 </div>
-</div>
+<div class="section" id="measure-distance-decay-weighted-convolutions">
+<h3>Measure distance-decay weighted convolutions<a class="headerlink" href="#measure-distance-decay-weighted-convolutions" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">characters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sdbAre&#39;</span><span class="p">,</span> <span class="s1">&#39;sdbPer&#39;</span><span class="p">,</span> <span class="s1">&#39;sdbCoA&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCCo&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbCor&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbSqu&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbERI&#39;</span><span class="p">,</span> <span class="s1">&#39;ssbElo&#39;</span><span class="p">,</span> 
@@ -1470,208 +1291,6 @@ Chunk 46 processed sucessfully in 556.1396548748016 seconds.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "83406a40c0334bac9efbdf47e7f16565", "version_major": 2, "version_minor": 0}
-</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 0 processed sucessfully in 796.7945809364319 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 17 disconnected components.
- There are 7 islands with ids: 129987, 133329, 154196, 164082, 173764, 174296, 178630.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 1 processed sucessfully in 1142.5891633033752 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 8 disconnected components.
- There are 2 islands with ids: 128344, 155326.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 2 processed sucessfully in 1059.1576709747314 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 5 islands with ids: 111576, 115679, 130190, 135459, 144200.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 3 processed sucessfully in 1004.6432518959045 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 9 disconnected components.
- There are 3 islands with ids: 197896, 219887, 225719.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 4 processed sucessfully in 1590.0092322826385 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 216 disconnected components.
- There are 162 islands with ids: 234211, 234213, 234707, 234708, 234725, 234783, 234785, 234789, 234796, 234801, 234803, 234810, 234870, 234958, 234965, 234969, 234983, 235019, 235024, 235042, 235045, 235047, 235055, 235058, 235059, 235062, 235063, 235066, 235067, 235071, 235076, 235077, 235080, 235082, 235089, 235094, 235101, 235104, 235106, 235107, 235111, 235120, 235121, 235138, 235142, 235143, 235146, 235148, 235149, 235150, 235152, 235155, 235157, 235158, 235167, 235168, 235169, 235175, 235179, 235188, 235190, 235214, 235216, 235217, 235220, 235221, 235226, 235229, 235230, 235235, 235242, 235250, 235255, 235271, 235285, 235287, 235315, 235321, 235338, 235348, 235362, 235388, 235393, 235399, 235409, 235413, 235425, 235441, 235442, 235443, 235444, 235445, 235446, 235447, 235453, 235455, 235461, 235462, 235464, 235465, 235471, 235472, 235490, 235491, 235493, 235501, 235502, 235503, 235506, 235511, 235516, 235517, 235537, 235541, 235557, 235559, 235566, 235567, 235572, 235593, 235597, 235603, 235609, 235615, 235658, 235672, 235679, 235683, 235692, 235709, 235714, 235721, 235731, 235738, 235743, 235744, 235751, 235752, 235753, 235754, 235761, 235762, 235766, 235767, 235768, 235786, 235787, 235789, 235790, 235792, 235793, 235794, 235795, 235798, 235800, 235809, 235839, 235840, 235854, 235873, 235874, 235875.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 5 processed sucessfully in 1508.7903985977173 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 17 disconnected components.
- There are 7 islands with ids: 261627, 261628, 265375, 270336, 271107, 273452, 325283.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 6 processed sucessfully in 2171.5777893066406 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 6 islands with ids: 146067, 157019, 178978, 179921, 196088, 201462.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 7 processed sucessfully in 1352.2515318393707 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 9 disconnected components.
- There are 5 islands with ids: 149961, 156543, 186429, 210738, 211707.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 8 processed sucessfully in 1437.4338595867157 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 6 islands with ids: 131784, 144438, 145139, 148759, 178003, 182317.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 9 processed sucessfully in 1178.344761133194 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 6 disconnected components.
- There is 1 island with id: 163162.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 10 processed sucessfully in 1038.3264207839966 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 7 disconnected components.
- There are 2 islands with ids: 119450, 134297.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 11 processed sucessfully in 966.2513835430145 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 8 disconnected components.
- There are 4 islands with ids: 209165, 209170, 213280, 230710.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 12 processed sucessfully in 1657.830234527588 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 14 disconnected components.
- There are 8 islands with ids: 141991, 141993, 170904, 171323, 172109, 172779, 173220, 189518.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 13 processed sucessfully in 1231.476334810257 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 26 disconnected components.
- There are 10 islands with ids: 149934, 149961, 150595, 151291, 173515, 185651, 194258, 195351, 196488, 204577.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 14 processed sucessfully in 1331.538037776947 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 13 disconnected components.
- There are 4 islands with ids: 104333, 106066, 135397, 155471.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 15 processed sucessfully in 1011.0636105537415 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 11 disconnected components.
- There are 4 islands with ids: 120266, 129179, 135636, 150457.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 16 processed sucessfully in 917.4892508983612 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 5 disconnected components.
- There are 3 islands with ids: 119002, 124069, 125308.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 17 processed sucessfully in 921.7690391540527 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 7 disconnected components.
- There are 3 islands with ids: 105404, 117589, 128371.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 18 processed sucessfully in 918.0861921310425 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 5 disconnected components.
- There are 2 islands with ids: 160236, 167180.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 19 processed sucessfully in 1056.5993974208832 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 16 disconnected components.
- There are 5 islands with ids: 108513, 108636, 108941, 141461, 158970.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 20 processed sucessfully in 1074.1219747066498 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 21 disconnected components.
- There are 5 islands with ids: 117072, 120055, 120436, 139715, 165715.
-  warnings.warn(message)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 21 processed sucessfully in 1145.8573162555695 seconds.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/libpysal/weights/weights.py:172: UserWarning: The weights matrix is not fully connected: 
- There are 8 disconnected components.
- There are 2 islands with ids: 113667, 137661.
-  warnings.warn(message)
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1703,7 +1322,7 @@ Chunk 46 processed sucessfully in 556.1396548748016 seconds.
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="cross-chunk_indices.html" title="previous page">Cross-chunk indices</a>
-    <a class='right-next' id="next-link" href="accessibility.html" title="next page">Accessibility-based characters</a>
+    <a class='right-next' id="next-link" href="functional_data.html" title="next page">Functional data</a>
 
         </div>
         
