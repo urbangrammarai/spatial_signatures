@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Link cells to roads &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -82,7 +83,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -103,7 +104,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -145,7 +146,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -177,7 +178,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -487,7 +488,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="link-cells-to-roads">
+<section id="link-cells-to-roads">
 <h1>Link cells to roads<a class="headerlink" href="#link-cells-to-roads" title="Permalink to this headline">¶</a></h1>
 <p>This becomes tricky. With standard tessellation, we link building centroid to the closest street, but we know that building is always in the proximity of a street. With enclosed tessellation, this is complicated as there are cells without buildings. Options to consider:</p>
 <ul class="simple">
@@ -500,7 +501,7 @@
 <li><p>link those with buildings based on buildings and the rest differently?</p></li>
 <li><p>what about countryside with cells based on railway and water with no road close by? Leave them with zeros?</p></li>
 </ul>
-<div class="section" id="centroid-based-nearest-spatial-join">
+<section id="centroid-based-nearest-spatial-join">
 <h2>Centroid-based nearest spatial join<a class="headerlink" href="#centroid-based-nearest-spatial-join" title="Permalink to this headline">¶</a></h2>
 <p>Within set max distance (road needs to be within 250m from the cell polygon).</p>
 <div class="cell docutils container">
@@ -589,9 +590,9 @@ Name: roads_iloc, Length: 114653, dtype: object
 <img alt="../_images/_networks_15_1.png" src="../_images/_networks_15_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="network-analysis">
+</section>
+</section>
+<section id="network-analysis">
 <h1>network analysis<a class="headerlink" href="#network-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -839,7 +840,7 @@ Wall time: 1min 13s
 </div>
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

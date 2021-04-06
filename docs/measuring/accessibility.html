@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Accessibility-based characters &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -84,7 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -105,7 +106,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -147,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -179,7 +180,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -326,7 +327,7 @@
         
               <div>
                 
-  <div class="section" id="accessibility-based-characters">
+  <section id="accessibility-based-characters">
 <h1>Accessibility-based characters<a class="headerlink" href="#accessibility-based-characters" title="Permalink to this headline">¶</a></h1>
 <p>Linking points of interest and similar point-based data to enclosed tessellation using network accessibility approach.</p>
 <p>For each enclosed tessellation cell, we want to know how many POIs are within 15 minutes walking distance (translated to 1200m). Furhtemore, we want to know how far is the closes one.</p>
@@ -343,7 +344,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="create-network">
+<section id="create-network">
 <h2>Create network<a class="headerlink" href="#create-network" title="Permalink to this headline">¶</a></h2>
 <p>Load both parts of street network, i.e. nodes and edges (output of <code class="docutils literal notranslate"><span class="pre">momepy.nx_to_gdf</span></code>).</p>
 <div class="cell docutils container">
@@ -377,8 +378,8 @@ Wall time: 407 ms
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="find-nearest-pois">
+</section>
+<section id="find-nearest-pois">
 <h2>Find nearest POIs<a class="headerlink" href="#find-nearest-pois" title="Permalink to this headline">¶</a></h2>
 <p>Load points of interest, clip the to the extent of the chunk, link to <code class="docutils literal notranslate"><span class="pre">network</span></code> and find nearest to each network node.</p>
 <div class="cell docutils container">
@@ -486,8 +487,8 @@ Wall time: 2.68 s
 <img alt="../_images/accessibility_18_1.png" src="../_images/accessibility_18_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="attach-distant-nodes">
+</section>
+<section id="attach-distant-nodes">
 <h2>Attach distant nodes<a class="headerlink" href="#attach-distant-nodes" title="Permalink to this headline">¶</a></h2>
 <p>Some nodes are further away than 15 minutes from a POI, but we are intereseted how far they are. Therefore, we run pandana again, for a single item but a large distance ensuring each node gets attached.</p>
 <div class="cell docutils container">
@@ -545,8 +546,8 @@ Wall time: 151 ms
 <img alt="../_images/accessibility_23_1.svg" src="../_images/accessibility_23_1.svg" /></div>
 </div>
 <p>Although there are still some nodes which are not connected, that is likely due to disconections of the network.</p>
-</div>
-<div class="section" id="measure-accessiblity-characters">
+</section>
+<section id="measure-accessiblity-characters">
 <h2>Measure accessiblity characters<a class="headerlink" href="#measure-accessiblity-characters" title="Permalink to this headline">¶</a></h2>
 <p>Now, we measure accessibility to:</p>
 <ul class="simple">
@@ -661,7 +662,7 @@ Wall time: 151 ms
 </div>
 </div>
 </div>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Attach distant nodes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -743,9 +744,9 @@ Wall time: 151 ms
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

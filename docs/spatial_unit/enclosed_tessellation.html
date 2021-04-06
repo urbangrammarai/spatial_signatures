@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Enclosed tessellation (proof of a concept) &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -84,7 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -105,7 +106,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -147,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -179,7 +180,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -326,11 +327,11 @@
         
               <div>
                 
-  <div class="section" id="enclosed-tessellation-proof-of-a-concept">
+  <section id="enclosed-tessellation-proof-of-a-concept">
 <h1>Enclosed tessellation (proof of a concept)<a class="headerlink" href="#enclosed-tessellation-proof-of-a-concept" title="Permalink to this headline">¶</a></h1>
 <p>This notebooks is a proof of a concept of enclosed tessellation, i.e. two-step partitioning of space based on building footprints and boundaries (e.g. street network, railway).</p>
 <p>Note: An algorithm to generate enclosed tessellation has been implemented in momepy 0.4.0 within <a class="reference external" href="http://docs.momepy.org/en/latest/generated/momepy.Tessellation.html#momepy.Tessellation"><code class="docutils literal notranslate"><span class="pre">momepy.Tessellation</span></code></a>.</p>
-<div class="section" id="load-data">
+<section id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -352,8 +353,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="enclosed-tessellation-toy-example">
+</section>
+<section id="enclosed-tessellation-toy-example">
 <h2>Enclosed tessellation toy example<a class="headerlink" href="#enclosed-tessellation-toy-example" title="Permalink to this headline">¶</a></h2>
 <p>For the POC, we’ll use road network, rivers and railwat as barriers and building footprints. All now stored in PostGIS database.</p>
 <div class="cell docutils container">
@@ -504,8 +505,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="real-life-example-edinburgh-mastermap-and-openmap">
+</section>
+<section id="real-life-example-edinburgh-mastermap-and-openmap">
 <h2>Real life example - Edinburgh MasterMap and OpenMap<a class="headerlink" href="#real-life-example-edinburgh-mastermap-and-openmap" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -551,7 +552,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="openmap">
+<section id="openmap">
 <h3>OpenMap<a class="headerlink" href="#openmap" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -586,8 +587,8 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mastermap">
+</section>
+<section id="mastermap">
 <h3>MasterMap<a class="headerlink" href="#mastermap" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes it is better to restart dask client to start with clean state.</p>
 <div class="cell docutils container">
@@ -693,9 +694,9 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

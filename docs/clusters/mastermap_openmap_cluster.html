@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Trial of clustering on OpenMap and MasterMap data &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -83,7 +84,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -104,7 +105,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -146,7 +147,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -178,7 +179,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -332,7 +333,7 @@
         
               <div>
                 
-  <div class="section" id="trial-of-clustering-on-openmap-and-mastermap-data">
+  <section id="trial-of-clustering-on-openmap-and-mastermap-data">
 <h1>Trial of clustering on OpenMap and MasterMap data<a class="headerlink" href="#trial-of-clustering-on-openmap-and-mastermap-data" title="Permalink to this headline">¶</a></h1>
 <p>This is an explorative notebook comparing simple morphometric clustering of Edinburgh based on OS OpenMap and OS MasterMap building footprints.</p>
 <p>Note that since OS MasterMap license does not allow a release of derived open data products, OS MasterMap cannot be used in the final version of spatial signatures anyway. Consider this notebook a sandbox to play at.</p>
@@ -354,7 +355,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="get-small-sample-of-morphometric-data">
+<section id="get-small-sample-of-morphometric-data">
 <h2>Get small sample of morphometric data<a class="headerlink" href="#get-small-sample-of-morphometric-data" title="Permalink to this headline">¶</a></h2>
 <p>We first measure a small sample of morphometric characters.</p>
 <div class="cell docutils container">
@@ -527,11 +528,11 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="k-means-clustering">
+</section>
+<section id="k-means-clustering">
 <h2>K-means clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h2>
 <p>To keep the comparison simple, we’ll use k-means with few arbitrary <code class="docutils literal notranslate"><span class="pre">k</span></code> options.</p>
-<div class="section" id="openmap">
+<section id="openmap">
 <h3>OpenMap<a class="headerlink" href="#openmap" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -782,9 +783,9 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 <p>MasterMap tessellation is more granular and resulting clusters are less geographically defined. OpenMap ones are easier to interpret and understand.</p>
-</div>
-</div>
-<div class="section" id="using-distance-band">
+</section>
+</section>
+<section id="using-distance-band">
 <h2>Using Distance Band<a class="headerlink" href="#using-distance-band" title="Permalink to this headline">¶</a></h2>
 <p>We can try the same with 500m distance band instead of 3 topological steps.</p>
 <div class="cell docutils container">
@@ -1166,7 +1167,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 </div>
-<div class="section" id="openmap-distance-k-means">
+<section id="openmap-distance-k-means">
 <h3>OpenMap distance K means<a class="headerlink" href="#openmap-distance-k-means" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1221,8 +1222,8 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 <img alt="../_images/mastermap_openmap_cluster_58_1.png" src="../_images/mastermap_openmap_cluster_58_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="mastermap-distance-k-means">
+</section>
+<section id="mastermap-distance-k-means">
 <h3>MasterMap distance K means<a class="headerlink" href="#mastermap-distance-k-means" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1277,9 +1278,9 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 <p>Again, OpenMap results seem to be easier to understand from small to large <code class="docutils literal notranslate"><span class="pre">k</span></code>. However, MasterMap results for <code class="docutils literal notranslate"><span class="pre">k=8</span></code> look quite reasonable as well. Not that it matters much :).</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
