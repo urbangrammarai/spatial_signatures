@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Geo-chunking Great Britain &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -84,7 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -105,7 +106,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -147,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -179,7 +180,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -336,7 +337,7 @@
         
               <div>
                 
-  <div class="section" id="geo-chunking-great-britain">
+  <section id="geo-chunking-great-britain">
 <h1>Geo-chunking Great Britain<a class="headerlink" href="#geo-chunking-great-britain" title="Permalink to this headline">¶</a></h1>
 <p>To efficiently analyse whole Great Britain, we need to subdivide it into reasonable chunks. For that, we will use local authority polygons combined into contiguous groups of ~ 100k buildings.</p>
 <p>Let’s start with the retrieval of our building layer from the database.</p>
@@ -449,7 +450,7 @@ Name: counts, dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="geo-chunking-local-authority-districts">
+<section id="geo-chunking-local-authority-districts">
 <h2>Geo-chunking Local Authority Districts<a class="headerlink" href="#geo-chunking-local-authority-districts" title="Permalink to this headline">¶</a></h2>
 <p>On this section we will create a partition of the UK that groups spatially contiguous local authorities (LADs) in <em>regions</em> that have similar number of buildings. For that, we will employ a regionalisation algorithm that instead of requiring the number of regions uses a floor threshold for the minimum number of building counts and tries to generate groups <em>around</em> that number (but above).</p>
 <div class="cell docutils container">
@@ -480,7 +481,7 @@ Name: counts, dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="data">
+<section id="data">
 <h3>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h3>
 <p>We currently only have building counts for GB:</p>
 <div class="cell docutils container">
@@ -505,8 +506,8 @@ Name: counts, dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="topology-w">
+</section>
+<section id="topology-w">
 <h3>Topology: <code class="docutils literal notranslate"><span class="pre">W</span></code><a class="headerlink" href="#topology-w" title="Permalink to this headline">¶</a></h3>
 <p>To be able to build spatially constrained clusters, we need a way to capture topological relationships between local authorities. Spatial weights matrices come to the rescue here. Ideally, we need one that will give us contiguity relationships, but also that connects <em>every</em> observation. In a geography like ours, this must come from a combination of more than one criterium.</p>
 <p>Our starting point is based on queen contiguity:</p>
@@ -562,8 +563,8 @@ Wall time: 857 ms
 </div>
 </div>
 <p>And we are ready to regionalise!</p>
-</div>
-<div class="section" id="regionalisation">
+</section>
+<section id="regionalisation">
 <h3>Regionalisation<a class="headerlink" href="#regionalisation" title="Permalink to this headline">¶</a></h3>
 <p>The Max-P algorithms requires four hyper-parameters:</p>
 <ol class="simple">
@@ -743,8 +744,8 @@ Wall time: 57min 51s
 <img alt="../_images/chunk_uk_44_1.png" src="../_images/chunk_uk_44_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="writing-labels-out">
+</section>
+<section id="writing-labels-out">
 <h3>Writing labels out<a class="headerlink" href="#writing-labels-out" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -753,9 +754,9 @@ Wall time: 57min 51s
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="chunking-data-to-parquet-files">
+</section>
+</section>
+<section id="chunking-data-to-parquet-files">
 <h2>Chunking data to parquet files<a class="headerlink" href="#chunking-data-to-parquet-files" title="Permalink to this headline">¶</a></h2>
 <p>Now we use generated chunks to split building and enclosure data into chunked parquet files.</p>
 <div class="cell docutils container">
@@ -874,8 +875,8 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

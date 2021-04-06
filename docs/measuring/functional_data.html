@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Functional data &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -84,7 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -105,7 +106,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -147,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -179,7 +180,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -288,11 +289,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#population-estimates">
-   Population estimates
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#night-lights">
    Night lights
   </a>
@@ -317,6 +313,11 @@
    Water
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolutions">
+   Convolutions
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -329,11 +330,11 @@
         
               <div>
                 
-  <div class="section" id="functional-data">
+  <section id="functional-data">
 <h1>Functional data<a class="headerlink" href="#functional-data" title="Permalink to this headline">¶</a></h1>
-<p>This notebook links various functional layers to ET cells across GB.</p>
-<div class="section" id="population-estimates">
-<h2>Population estimates<a class="headerlink" href="#population-estimates" title="Permalink to this headline">¶</a></h2>
+<p>This notebook links various functional layers to ET cells across GB. Various methods are used based on the nature of input data, from areal interpolation to zonal statistics.</p>
+<p>All data are furhter measured within a relevant spatial context.</p>
+<p>## Population estimates</p>
 <p>Population estimates are linked using area weighted interpolation based on building geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -342,11 +343,14 @@
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">libpysal</span>
 <span class="kn">import</span> <span class="nn">tobler</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
 <span class="kn">import</span> <span class="nn">xarray</span>
 <span class="kn">import</span> <span class="nn">rioxarray</span>
 <span class="kn">import</span> <span class="nn">rasterstats</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span><span class="p">,</span> <span class="n">as_completed</span>
 <span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
@@ -404,35 +408,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="night-lights">
+<section id="night-lights">
 <h2>Night lights<a class="headerlink" href="#night-lights" title="Permalink to this headline">¶</a></h2>
-<p>Night lights are merged using zonal statistics.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nl</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/functional_data/employment/night_lights_osgb.tif&quot;</span><span class="p">)</span>
-<span class="n">nl_clip</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">chunk</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">)</span>
-<span class="n">arr</span> <span class="o">=</span> <span class="n">nl_clip</span><span class="o">.</span><span class="n">values</span>
-<span class="n">affine</span> <span class="o">=</span> <span class="n">nl_clip</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
-<span class="n">stats_nl</span> <span class="o">=</span> <span class="n">rasterstats</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
-    <span class="n">chunk</span><span class="o">.</span><span class="n">tessellation</span><span class="p">,</span> 
-    <span class="n">raster</span><span class="o">=</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">affine</span><span class="o">=</span><span class="n">affine</span><span class="p">,</span>
-    <span class="n">stats</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span>
-    <span class="n">all_touched</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">nodata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Night lights are merged using zonal statistics and parallelisation using <code class="docutils literal notranslate"><span class="pre">dask</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workers</span> <span class="o">=</span> <span class="mi">8</span>
@@ -487,8 +465,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="worplace-population-by-industry">
+</section>
+<section id="worplace-population-by-industry">
 <h2>Worplace population by industry<a class="headerlink" href="#worplace-population-by-industry" title="Permalink to this headline">¶</a></h2>
 <p>Worplace population is linked using area weighted interpolation based on building geometry.</p>
 <div class="cell docutils container">
@@ -512,8 +490,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="corine-land-cover">
+</section>
+<section id="corine-land-cover">
 <h2>CORINE Land cover<a class="headerlink" href="#corine-land-cover" title="Permalink to this headline">¶</a></h2>
 <p>CORINE Land cover is linked using area weighted interpolation based on tessellation geometry.</p>
 <div class="cell docutils container">
@@ -579,8 +557,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="retail-centres">
+</section>
+<section id="retail-centres">
 <h2>Retail centres<a class="headerlink" href="#retail-centres" title="Permalink to this headline">¶</a></h2>
 <p>CDRC Retail centres are linked as a distance to the nearest one.</p>
 <div class="cell docutils container">
@@ -642,8 +620,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="water">
+</section>
+<section id="water">
 <h2>Water<a class="headerlink" href="#water" title="Permalink to this headline">¶</a></h2>
 <p>Water is measured as a distance to the nearest one.</p>
 <div class="cell docutils container">
@@ -704,8 +682,107 @@
 </div>
 </div>
 </div>
+</section>
+<section id="convolutions">
+<h2>Convolutions<a class="headerlink" href="#convolutions" title="Permalink to this headline">¶</a></h2>
+<p>Functional characters which do not express the tendency in the spatial context are contextualised using the same method applied to morphometric data - as the 1st, 2nd and 3rd quartile weigted by inverse distance based on cells within 10th order of contiguity. The metdo is applied to:</p>
+<ul class="simple">
+<li><p>population</p></li>
+<li><p>night lights</p></li>
+<li><p>workplace population</p></li>
+<li><p>CORINE</p></li>
+<li><p>NDVI</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cross_chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/cross-chunk_indices_10.pq&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">convolute</span><span class="p">(</span><span class="n">chunk_id</span><span class="p">):</span>
+    
+    <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+    
+    <span class="n">pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/population/pop_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">nl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/night_lights/nl_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">workplace</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/workplace/pop_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">corine</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/corine/corine_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">ndvi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/functional_data/ndvi/ndvi_tess_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">combined</span> <span class="o">=</span> <span class="n">pop</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">nl</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">workplace</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">corine</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ndvi</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">}),</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
+    <span class="n">combined</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># add neighbouring cells from other chunks</span>
+    <span class="n">cross_chunk_cells</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">chunk</span><span class="p">,</span> <span class="n">inds</span> <span class="ow">in</span> <span class="n">cross_chunk</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">chunk_id</span><span class="p">]</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+        <span class="n">add_pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/population/pop_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_nl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/night_lights/nl_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_workplace</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/workplace/pop_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_corine</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/corine/corine_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_ndvi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/functional_data/ndvi/ndvi_tess_</span><span class="si">{</span><span class="n">chunk</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">inds</span><span class="p">]</span>
+        <span class="n">add_combined</span> <span class="o">=</span> <span class="n">add_pop</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">add_nl</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">add_workplace</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">add_corine</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">add_ndvi</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">}),</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
+        <span class="n">add_combined</span><span class="p">[</span><span class="s1">&#39;keep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">cross_chunk_cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">add_combined</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">cross_chunk_cells</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
+
+    <span class="c1"># read W</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">libpysal</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">WSP</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/weights/w10_10_distance_circles_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.npz&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">to_W</span><span class="p">()</span>
+ 
+    <span class="n">characters</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="c1"># prepare dictionary to store results</span>
+    <span class="n">convolutions</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+        <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        
+    <span class="c1"># measure convolutions</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="n">neighbours</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">vicinity</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">neighbours</span><span class="p">]</span>
+        <span class="n">distance</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">distance_decay</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">vicinity</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">sorter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">sorter</span><span class="p">]</span>
+            <span class="n">nan_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">nan_mask</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+                <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">distance_decay</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
+                <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
+                <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
+                <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+                <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
+    
+    <span class="c1"># save convolutions to parquet file</span>
+    <span class="n">conv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">convolutions</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">conv</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;_q1&#39;</span><span class="p">,</span> <span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;_q2&#39;</span><span class="p">,</span><span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;_q3&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">characters</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">convoluted</span> <span class="o">=</span> <span class="n">exploded</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">keep</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
+    <span class="n">convoluted</span><span class="p">[</span><span class="s1">&#39;hindex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">combined</span><span class="p">[</span><span class="s1">&#39;hindex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    
+    <span class="n">pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/accessibility/access_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    <span class="n">water</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/functional/water/water_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    <span class="n">retail_centres</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/functional/retail_centre/retail_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s1">.pq&#39;</span><span class="p">)</span>
+    
+    <span class="n">functional</span> <span class="o">=</span> <span class="n">convoluted</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">pois</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">water</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">retail_centres</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
+    <span class="n">functional</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/functional/func_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+</pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I am afraid that we would run out of memory if we did this in parallel</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="mi">103</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">convolute</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
