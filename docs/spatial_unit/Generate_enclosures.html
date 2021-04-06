@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>Generate enclosures for the Great Britain &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -84,7 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -105,7 +106,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -147,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -164,6 +165,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../measuring/accessibility.html">
    Accessibility-based characters
   </a>
@@ -174,7 +180,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -323,7 +329,7 @@
         
               <div>
                 
-  <div class="section" id="generate-enclosures-for-the-great-britain">
+  <section id="generate-enclosures-for-the-great-britain">
 <h1>Generate enclosures for the Great Britain<a class="headerlink" href="#generate-enclosures-for-the-great-britain" title="Permalink to this headline">¶</a></h1>
 <p>This notebook generates <em>enclosures</em> for the area of Great Britain based on set barriers. Note that the final version is different from the <a class="reference internal" href="Parallelized_enclosures.html"><span class="doc std std-doc">proof of a concept</span></a>. It does not use dask since we found that parallelisation is not necessary and it uses different preprocessing steps for railway.</p>
 <p>Note: An algorithm to generate enclosures has been implemented in momepy 0.4.0 as <a class="reference external" href="http://docs.momepy.org/en/latest/generated/momepy.enclosures.html#momepy.enclosures"><code class="docutils literal notranslate"><span class="pre">momepy.enclosures</span></code></a>.</p>
@@ -400,9 +406,9 @@ Wall time: 378 ms
 </div>
 </div>
 </div>
-<div class="section" id="generate-enclosures">
+<section id="generate-enclosures">
 <h2>Generate enclosures<a class="headerlink" href="#generate-enclosures" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="first-level">
+<section id="first-level">
 <h3>First level<a class="headerlink" href="#first-level" title="Permalink to this headline">¶</a></h3>
 <p>The first level enclosures are composed of road network and external boundary, which in our case is a coastline.</p>
 <div class="cell docutils container">
@@ -468,8 +474,8 @@ Wall time: 1min 3s
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="additional-barriers">
+</section>
+<section id="additional-barriers">
 <h3>Additional barriers<a class="headerlink" href="#additional-barriers" title="Permalink to this headline">¶</a></h3>
 <p>Additional barriers are used to further subdivide those generated above.</p>
 <div class="cell docutils container">
@@ -502,7 +508,7 @@ Wall time: 10.8 s
 </div>
 </div>
 </div>
-<div class="section" id="preprocess-railways">
+<section id="preprocess-railways">
 <h4>Preprocess railways<a class="headerlink" href="#preprocess-railways" title="Permalink to this headline">¶</a></h4>
 <p>Railways are not optimal input. OS OpenMap Local is cartographic resource and LineStrings representing railways are split into multiple pieces, sometimes even with gaps in between. Moreover, there is almost always a gap where railways cross roads. All that needs to be fixed, otherwise we won’t get enclosed geometry.</p>
 <p>Preprocessing fucntions <code class="docutils literal notranslate"><span class="pre">topology</span></code>, <code class="docutils literal notranslate"><span class="pre">close_gaps</span></code> and <code class="docutils literal notranslate"><span class="pre">line_to_line</span></code> have been implemented in momepy 0.4.0 as <a class="reference external" href="http://docs.momepy.org/en/latest/generated/momepy.remove_false_nodes.html#momepy.remove_false_nodes"><code class="docutils literal notranslate"><span class="pre">momepy.remove_false_nodes</span></code></a>, <a class="reference external" href="http://docs.momepy.org/en/latest/generated/momepy.close_gaps.html#momepy.close_gaps"><code class="docutils literal notranslate"><span class="pre">momepy.close_gaps</span></code></a> and <a class="reference external" href="http://docs.momepy.org/en/latest/generated/momepy.extend_lines.html#momepy.extend_lines"><code class="docutils literal notranslate"><span class="pre">momepy.extend_lines</span></code></a>.</p>
@@ -565,8 +571,8 @@ Wall time: 13.5 s
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="subdivide-enclosures">
+</section>
+<section id="subdivide-enclosures">
 <h4>Subdivide enclosures<a class="headerlink" href="#subdivide-enclosures" title="Permalink to this headline">¶</a></h4>
 <p>With the preprocessed data, we can subdivide first level enclosures into final ones.</p>
 <p>Due to the current transition between pygeos and shapely 2.0, we are using here private <code class="docutils literal notranslate"><span class="pre">_pygeos_to_shapely</span></code> function from GeoPandas. That will not be needed in future.</p>
@@ -719,10 +725,10 @@ Wall time: 6.81 s
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

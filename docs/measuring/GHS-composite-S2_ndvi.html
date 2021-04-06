@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
     <title>NDVI &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
@@ -84,7 +85,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p class="caption collapsible-parent">
+    <p>
  <span class="caption-text">
   Project
  </span>
@@ -105,7 +106,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Spatial unit
  </span>
@@ -147,7 +148,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Populating units with data
  </span>
@@ -164,6 +165,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="accessibility.html">
    Accessibility-based characters
   </a>
@@ -174,7 +180,7 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p>
  <span class="caption-text">
   Cluster analysis
  </span>
@@ -353,7 +359,7 @@
         
               <div>
                 
-  <div class="section" id="ndvi">
+  <section id="ndvi">
 <h1>NDVI<a class="headerlink" href="#ndvi" title="Permalink to this headline">¶</a></h1>
 <p>This document shows the computation of NDVI scores for each of the enclosed tesselations (ETs) in GB.</p>
 <div class="cell docutils container">
@@ -370,7 +376,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="set-up">
+<section id="set-up">
 <h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -396,7 +402,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="cluster">
+<section id="cluster">
 <h3>Cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h3>
 <p>Since we will run some computations on a Dask cluster, let’s set it up first:</p>
 <div class="cell docutils container">
@@ -444,8 +450,8 @@ spec:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="local">
+</section>
+<section id="local">
 <h3>Local<a class="headerlink" href="#local" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -462,9 +468,9 @@ spec:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="data">
+</section>
+</section>
+<section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>And paths to the two datasets we’ll use:</p>
 <ul class="simple">
@@ -1010,8 +1016,8 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="explore-dataarray-size-by-chunk">
+</section>
+<section id="explore-dataarray-size-by-chunk">
 <h2>Explore <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> size by chunk<a class="headerlink" href="#explore-dataarray-size-by-chunk" title="Permalink to this headline">¶</a></h2>
 <p>In sparsely populated areas, ET cells will tend to be larger and, thus translate into larger sizes of the imagery required to cover it. Let’s explore the extent to which this is an issue.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">chunk_dimension</span></code> method below completes the following tasks for a given chunk:</p>
@@ -1213,8 +1219,8 @@ Wall time: 1min 21s
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="distribute-computation-by-et-cell">
+</section>
+<section id="distribute-computation-by-et-cell">
 <h2>Distribute computation by ET cell<a class="headerlink" href="#distribute-computation-by-et-cell" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1446,9 +1452,9 @@ Wall time: 36min 36s
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="deprecated-xarray-based-computation">
+<section id="deprecated-xarray-based-computation">
 <h2>[DEPRECATED] <code class="docutils literal notranslate"><span class="pre">xarray</span></code>-based computation<a class="headerlink" href="#deprecated-xarray-based-computation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1653,9 +1659,9 @@ Length: 495, dtype: float64
 </div>
 </div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="deprecated-alternative-using-geocube">
+<section id="deprecated-alternative-using-geocube">
 <h2>[DEPRECATED] Alternative using <code class="docutils literal notranslate"><span class="pre">geocube</span></code><a class="headerlink" href="#deprecated-alternative-using-geocube" title="Permalink to this headline">¶</a></h2>
 <p>The alternative involves <a class="reference external" href="https://corteva.github.io/geocube/stable/examples/zonal_statistics.html"><code class="docutils literal notranslate"><span class="pre">geocube</span></code>’s zonal stats</a> and <code class="docutils literal notranslate"><span class="pre">make_geocube</span></code>. In this approach, we first rasterize our ET cells in a grid aligned with the mosaic, then calculate the NDVI. At present, this approach is discarded because the resolution of the mosaic (10m) makes it too coarse to obtain an NDVI for each cell.</p>
 <div class="cell docutils container">
@@ -1918,8 +1924,8 @@ Wall time: 1.6 s
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
