@@ -50,6 +50,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exploration of top-level clusters" href="exploration_of_signatures.html" />
+    <link rel="prev" title="Clustering model selection matrix" href="model_selection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -175,10 +177,30 @@
   Cluster analysis
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="mastermap_openmap_cluster.html">
    Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_signatures_GB.html">
+   Form-based signatures across GB
   </a>
  </li>
 </ul>
@@ -279,8 +301,18 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#kmeans-10-clusters">
-   KMeans 10 clusters
+  <a class="reference internal nav-link" href="#number-of-clusters">
+   Number of clusters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means-10-clusters">
+   K-Means 10 clusters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generation-of-signature-geometry">
+   Generation of signature geometry
   </a>
  </li>
 </ul>
@@ -297,6 +329,9 @@
   <div class="section" id="generate-spatial-signatures-across-gb">
 <h1>Generate Spatial Signatures across GB<a class="headerlink" href="#generate-spatial-signatures-across-gb" title="Permalink to this headline">¶</a></h1>
 <p>This notebook generates spatial signatures as a clustering of form and function characters.</p>
+<div class="section" id="number-of-clusters">
+<h2>Number of clusters<a class="headerlink" href="#number-of-clusters" title="Permalink to this headline">¶</a></h2>
+<p>Clustergram which will be used to determine number of clusters will likely be complex. It is better to use new interactive version (<code class="docutils literal notranslate"><span class="pre">clustergram=&gt;0.5.0</span></code> required).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install git+https://github.com/martinfleis/clustergram.git</span>
@@ -314,6 +349,7 @@
 </div>
 </div>
 </div>
+<p>We first load all standardized data and create a single pandas DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardized_form</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/form/standardized/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
@@ -336,6 +372,7 @@ Wall time: 2min 43s
 </div>
 </div>
 </div>
+<p>Due to a small mistake, parquet files contain 3 columns which were used temporarily during the computation. We remove them now.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;keep_q1&quot;</span><span class="p">,</span> <span class="s2">&quot;keep_q2&quot;</span><span class="p">,</span> <span class="s2">&quot;keep_q3&quot;</span><span class="p">])</span>
@@ -343,6 +380,7 @@ Wall time: 2min 43s
 </div>
 </div>
 </div>
+<p>We run clustergram for all the options between 1 and 24 clusters using Mini-Batch K-Means algorithm.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cgram</span> <span class="o">=</span> <span class="n">Clustergram</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;minibatchkmeans&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -379,27 +417,17 @@ K=24 fitted in 3155.7938318252563 seconds.
 </div>
 </div>
 </div>
+<p>We can save resulting labels to parquet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">cgram</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>  <span class="c1"># parquet require str column names</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/clustergram_labels.pq&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/clustergram_labels.pq&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Now we can plot the clustergram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
@@ -433,9 +461,10 @@ Wall time: 3min 30s
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-30.0, 50.0)
 </pre></div>
 </div>
-<img alt="../_images/spatial_signatures_gb_11_2.png" src="../_images/spatial_signatures_gb_11_2.png" />
+<img alt="../_images/spatial_signatures_gb_14_2.png" src="../_images/spatial_signatures_gb_14_2.png" />
 </div>
 </div>
+<p>Better option is an interactive clustergram, showing the same data in a more friendly manner. We first initialise bokeh.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_notebook</span>
@@ -747,6 +776,7 @@ Wall time: 3min 30s
   }
 }(window));</script></div>
 </div>
+<p>Now we can plot clustergram using bokeh. First the same as above, using PCA weighting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">cgram</span><span class="o">.</span><span class="n">bokeh</span><span class="p">(</span>
@@ -758,21 +788,8 @@ Wall time: 3min 30s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="n">a51dbc821431</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">cgram</span><span class="o">.</span><span class="n">bokeh</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">),</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">line_style</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">HEX</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">ugg</span><span class="o">.</span><span class="n">HEX</span><span class="p">[</span><span class="mi">2</span><span class="p">]},</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;cgram&#39; is not defined
-</pre></div>
 </div>
-</div>
-</div>
+<p>Second, we can plot clustergram using mean values. Both perspectives combined give us a better picture of clustering behaviour.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span> <span class="o">=</span> <span class="n">cgram</span><span class="o">.</span><span class="n">bokeh</span><span class="p">(</span>
@@ -842,6 +859,8 @@ Name: 10, dtype: int64
 </div>
 </div>
 </div>
+<p>Clustergram is one way of determination of number of clusters. It is always better to use more options.</p>
+<p>Here we automatically compute mean silhouette scores, Calinski-Harabasz scores and Davies-Bouldin scores from clustergram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cgram</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">sample_size</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
@@ -853,7 +872,7 @@ Name: 10, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;silhouette&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/spatial_signatures_gb_16_1.png" src="../_images/spatial_signatures_gb_16_1.png" />
+<img alt="../_images/spatial_signatures_gb_23_1.png" src="../_images/spatial_signatures_gb_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -867,7 +886,7 @@ Name: 10, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;calinski_harabasz&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/spatial_signatures_gb_17_1.png" src="../_images/spatial_signatures_gb_17_1.png" />
+<img alt="../_images/spatial_signatures_gb_24_1.png" src="../_images/spatial_signatures_gb_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -881,9 +900,11 @@ Name: 10, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;davies_bouldin&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/spatial_signatures_gb_18_1.png" src="../_images/spatial_signatures_gb_18_1.png" />
+<img alt="../_images/spatial_signatures_gb_25_1.png" src="../_images/spatial_signatures_gb_25_1.png" />
 </div>
 </div>
+<p>All diagrams combined point to 10 clusters as an optimal solution.</p>
+<p>We can save clustrgram object for later reuse (note that is is large as is contains the data).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
@@ -894,6 +915,7 @@ Name: 10, dtype: int64
 </div>
 </div>
 </div>
+<p>We can also use labels from the clustergram to create provisional maps of signatures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -906,6 +928,7 @@ Name: 10, dtype: int64
 </div>
 </div>
 </div>
+<p>We load data for two chunks, assing labels and dissolve tessellation cells to signatures (using dask).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geom51</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_51.pq&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tessellation&quot;</span><span class="p">,</span> <span class="s2">&quot;hindex&quot;</span><span class="p">])</span>
@@ -951,10 +974,10 @@ Name: 10, dtype: int64
     <span class="n">ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;cluster&#39;</span><span class="p">),</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
     <span class="n">spsig</span> <span class="o">=</span> <span class="n">dask_dissolve</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
     
-    <span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;pk.eyJ1IjoibWFydGluZmxlaXMiLCJhIjoiY2tsNmhlemtxMmlicTJubXN6and5aTc2NCJ9.l7nSUXM7ZRjAWTB7oXiswQ&quot;</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
@@ -965,6 +988,7 @@ Name: 10, dtype: int64
 </div>
 </div>
 </div>
+<p>We do the same for one more chunk representing central London.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geom15</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_15.pq&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tessellation&quot;</span><span class="p">,</span> <span class="s2">&quot;hindex&quot;</span><span class="p">])</span>
@@ -977,10 +1001,10 @@ Name: 10, dtype: int64
 <span class="n">ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;cluster&#39;</span><span class="p">),</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
 <span class="n">spsig</span> <span class="o">=</span> <span class="n">dask_dissolve</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
 
-<span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;pk.eyJ1IjoibWFydGluZmxlaXMiLCJhIjoiY2tsNmhlemtxMmlicTJubXN6and5aTc2NCJ9.l7nSUXM7ZRjAWTB7oXiswQ&quot;</span>
+<span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
@@ -991,8 +1015,10 @@ Name: 10, dtype: int64
 </div>
 </div>
 </div>
-<div class="section" id="kmeans-10-clusters">
-<h2>KMeans 10 clusters<a class="headerlink" href="#kmeans-10-clusters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="k-means-10-clusters">
+<h2>K-Means 10 clusters<a class="headerlink" href="#k-means-10-clusters" title="Permalink to this headline">¶</a></h2>
+<p>Now we know that the optimal number of clusters is 10 and can run the final clustering.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span>
@@ -1002,6 +1028,7 @@ Name: 10, dtype: int64
 </div>
 </div>
 </div>
+<p>Again, we load the data (kernel has been shut down in the meantime to clear unwanted data).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardized_form</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/form/standardized/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;hindex&#39;</span><span class="p">)</span>
@@ -1025,6 +1052,7 @@ Wall time: 2min 42s
 </div>
 </div>
 </div>
+<p>We can now run <code class="docutils literal notranslate"><span class="pre">MiniBatchKMeans</span></code> clustering on our data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1032,2033 +1060,8 @@ Wall time: 2min 42s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Init 1/1000 with method: k-means++
-Inertia for init 1/1000: 624957313.651579
-Init 2/1000 with method: k-means++
-Inertia for init 2/1000: 629100300.505868
-Init 3/1000 with method: k-means++
-Inertia for init 3/1000: 634220163.152771
-Init 4/1000 with method: k-means++
-Inertia for init 4/1000: 611211236.905937
-Init 5/1000 with method: k-means++
-Inertia for init 5/1000: 634241407.492925
-Init 6/1000 with method: k-means++
-Inertia for init 6/1000: 656070645.110835
-Init 7/1000 with method: k-means++
-Inertia for init 7/1000: 637130619.775642
-Init 8/1000 with method: k-means++
-Inertia for init 8/1000: 612382814.291915
-Init 9/1000 with method: k-means++
-Inertia for init 9/1000: 616940448.830565
-Init 10/1000 with method: k-means++
-Inertia for init 10/1000: 624685814.486623
-Init 11/1000 with method: k-means++
-Inertia for init 11/1000: 615444889.620508
-Init 12/1000 with method: k-means++
-Inertia for init 12/1000: 608757280.659882
-Init 13/1000 with method: k-means++
-Inertia for init 13/1000: 612338893.707835
-Init 14/1000 with method: k-means++
-Inertia for init 14/1000: 615461505.409886
-Init 15/1000 with method: k-means++
-Inertia for init 15/1000: 616772546.561038
-Init 16/1000 with method: k-means++
-Inertia for init 16/1000: 615076516.573245
-Init 17/1000 with method: k-means++
-Inertia for init 17/1000: 606117161.048379
-Init 18/1000 with method: k-means++
-Inertia for init 18/1000: 656242848.639300
-Init 19/1000 with method: k-means++
-Inertia for init 19/1000: 622455265.686864
-Init 20/1000 with method: k-means++
-Inertia for init 20/1000: 603134016.519359
-Init 21/1000 with method: k-means++
-Inertia for init 21/1000: 612945987.358101
-Init 22/1000 with method: k-means++
-Inertia for init 22/1000: 664916400.580244
-Init 23/1000 with method: k-means++
-Inertia for init 23/1000: 640201991.513494
-Init 24/1000 with method: k-means++
-Inertia for init 24/1000: 630578469.094221
-Init 25/1000 with method: k-means++
-Inertia for init 25/1000: 626825292.001519
-Init 26/1000 with method: k-means++
-Inertia for init 26/1000: 638467134.718557
-Init 27/1000 with method: k-means++
-Inertia for init 27/1000: 657907651.993731
-Init 28/1000 with method: k-means++
-Inertia for init 28/1000: 629267521.936983
-Init 29/1000 with method: k-means++
-Inertia for init 29/1000: 615769066.974072
-Init 30/1000 with method: k-means++
-Inertia for init 30/1000: 655807281.611132
-Init 31/1000 with method: k-means++
-Inertia for init 31/1000: 627500208.133773
-Init 32/1000 with method: k-means++
-Inertia for init 32/1000: 636374940.142442
-Init 33/1000 with method: k-means++
-Inertia for init 33/1000: 604363334.288984
-Init 34/1000 with method: k-means++
-Inertia for init 34/1000: 626815191.830751
-Init 35/1000 with method: k-means++
-Inertia for init 35/1000: 630505165.416457
-Init 36/1000 with method: k-means++
-Inertia for init 36/1000: 596856122.338492
-Init 37/1000 with method: k-means++
-Inertia for init 37/1000: 632387609.196415
-Init 38/1000 with method: k-means++
-Inertia for init 38/1000: 641729154.975877
-Init 39/1000 with method: k-means++
-Inertia for init 39/1000: 608381931.070818
-Init 40/1000 with method: k-means++
-Inertia for init 40/1000: 655622135.054965
-Init 41/1000 with method: k-means++
-Inertia for init 41/1000: 629311853.472036
-Init 42/1000 with method: k-means++
-Inertia for init 42/1000: 687168951.734816
-Init 43/1000 with method: k-means++
-Inertia for init 43/1000: 631262045.017767
-Init 44/1000 with method: k-means++
-Inertia for init 44/1000: 659196570.408905
-Init 45/1000 with method: k-means++
-Inertia for init 45/1000: 638764536.448524
-Init 46/1000 with method: k-means++
-Inertia for init 46/1000: 658909603.138926
-Init 47/1000 with method: k-means++
-Inertia for init 47/1000: 667430564.193787
-Init 48/1000 with method: k-means++
-Inertia for init 48/1000: 629256376.626435
-Init 49/1000 with method: k-means++
-Inertia for init 49/1000: 622640469.309518
-Init 50/1000 with method: k-means++
-Inertia for init 50/1000: 644221473.729605
-Init 51/1000 with method: k-means++
-Inertia for init 51/1000: 610660519.884362
-Init 52/1000 with method: k-means++
-Inertia for init 52/1000: 615981433.713570
-Init 53/1000 with method: k-means++
-Inertia for init 53/1000: 642363690.526594
-Init 54/1000 with method: k-means++
-Inertia for init 54/1000: 634791668.712135
-Init 55/1000 with method: k-means++
-Inertia for init 55/1000: 616466353.852139
-Init 56/1000 with method: k-means++
-Inertia for init 56/1000: 605664100.488683
-Init 57/1000 with method: k-means++
-Inertia for init 57/1000: 627662190.640259
-Init 58/1000 with method: k-means++
-Inertia for init 58/1000: 657200880.008839
-Init 59/1000 with method: k-means++
-Inertia for init 59/1000: 624034479.290709
-Init 60/1000 with method: k-means++
-Inertia for init 60/1000: 633248639.173338
-Init 61/1000 with method: k-means++
-Inertia for init 61/1000: 630624897.225666
-Init 62/1000 with method: k-means++
-Inertia for init 62/1000: 639458626.588241
-Init 63/1000 with method: k-means++
-Inertia for init 63/1000: 612132906.839298
-Init 64/1000 with method: k-means++
-Inertia for init 64/1000: 611170600.505192
-Init 65/1000 with method: k-means++
-Inertia for init 65/1000: 648527003.839019
-Init 66/1000 with method: k-means++
-Inertia for init 66/1000: 632878725.408514
-Init 67/1000 with method: k-means++
-Inertia for init 67/1000: 647007871.141329
-Init 68/1000 with method: k-means++
-Inertia for init 68/1000: 624168920.747797
-Init 69/1000 with method: k-means++
-Inertia for init 69/1000: 654510756.474589
-Init 70/1000 with method: k-means++
-Inertia for init 70/1000: 650641740.603174
-Init 71/1000 with method: k-means++
-Inertia for init 71/1000: 633949282.098321
-Init 72/1000 with method: k-means++
-Inertia for init 72/1000: 662724542.817336
-Init 73/1000 with method: k-means++
-Inertia for init 73/1000: 617480930.127573
-Init 74/1000 with method: k-means++
-Inertia for init 74/1000: 646990198.499132
-Init 75/1000 with method: k-means++
-Inertia for init 75/1000: 607352505.364602
-Init 76/1000 with method: k-means++
-Inertia for init 76/1000: 624286461.505490
-Init 77/1000 with method: k-means++
-Inertia for init 77/1000: 635083957.601952
-Init 78/1000 with method: k-means++
-Inertia for init 78/1000: 647407060.206417
-Init 79/1000 with method: k-means++
-Inertia for init 79/1000: 622642859.494528
-Init 80/1000 with method: k-means++
-Inertia for init 80/1000: 616839119.305392
-Init 81/1000 with method: k-means++
-Inertia for init 81/1000: 655814123.009398
-Init 82/1000 with method: k-means++
-Inertia for init 82/1000: 661980887.596968
-Init 83/1000 with method: k-means++
-Inertia for init 83/1000: 619683084.411919
-Init 84/1000 with method: k-means++
-Inertia for init 84/1000: 653372208.740252
-Init 85/1000 with method: k-means++
-Inertia for init 85/1000: 642040624.238243
-Init 86/1000 with method: k-means++
-Inertia for init 86/1000: 629307210.354202
-Init 87/1000 with method: k-means++
-Inertia for init 87/1000: 607132868.261273
-Init 88/1000 with method: k-means++
-Inertia for init 88/1000: 624986279.778964
-Init 89/1000 with method: k-means++
-Inertia for init 89/1000: 604308294.727917
-Init 90/1000 with method: k-means++
-Inertia for init 90/1000: 622417476.966319
-Init 91/1000 with method: k-means++
-Inertia for init 91/1000: 617563079.378737
-Init 92/1000 with method: k-means++
-Inertia for init 92/1000: 626822224.996070
-Init 93/1000 with method: k-means++
-Inertia for init 93/1000: 617320436.426424
-Init 94/1000 with method: k-means++
-Inertia for init 94/1000: 610002167.690330
-Init 95/1000 with method: k-means++
-Inertia for init 95/1000: 612958736.571466
-Init 96/1000 with method: k-means++
-Inertia for init 96/1000: 638038020.781399
-Init 97/1000 with method: k-means++
-Inertia for init 97/1000: 604374355.023271
-Init 98/1000 with method: k-means++
-Inertia for init 98/1000: 617103173.777690
-Init 99/1000 with method: k-means++
-Inertia for init 99/1000: 614863063.395719
-Init 100/1000 with method: k-means++
-Inertia for init 100/1000: 662954040.114423
-Init 101/1000 with method: k-means++
-Inertia for init 101/1000: 630328275.270963
-Init 102/1000 with method: k-means++
-Inertia for init 102/1000: 607145482.860917
-Init 103/1000 with method: k-means++
-Inertia for init 103/1000: 620696132.493027
-Init 104/1000 with method: k-means++
-Inertia for init 104/1000: 637916635.245398
-Init 105/1000 with method: k-means++
-Inertia for init 105/1000: 627867542.988563
-Init 106/1000 with method: k-means++
-Inertia for init 106/1000: 614264488.874958
-Init 107/1000 with method: k-means++
-Inertia for init 107/1000: 624425617.678450
-Init 108/1000 with method: k-means++
-Inertia for init 108/1000: 610293838.369732
-Init 109/1000 with method: k-means++
-Inertia for init 109/1000: 624192151.315300
-Init 110/1000 with method: k-means++
-Inertia for init 110/1000: 630545822.200078
-Init 111/1000 with method: k-means++
-Inertia for init 111/1000: 591967000.271514
-Init 112/1000 with method: k-means++
-Inertia for init 112/1000: 606255189.724158
-Init 113/1000 with method: k-means++
-Inertia for init 113/1000: 630211619.596532
-Init 114/1000 with method: k-means++
-Inertia for init 114/1000: 607812779.185259
-Init 115/1000 with method: k-means++
-Inertia for init 115/1000: 643203032.227448
-Init 116/1000 with method: k-means++
-Inertia for init 116/1000: 641906369.285614
-Init 117/1000 with method: k-means++
-Inertia for init 117/1000: 634169072.117709
-Init 118/1000 with method: k-means++
-Inertia for init 118/1000: 654918860.990422
-Init 119/1000 with method: k-means++
-Inertia for init 119/1000: 634687432.906289
-Init 120/1000 with method: k-means++
-Inertia for init 120/1000: 644203794.077566
-Init 121/1000 with method: k-means++
-Inertia for init 121/1000: 609143193.053225
-Init 122/1000 with method: k-means++
-Inertia for init 122/1000: 662474518.766372
-Init 123/1000 with method: k-means++
-Inertia for init 123/1000: 662198139.464738
-Init 124/1000 with method: k-means++
-Inertia for init 124/1000: 636018921.867123
-Init 125/1000 with method: k-means++
-Inertia for init 125/1000: 603060333.538598
-Init 126/1000 with method: k-means++
-Inertia for init 126/1000: 631430263.554804
-Init 127/1000 with method: k-means++
-Inertia for init 127/1000: 619909324.215740
-Init 128/1000 with method: k-means++
-Inertia for init 128/1000: 650662649.574236
-Init 129/1000 with method: k-means++
-Inertia for init 129/1000: 620528048.654087
-Init 130/1000 with method: k-means++
-Inertia for init 130/1000: 636823223.393632
-Init 131/1000 with method: k-means++
-Inertia for init 131/1000: 621584155.612759
-Init 132/1000 with method: k-means++
-Inertia for init 132/1000: 640666259.353157
-Init 133/1000 with method: k-means++
-Inertia for init 133/1000: 625406916.748853
-Init 134/1000 with method: k-means++
-Inertia for init 134/1000: 650100998.642097
-Init 135/1000 with method: k-means++
-Inertia for init 135/1000: 622569547.479736
-Init 136/1000 with method: k-means++
-Inertia for init 136/1000: 628984384.635180
-Init 137/1000 with method: k-means++
-Inertia for init 137/1000: 615484817.319713
-Init 138/1000 with method: k-means++
-Inertia for init 138/1000: 604625292.970216
-Init 139/1000 with method: k-means++
-Inertia for init 139/1000: 641258254.340075
-Init 140/1000 with method: k-means++
-Inertia for init 140/1000: 627096724.575392
-Init 141/1000 with method: k-means++
-Inertia for init 141/1000: 651228896.829355
-Init 142/1000 with method: k-means++
-Inertia for init 142/1000: 650320613.431673
-Init 143/1000 with method: k-means++
-Inertia for init 143/1000: 659277499.397454
-Init 144/1000 with method: k-means++
-Inertia for init 144/1000: 639091801.612994
-Init 145/1000 with method: k-means++
-Inertia for init 145/1000: 674297272.239877
-Init 146/1000 with method: k-means++
-Inertia for init 146/1000: 640406720.215638
-Init 147/1000 with method: k-means++
-Inertia for init 147/1000: 617436108.760902
-Init 148/1000 with method: k-means++
-Inertia for init 148/1000: 631198887.653740
-Init 149/1000 with method: k-means++
-Inertia for init 149/1000: 637855009.432709
-Init 150/1000 with method: k-means++
-Inertia for init 150/1000: 606108819.358645
-Init 151/1000 with method: k-means++
-Inertia for init 151/1000: 685242861.928113
-Init 152/1000 with method: k-means++
-Inertia for init 152/1000: 646175887.334494
-Init 153/1000 with method: k-means++
-Inertia for init 153/1000: 622905763.609832
-Init 154/1000 with method: k-means++
-Inertia for init 154/1000: 639583604.690076
-Init 155/1000 with method: k-means++
-Inertia for init 155/1000: 630307498.349200
-Init 156/1000 with method: k-means++
-Inertia for init 156/1000: 641783945.016560
-Init 157/1000 with method: k-means++
-Inertia for init 157/1000: 616330638.916887
-Init 158/1000 with method: k-means++
-Inertia for init 158/1000: 603048695.633056
-Init 159/1000 with method: k-means++
-Inertia for init 159/1000: 629050307.966249
-Init 160/1000 with method: k-means++
-Inertia for init 160/1000: 616320291.524042
-Init 161/1000 with method: k-means++
-Inertia for init 161/1000: 633892304.704983
-Init 162/1000 with method: k-means++
-Inertia for init 162/1000: 618199721.872780
-Init 163/1000 with method: k-means++
-Inertia for init 163/1000: 617368673.441732
-Init 164/1000 with method: k-means++
-Inertia for init 164/1000: 604081596.765115
-Init 165/1000 with method: k-means++
-Inertia for init 165/1000: 617842969.118801
-Init 166/1000 with method: k-means++
-Inertia for init 166/1000: 629514358.565250
-Init 167/1000 with method: k-means++
-Inertia for init 167/1000: 643614030.543911
-Init 168/1000 with method: k-means++
-Inertia for init 168/1000: 647854124.788736
-Init 169/1000 with method: k-means++
-Inertia for init 169/1000: 644064670.598516
-Init 170/1000 with method: k-means++
-Inertia for init 170/1000: 616531430.057321
-Init 171/1000 with method: k-means++
-Inertia for init 171/1000: 621360113.817845
-Init 172/1000 with method: k-means++
-Inertia for init 172/1000: 635563714.608226
-Init 173/1000 with method: k-means++
-Inertia for init 173/1000: 600902519.405667
-Init 174/1000 with method: k-means++
-Inertia for init 174/1000: 640974994.922614
-Init 175/1000 with method: k-means++
-Inertia for init 175/1000: 602126016.135860
-Init 176/1000 with method: k-means++
-Inertia for init 176/1000: 617487349.271520
-Init 177/1000 with method: k-means++
-Inertia for init 177/1000: 658575016.953322
-Init 178/1000 with method: k-means++
-Inertia for init 178/1000: 595654003.882213
-Init 179/1000 with method: k-means++
-Inertia for init 179/1000: 647291759.492247
-Init 180/1000 with method: k-means++
-Inertia for init 180/1000: 605273593.554627
-Init 181/1000 with method: k-means++
-Inertia for init 181/1000: 644426721.481724
-Init 182/1000 with method: k-means++
-Inertia for init 182/1000: 611069705.404786
-Init 183/1000 with method: k-means++
-Inertia for init 183/1000: 638014834.566772
-Init 184/1000 with method: k-means++
-Inertia for init 184/1000: 635958280.635410
-Init 185/1000 with method: k-means++
-Inertia for init 185/1000: 657004290.258739
-Init 186/1000 with method: k-means++
-Inertia for init 186/1000: 633139990.792146
-Init 187/1000 with method: k-means++
-Inertia for init 187/1000: 611394542.112174
-Init 188/1000 with method: k-means++
-Inertia for init 188/1000: 642702138.773290
-Init 189/1000 with method: k-means++
-Inertia for init 189/1000: 634750426.235652
-Init 190/1000 with method: k-means++
-Inertia for init 190/1000: 621034719.094589
-Init 191/1000 with method: k-means++
-Inertia for init 191/1000: 633227897.412705
-Init 192/1000 with method: k-means++
-Inertia for init 192/1000: 618754835.165932
-Init 193/1000 with method: k-means++
-Inertia for init 193/1000: 642396972.567016
-Init 194/1000 with method: k-means++
-Inertia for init 194/1000: 632675180.059721
-Init 195/1000 with method: k-means++
-Inertia for init 195/1000: 597912607.237997
-Init 196/1000 with method: k-means++
-Inertia for init 196/1000: 609745043.840129
-Init 197/1000 with method: k-means++
-Inertia for init 197/1000: 642315982.733613
-Init 198/1000 with method: k-means++
-Inertia for init 198/1000: 616464655.452394
-Init 199/1000 with method: k-means++
-Inertia for init 199/1000: 610818818.963976
-Init 200/1000 with method: k-means++
-Inertia for init 200/1000: 644308833.106904
-Init 201/1000 with method: k-means++
-Inertia for init 201/1000: 605456583.813396
-Init 202/1000 with method: k-means++
-Inertia for init 202/1000: 653096504.568096
-Init 203/1000 with method: k-means++
-Inertia for init 203/1000: 616783922.141336
-Init 204/1000 with method: k-means++
-Inertia for init 204/1000: 628130185.790354
-Init 205/1000 with method: k-means++
-Inertia for init 205/1000: 630808225.215558
-Init 206/1000 with method: k-means++
-Inertia for init 206/1000: 614716944.421922
-Init 207/1000 with method: k-means++
-Inertia for init 207/1000: 628848787.279045
-Init 208/1000 with method: k-means++
-Inertia for init 208/1000: 653820823.332862
-Init 209/1000 with method: k-means++
-Inertia for init 209/1000: 606925389.411426
-Init 210/1000 with method: k-means++
-Inertia for init 210/1000: 624534704.399822
-Init 211/1000 with method: k-means++
-Inertia for init 211/1000: 638230980.232000
-Init 212/1000 with method: k-means++
-Inertia for init 212/1000: 616257109.067896
-Init 213/1000 with method: k-means++
-Inertia for init 213/1000: 614312508.867639
-Init 214/1000 with method: k-means++
-Inertia for init 214/1000: 655274117.021886
-Init 215/1000 with method: k-means++
-Inertia for init 215/1000: 622629873.929820
-Init 216/1000 with method: k-means++
-Inertia for init 216/1000: 627120713.367779
-Init 217/1000 with method: k-means++
-Inertia for init 217/1000: 625325674.510504
-Init 218/1000 with method: k-means++
-Inertia for init 218/1000: 620189949.567694
-Init 219/1000 with method: k-means++
-Inertia for init 219/1000: 627024574.688644
-Init 220/1000 with method: k-means++
-Inertia for init 220/1000: 608961785.367610
-Init 221/1000 with method: k-means++
-Inertia for init 221/1000: 604283663.249789
-Init 222/1000 with method: k-means++
-Inertia for init 222/1000: 604403076.098129
-Init 223/1000 with method: k-means++
-Inertia for init 223/1000: 625424632.153211
-Init 224/1000 with method: k-means++
-Inertia for init 224/1000: 654481057.565992
-Init 225/1000 with method: k-means++
-Inertia for init 225/1000: 632359859.145714
-Init 226/1000 with method: k-means++
-Inertia for init 226/1000: 630993674.973324
-Init 227/1000 with method: k-means++
-Inertia for init 227/1000: 612200031.948004
-Init 228/1000 with method: k-means++
-Inertia for init 228/1000: 626397920.660279
-Init 229/1000 with method: k-means++
-Inertia for init 229/1000: 632560325.897106
-Init 230/1000 with method: k-means++
-Inertia for init 230/1000: 623754815.279550
-Init 231/1000 with method: k-means++
-Inertia for init 231/1000: 661903518.121802
-Init 232/1000 with method: k-means++
-Inertia for init 232/1000: 633212816.305367
-Init 233/1000 with method: k-means++
-Inertia for init 233/1000: 621762324.315566
-Init 234/1000 with method: k-means++
-Inertia for init 234/1000: 630560916.753938
-Init 235/1000 with method: k-means++
-Inertia for init 235/1000: 669919803.053137
-Init 236/1000 with method: k-means++
-Inertia for init 236/1000: 596373409.435636
-Init 237/1000 with method: k-means++
-Inertia for init 237/1000: 624329631.033557
-Init 238/1000 with method: k-means++
-Inertia for init 238/1000: 609427314.956635
-Init 239/1000 with method: k-means++
-Inertia for init 239/1000: 636945977.109291
-Init 240/1000 with method: k-means++
-Inertia for init 240/1000: 607302394.812689
-Init 241/1000 with method: k-means++
-Inertia for init 241/1000: 635683644.186869
-Init 242/1000 with method: k-means++
-Inertia for init 242/1000: 632065703.908185
-Init 243/1000 with method: k-means++
-Inertia for init 243/1000: 624198891.447825
-Init 244/1000 with method: k-means++
-Inertia for init 244/1000: 652689435.122951
-Init 245/1000 with method: k-means++
-Inertia for init 245/1000: 622259359.848483
-Init 246/1000 with method: k-means++
-Inertia for init 246/1000: 656519963.493560
-Init 247/1000 with method: k-means++
-Inertia for init 247/1000: 621938362.122589
-Init 248/1000 with method: k-means++
-Inertia for init 248/1000: 649259981.767693
-Init 249/1000 with method: k-means++
-Inertia for init 249/1000: 642371509.004204
-Init 250/1000 with method: k-means++
-Inertia for init 250/1000: 644511723.503406
-Init 251/1000 with method: k-means++
-Inertia for init 251/1000: 622772847.778590
-Init 252/1000 with method: k-means++
-Inertia for init 252/1000: 614307126.752284
-Init 253/1000 with method: k-means++
-Inertia for init 253/1000: 627028421.183750
-Init 254/1000 with method: k-means++
-Inertia for init 254/1000: 653670847.858810
-Init 255/1000 with method: k-means++
-Inertia for init 255/1000: 636352561.924427
-Init 256/1000 with method: k-means++
-Inertia for init 256/1000: 614293464.538377
-Init 257/1000 with method: k-means++
-Inertia for init 257/1000: 651585829.356502
-Init 258/1000 with method: k-means++
-Inertia for init 258/1000: 617840886.621585
-Init 259/1000 with method: k-means++
-Inertia for init 259/1000: 598982623.517570
-Init 260/1000 with method: k-means++
-Inertia for init 260/1000: 651558980.737056
-Init 261/1000 with method: k-means++
-Inertia for init 261/1000: 621369354.845764
-Init 262/1000 with method: k-means++
-Inertia for init 262/1000: 627136690.918656
-Init 263/1000 with method: k-means++
-Inertia for init 263/1000: 644362808.298484
-Init 264/1000 with method: k-means++
-Inertia for init 264/1000: 632192830.652146
-Init 265/1000 with method: k-means++
-Inertia for init 265/1000: 629779494.345864
-Init 266/1000 with method: k-means++
-Inertia for init 266/1000: 618885635.483299
-Init 267/1000 with method: k-means++
-Inertia for init 267/1000: 650167293.500290
-Init 268/1000 with method: k-means++
-Inertia for init 268/1000: 651586793.221452
-Init 269/1000 with method: k-means++
-Inertia for init 269/1000: 634882626.625438
-Init 270/1000 with method: k-means++
-Inertia for init 270/1000: 625053345.514446
-Init 271/1000 with method: k-means++
-Inertia for init 271/1000: 645357971.599756
-Init 272/1000 with method: k-means++
-Inertia for init 272/1000: 617544970.104292
-Init 273/1000 with method: k-means++
-Inertia for init 273/1000: 641231873.615120
-Init 274/1000 with method: k-means++
-Inertia for init 274/1000: 620281387.715418
-Init 275/1000 with method: k-means++
-Inertia for init 275/1000: 623567027.326676
-Init 276/1000 with method: k-means++
-Inertia for init 276/1000: 648763963.429775
-Init 277/1000 with method: k-means++
-Inertia for init 277/1000: 614738275.270521
-Init 278/1000 with method: k-means++
-Inertia for init 278/1000: 632427017.118968
-Init 279/1000 with method: k-means++
-Inertia for init 279/1000: 611056384.449406
-Init 280/1000 with method: k-means++
-Inertia for init 280/1000: 636923286.692398
-Init 281/1000 with method: k-means++
-Inertia for init 281/1000: 636104827.427568
-Init 282/1000 with method: k-means++
-Inertia for init 282/1000: 629656891.639114
-Init 283/1000 with method: k-means++
-Inertia for init 283/1000: 653598945.495912
-Init 284/1000 with method: k-means++
-Inertia for init 284/1000: 648340045.306055
-Init 285/1000 with method: k-means++
-Inertia for init 285/1000: 626588097.597522
-Init 286/1000 with method: k-means++
-Inertia for init 286/1000: 607742205.096743
-Init 287/1000 with method: k-means++
-Inertia for init 287/1000: 638523509.241952
-Init 288/1000 with method: k-means++
-Inertia for init 288/1000: 636702234.737201
-Init 289/1000 with method: k-means++
-Inertia for init 289/1000: 638098424.429430
-Init 290/1000 with method: k-means++
-Inertia for init 290/1000: 636408331.502998
-Init 291/1000 with method: k-means++
-Inertia for init 291/1000: 611923127.558784
-Init 292/1000 with method: k-means++
-Inertia for init 292/1000: 642993067.647166
-Init 293/1000 with method: k-means++
-Inertia for init 293/1000: 634139169.151528
-Init 294/1000 with method: k-means++
-Inertia for init 294/1000: 598258370.690275
-Init 295/1000 with method: k-means++
-Inertia for init 295/1000: 639857438.142919
-Init 296/1000 with method: k-means++
-Inertia for init 296/1000: 626107347.448053
-Init 297/1000 with method: k-means++
-Inertia for init 297/1000: 628740917.088273
-Init 298/1000 with method: k-means++
-Inertia for init 298/1000: 625076822.465067
-Init 299/1000 with method: k-means++
-Inertia for init 299/1000: 606594179.560451
-Init 300/1000 with method: k-means++
-Inertia for init 300/1000: 636620858.674300
-Init 301/1000 with method: k-means++
-Inertia for init 301/1000: 643456048.573588
-Init 302/1000 with method: k-means++
-Inertia for init 302/1000: 620275640.087704
-Init 303/1000 with method: k-means++
-Inertia for init 303/1000: 637873621.373914
-Init 304/1000 with method: k-means++
-Inertia for init 304/1000: 630326879.132791
-Init 305/1000 with method: k-means++
-Inertia for init 305/1000: 605126969.407737
-Init 306/1000 with method: k-means++
-Inertia for init 306/1000: 639492767.129866
-Init 307/1000 with method: k-means++
-Inertia for init 307/1000: 620773161.944297
-Init 308/1000 with method: k-means++
-Inertia for init 308/1000: 661247152.819126
-Init 309/1000 with method: k-means++
-Inertia for init 309/1000: 628544639.077324
-Init 310/1000 with method: k-means++
-Inertia for init 310/1000: 627695136.238480
-Init 311/1000 with method: k-means++
-Inertia for init 311/1000: 639285877.457265
-Init 312/1000 with method: k-means++
-Inertia for init 312/1000: 633159905.622675
-Init 313/1000 with method: k-means++
-Inertia for init 313/1000: 607153480.953612
-Init 314/1000 with method: k-means++
-Inertia for init 314/1000: 617078666.457103
-Init 315/1000 with method: k-means++
-Inertia for init 315/1000: 641901108.104373
-Init 316/1000 with method: k-means++
-Inertia for init 316/1000: 638843350.169935
-Init 317/1000 with method: k-means++
-Inertia for init 317/1000: 620152564.037668
-Init 318/1000 with method: k-means++
-Inertia for init 318/1000: 600093780.641770
-Init 319/1000 with method: k-means++
-Inertia for init 319/1000: 631031675.987346
-Init 320/1000 with method: k-means++
-Inertia for init 320/1000: 611978159.211874
-Init 321/1000 with method: k-means++
-Inertia for init 321/1000: 604342672.852046
-Init 322/1000 with method: k-means++
-Inertia for init 322/1000: 621005326.931996
-Init 323/1000 with method: k-means++
-Inertia for init 323/1000: 607716742.761659
-Init 324/1000 with method: k-means++
-Inertia for init 324/1000: 642209348.375919
-Init 325/1000 with method: k-means++
-Inertia for init 325/1000: 631034158.625733
-Init 326/1000 with method: k-means++
-Inertia for init 326/1000: 641774874.097479
-Init 327/1000 with method: k-means++
-Inertia for init 327/1000: 631808172.980774
-Init 328/1000 with method: k-means++
-Inertia for init 328/1000: 607344626.590200
-Init 329/1000 with method: k-means++
-Inertia for init 329/1000: 614417934.326710
-Init 330/1000 with method: k-means++
-Inertia for init 330/1000: 628166411.787206
-Init 331/1000 with method: k-means++
-Inertia for init 331/1000: 616319970.783419
-Init 332/1000 with method: k-means++
-Inertia for init 332/1000: 597930063.240281
-Init 333/1000 with method: k-means++
-Inertia for init 333/1000: 611999499.391432
-Init 334/1000 with method: k-means++
-Inertia for init 334/1000: 613473694.993700
-Init 335/1000 with method: k-means++
-Inertia for init 335/1000: 617791923.959887
-Init 336/1000 with method: k-means++
-Inertia for init 336/1000: 655704853.136301
-Init 337/1000 with method: k-means++
-Inertia for init 337/1000: 616257525.346881
-Init 338/1000 with method: k-means++
-Inertia for init 338/1000: 614690070.581549
-Init 339/1000 with method: k-means++
-Inertia for init 339/1000: 631126045.110208
-Init 340/1000 with method: k-means++
-Inertia for init 340/1000: 603088206.276148
-Init 341/1000 with method: k-means++
-Inertia for init 341/1000: 634758458.073941
-Init 342/1000 with method: k-means++
-Inertia for init 342/1000: 643432928.653872
-Init 343/1000 with method: k-means++
-Inertia for init 343/1000: 639768909.076673
-Init 344/1000 with method: k-means++
-Inertia for init 344/1000: 607659571.719086
-Init 345/1000 with method: k-means++
-Inertia for init 345/1000: 648984352.255297
-Init 346/1000 with method: k-means++
-Inertia for init 346/1000: 614710016.622986
-Init 347/1000 with method: k-means++
-Inertia for init 347/1000: 634346145.668652
-Init 348/1000 with method: k-means++
-Inertia for init 348/1000: 647745631.623245
-Init 349/1000 with method: k-means++
-Inertia for init 349/1000: 634615670.335238
-Init 350/1000 with method: k-means++
-Inertia for init 350/1000: 648120780.382206
-Init 351/1000 with method: k-means++
-Inertia for init 351/1000: 636350054.071252
-Init 352/1000 with method: k-means++
-Inertia for init 352/1000: 638090782.825730
-Init 353/1000 with method: k-means++
-Inertia for init 353/1000: 637767123.473125
-Init 354/1000 with method: k-means++
-Inertia for init 354/1000: 620702638.623697
-Init 355/1000 with method: k-means++
-Inertia for init 355/1000: 607061710.518929
-Init 356/1000 with method: k-means++
-Inertia for init 356/1000: 632451174.187993
-Init 357/1000 with method: k-means++
-Inertia for init 357/1000: 656064078.806986
-Init 358/1000 with method: k-means++
-Inertia for init 358/1000: 632221850.945535
-Init 359/1000 with method: k-means++
-Inertia for init 359/1000: 623231809.170624
-Init 360/1000 with method: k-means++
-Inertia for init 360/1000: 606621231.247604
-Init 361/1000 with method: k-means++
-Inertia for init 361/1000: 683781760.398189
-Init 362/1000 with method: k-means++
-Inertia for init 362/1000: 606174827.637120
-Init 363/1000 with method: k-means++
-Inertia for init 363/1000: 628451805.216231
-Init 364/1000 with method: k-means++
-Inertia for init 364/1000: 629307888.881835
-Init 365/1000 with method: k-means++
-Inertia for init 365/1000: 640794307.242206
-Init 366/1000 with method: k-means++
-Inertia for init 366/1000: 631832725.042603
-Init 367/1000 with method: k-means++
-Inertia for init 367/1000: 660300449.202583
-Init 368/1000 with method: k-means++
-Inertia for init 368/1000: 612131871.580242
-Init 369/1000 with method: k-means++
-Inertia for init 369/1000: 618581630.953482
-Init 370/1000 with method: k-means++
-Inertia for init 370/1000: 639046260.506768
-Init 371/1000 with method: k-means++
-Inertia for init 371/1000: 649817198.396056
-Init 372/1000 with method: k-means++
-Inertia for init 372/1000: 630941376.968762
-Init 373/1000 with method: k-means++
-Inertia for init 373/1000: 634893270.282615
-Init 374/1000 with method: k-means++
-Inertia for init 374/1000: 616540146.918139
-Init 375/1000 with method: k-means++
-Inertia for init 375/1000: 647089077.566309
-Init 376/1000 with method: k-means++
-Inertia for init 376/1000: 645515603.887300
-Init 377/1000 with method: k-means++
-Inertia for init 377/1000: 645830200.418724
-Init 378/1000 with method: k-means++
-Inertia for init 378/1000: 600660849.260687
-Init 379/1000 with method: k-means++
-Inertia for init 379/1000: 650531914.384045
-Init 380/1000 with method: k-means++
-Inertia for init 380/1000: 622318284.264328
-Init 381/1000 with method: k-means++
-Inertia for init 381/1000: 653753127.893770
-Init 382/1000 with method: k-means++
-Inertia for init 382/1000: 628936306.872038
-Init 383/1000 with method: k-means++
-Inertia for init 383/1000: 612140523.903856
-Init 384/1000 with method: k-means++
-Inertia for init 384/1000: 630382631.453790
-Init 385/1000 with method: k-means++
-Inertia for init 385/1000: 648524769.719251
-Init 386/1000 with method: k-means++
-Inertia for init 386/1000: 639402013.386315
-Init 387/1000 with method: k-means++
-Inertia for init 387/1000: 628985230.229593
-Init 388/1000 with method: k-means++
-Inertia for init 388/1000: 608817049.439200
-Init 389/1000 with method: k-means++
-Inertia for init 389/1000: 669093130.275818
-Init 390/1000 with method: k-means++
-Inertia for init 390/1000: 649228728.717910
-Init 391/1000 with method: k-means++
-Inertia for init 391/1000: 650673607.787338
-Init 392/1000 with method: k-means++
-Inertia for init 392/1000: 659137004.486705
-Init 393/1000 with method: k-means++
-Inertia for init 393/1000: 617329672.042749
-Init 394/1000 with method: k-means++
-Inertia for init 394/1000: 625078072.530039
-Init 395/1000 with method: k-means++
-Inertia for init 395/1000: 627829303.022245
-Init 396/1000 with method: k-means++
-Inertia for init 396/1000: 648492214.697174
-Init 397/1000 with method: k-means++
-Inertia for init 397/1000: 646922344.773550
-Init 398/1000 with method: k-means++
-Inertia for init 398/1000: 628920090.621108
-Init 399/1000 with method: k-means++
-Inertia for init 399/1000: 628642507.009036
-Init 400/1000 with method: k-means++
-Inertia for init 400/1000: 634618267.803958
-Init 401/1000 with method: k-means++
-Inertia for init 401/1000: 601791207.970126
-Init 402/1000 with method: k-means++
-Inertia for init 402/1000: 604972464.225652
-Init 403/1000 with method: k-means++
-Inertia for init 403/1000: 609645100.207420
-Init 404/1000 with method: k-means++
-Inertia for init 404/1000: 612577484.698828
-Init 405/1000 with method: k-means++
-Inertia for init 405/1000: 650088069.730049
-Init 406/1000 with method: k-means++
-Inertia for init 406/1000: 642499157.645608
-Init 407/1000 with method: k-means++
-Inertia for init 407/1000: 596363518.138663
-Init 408/1000 with method: k-means++
-Inertia for init 408/1000: 622353039.616828
-Init 409/1000 with method: k-means++
-Inertia for init 409/1000: 627825914.540239
-Init 410/1000 with method: k-means++
-Inertia for init 410/1000: 616208004.849189
-Init 411/1000 with method: k-means++
-Inertia for init 411/1000: 602660074.351528
-Init 412/1000 with method: k-means++
-Inertia for init 412/1000: 637487665.455153
-Init 413/1000 with method: k-means++
-Inertia for init 413/1000: 627212216.251555
-Init 414/1000 with method: k-means++
-Inertia for init 414/1000: 636893480.474555
-Init 415/1000 with method: k-means++
-Inertia for init 415/1000: 649767745.106955
-Init 416/1000 with method: k-means++
-Inertia for init 416/1000: 623639249.893036
-Init 417/1000 with method: k-means++
-Inertia for init 417/1000: 648896489.920223
-Init 418/1000 with method: k-means++
-Inertia for init 418/1000: 623558218.745458
-Init 419/1000 with method: k-means++
-Inertia for init 419/1000: 669519762.542743
-Init 420/1000 with method: k-means++
-Inertia for init 420/1000: 604471124.691727
-Init 421/1000 with method: k-means++
-Inertia for init 421/1000: 615820498.494692
-Init 422/1000 with method: k-means++
-Inertia for init 422/1000: 630495388.075267
-Init 423/1000 with method: k-means++
-Inertia for init 423/1000: 613048935.132129
-Init 424/1000 with method: k-means++
-Inertia for init 424/1000: 620804684.634570
-Init 425/1000 with method: k-means++
-Inertia for init 425/1000: 633021335.100337
-Init 426/1000 with method: k-means++
-Inertia for init 426/1000: 654425291.990288
-Init 427/1000 with method: k-means++
-Inertia for init 427/1000: 618972079.986248
-Init 428/1000 with method: k-means++
-Inertia for init 428/1000: 645416822.696214
-Init 429/1000 with method: k-means++
-Inertia for init 429/1000: 633882850.203165
-Init 430/1000 with method: k-means++
-Inertia for init 430/1000: 612866807.925810
-Init 431/1000 with method: k-means++
-Inertia for init 431/1000: 620331281.998333
-Init 432/1000 with method: k-means++
-Inertia for init 432/1000: 627982888.375201
-Init 433/1000 with method: k-means++
-Inertia for init 433/1000: 639194163.614715
-Init 434/1000 with method: k-means++
-Inertia for init 434/1000: 624044727.392221
-Init 435/1000 with method: k-means++
-Inertia for init 435/1000: 648639654.474934
-Init 436/1000 with method: k-means++
-Inertia for init 436/1000: 620987145.627961
-Init 437/1000 with method: k-means++
-Inertia for init 437/1000: 642273251.949747
-Init 438/1000 with method: k-means++
-Inertia for init 438/1000: 639980604.836544
-Init 439/1000 with method: k-means++
-Inertia for init 439/1000: 631194165.349064
-Init 440/1000 with method: k-means++
-Inertia for init 440/1000: 616595015.027385
-Init 441/1000 with method: k-means++
-Inertia for init 441/1000: 658755285.513711
-Init 442/1000 with method: k-means++
-Inertia for init 442/1000: 605958026.357797
-Init 443/1000 with method: k-means++
-Inertia for init 443/1000: 615296964.406850
-Init 444/1000 with method: k-means++
-Inertia for init 444/1000: 622720564.405910
-Init 445/1000 with method: k-means++
-Inertia for init 445/1000: 615163045.105250
-Init 446/1000 with method: k-means++
-Inertia for init 446/1000: 655492270.414488
-Init 447/1000 with method: k-means++
-Inertia for init 447/1000: 611042425.512955
-Init 448/1000 with method: k-means++
-Inertia for init 448/1000: 613577922.538404
-Init 449/1000 with method: k-means++
-Inertia for init 449/1000: 610756646.037074
-Init 450/1000 with method: k-means++
-Inertia for init 450/1000: 649819750.762310
-Init 451/1000 with method: k-means++
-Inertia for init 451/1000: 616166544.558295
-Init 452/1000 with method: k-means++
-Inertia for init 452/1000: 619933245.763813
-Init 453/1000 with method: k-means++
-Inertia for init 453/1000: 625701875.803926
-Init 454/1000 with method: k-means++
-Inertia for init 454/1000: 606013119.111413
-Init 455/1000 with method: k-means++
-Inertia for init 455/1000: 654473274.225102
-Init 456/1000 with method: k-means++
-Inertia for init 456/1000: 614592866.614842
-Init 457/1000 with method: k-means++
-Inertia for init 457/1000: 670889967.860651
-Init 458/1000 with method: k-means++
-Inertia for init 458/1000: 622348069.722747
-Init 459/1000 with method: k-means++
-Inertia for init 459/1000: 624751232.672614
-Init 460/1000 with method: k-means++
-Inertia for init 460/1000: 632803395.377633
-Init 461/1000 with method: k-means++
-Inertia for init 461/1000: 659238919.856964
-Init 462/1000 with method: k-means++
-Inertia for init 462/1000: 605059831.985413
-Init 463/1000 with method: k-means++
-Inertia for init 463/1000: 624133389.855322
-Init 464/1000 with method: k-means++
-Inertia for init 464/1000: 643511832.816338
-Init 465/1000 with method: k-means++
-Inertia for init 465/1000: 630499519.488581
-Init 466/1000 with method: k-means++
-Inertia for init 466/1000: 606963695.805289
-Init 467/1000 with method: k-means++
-Inertia for init 467/1000: 637433703.185713
-Init 468/1000 with method: k-means++
-Inertia for init 468/1000: 595546949.518128
-Init 469/1000 with method: k-means++
-Inertia for init 469/1000: 625979700.886281
-Init 470/1000 with method: k-means++
-Inertia for init 470/1000: 630729404.236842
-Init 471/1000 with method: k-means++
-Inertia for init 471/1000: 618320248.912518
-Init 472/1000 with method: k-means++
-Inertia for init 472/1000: 635657057.322553
-Init 473/1000 with method: k-means++
-Inertia for init 473/1000: 632418790.118281
-Init 474/1000 with method: k-means++
-Inertia for init 474/1000: 624342008.469230
-Init 475/1000 with method: k-means++
-Inertia for init 475/1000: 621924438.053809
-Init 476/1000 with method: k-means++
-Inertia for init 476/1000: 601127308.610042
-Init 477/1000 with method: k-means++
-Inertia for init 477/1000: 621027546.613170
-Init 478/1000 with method: k-means++
-Inertia for init 478/1000: 620687024.863556
-Init 479/1000 with method: k-means++
-Inertia for init 479/1000: 604084657.021756
-Init 480/1000 with method: k-means++
-Inertia for init 480/1000: 661039040.253868
-Init 481/1000 with method: k-means++
-Inertia for init 481/1000: 623515214.323620
-Init 482/1000 with method: k-means++
-Inertia for init 482/1000: 609404166.254185
-Init 483/1000 with method: k-means++
-Inertia for init 483/1000: 642689120.118932
-Init 484/1000 with method: k-means++
-Inertia for init 484/1000: 632354798.984790
-Init 485/1000 with method: k-means++
-Inertia for init 485/1000: 611765913.639611
-Init 486/1000 with method: k-means++
-Inertia for init 486/1000: 659883984.295440
-Init 487/1000 with method: k-means++
-Inertia for init 487/1000: 637959480.861020
-Init 488/1000 with method: k-means++
-Inertia for init 488/1000: 635377373.525181
-Init 489/1000 with method: k-means++
-Inertia for init 489/1000: 614058610.910898
-Init 490/1000 with method: k-means++
-Inertia for init 490/1000: 647894002.381037
-Init 491/1000 with method: k-means++
-Inertia for init 491/1000: 599780540.160551
-Init 492/1000 with method: k-means++
-Inertia for init 492/1000: 616579032.484186
-Init 493/1000 with method: k-means++
-Inertia for init 493/1000: 614535179.858286
-Init 494/1000 with method: k-means++
-Inertia for init 494/1000: 615410827.865254
-Init 495/1000 with method: k-means++
-Inertia for init 495/1000: 615548482.457861
-Init 496/1000 with method: k-means++
-Inertia for init 496/1000: 627220523.478405
-Init 497/1000 with method: k-means++
-Inertia for init 497/1000: 627551509.913130
-Init 498/1000 with method: k-means++
-Inertia for init 498/1000: 618886697.930619
-Init 499/1000 with method: k-means++
-Inertia for init 499/1000: 633464081.243464
-Init 500/1000 with method: k-means++
-Inertia for init 500/1000: 615149736.373498
-Init 501/1000 with method: k-means++
-Inertia for init 501/1000: 623695509.271539
-Init 502/1000 with method: k-means++
-Inertia for init 502/1000: 658850839.060765
-Init 503/1000 with method: k-means++
-Inertia for init 503/1000: 614666759.567087
-Init 504/1000 with method: k-means++
-Inertia for init 504/1000: 662981595.362878
-Init 505/1000 with method: k-means++
-Inertia for init 505/1000: 638983007.402500
-Init 506/1000 with method: k-means++
-Inertia for init 506/1000: 638885229.755425
-Init 507/1000 with method: k-means++
-Inertia for init 507/1000: 614004915.354353
-Init 508/1000 with method: k-means++
-Inertia for init 508/1000: 624097873.349518
-Init 509/1000 with method: k-means++
-Inertia for init 509/1000: 629665426.357809
-Init 510/1000 with method: k-means++
-Inertia for init 510/1000: 632896800.871397
-Init 511/1000 with method: k-means++
-Inertia for init 511/1000: 655707827.472917
-Init 512/1000 with method: k-means++
-Inertia for init 512/1000: 660541908.530525
-Init 513/1000 with method: k-means++
-Inertia for init 513/1000: 623888673.675159
-Init 514/1000 with method: k-means++
-Inertia for init 514/1000: 635118478.254874
-Init 515/1000 with method: k-means++
-Inertia for init 515/1000: 646299543.093827
-Init 516/1000 with method: k-means++
-Inertia for init 516/1000: 659920288.347404
-Init 517/1000 with method: k-means++
-Inertia for init 517/1000: 637892592.000058
-Init 518/1000 with method: k-means++
-Inertia for init 518/1000: 620205189.694852
-Init 519/1000 with method: k-means++
-Inertia for init 519/1000: 670313992.520004
-Init 520/1000 with method: k-means++
-Inertia for init 520/1000: 662251382.815199
-Init 521/1000 with method: k-means++
-Inertia for init 521/1000: 618592774.512980
-Init 522/1000 with method: k-means++
-Inertia for init 522/1000: 649644513.736975
-Init 523/1000 with method: k-means++
-Inertia for init 523/1000: 636823321.888362
-Init 524/1000 with method: k-means++
-Inertia for init 524/1000: 642637984.324496
-Init 525/1000 with method: k-means++
-Inertia for init 525/1000: 606551690.480042
-Init 526/1000 with method: k-means++
-Inertia for init 526/1000: 631901976.375690
-Init 527/1000 with method: k-means++
-Inertia for init 527/1000: 613414903.128986
-Init 528/1000 with method: k-means++
-Inertia for init 528/1000: 608268603.719560
-Init 529/1000 with method: k-means++
-Inertia for init 529/1000: 608460329.274655
-Init 530/1000 with method: k-means++
-Inertia for init 530/1000: 613432851.987016
-Init 531/1000 with method: k-means++
-Inertia for init 531/1000: 650306578.043211
-Init 532/1000 with method: k-means++
-Inertia for init 532/1000: 636975253.888187
-Init 533/1000 with method: k-means++
-Inertia for init 533/1000: 637671055.611580
-Init 534/1000 with method: k-means++
-Inertia for init 534/1000: 647874606.176565
-Init 535/1000 with method: k-means++
-Inertia for init 535/1000: 625429768.534094
-Init 536/1000 with method: k-means++
-Inertia for init 536/1000: 604244907.180066
-Init 537/1000 with method: k-means++
-Inertia for init 537/1000: 604238309.604249
-Init 538/1000 with method: k-means++
-Inertia for init 538/1000: 625844019.063101
-Init 539/1000 with method: k-means++
-Inertia for init 539/1000: 611764229.866606
-Init 540/1000 with method: k-means++
-Inertia for init 540/1000: 624362487.464596
-Init 541/1000 with method: k-means++
-Inertia for init 541/1000: 606777088.552512
-Init 542/1000 with method: k-means++
-Inertia for init 542/1000: 640059864.224768
-Init 543/1000 with method: k-means++
-Inertia for init 543/1000: 652889673.676469
-Init 544/1000 with method: k-means++
-Inertia for init 544/1000: 615866112.287238
-Init 545/1000 with method: k-means++
-Inertia for init 545/1000: 626325615.649944
-Init 546/1000 with method: k-means++
-Inertia for init 546/1000: 647975190.967864
-Init 547/1000 with method: k-means++
-Inertia for init 547/1000: 622014424.193105
-Init 548/1000 with method: k-means++
-Inertia for init 548/1000: 635193630.431018
-Init 549/1000 with method: k-means++
-Inertia for init 549/1000: 621187792.254870
-Init 550/1000 with method: k-means++
-Inertia for init 550/1000: 650755215.250988
-Init 551/1000 with method: k-means++
-Inertia for init 551/1000: 649270517.460991
-Init 552/1000 with method: k-means++
-Inertia for init 552/1000: 639602831.616239
-Init 553/1000 with method: k-means++
-Inertia for init 553/1000: 656624113.866717
-Init 554/1000 with method: k-means++
-Inertia for init 554/1000: 619121049.489647
-Init 555/1000 with method: k-means++
-Inertia for init 555/1000: 640581183.306642
-Init 556/1000 with method: k-means++
-Inertia for init 556/1000: 620103840.778755
-Init 557/1000 with method: k-means++
-Inertia for init 557/1000: 629508103.700408
-Init 558/1000 with method: k-means++
-Inertia for init 558/1000: 613609030.439067
-Init 559/1000 with method: k-means++
-Inertia for init 559/1000: 617014319.545581
-Init 560/1000 with method: k-means++
-Inertia for init 560/1000: 619213884.313001
-Init 561/1000 with method: k-means++
-Inertia for init 561/1000: 620855393.506090
-Init 562/1000 with method: k-means++
-Inertia for init 562/1000: 639447386.543921
-Init 563/1000 with method: k-means++
-Inertia for init 563/1000: 620888942.430297
-Init 564/1000 with method: k-means++
-Inertia for init 564/1000: 629018506.426248
-Init 565/1000 with method: k-means++
-Inertia for init 565/1000: 608302323.140025
-Init 566/1000 with method: k-means++
-Inertia for init 566/1000: 610648190.642787
-Init 567/1000 with method: k-means++
-Inertia for init 567/1000: 635399882.028542
-Init 568/1000 with method: k-means++
-Inertia for init 568/1000: 624458298.626848
-Init 569/1000 with method: k-means++
-Inertia for init 569/1000: 648686053.191743
-Init 570/1000 with method: k-means++
-Inertia for init 570/1000: 631664096.653681
-Init 571/1000 with method: k-means++
-Inertia for init 571/1000: 614003287.019224
-Init 572/1000 with method: k-means++
-Inertia for init 572/1000: 641932879.693024
-Init 573/1000 with method: k-means++
-Inertia for init 573/1000: 614003070.846623
-Init 574/1000 with method: k-means++
-Inertia for init 574/1000: 643445474.113497
-Init 575/1000 with method: k-means++
-Inertia for init 575/1000: 638197783.945061
-Init 576/1000 with method: k-means++
-Inertia for init 576/1000: 628815938.036643
-Init 577/1000 with method: k-means++
-Inertia for init 577/1000: 623858027.567712
-Init 578/1000 with method: k-means++
-Inertia for init 578/1000: 628773737.129300
-Init 579/1000 with method: k-means++
-Inertia for init 579/1000: 638347488.968954
-Init 580/1000 with method: k-means++
-Inertia for init 580/1000: 640802563.616500
-Init 581/1000 with method: k-means++
-Inertia for init 581/1000: 619850761.807517
-Init 582/1000 with method: k-means++
-Inertia for init 582/1000: 637432228.271250
-Init 583/1000 with method: k-means++
-Inertia for init 583/1000: 628333713.339443
-Init 584/1000 with method: k-means++
-Inertia for init 584/1000: 665075165.636808
-Init 585/1000 with method: k-means++
-Inertia for init 585/1000: 624933862.236474
-Init 586/1000 with method: k-means++
-Inertia for init 586/1000: 619630088.771267
-Init 587/1000 with method: k-means++
-Inertia for init 587/1000: 646990314.788946
-Init 588/1000 with method: k-means++
-Inertia for init 588/1000: 668021727.596751
-Init 589/1000 with method: k-means++
-Inertia for init 589/1000: 639855859.323484
-Init 590/1000 with method: k-means++
-Inertia for init 590/1000: 639857249.304918
-Init 591/1000 with method: k-means++
-Inertia for init 591/1000: 642070299.375601
-Init 592/1000 with method: k-means++
-Inertia for init 592/1000: 602032226.945040
-Init 593/1000 with method: k-means++
-Inertia for init 593/1000: 605924803.483987
-Init 594/1000 with method: k-means++
-Inertia for init 594/1000: 632690475.751935
-Init 595/1000 with method: k-means++
-Inertia for init 595/1000: 611906245.219936
-Init 596/1000 with method: k-means++
-Inertia for init 596/1000: 645294901.109360
-Init 597/1000 with method: k-means++
-Inertia for init 597/1000: 614324895.629668
-Init 598/1000 with method: k-means++
-Inertia for init 598/1000: 624718801.673757
-Init 599/1000 with method: k-means++
-Inertia for init 599/1000: 630891140.259959
-Init 600/1000 with method: k-means++
-Inertia for init 600/1000: 674889761.299143
-Init 601/1000 with method: k-means++
-Inertia for init 601/1000: 636171542.434248
-Init 602/1000 with method: k-means++
-Inertia for init 602/1000: 627172659.174966
-Init 603/1000 with method: k-means++
-Inertia for init 603/1000: 613286022.863030
-Init 604/1000 with method: k-means++
-Inertia for init 604/1000: 616455121.001888
-Init 605/1000 with method: k-means++
-Inertia for init 605/1000: 643109195.334184
-Init 606/1000 with method: k-means++
-Inertia for init 606/1000: 657718626.679332
-Init 607/1000 with method: k-means++
-Inertia for init 607/1000: 642125102.033074
-Init 608/1000 with method: k-means++
-Inertia for init 608/1000: 648657035.214155
-Init 609/1000 with method: k-means++
-Inertia for init 609/1000: 612066066.633983
-Init 610/1000 with method: k-means++
-Inertia for init 610/1000: 652971032.878350
-Init 611/1000 with method: k-means++
-Inertia for init 611/1000: 613855183.704797
-Init 612/1000 with method: k-means++
-Inertia for init 612/1000: 646835161.281024
-Init 613/1000 with method: k-means++
-Inertia for init 613/1000: 624431317.165332
-Init 614/1000 with method: k-means++
-Inertia for init 614/1000: 612861726.905982
-Init 615/1000 with method: k-means++
-Inertia for init 615/1000: 628543281.147723
-Init 616/1000 with method: k-means++
-Inertia for init 616/1000: 628203015.391657
-Init 617/1000 with method: k-means++
-Inertia for init 617/1000: 630691453.164632
-Init 618/1000 with method: k-means++
-Inertia for init 618/1000: 634207576.101120
-Init 619/1000 with method: k-means++
-Inertia for init 619/1000: 644509474.198873
-Init 620/1000 with method: k-means++
-Inertia for init 620/1000: 626545869.976247
-Init 621/1000 with method: k-means++
-Inertia for init 621/1000: 605713692.971034
-Init 622/1000 with method: k-means++
-Inertia for init 622/1000: 629479801.232258
-Init 623/1000 with method: k-means++
-Inertia for init 623/1000: 637006272.298663
-Init 624/1000 with method: k-means++
-Inertia for init 624/1000: 636669261.678643
-Init 625/1000 with method: k-means++
-Inertia for init 625/1000: 652617128.760895
-Init 626/1000 with method: k-means++
-Inertia for init 626/1000: 628494588.920070
-Init 627/1000 with method: k-means++
-Inertia for init 627/1000: 651368949.887974
-Init 628/1000 with method: k-means++
-Inertia for init 628/1000: 615377618.440802
-Init 629/1000 with method: k-means++
-Inertia for init 629/1000: 641352962.555254
-Init 630/1000 with method: k-means++
-Inertia for init 630/1000: 631897536.326954
-Init 631/1000 with method: k-means++
-Inertia for init 631/1000: 657770116.905265
-Init 632/1000 with method: k-means++
-Inertia for init 632/1000: 608272390.157850
-Init 633/1000 with method: k-means++
-Inertia for init 633/1000: 617516743.422893
-Init 634/1000 with method: k-means++
-Inertia for init 634/1000: 646034579.645342
-Init 635/1000 with method: k-means++
-Inertia for init 635/1000: 620009357.086658
-Init 636/1000 with method: k-means++
-Inertia for init 636/1000: 662480438.337116
-Init 637/1000 with method: k-means++
-Inertia for init 637/1000: 626445084.739601
-Init 638/1000 with method: k-means++
-Inertia for init 638/1000: 616823092.823773
-Init 639/1000 with method: k-means++
-Inertia for init 639/1000: 614004381.088162
-Init 640/1000 with method: k-means++
-Inertia for init 640/1000: 670830605.006251
-Init 641/1000 with method: k-means++
-Inertia for init 641/1000: 623611216.719919
-Init 642/1000 with method: k-means++
-Inertia for init 642/1000: 634512382.688084
-Init 643/1000 with method: k-means++
-Inertia for init 643/1000: 666527878.952588
-Init 644/1000 with method: k-means++
-Inertia for init 644/1000: 613256472.448378
-Init 645/1000 with method: k-means++
-Inertia for init 645/1000: 619514516.140388
-Init 646/1000 with method: k-means++
-Inertia for init 646/1000: 645903443.925712
-Init 647/1000 with method: k-means++
-Inertia for init 647/1000: 628702529.037386
-Init 648/1000 with method: k-means++
-Inertia for init 648/1000: 636047664.689920
-Init 649/1000 with method: k-means++
-Inertia for init 649/1000: 635519101.874258
-Init 650/1000 with method: k-means++
-Inertia for init 650/1000: 628302654.903281
-Init 651/1000 with method: k-means++
-Inertia for init 651/1000: 632301143.161304
-Init 652/1000 with method: k-means++
-Inertia for init 652/1000: 641452902.705799
-Init 653/1000 with method: k-means++
-Inertia for init 653/1000: 632443072.588016
-Init 654/1000 with method: k-means++
-Inertia for init 654/1000: 610002748.091486
-Init 655/1000 with method: k-means++
-Inertia for init 655/1000: 647422009.512305
-Init 656/1000 with method: k-means++
-Inertia for init 656/1000: 593522475.289542
-Init 657/1000 with method: k-means++
-Inertia for init 657/1000: 610565143.326744
-Init 658/1000 with method: k-means++
-Inertia for init 658/1000: 649852636.376251
-Init 659/1000 with method: k-means++
-Inertia for init 659/1000: 647668579.296840
-Init 660/1000 with method: k-means++
-Inertia for init 660/1000: 648926654.040740
-Init 661/1000 with method: k-means++
-Inertia for init 661/1000: 635009829.949247
-Init 662/1000 with method: k-means++
-Inertia for init 662/1000: 623550944.964618
-Init 663/1000 with method: k-means++
-Inertia for init 663/1000: 628573832.336116
-Init 664/1000 with method: k-means++
-Inertia for init 664/1000: 640708059.143356
-Init 665/1000 with method: k-means++
-Inertia for init 665/1000: 615297218.783946
-Init 666/1000 with method: k-means++
-Inertia for init 666/1000: 640934215.602935
-Init 667/1000 with method: k-means++
-Inertia for init 667/1000: 619144330.615088
-Init 668/1000 with method: k-means++
-Inertia for init 668/1000: 618749352.050384
-Init 669/1000 with method: k-means++
-Inertia for init 669/1000: 648171910.923456
-Init 670/1000 with method: k-means++
-Inertia for init 670/1000: 645898733.795241
-Init 671/1000 with method: k-means++
-Inertia for init 671/1000: 643052796.876151
-Init 672/1000 with method: k-means++
-Inertia for init 672/1000: 615054275.591286
-Init 673/1000 with method: k-means++
-Inertia for init 673/1000: 647103250.678746
-Init 674/1000 with method: k-means++
-Inertia for init 674/1000: 612586931.940366
-Init 675/1000 with method: k-means++
-Inertia for init 675/1000: 611451542.900286
-Init 676/1000 with method: k-means++
-Inertia for init 676/1000: 642193079.061639
-Init 677/1000 with method: k-means++
-Inertia for init 677/1000: 632048009.140278
-Init 678/1000 with method: k-means++
-Inertia for init 678/1000: 611810817.794240
-Init 679/1000 with method: k-means++
-Inertia for init 679/1000: 623541636.374503
-Init 680/1000 with method: k-means++
-Inertia for init 680/1000: 623265656.108578
-Init 681/1000 with method: k-means++
-Inertia for init 681/1000: 626548205.996610
-Init 682/1000 with method: k-means++
-Inertia for init 682/1000: 593999340.353326
-Init 683/1000 with method: k-means++
-Inertia for init 683/1000: 641955189.161068
-Init 684/1000 with method: k-means++
-Inertia for init 684/1000: 640131807.062176
-Init 685/1000 with method: k-means++
-Inertia for init 685/1000: 648032417.729042
-Init 686/1000 with method: k-means++
-Inertia for init 686/1000: 631703438.767317
-Init 687/1000 with method: k-means++
-Inertia for init 687/1000: 636222274.182096
-Init 688/1000 with method: k-means++
-Inertia for init 688/1000: 652089994.657781
-Init 689/1000 with method: k-means++
-Inertia for init 689/1000: 595793924.501727
-Init 690/1000 with method: k-means++
-Inertia for init 690/1000: 636423177.188655
-Init 691/1000 with method: k-means++
-Inertia for init 691/1000: 612054927.560333
-Init 692/1000 with method: k-means++
-Inertia for init 692/1000: 631483320.138267
-Init 693/1000 with method: k-means++
-Inertia for init 693/1000: 631404764.857974
-Init 694/1000 with method: k-means++
-Inertia for init 694/1000: 618330165.189373
-Init 695/1000 with method: k-means++
-Inertia for init 695/1000: 607929033.097942
-Init 696/1000 with method: k-means++
-Inertia for init 696/1000: 642660817.369097
-Init 697/1000 with method: k-means++
-Inertia for init 697/1000: 611238070.503533
-Init 698/1000 with method: k-means++
-Inertia for init 698/1000: 602608707.773117
-Init 699/1000 with method: k-means++
-Inertia for init 699/1000: 624345684.695814
-Init 700/1000 with method: k-means++
-Inertia for init 700/1000: 615854974.021409
-Init 701/1000 with method: k-means++
-Inertia for init 701/1000: 614433080.504951
-Init 702/1000 with method: k-means++
-Inertia for init 702/1000: 645507258.644069
-Init 703/1000 with method: k-means++
-Inertia for init 703/1000: 632096789.184344
-Init 704/1000 with method: k-means++
-Inertia for init 704/1000: 627231196.004519
-Init 705/1000 with method: k-means++
-Inertia for init 705/1000: 619077455.202802
-Init 706/1000 with method: k-means++
-Inertia for init 706/1000: 621803754.980840
-Init 707/1000 with method: k-means++
-Inertia for init 707/1000: 629738563.413793
-Init 708/1000 with method: k-means++
-Inertia for init 708/1000: 610844463.956692
-Init 709/1000 with method: k-means++
-Inertia for init 709/1000: 663598728.262217
-Init 710/1000 with method: k-means++
-Inertia for init 710/1000: 641135768.769343
-Init 711/1000 with method: k-means++
-Inertia for init 711/1000: 635106229.231603
-Init 712/1000 with method: k-means++
-Inertia for init 712/1000: 619806966.000446
-Init 713/1000 with method: k-means++
-Inertia for init 713/1000: 647206466.051927
-Init 714/1000 with method: k-means++
-Inertia for init 714/1000: 615611310.405641
-Init 715/1000 with method: k-means++
-Inertia for init 715/1000: 620351431.313465
-Init 716/1000 with method: k-means++
-Inertia for init 716/1000: 621642933.887530
-Init 717/1000 with method: k-means++
-Inertia for init 717/1000: 595010273.919167
-Init 718/1000 with method: k-means++
-Inertia for init 718/1000: 632470955.606651
-Init 719/1000 with method: k-means++
-Inertia for init 719/1000: 613523229.670052
-Init 720/1000 with method: k-means++
-Inertia for init 720/1000: 615324699.789616
-Init 721/1000 with method: k-means++
-Inertia for init 721/1000: 615011881.891283
-Init 722/1000 with method: k-means++
-Inertia for init 722/1000: 624349138.366204
-Init 723/1000 with method: k-means++
-Inertia for init 723/1000: 638625014.367198
-Init 724/1000 with method: k-means++
-Inertia for init 724/1000: 610352706.094405
-Init 725/1000 with method: k-means++
-Inertia for init 725/1000: 630909591.051972
-Init 726/1000 with method: k-means++
-Inertia for init 726/1000: 616022767.243926
-Init 727/1000 with method: k-means++
-Inertia for init 727/1000: 643565238.938155
-Init 728/1000 with method: k-means++
-Inertia for init 728/1000: 648497534.873969
-Init 729/1000 with method: k-means++
-Inertia for init 729/1000: 664281090.020460
-Init 730/1000 with method: k-means++
-Inertia for init 730/1000: 623277466.053001
-Init 731/1000 with method: k-means++
-Inertia for init 731/1000: 638800488.108035
-Init 732/1000 with method: k-means++
-Inertia for init 732/1000: 652171356.619272
-Init 733/1000 with method: k-means++
-Inertia for init 733/1000: 645370689.538639
-Init 734/1000 with method: k-means++
-Inertia for init 734/1000: 648553283.871146
-Init 735/1000 with method: k-means++
-Inertia for init 735/1000: 605323856.837534
-Init 736/1000 with method: k-means++
-Inertia for init 736/1000: 638416087.855841
-Init 737/1000 with method: k-means++
-Inertia for init 737/1000: 611384680.702114
-Init 738/1000 with method: k-means++
-Inertia for init 738/1000: 618385813.617382
-Init 739/1000 with method: k-means++
-Inertia for init 739/1000: 636237106.898121
-Init 740/1000 with method: k-means++
-Inertia for init 740/1000: 621617530.120179
-Init 741/1000 with method: k-means++
-Inertia for init 741/1000: 609783553.160854
-Init 742/1000 with method: k-means++
-Inertia for init 742/1000: 656194065.242178
-Init 743/1000 with method: k-means++
-Inertia for init 743/1000: 647230075.426115
-Init 744/1000 with method: k-means++
-Inertia for init 744/1000: 648552008.815561
-Init 745/1000 with method: k-means++
-Inertia for init 745/1000: 614733163.517558
-Init 746/1000 with method: k-means++
-Inertia for init 746/1000: 627360994.937347
-Init 747/1000 with method: k-means++
-Inertia for init 747/1000: 652017857.357937
-Init 748/1000 with method: k-means++
-Inertia for init 748/1000: 634113576.033356
-Init 749/1000 with method: k-means++
-Inertia for init 749/1000: 620890323.747241
-Init 750/1000 with method: k-means++
-Inertia for init 750/1000: 612816564.074813
-Init 751/1000 with method: k-means++
-Inertia for init 751/1000: 619077091.670480
-Init 752/1000 with method: k-means++
-Inertia for init 752/1000: 652245744.248497
-Init 753/1000 with method: k-means++
-Inertia for init 753/1000: 631112449.817356
-Init 754/1000 with method: k-means++
-Inertia for init 754/1000: 635684103.111543
-Init 755/1000 with method: k-means++
-Inertia for init 755/1000: 652080854.787616
-Init 756/1000 with method: k-means++
-Inertia for init 756/1000: 626295974.512313
-Init 757/1000 with method: k-means++
-Inertia for init 757/1000: 612057136.329928
-Init 758/1000 with method: k-means++
-Inertia for init 758/1000: 600967792.738115
-Init 759/1000 with method: k-means++
-Inertia for init 759/1000: 624019941.747773
-Init 760/1000 with method: k-means++
-Inertia for init 760/1000: 615501399.580550
-Init 761/1000 with method: k-means++
-Inertia for init 761/1000: 648212849.072318
-Init 762/1000 with method: k-means++
-Inertia for init 762/1000: 610916548.101330
-Init 763/1000 with method: k-means++
-Inertia for init 763/1000: 637627385.242584
-Init 764/1000 with method: k-means++
-Inertia for init 764/1000: 617911108.049022
-Init 765/1000 with method: k-means++
-Inertia for init 765/1000: 635160841.852158
-Init 766/1000 with method: k-means++
-Inertia for init 766/1000: 666177768.543321
-Init 767/1000 with method: k-means++
-Inertia for init 767/1000: 655228233.531487
-Init 768/1000 with method: k-means++
-Inertia for init 768/1000: 623847472.252648
-Init 769/1000 with method: k-means++
-Inertia for init 769/1000: 605992566.745466
-Init 770/1000 with method: k-means++
-Inertia for init 770/1000: 621897448.090730
-Init 771/1000 with method: k-means++
-Inertia for init 771/1000: 638794513.857668
-Init 772/1000 with method: k-means++
-Inertia for init 772/1000: 628135146.765852
-Init 773/1000 with method: k-means++
-Inertia for init 773/1000: 613774434.654331
-Init 774/1000 with method: k-means++
-Inertia for init 774/1000: 647870826.618766
-Init 775/1000 with method: k-means++
-Inertia for init 775/1000: 624525719.647052
-Init 776/1000 with method: k-means++
-Inertia for init 776/1000: 643782409.920999
-Init 777/1000 with method: k-means++
-Inertia for init 777/1000: 646381484.133868
-Init 778/1000 with method: k-means++
-Inertia for init 778/1000: 637637988.088468
-Init 779/1000 with method: k-means++
-Inertia for init 779/1000: 622353261.903364
-Init 780/1000 with method: k-means++
-Inertia for init 780/1000: 631193068.699998
-Init 781/1000 with method: k-means++
-Inertia for init 781/1000: 664267571.683893
-Init 782/1000 with method: k-means++
-Inertia for init 782/1000: 625869628.240175
-Init 783/1000 with method: k-means++
-Inertia for init 783/1000: 627391730.671116
-Init 784/1000 with method: k-means++
-Inertia for init 784/1000: 617905183.243592
-Init 785/1000 with method: k-means++
-Inertia for init 785/1000: 641745370.776061
-Init 786/1000 with method: k-means++
-Inertia for init 786/1000: 600927391.645740
-Init 787/1000 with method: k-means++
-Inertia for init 787/1000: 613050948.622927
-Init 788/1000 with method: k-means++
-Inertia for init 788/1000: 628761862.455091
-Init 789/1000 with method: k-means++
-Inertia for init 789/1000: 630138026.441693
-Init 790/1000 with method: k-means++
-Inertia for init 790/1000: 641714999.876801
-Init 791/1000 with method: k-means++
-Inertia for init 791/1000: 639361587.533065
-Init 792/1000 with method: k-means++
-Inertia for init 792/1000: 608363336.539819
-Init 793/1000 with method: k-means++
-Inertia for init 793/1000: 640808047.613192
-Init 794/1000 with method: k-means++
-Inertia for init 794/1000: 610471184.874002
-Init 795/1000 with method: k-means++
-Inertia for init 795/1000: 635701982.474095
-Init 796/1000 with method: k-means++
-Inertia for init 796/1000: 619240490.713211
-Init 797/1000 with method: k-means++
-Inertia for init 797/1000: 632334062.460720
-Init 798/1000 with method: k-means++
-Inertia for init 798/1000: 599209917.169189
-Init 799/1000 with method: k-means++
-Inertia for init 799/1000: 658970117.451438
-Init 800/1000 with method: k-means++
-Inertia for init 800/1000: 642657260.365594
-Init 801/1000 with method: k-means++
-Inertia for init 801/1000: 649945997.464739
-Init 802/1000 with method: k-means++
-Inertia for init 802/1000: 673076158.251854
-Init 803/1000 with method: k-means++
-Inertia for init 803/1000: 643132719.963770
-Init 804/1000 with method: k-means++
-Inertia for init 804/1000: 603334288.646618
-Init 805/1000 with method: k-means++
-Inertia for init 805/1000: 653089273.480353
-Init 806/1000 with method: k-means++
-Inertia for init 806/1000: 633615137.449839
-Init 807/1000 with method: k-means++
-Inertia for init 807/1000: 613082701.892985
-Init 808/1000 with method: k-means++
-Inertia for init 808/1000: 633930352.227535
-Init 809/1000 with method: k-means++
-Inertia for init 809/1000: 633930519.177859
-Init 810/1000 with method: k-means++
-Inertia for init 810/1000: 618198796.990819
-Init 811/1000 with method: k-means++
-Inertia for init 811/1000: 668182068.013799
-Init 812/1000 with method: k-means++
-Inertia for init 812/1000: 610946139.246530
-Init 813/1000 with method: k-means++
-Inertia for init 813/1000: 673442982.393383
-Init 814/1000 with method: k-means++
-Inertia for init 814/1000: 599027348.746923
-Init 815/1000 with method: k-means++
-Inertia for init 815/1000: 639809814.717909
-Init 816/1000 with method: k-means++
-Inertia for init 816/1000: 634767109.138628
-Init 817/1000 with method: k-means++
-Inertia for init 817/1000: 641792759.179679
-Init 818/1000 with method: k-means++
-Inertia for init 818/1000: 654560294.619836
-Init 819/1000 with method: k-means++
-Inertia for init 819/1000: 613721719.935299
-Init 820/1000 with method: k-means++
-Inertia for init 820/1000: 637668692.869828
-Init 821/1000 with method: k-means++
-Inertia for init 821/1000: 641317751.999873
-Init 822/1000 with method: k-means++
-Inertia for init 822/1000: 639902021.835091
-Init 823/1000 with method: k-means++
-Inertia for init 823/1000: 635213772.965232
-Init 824/1000 with method: k-means++
-Inertia for init 824/1000: 597013839.386295
-Init 825/1000 with method: k-means++
-Inertia for init 825/1000: 629149585.214732
-Init 826/1000 with method: k-means++
-Inertia for init 826/1000: 604990463.238150
-Init 827/1000 with method: k-means++
-Inertia for init 827/1000: 625222710.833121
-Init 828/1000 with method: k-means++
-Inertia for init 828/1000: 629337442.829766
-Init 829/1000 with method: k-means++
-Inertia for init 829/1000: 609735459.769334
-Init 830/1000 with method: k-means++
-Inertia for init 830/1000: 614036597.258646
-Init 831/1000 with method: k-means++
-Inertia for init 831/1000: 630744131.273017
-Init 832/1000 with method: k-means++
-Inertia for init 832/1000: 626159391.648466
-Init 833/1000 with method: k-means++
-Inertia for init 833/1000: 685599364.939798
-Init 834/1000 with method: k-means++
-Inertia for init 834/1000: 642299264.018537
-Init 835/1000 with method: k-means++
-Inertia for init 835/1000: 619170288.392181
-Init 836/1000 with method: k-means++
-Inertia for init 836/1000: 667485481.045985
-Init 837/1000 with method: k-means++
-Inertia for init 837/1000: 627786405.456696
-Init 838/1000 with method: k-means++
-Inertia for init 838/1000: 625098069.018667
-Init 839/1000 with method: k-means++
-Inertia for init 839/1000: 635339249.542596
-Init 840/1000 with method: k-means++
-Inertia for init 840/1000: 635576401.960962
-Init 841/1000 with method: k-means++
-Inertia for init 841/1000: 619341489.966349
-Init 842/1000 with method: k-means++
-Inertia for init 842/1000: 620509244.083823
-Init 843/1000 with method: k-means++
-Inertia for init 843/1000: 635375623.028363
-Init 844/1000 with method: k-means++
-Inertia for init 844/1000: 668174422.603608
-Init 845/1000 with method: k-means++
-Inertia for init 845/1000: 655236582.670799
-Init 846/1000 with method: k-means++
-Inertia for init 846/1000: 623986564.877162
-Init 847/1000 with method: k-means++
-Inertia for init 847/1000: 621390592.969851
-Init 848/1000 with method: k-means++
-Inertia for init 848/1000: 610713587.802722
-Init 849/1000 with method: k-means++
-Inertia for init 849/1000: 619654134.472851
-Init 850/1000 with method: k-means++
-Inertia for init 850/1000: 609318402.827695
-Init 851/1000 with method: k-means++
-Inertia for init 851/1000: 647944960.294901
-Init 852/1000 with method: k-means++
-Inertia for init 852/1000: 625810098.590212
-Init 853/1000 with method: k-means++
-Inertia for init 853/1000: 633816837.439956
-Init 854/1000 with method: k-means++
-Inertia for init 854/1000: 659148909.185985
-Init 855/1000 with method: k-means++
-Inertia for init 855/1000: 620606962.487081
-Init 856/1000 with method: k-means++
-Inertia for init 856/1000: 662092253.614786
-Init 857/1000 with method: k-means++
-Inertia for init 857/1000: 630902555.101258
-Init 858/1000 with method: k-means++
-Inertia for init 858/1000: 604660718.497104
-Init 859/1000 with method: k-means++
-Inertia for init 859/1000: 660626132.964098
-Init 860/1000 with method: k-means++
-Inertia for init 860/1000: 670996929.523200
-Init 861/1000 with method: k-means++
-Inertia for init 861/1000: 614942296.212790
-Init 862/1000 with method: k-means++
-Inertia for init 862/1000: 626749349.582324
-Init 863/1000 with method: k-means++
-Inertia for init 863/1000: 633537978.333760
-Init 864/1000 with method: k-means++
-Inertia for init 864/1000: 647902321.285410
-Init 865/1000 with method: k-means++
-Inertia for init 865/1000: 625183801.196919
-Init 866/1000 with method: k-means++
-Inertia for init 866/1000: 627184572.404874
-Init 867/1000 with method: k-means++
-Inertia for init 867/1000: 611313642.923670
-Init 868/1000 with method: k-means++
-Inertia for init 868/1000: 623736224.422982
-Init 869/1000 with method: k-means++
-Inertia for init 869/1000: 616748211.793370
-Init 870/1000 with method: k-means++
-Inertia for init 870/1000: 636554347.136130
-Init 871/1000 with method: k-means++
-Inertia for init 871/1000: 613586137.920957
-Init 872/1000 with method: k-means++
-Inertia for init 872/1000: 618156701.572166
-Init 873/1000 with method: k-means++
-Inertia for init 873/1000: 636412722.008657
-Init 874/1000 with method: k-means++
-Inertia for init 874/1000: 652774955.649509
-Init 875/1000 with method: k-means++
-Inertia for init 875/1000: 624770224.402147
-Init 876/1000 with method: k-means++
-Inertia for init 876/1000: 658198478.470662
-Init 877/1000 with method: k-means++
-Inertia for init 877/1000: 645604872.145801
-Init 878/1000 with method: k-means++
-Inertia for init 878/1000: 620104299.484950
-Init 879/1000 with method: k-means++
-Inertia for init 879/1000: 628109161.910203
-Init 880/1000 with method: k-means++
-Inertia for init 880/1000: 630953332.624755
-Init 881/1000 with method: k-means++
-Inertia for init 881/1000: 605838087.660670
-Init 882/1000 with method: k-means++
-Inertia for init 882/1000: 608183560.761666
-Init 883/1000 with method: k-means++
-Inertia for init 883/1000: 636685097.532409
-Init 884/1000 with method: k-means++
-Inertia for init 884/1000: 607529082.678246
-Init 885/1000 with method: k-means++
-Inertia for init 885/1000: 638727017.194758
-Init 886/1000 with method: k-means++
-Inertia for init 886/1000: 622622124.675864
-Init 887/1000 with method: k-means++
-Inertia for init 887/1000: 638822352.394090
-Init 888/1000 with method: k-means++
-Inertia for init 888/1000: 615308550.523093
-Init 889/1000 with method: k-means++
-Inertia for init 889/1000: 605650882.189514
-Init 890/1000 with method: k-means++
-Inertia for init 890/1000: 622306685.437431
-Init 891/1000 with method: k-means++
-Inertia for init 891/1000: 633438855.456297
-Init 892/1000 with method: k-means++
-Inertia for init 892/1000: 611683191.668082
-Init 893/1000 with method: k-means++
-Inertia for init 893/1000: 618804655.853226
-Init 894/1000 with method: k-means++
-Inertia for init 894/1000: 630799941.840514
-Init 895/1000 with method: k-means++
-Inertia for init 895/1000: 624190660.868577
-Init 896/1000 with method: k-means++
-Inertia for init 896/1000: 628281954.699015
-Init 897/1000 with method: k-means++
-Inertia for init 897/1000: 631069830.999744
-Init 898/1000 with method: k-means++
-Inertia for init 898/1000: 660209766.499351
-Init 899/1000 with method: k-means++
-Inertia for init 899/1000: 634674452.862664
-Init 900/1000 with method: k-means++
-Inertia for init 900/1000: 633555358.033833
-Init 901/1000 with method: k-means++
-Inertia for init 901/1000: 620611577.863625
-Init 902/1000 with method: k-means++
-Inertia for init 902/1000: 645234358.778558
-Init 903/1000 with method: k-means++
-Inertia for init 903/1000: 635896293.017636
-Init 904/1000 with method: k-means++
-Inertia for init 904/1000: 600640272.437461
-Init 905/1000 with method: k-means++
-Inertia for init 905/1000: 652938592.385726
-Init 906/1000 with method: k-means++
-Inertia for init 906/1000: 616641321.411090
-Init 907/1000 with method: k-means++
-Inertia for init 907/1000: 612293311.434636
-Init 908/1000 with method: k-means++
-Inertia for init 908/1000: 639168079.363682
-Init 909/1000 with method: k-means++
-Inertia for init 909/1000: 658123628.285392
-Init 910/1000 with method: k-means++
-Inertia for init 910/1000: 612215386.585549
-Init 911/1000 with method: k-means++
-Inertia for init 911/1000: 632228347.497314
-Init 912/1000 with method: k-means++
-Inertia for init 912/1000: 652382299.294496
-Init 913/1000 with method: k-means++
-Inertia for init 913/1000: 631935020.015018
-Init 914/1000 with method: k-means++
-Inertia for init 919/1000: 660029048.839481
-Init 920/1000 with method: k-means++
-Inertia for init 920/1000: 631218717.935439
-Init 921/1000 with method: k-means++
-Inertia for init 921/1000: 608170760.150868
-Init 922/1000 with method: k-means++
-Inertia for init 922/1000: 641492448.735642
-Init 923/1000 with method: k-means++
-Inertia for init 923/1000: 621069478.476625
-Init 924/1000 with method: k-means++
-Inertia for init 924/1000: 663279401.728351
-Init 925/1000 with method: k-means++
-Inertia for init 925/1000: 598541106.576107
-Init 926/1000 with method: k-means++
-Inertia for init 926/1000: 638134734.711740
-Init 927/1000 with method: k-means++
-Inertia for init 927/1000: 641940993.686816
-Init 928/1000 with method: k-means++
-Inertia for init 928/1000: 667675090.813294
-Init 929/1000 with method: k-means++
-Inertia for init 929/1000: 608114931.501492
-Init 930/1000 with method: k-means++
-Inertia for init 930/1000: 617228533.939550
-Init 931/1000 with method: k-means++
-Inertia for init 931/1000: 652118549.200676
-Init 932/1000 with method: k-means++
-Inertia for init 932/1000: 607335625.669927
-Init 933/1000 with method: k-means++
-Inertia for init 933/1000: 622979654.462143
-Init 934/1000 with method: k-means++
-Inertia for init 934/1000: 667415157.426214
-Init 935/1000 with method: k-means++
-Inertia for init 935/1000: 621082311.096598
-Init 936/1000 with method: k-means++
-Inertia for init 936/1000: 640999390.818981
-Init 937/1000 with method: k-means++
-Inertia for init 937/1000: 640032235.591167
-Init 938/1000 with method: k-means++
-Inertia for init 938/1000: 634765355.198023
-Init 939/1000 with method: k-means++
-Inertia for init 939/1000: 615767079.542527
-Init 940/1000 with method: k-means++
-Inertia for init 940/1000: 651390528.786163
-Init 941/1000 with method: k-means++
-Inertia for init 941/1000: 667232064.394731
-Init 942/1000 with method: k-means++
-Inertia for init 942/1000: 644874671.170702
-Init 943/1000 with method: k-means++
-Inertia for init 943/1000: 628410859.853632
-Init 944/1000 with method: k-means++
-Inertia for init 944/1000: 666966421.388991
-Init 945/1000 with method: k-means++
-Inertia for init 945/1000: 616093115.867071
-Init 946/1000 with method: k-means++
-Inertia for init 946/1000: 634019330.047342
-Init 947/1000 with method: k-means++
-Inertia for init 947/1000: 631205635.925883
-Init 948/1000 with method: k-means++
-Inertia for init 948/1000: 609716981.025476
-Init 949/1000 with method: k-means++
-Inertia for init 949/1000: 615041220.715427
-Init 950/1000 with method: k-means++
-Inertia for init 950/1000: 643545665.645910
-Init 951/1000 with method: k-means++
-Inertia for init 951/1000: 606621958.602106
-Init 952/1000 with method: k-means++
-Inertia for init 952/1000: 618158091.889310
-Init 953/1000 with method: k-means++
-Inertia for init 953/1000: 606779029.947393
-Init 954/1000 with method: k-means++
-Inertia for init 954/1000: 645844745.424858
-Init 955/1000 with method: k-means++
-Inertia for init 955/1000: 643133719.798101
-Init 956/1000 with method: k-means++
-Inertia for init 956/1000: 614903393.055100
-Init 957/1000 with method: k-means++
-Inertia for init 957/1000: 632061718.383662
-Init 958/1000 with method: k-means++
-Inertia for init 958/1000: 616936109.366893
-Init 959/1000 with method: k-means++
-Inertia for init 959/1000: 619875586.389529
-Init 960/1000 with method: k-means++
-Inertia for init 960/1000: 622250466.631134
-Init 961/1000 with method: k-means++
-Inertia for init 961/1000: 619288737.878733
-Init 962/1000 with method: k-means++
-Inertia for init 962/1000: 615810603.852729
-Init 963/1000 with method: k-means++
-Inertia for init 963/1000: 641644365.379187
-Init 964/1000 with method: k-means++
-Inertia for init 964/1000: 635013459.119939
-Init 965/1000 with method: k-means++
-Inertia for init 965/1000: 612497265.367243
-Init 966/1000 with method: k-means++
-Inertia for init 966/1000: 652544099.549998
-Init 967/1000 with method: k-means++
-Inertia for init 967/1000: 648490927.040167
-Init 968/1000 with method: k-means++
-Inertia for init 968/1000: 654305914.040944
-Init 969/1000 with method: k-means++
-Inertia for init 969/1000: 617786935.123537
-Init 970/1000 with method: k-means++
-Inertia for init 970/1000: 633922409.428068
-Init 971/1000 with method: k-means++
-Inertia for init 971/1000: 612336208.423721
-Init 972/1000 with method: k-means++
-Inertia for init 972/1000: 629938103.383733
-Init 973/1000 with method: k-means++
-Inertia for init 973/1000: 680847770.213760
-Init 974/1000 with method: k-means++
-Inertia for init 974/1000: 649203160.670656
-Init 975/1000 with method: k-means++
-Inertia for init 975/1000: 634822659.290051
-Init 976/1000 with method: k-means++
-Inertia for init 976/1000: 633684270.813968
-Init 977/1000 with method: k-means++
-Inertia for init 977/1000: 666705283.174143
-Init 978/1000 with method: k-means++
-Inertia for init 978/1000: 634912736.126164
-Init 979/1000 with method: k-means++
-Inertia for init 979/1000: 620754488.938682
-Init 980/1000 with method: k-means++
-Inertia for init 980/1000: 643099587.799399
-Init 981/1000 with method: k-means++
-Inertia for init 981/1000: 626829058.324353
-Init 982/1000 with method: k-means++
-Inertia for init 982/1000: 661193509.335558
-Init 983/1000 with method: k-means++
-Inertia for init 983/1000: 631165091.882989
-Init 984/1000 with method: k-means++
-Inertia for init 984/1000: 642725474.638407
-Init 985/1000 with method: k-means++
-Inertia for init 985/1000: 624170241.117851
-Init 986/1000 with method: k-means++
-Inertia for init 986/1000: 626519203.635625
-Init 987/1000 with method: k-means++
-Inertia for init 987/1000: 656080528.943669
-Init 988/1000 with method: k-means++
-Inertia for init 988/1000: 616563985.377068
-Init 989/1000 with method: k-means++
-Inertia for init 989/1000: 662959000.246346
-Init 990/1000 with method: k-means++
-Inertia for init 990/1000: 661670410.975225
-Init 991/1000 with method: k-means++
-Inertia for init 991/1000: 597758607.416863
-Init 992/1000 with method: k-means++
-Inertia for init 992/1000: 612318795.727192
-Init 993/1000 with method: k-means++
-Inertia for init 993/1000: 623266324.051325
-Init 994/1000 with method: k-means++
-Inertia for init 994/1000: 631098987.303898
-Init 995/1000 with method: k-means++
-Inertia for init 995/1000: 631376846.484633
-Init 996/1000 with method: k-means++
-Inertia for init 996/1000: 612987494.575893
-Init 997/1000 with method: k-means++
-Inertia for init 997/1000: 645201280.940485
-Init 998/1000 with method: k-means++
-Inertia for init 998/1000: 641311754.537433
-Init 999/1000 with method: k-means++
-Inertia for init 999/1000: 629056832.276283
-Init 1000/1000 with method: k-means++
-Inertia for init 1000/1000: 638377931.702967
-Minibatch iteration 1/1500: mean batch inertia: 196.907502, ewa inertia: 196.907502 
-Minibatch iteration 2/1500: mean batch inertia: 200.371431, ewa inertia: 197.383985 
-Minibatch iteration 3/1500: mean batch inertia: 192.314456, ewa inertia: 196.686643 
-Minibatch iteration 4/1500: mean batch inertia: 204.458659, ewa inertia: 197.755727 
-Minibatch iteration 5/1500: mean batch inertia: 209.065709, ewa inertia: 199.311478 
-Minibatch iteration 6/1500: mean batch inertia: 202.296885, ewa inertia: 199.722137 
-Minibatch iteration 7/1500: mean batch inertia: 203.048380, ewa inertia: 200.179681 
-Minibatch iteration 8/1500: mean batch inertia: 189.636202, ewa inertia: 198.729366 
-Minibatch iteration 9/1500: mean batch inertia: 193.367552, ewa inertia: 197.991819 
-Minibatch iteration 10/1500: mean batch inertia: 181.586651, ewa inertia: 195.735197 
-Minibatch iteration 11/1500: mean batch inertia: 202.896705, ewa inertia: 196.720302 
-Minibatch iteration 12/1500: mean batch inertia: 194.861363, ewa inertia: 196.464595 
-[MiniBatchKMeans] Reassigning 3 cluster centers.
-Minibatch iteration 13/1500: mean batch inertia: 185.390091, ewa inertia: 194.941235 
-Minibatch iteration 14/1500: mean batch inertia: 214.310004, ewa inertia: 197.605517 
-Minibatch iteration 15/1500: mean batch inertia: 225.071390, ewa inertia: 201.383601 
-Minibatch iteration 16/1500: mean batch inertia: 204.425845, ewa inertia: 201.802078 
-Minibatch iteration 17/1500: mean batch inertia: 203.940494, ewa inertia: 202.096229 
-Minibatch iteration 18/1500: mean batch inertia: 207.183471, ewa inertia: 202.796008 
-Minibatch iteration 19/1500: mean batch inertia: 199.101041, ewa inertia: 202.287744 
-Minibatch iteration 20/1500: mean batch inertia: 222.534160, ewa inertia: 205.072752 
-Minibatch iteration 21/1500: mean batch inertia: 193.783878, ewa inertia: 203.519904 
-Minibatch iteration 22/1500: mean batch inertia: 224.679722, ewa inertia: 206.430555 
-Minibatch iteration 23/1500: mean batch inertia: 229.827586, ewa inertia: 209.648947 
-Converged (lack of improvement in inertia) at iteration 23/1500
-Computing label assignment and total inertia
-CPU times: user 15h 29min 37s, sys: 13h 31min 23s, total: 1d 5h 1min
-Wall time: 5h 1min 8s
-</pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MiniBatchKMeans(batch_size=1000000, n_clusters=10, n_init=1000, random_state=42,
-                verbose=1)
-</pre></div>
-</div>
-</div>
-</div>
+<p>We can store resulting labels as a pandas Series to get proper index and save it to a parquet file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -3157,6 +1160,10 @@ Wall time: 5h 1min 8s
 <p>14539578 rows × 1 columns</p>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="generation-of-signature-geometry">
+<h2>Generation of signature geometry<a class="headerlink" href="#generation-of-signature-geometry" title="Permalink to this headline">¶</a></h2>
+<p>With each tessellation cell labelled we now have to dissolve all 14.5 million cells into signature geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -3178,6 +1185,7 @@ Wall time: 5h 1min 8s
 </div>
 </div>
 </div>
+<p>We first dissolve geometries in each chunk separately and store the result as another parquet file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">):</span>
@@ -3193,114 +1201,8 @@ Wall time: 5h 1min 8s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chunk 0 done.
-Chunk 1 done.
-Chunk 2 done.
-Chunk 3 done.
-Chunk 4 done.
-Chunk 5 done.
-Chunk 6 done.
-Chunk 7 done.
-Chunk 8 done.
-Chunk 9 done.
-Chunk 10 done.
-Chunk 11 done.
-Chunk 12 done.
-Chunk 13 done.
-Chunk 14 done.
-Chunk 15 done.
-Chunk 16 done.
-Chunk 17 done.
-Chunk 18 done.
-Chunk 19 done.
-Chunk 20 done.
-Chunk 21 done.
-Chunk 22 done.
-Chunk 23 done.
-Chunk 24 done.
-Chunk 25 done.
-Chunk 26 done.
-Chunk 27 done.
-Chunk 28 done.
-Chunk 29 done.
-Chunk 30 done.
-Chunk 31 done.
-Chunk 32 done.
-Chunk 33 done.
-Chunk 34 done.
-Chunk 35 done.
-Chunk 36 done.
-Chunk 37 done.
-Chunk 38 done.
-Chunk 39 done.
-Chunk 40 done.
-Chunk 41 done.
-Chunk 42 done.
-Chunk 43 done.
-Chunk 44 done.
-Chunk 45 done.
-Chunk 46 done.
-Chunk 47 done.
-Chunk 48 done.
-Chunk 49 done.
-Chunk 50 done.
-Chunk 51 done.
-Chunk 52 done.
-Chunk 53 done.
-Chunk 54 done.
-Chunk 55 done.
-Chunk 56 done.
-Chunk 57 done.
-Chunk 58 done.
-Chunk 59 done.
-Chunk 60 done.
-Chunk 61 done.
-Chunk 62 done.
-Chunk 63 done.
-Chunk 64 done.
-Chunk 65 done.
-Chunk 66 done.
-Chunk 67 done.
-Chunk 68 done.
-Chunk 69 done.
-Chunk 70 done.
-Chunk 71 done.
-Chunk 72 done.
-Chunk 73 done.
-Chunk 74 done.
-Chunk 75 done.
-Chunk 76 done.
-Chunk 77 done.
-Chunk 78 done.
-Chunk 79 done.
-Chunk 80 done.
-Chunk 81 done.
-Chunk 82 done.
-Chunk 83 done.
-Chunk 84 done.
-Chunk 85 done.
-Chunk 86 done.
-Chunk 87 done.
-Chunk 88 done.
-Chunk 89 done.
-Chunk 90 done.
-Chunk 91 done.
-Chunk 92 done.
-Chunk 93 done.
-Chunk 94 done.
-Chunk 95 done.
-Chunk 96 done.
-Chunk 97 done.
-Chunk 98 done.
-Chunk 99 done.
-Chunk 100 done.
-Chunk 101 done.
-Chunk 102 done.
-</pre></div>
 </div>
-</div>
-</div>
+<p>Now we combine all dissolved chunks and dissolve them again to get the final contiguous geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spsigs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/temp/spsig_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.pq&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">103</span><span class="p">)])</span>
@@ -3314,13 +1216,6 @@ Chunk 102 done.
 <span class="n">spsig</span> <span class="o">=</span> <span class="n">dask_dissolve</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;kmeans10gb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
 
 <span class="n">spsig</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_KMeans10_GB.pq&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spsig</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_KMeans10_GB.pq&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3419,10 +1314,11 @@ Chunk 102 done.
 <p>87531 rows × 2 columns</p>
 </div></div></div>
 </div>
+<p>The resulting geometry is dense and complicated. For exploration purposes, it is better to simplify it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">spsig</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename_geometry</span><span class="p">(</span><span class="s2">&quot;geometry&quot;</span><span class="p">),</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
-<span class="n">ddf</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mf">.001</span><span class="p">)</span>
+<span class="n">ddf</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="o">.</span><span class="mi">001</span><span class="p">)</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3564,27 +1460,7 @@ Wall time: 13min 8s
 <p>87531 rows × 4 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">spsig</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
-<span class="n">ddf</span><span class="o">.</span><span class="n">geometry</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="o">%</span><span class="k">time</span> spsig = ddf.compute()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/dask_geopandas/backends.py:31: FutureWarning: The input object of type &#39;LineString&#39; is an array-like implementing one of the corresponding protocols (`__array__`, `__array_interface__` or `__array_struct__`); but not a sequence (or 0-D). In the future, this object will be coerced as if it was first converted using `np.array(obj)`. To retain the old behaviour, you have to either modify the type &#39;LineString&#39;, or assign to an empty array created with `np.empty(correct_shape, dtype=object)`.
-  a = np.array(
-/opt/conda/lib/python3.8/site-packages/dask_geopandas/backends.py:31: FutureWarning: The input object of type &#39;LineString&#39; is an array-like implementing one of the corresponding protocols (`__array__`, `__array_interface__` or `__array_struct__`); but not a sequence (or 0-D). In the future, this object will be coerced as if it was first converted using `np.array(obj)`. To retain the old behaviour, you have to either modify the type &#39;LineString&#39;, or assign to an empty array created with `np.empty(correct_shape, dtype=object)`.
-  a = np.array(
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2min 11s, sys: 1.05 s, total: 2min 12s
-Wall time: 15.2 s
-</pre></div>
-</div>
-</div>
-</div>
+<p>Now we save our geometries to files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spsig</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_KMeans10_GB_simplified.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
@@ -3617,7 +1493,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 <span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;pk.eyJ1IjoibWFydGluZmxlaXMiLCJhIjoiY2tsNmhlemtxMmlicTJubXN6and5aTc2NCJ9.l7nSUXM7ZRjAWTB7oXiswQ&quot;</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;roads&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">get_tiles</span><span class="p">(</span><span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">zorder</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
@@ -3627,7 +1503,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/spatial_signatures_gb_50_0.png" src="../_images/spatial_signatures_gb_50_0.png" />
+<img alt="../_images/spatial_signatures_gb_66_0.png" src="../_images/spatial_signatures_gb_66_0.png" />
 </div>
 </div>
 </div>
@@ -3658,6 +1534,8 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="model_selection.html" title="previous page">Clustering model selection matrix</a>
+    <a class='right-next' id="next-link" href="exploration_of_signatures.html" title="next page">Exploration of top-level clusters</a>
 
         </div>
         

@@ -28,3 +28,8 @@
 - chapter: Cluster analysis
   sections:
     - file: clusters/mastermap_openmap_cluster
+    - file: clusters/model_selection
+    - file: clusters/spatial_signatures_gb
+    - file: clusters/exploration_of_signatures
+    - file: clusters/form_signatures_GB
+
