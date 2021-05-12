@@ -3,11 +3,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta charset="utf-8" />
     <title>Urban morphometrics &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,13 +19,9 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -33,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -44,7 +40,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,14 +52,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Functional data" href="functional_data.html" />
     <link rel="prev" title="Cross-chunk indices" href="cross-chunk_indices.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -72,46 +68,42 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/logo.svg" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p>
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
  <span class="caption-text">
   Project
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="http://urbangrammarai.github.io">
    Project homepage
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
    WP1 - Data processing
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Spatial unit
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../spatial_unit/unit.html">
    Exploration of tessellation
@@ -148,12 +140,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Populating units with data
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="cross-chunk_indices.html">
    Cross-chunk indices
@@ -180,12 +172,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Cluster analysis
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
    Trial of clustering on OpenMap and MasterMap data
@@ -193,6 +185,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -251,12 +244,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -282,12 +275,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#individual-elements">
    Individual elements
@@ -344,8 +336,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -354,7 +345,7 @@
         
               <div>
                 
-  <section id="urban-morphometrics">
+  <div class="section" id="urban-morphometrics">
 <h1>Urban morphometrics<a class="headerlink" href="#urban-morphometrics" title="Permalink to this headline">¶</a></h1>
 <p>Morpohometric assessment measure wide range of characters of urban form to derive a complex description of built-up patterns composed of enclosed tessellation, buildings and street network.</p>
 <p>All algorithms used within this notebook are part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code> Python toolkit and can be used from there. We have extracted them from <code class="docutils literal notranslate"><span class="pre">momepy</span></code>, adapted for <code class="docutils literal notranslate"><span class="pre">dask</span></code> and <code class="docutils literal notranslate"><span class="pre">pygeos</span></code> and used in raw form tailored directly to our use case. The algorithms which were enhanced are pushed back to momepy and will be part of <code class="docutils literal notranslate"><span class="pre">momepy</span></code> 0.4.0.</p>
@@ -365,7 +356,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">get_nodes</span></code> is included in <code class="docutils literal notranslate"><span class="pre">get_node_id</span></code></p></li>
 <li><p>remaining functions have been used to refactor existing momepy classes.</p></li>
 </ul>
-<section id="individual-elements">
+<div class="section" id="individual-elements">
 <h2>Individual elements<a class="headerlink" href="#individual-elements" title="Permalink to this headline">¶</a></h2>
 <p>Note: Requires dask-geopandas and current master of geopandas to support dask version or <code class="docutils literal notranslate"><span class="pre">gds_py:6.0</span></code>.</p>
 <div class="cell docutils container">
@@ -427,7 +418,7 @@
 </div>
 </div>
 </div>
-<section id="measuring-buildings-and-enclosed-cells">
+<div class="section" id="measuring-buildings-and-enclosed-cells">
 <h3>Measuring buildings and enclosed cells<a class="headerlink" href="#measuring-buildings-and-enclosed-cells" title="Permalink to this headline">¶</a></h3>
 <p>In the first step, we iterate over geo-chunks, merge enclosed tessellation and buildings to a single <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code> and convert it to <code class="docutils literal notranslate"><span class="pre">dask.GeoDataFrame</span></code>. The rest of the code is mostly an extraction from momepy source code adapted for dask.</p>
 <div class="cell docutils container">
@@ -523,8 +514,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="measuring-enclosures">
+</div>
+<div class="section" id="measuring-enclosures">
 <h3>Measuring enclosures<a class="headerlink" href="#measuring-enclosures" title="Permalink to this headline">¶</a></h3>
 <p>All enclosures are loaded as a single dask.GeoDataFrame and measured at once.</p>
 <div class="cell docutils container">
@@ -587,9 +578,9 @@
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="generate-spatial-weights-w">
+</div>
+</div>
+<div class="section" id="generate-spatial-weights-w">
 <h2>Generate spatial weights (W)<a class="headerlink" href="#generate-spatial-weights-w" title="Permalink to this headline">¶</a></h2>
 <p>Subsequent steps will require understanding of the context of each tessellation cell in a form of spatial weights matrices (Queen contiguity and Queen contiguty of inclusive 3rd order). We generate them beforehand and store as <code class="docutils literal notranslate"><span class="pre">npz</span></code> files representing sparse matrix.</p>
 <p>Each geo-chunk is loaded together with relevant cross-chunk tessellation cells (to avoid edge effect). We use dask to parallelise the iteration. Number of workers is smaller now to ensure enough memory for each chunk.</p>
@@ -655,8 +646,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="spatial-distribution-and-network-analysis">
+</div>
+<div class="section" id="spatial-distribution-and-network-analysis">
 <h2>Spatial distribution and network analysis<a class="headerlink" href="#spatial-distribution-and-network-analysis" title="Permalink to this headline">¶</a></h2>
 <p>To measure spatial distribution of we use single-core algorithm and parallelise iteration.</p>
 <div class="cell docutils container">
@@ -881,8 +872,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="link-elements-together">
+</div>
+<div class="section" id="link-elements-together">
 <h2>Link elements together<a class="headerlink" href="#link-elements-together" title="Permalink to this headline">¶</a></h2>
 <p>For the further analysis, we need to link data measured on individual elements together. We link cells to edges based on the proportion of overlap (if a cell intersects more than one edge) and nodes based on proximity (with a restriction - node has to be on linked edge). Enclosures are linked based on enclosure ID.</p>
 <p>As above, we define a single-core function and use dask to manage parallel iteration.</p>
@@ -974,8 +965,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="inter-element-characters">
+</div>
+<div class="section" id="inter-element-characters">
 <h2>Inter-element characters<a class="headerlink" href="#inter-element-characters" title="Permalink to this headline">¶</a></h2>
 <p>The remaining morphometric characters are based on a relations between multiple elements. The implementation mirrors the approach above.</p>
 <div class="cell docutils container">
@@ -1127,11 +1118,11 @@
 </div>
 </div>
 <p>At this point, all primary morphometric characters are measured and stored in a chunked parquet.</p>
-</section>
-<section id="convolution">
+</div>
+<div class="section" id="convolution">
 <h2>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h2>
 <p>Morphometric variables are an input of cluster analysis, which should result in delineation of spatial signatures. However, primary morphometric characters can’t be used directly. We have to understand them in context. For that reason, we introduce a convolution step. Each of the characters above will be expressed as a distance-decay-weighted first, second (median) and third quartile within 10 topological steps on enclosed tessellation. Distance is measured between centres of maximum inscribed circles of each geometry. Resulting convolutional data will be then used as an input of cluster analysis.</p>
-<section id="generate-weights-of-10th-order">
+<div class="section" id="generate-weights-of-10th-order">
 <h3>Generate weights of 10th order<a class="headerlink" href="#generate-weights-of-10th-order" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1215,8 +1206,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="measure-distance-decay-weighted-convolutions">
+</div>
+<div class="section" id="measure-distance-decay-weighted-convolutions">
 <h3>Measure distance-decay weighted convolutions<a class="headerlink" href="#measure-distance-decay-weighted-convolutions" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1271,7 +1262,7 @@
                 <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">distance_decay</span><span class="p">[</span><span class="n">sorter</span><span class="p">][</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">]</span>
                 <span class="n">weighted_quantiles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">sample_weight</span>
                 <span class="n">weighted_quantiles</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)</span>
-                <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="o">.</span><span class="mi">75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
+                <span class="n">interpolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">],</span> <span class="n">weighted_quantiles</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="o">~</span><span class="n">nan_mask</span><span class="p">])</span>
                 <span class="n">convolutions</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interpolate</span><span class="p">)</span>
     
     <span class="c1"># save convolutions to parquet file</span>
@@ -1293,9 +1284,9 @@
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1344,11 +1335,9 @@
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

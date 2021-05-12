@@ -3,11 +3,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta charset="utf-8" />
     <title>NDVI &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,13 +19,9 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -33,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -44,7 +40,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,14 +52,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Trial of clustering on OpenMap and MasterMap data" href="../clusters/mastermap_openmap_cluster.html" />
     <link rel="prev" title="Accessibility-based characters" href="accessibility.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -72,46 +68,42 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/logo.svg" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p>
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
  <span class="caption-text">
   Project
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="http://urbangrammarai.github.io">
    Project homepage
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
    WP1 - Data processing
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Spatial unit
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../spatial_unit/unit.html">
    Exploration of tessellation
@@ -148,12 +140,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Populating units with data
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="cross-chunk_indices.html">
    Cross-chunk indices
@@ -180,12 +172,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Cluster analysis
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
    Trial of clustering on OpenMap and MasterMap data
@@ -193,6 +185,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -251,12 +244,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -282,12 +275,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#set-up">
    Set up
@@ -349,8 +341,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -359,7 +350,7 @@
         
               <div>
                 
-  <section id="ndvi">
+  <div class="section" id="ndvi">
 <h1>NDVI<a class="headerlink" href="#ndvi" title="Permalink to this headline">¶</a></h1>
 <p>This document shows the computation of NDVI scores for each of the enclosed tesselations (ETs) in GB.</p>
 <div class="cell docutils container">
@@ -376,7 +367,7 @@
 </div>
 </div>
 </div>
-<section id="set-up">
+<div class="section" id="set-up">
 <h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -402,7 +393,7 @@
 </div>
 </div>
 </div>
-<section id="cluster">
+<div class="section" id="cluster">
 <h3>Cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h3>
 <p>Since we will run some computations on a Dask cluster, let’s set it up first:</p>
 <div class="cell docutils container">
@@ -450,8 +441,8 @@ spec:
 </div>
 </div>
 </div>
-</section>
-<section id="local">
+</div>
+<div class="section" id="local">
 <h3>Local<a class="headerlink" href="#local" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -468,9 +459,9 @@ spec:
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="data">
+</div>
+</div>
+<div class="section" id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>And paths to the two datasets we’ll use:</p>
 <ul class="simple">
@@ -1016,8 +1007,8 @@ Attributes:
 </div>
 </div>
 </div>
-</section>
-<section id="explore-dataarray-size-by-chunk">
+</div>
+<div class="section" id="explore-dataarray-size-by-chunk">
 <h2>Explore <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> size by chunk<a class="headerlink" href="#explore-dataarray-size-by-chunk" title="Permalink to this headline">¶</a></h2>
 <p>In sparsely populated areas, ET cells will tend to be larger and, thus translate into larger sizes of the imagery required to cover it. Let’s explore the extent to which this is an issue.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">chunk_dimension</span></code> method below completes the following tasks for a given chunk:</p>
@@ -1219,8 +1210,8 @@ Wall time: 1min 21s
 </table>
 </div></div></div>
 </div>
-</section>
-<section id="distribute-computation-by-et-cell">
+</div>
+<div class="section" id="distribute-computation-by-et-cell">
 <h2>Distribute computation by ET cell<a class="headerlink" href="#distribute-computation-by-et-cell" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1452,9 +1443,9 @@ Wall time: 36min 36s
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="deprecated-xarray-based-computation">
+<div class="section" id="deprecated-xarray-based-computation">
 <h2>[DEPRECATED] <code class="docutils literal notranslate"><span class="pre">xarray</span></code>-based computation<a class="headerlink" href="#deprecated-xarray-based-computation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1659,9 +1650,9 @@ Length: 495, dtype: float64
 </div>
 </div>
 </div>
-</section>
+</div>
 <hr class="docutils" />
-<section id="deprecated-alternative-using-geocube">
+<div class="section" id="deprecated-alternative-using-geocube">
 <h2>[DEPRECATED] Alternative using <code class="docutils literal notranslate"><span class="pre">geocube</span></code><a class="headerlink" href="#deprecated-alternative-using-geocube" title="Permalink to this headline">¶</a></h2>
 <p>The alternative involves <a class="reference external" href="https://corteva.github.io/geocube/stable/examples/zonal_statistics.html"><code class="docutils literal notranslate"><span class="pre">geocube</span></code>’s zonal stats</a> and <code class="docutils literal notranslate"><span class="pre">make_geocube</span></code>. In this approach, we first rasterize our ET cells in a grid aligned with the mosaic, then calculate the NDVI. At present, this approach is discarded because the resolution of the mosaic (10m) makes it too coarse to obtain an NDVI for each cell.</p>
 <div class="cell docutils container">
@@ -1924,8 +1915,8 @@ Wall time: 1.6 s
 </table>
 </div></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1974,11 +1965,9 @@ Wall time: 1.6 s
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

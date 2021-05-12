@@ -3,11 +3,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
-
+    <meta charset="utf-8" />
     <title>Convolutions based on larger number of neighbours &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,13 +19,9 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -33,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -44,7 +40,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -54,14 +50,14 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -70,46 +66,42 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/logo.svg" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <p>
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
  <span class="caption-text">
   Project
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference external" href="http://urbangrammarai.github.io">
    Project homepage
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
    WP1 - Data processing
-   <i class="fas fa-external-link-alt">
-   </i>
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Spatial unit
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../spatial_unit/unit.html">
    Exploration of tessellation
@@ -146,12 +138,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Populating units with data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../measuring/cross-chunk_indices.html">
    Cross-chunk indices
@@ -178,12 +170,12 @@
   </a>
  </li>
 </ul>
-<p>
+<p class="caption">
  <span class="caption-text">
   Cluster analysis
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="mastermap_openmap_cluster.html">
    Trial of clustering on OpenMap and MasterMap data
@@ -191,6 +183,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 </div>
@@ -249,12 +242,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -280,12 +273,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#queen-10">
    queen 10
@@ -293,8 +285,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -306,10 +297,10 @@
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># gpu</span>
-<span class="kn">import</span> <span class="nn">cudf</span>
-<span class="kn">import</span> <span class="nn">cuml</span>
-<span class="kn">import</span> <span class="nn">rmm</span>
-<span class="kn">from</span> <span class="nn">cuml.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="c1"># import cudf</span>
+<span class="c1"># import cuml</span>
+<span class="c1"># import rmm</span>
+<span class="c1"># from cuml.manifold import TSNE</span>
 
 <span class="c1"># cpu</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -333,7 +324,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/sp_sig_concept/barcelona/convolutions.pq&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/sp_sig_concept/barcelona/convolutions.pq&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -879,7 +870,7 @@ Wall time: 5.04 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="o">.</span><span class="mi">005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mf">.005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">scatter2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">~</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">])],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">~</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">])],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
                     <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classes&quot;</span><span class="p">)</span>
@@ -947,7 +938,7 @@ dtype: int32
 
 <span class="n">labs</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
 
-<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="o">.</span><span class="mi">005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labs</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mf">.005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labs</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
 <span class="n">scatter2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
 <span class="c1"># scatter2 = plt.scatter(pca_float.components_[0][~labels.clusters.isin([0, 16, 8, 9, 12])], pca_float.components_[1][~labels.clusters.isin([0, 16, 8, 9, 12])], s = 1, c=&#39;r&#39;)</span>
 <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
@@ -1007,8 +998,8 @@ K=29 fitted in 29.06764578819275 seconds.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.5</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1020,8 +1011,8 @@ K=29 fitted in 29.06764578819275 seconds.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cg</span> <span class="o">=</span> <span class="n">Clustergram</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cuML&#39;</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">cg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.5</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1133,45 +1124,33 @@ K=29 fitted in 16.57529044151306 seconds.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npdata</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npdata</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npdata</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npdata</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.76542764, -1.03694616, -1.34336763, ..., -0.01402612,
-        -0.01604238, -0.01606129],
-       [-0.74333668, -1.03445734, -1.33742252, ..., -0.01338814,
-        -0.01604238, -0.02205734],
-       [-0.74603183, -1.03445734, -1.33742252, ..., -0.01338814,
-        -0.01604238, -0.02205734],
-       ...,
-       [-0.20147215, -0.300567  , -0.5153385 , ..., -0.02949705,
-        -0.03180218, -0.02936915],
-       [-0.27508384, -0.25712412, -0.16972928, ..., -0.02949705,
-        -0.03156138, -0.01727329],
-       [-0.29931344,  0.33072728,  0.35361482, ..., -0.02080812,
-        -0.02250639, -0.02468808]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>276.94620816626656
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">.01</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.01</span><span class="p">,</span>
               <span class="n">neighborhood_function</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1180,44 +1159,21 @@ K=29 fitted in 16.57529044151306 seconds.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som</span><span class="o">.</span><span class="n">train_batch</span><span class="p">(</span><span class="n">npdata</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">winner_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">som</span><span class="o">.</span><span class="n">winner</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">npdata</span><span class="p">])</span>
+<span class="n">hashes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">winner_coordinates</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hashes</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [ 50000 / 50000 ] 100% - 0:00:00 left 
- quantization error: 10.418379937391682
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">winner_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">som</span><span class="o">.</span><span class="n">winner</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">npdata</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hashes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">winner_coordinates</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hashes</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_35_0.png" src="../_images/model_comparison_barcelona_35_0.png" />
+<img alt="../_images/model_comparison_barcelona_32_0.png" src="../_images/model_comparison_barcelona_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span>
               <span class="n">neighborhood_function</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">som</span><span class="o">.</span><span class="n">train_batch</span><span class="p">(</span><span class="n">npdata</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -1225,7 +1181,7 @@ K=29 fitted in 16.57529044151306 seconds.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [ 50000 / 50000 ] 100% - 0:00:00 left 
- quantization error: 9.550834324671099
+ quantization error: nan
 </pre></div>
 </div>
 </div>
@@ -1245,13 +1201,13 @@ K=29 fitted in 16.57529044151306 seconds.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_38_0.png" src="../_images/model_comparison_barcelona_38_0.png" />
+<img alt="../_images/model_comparison_barcelona_35_0.png" src="../_images/model_comparison_barcelona_35_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">npdata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span>
               <span class="n">neighborhood_function</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">som</span><span class="o">.</span><span class="n">train_batch</span><span class="p">(</span><span class="n">npdata</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">50000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -1279,7 +1235,7 @@ K=29 fitted in 16.57529044151306 seconds.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_41_0.png" src="../_images/model_comparison_barcelona_41_0.png" />
+<img alt="../_images/model_comparison_barcelona_38_0.png" src="../_images/model_comparison_barcelona_38_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1359,10 +1315,10 @@ Initialization converged: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_44_0.png" src="../_images/model_comparison_barcelona_44_0.png" />
+<img alt="../_images/model_comparison_barcelona_41_0.png" src="../_images/model_comparison_barcelona_41_0.png" />
 </div>
 </div>
-<section id="convolutions-based-on-larger-number-of-neighbours">
+<div class="section" id="convolutions-based-on-larger-number-of-neighbours">
 <h1>Convolutions based on larger number of neighbours<a class="headerlink" href="#convolutions-based-on-larger-number-of-neighbours" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1518,8 +1474,8 @@ Wall time: 5.6 s
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cg</span> <span class="o">=</span> <span class="n">Clustergram</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cuML&#39;</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">cg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.5</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1556,7 +1512,7 @@ K=28 fitted in 21.31261444091797 seconds.
 K=29 fitted in 19.05107307434082 seconds.
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_55_1.png" src="../_images/model_comparison_barcelona_55_1.png" />
+<img alt="../_images/model_comparison_barcelona_52_1.png" src="../_images/model_comparison_barcelona_52_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1586,7 +1542,7 @@ Wall time: 3.75 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_57_0.png" src="../_images/model_comparison_barcelona_57_0.png" />
+<img alt="../_images/model_comparison_barcelona_54_0.png" src="../_images/model_comparison_barcelona_54_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1605,7 +1561,7 @@ Wall time: 3.75 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="o">.</span><span class="mi">005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mf">.005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">scatter2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">~</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">])],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">~</span><span class="n">labels</span><span class="o">.</span><span class="n">clusters</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">])],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
                     <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower left&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classes&quot;</span><span class="p">)</span>
@@ -1617,7 +1573,7 @@ Wall time: 3.75 s
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa9020e77f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_59_1.png" src="../_images/model_comparison_barcelona_59_1.png" />
+<img alt="../_images/model_comparison_barcelona_56_1.png" src="../_images/model_comparison_barcelona_56_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1657,7 +1613,7 @@ dtype: int32
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_62_1.png" src="../_images/model_comparison_barcelona_62_1.png" />
+<img alt="../_images/model_comparison_barcelona_59_1.png" src="../_images/model_comparison_barcelona_59_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1666,7 +1622,7 @@ dtype: int32
 
 <span class="n">labs</span> <span class="o">=</span> <span class="n">dbscan</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
 
-<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="o">.</span><span class="mi">005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labs</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mf">.005</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labs</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
 <span class="n">scatter2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pca_float</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
 <span class="c1"># scatter2 = plt.scatter(pca_float.components_[0][~labels.clusters.isin([0, 16, 8, 9, 12])], pca_float.components_[1][~labels.clusters.isin([0, 16, 8, 9, 12])], s = 1, c=&#39;r&#39;)</span>
 <span class="n">legend1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(</span><span class="s1">&#39;colors&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
@@ -1679,7 +1635,7 @@ dtype: int32
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa9018515e0&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_63_1.png" src="../_images/model_comparison_barcelona_63_1.png" />
+<img alt="../_images/model_comparison_barcelona_60_1.png" src="../_images/model_comparison_barcelona_60_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1726,18 +1682,53 @@ K=29 fitted in 22.709083080291748 seconds.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.5</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_65_0.png" src="../_images/model_comparison_barcelona_65_0.png" />
+<img alt="../_images/model_comparison_barcelona_62_0.png" src="../_images/model_comparison_barcelona_62_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">cuml</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">to_array</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Number of clusters (k)&#39;, ylabel=&#39;PCA weighted mean of the clusters&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/model_comparison_barcelona_64_1.png" src="../_images/model_comparison_barcelona_64_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">to_array</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Number of clusters (k)&#39;, ylabel=&#39;PCA weighted mean of the clusters&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/model_comparison_barcelona_65_1.png" src="../_images/model_comparison_barcelona_65_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">cuml</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1772,41 +1763,6 @@ K=29 fitted in 22.709083080291748 seconds.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">cuml</span><span class="o">.</span><span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">to_array</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Number of clusters (k)&#39;, ylabel=&#39;PCA weighted mean of the clusters&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/model_comparison_barcelona_70_1.png" src="../_images/model_comparison_barcelona_70_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">to_array</span><span class="p">(),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">gdf</span><span class="p">[</span><span class="n">labs</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Number of clusters (k)&#39;, ylabel=&#39;PCA weighted mean of the clusters&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/model_comparison_barcelona_71_1.png" src="../_images/model_comparison_barcelona_71_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1815,7 +1771,7 @@ K=29 fitted in 22.709083080291748 seconds.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span>
               <span class="n">neighborhood_function</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">som</span><span class="o">.</span><span class="n">train_batch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -1837,10 +1793,10 @@ K=29 fitted in 22.709083080291748 seconds.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_74_0.png" src="../_images/model_comparison_barcelona_74_0.png" />
+<img alt="../_images/model_comparison_barcelona_71_0.png" src="../_images/model_comparison_barcelona_71_0.png" />
 </div>
 </div>
-<section id="queen-10">
+<div class="section" id="queen-10">
 <h2>queen 10<a class="headerlink" href="#queen-10" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1894,8 +1850,8 @@ K=29 fitted in 22.709083080291748 seconds.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cg</span> <span class="o">=</span> <span class="n">Clustergram</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;cuML&#39;</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">cg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.5</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1932,13 +1888,13 @@ K=28 fitted in 10.361891746520996 seconds.
 K=29 fitted in 10.757899522781372 seconds.
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_81_1.png" src="../_images/model_comparison_barcelona_81_1.png" />
+<img alt="../_images/model_comparison_barcelona_78_1.png" src="../_images/model_comparison_barcelona_78_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">5</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cluster_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;edgecolor&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.6</span><span class="p">},</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+       <span class="n">line_style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="mf">.5</span><span class="p">})</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">34</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1947,7 +1903,7 @@ K=29 fitted in 10.757899522781372 seconds.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-34.0, 10.0)
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_82_1.png" src="../_images/model_comparison_barcelona_82_1.png" />
+<img alt="../_images/model_comparison_barcelona_79_1.png" src="../_images/model_comparison_barcelona_79_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1968,7 +1924,7 @@ K=29 fitted in 10.757899522781372 seconds.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Number of clusters (k)&#39;, ylabel=&#39;PCA weighted mean of the clusters&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_84_1.png" src="../_images/model_comparison_barcelona_84_1.png" />
+<img alt="../_images/model_comparison_barcelona_81_1.png" src="../_images/model_comparison_barcelona_81_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1981,7 +1937,7 @@ K=29 fitted in 10.757899522781372 seconds.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_85_1.png" src="../_images/model_comparison_barcelona_85_1.png" />
+<img alt="../_images/model_comparison_barcelona_82_1.png" src="../_images/model_comparison_barcelona_82_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2001,7 +1957,7 @@ K=29 fitted in 10.757899522781372 seconds.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_87_1.png" src="../_images/model_comparison_barcelona_87_1.png" />
+<img alt="../_images/model_comparison_barcelona_84_1.png" src="../_images/model_comparison_barcelona_84_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2015,13 +1971,13 @@ K=29 fitted in 10.757899522781372 seconds.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/model_comparison_barcelona_88_1.png" src="../_images/model_comparison_barcelona_88_1.png" />
+<img alt="../_images/model_comparison_barcelona_85_1.png" src="../_images/model_comparison_barcelona_85_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">som_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">som_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.25</span><span class="p">,</span>
               <span class="n">neighborhood_function</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2049,7 +2005,7 @@ K=29 fitted in 10.757899522781372 seconds.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_91_0.png" src="../_images/model_comparison_barcelona_91_0.png" />
+<img alt="../_images/model_comparison_barcelona_88_0.png" src="../_images/model_comparison_barcelona_88_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2112,7 +2068,7 @@ Initialization converged: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/model_comparison_barcelona_93_0.png" src="../_images/model_comparison_barcelona_93_0.png" />
+<img alt="../_images/model_comparison_barcelona_90_0.png" src="../_images/model_comparison_barcelona_90_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2148,8 +2104,114 @@ Initialization converged: True
 </div>
 </div>
 </div>
-</section>
-</section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fitted</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">npdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initialization 0
+  Iteration 10
+  Iteration 20
+  Iteration 30
+  Iteration 40
+Initialization converged: True
+Initialization 1
+  Iteration 10
+  Iteration 20
+  Iteration 30
+  Iteration 40
+  Iteration 50
+Initialization converged: True
+Initialization 2
+  Iteration 10
+  Iteration 20
+  Iteration 30
+  Iteration 40
+  Iteration 50
+  Iteration 60
+Initialization converged: True
+Initialization 3
+  Iteration 10
+  Iteration 20
+  Iteration 30
+  Iteration 40
+  Iteration 50
+Initialization converged: True
+Initialization 4
+  Iteration 10
+  Iteration 20
+  Iteration 30
+  Iteration 40
+  Iteration 50
+Initialization converged: True
+CPU times: user 1h 48min 51s, sys: 2h 11min 30s, total: 4h 21s
+Wall time: 16min 25s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">-</span><span class="n">extra</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting scikit-learn-extra
+  Downloading scikit_learn_extra-0.2.0-cp38-cp38-manylinux2010_x86_64.whl (1.9 MB)
+     |████████████████████████████████| 1.9 MB 6.6 MB/s eta 0:00:01
+?25hRequirement already satisfied: numpy&gt;=1.13.3 in /opt/conda/lib/python3.8/site-packages (from scikit-learn-extra) (1.20.1)
+Requirement already satisfied: scikit-learn&gt;=0.23.0 in /opt/conda/lib/python3.8/site-packages (from scikit-learn-extra) (0.24.1)
+Requirement already satisfied: scipy&gt;=0.19.1 in /opt/conda/lib/python3.8/site-packages (from scikit-learn-extra) (1.6.0)
+Requirement already satisfied: joblib&gt;=0.11 in /opt/conda/lib/python3.8/site-packages (from scikit-learn&gt;=0.23.0-&gt;scikit-learn-extra) (1.0.1)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /opt/conda/lib/python3.8/site-packages (from scikit-learn&gt;=0.23.0-&gt;scikit-learn-extra) (2.1.0)
+Installing collected packages: scikit-learn-extra
+Successfully installed scikit-learn-extra-0.2.0
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn_extra.cluster</span> <span class="kn">import</span> <span class="n">KMedoids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">KMedoids</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">npdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2min 32s, sys: 2min 2s, total: 4min 35s
+Wall time: 2min 6s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="s1">&#39;buildings&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/model_comparison_barcelona_101_1.png" src="../_images/model_comparison_barcelona_101_1.png" />
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2196,11 +2258,9 @@ Initialization converged: True
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

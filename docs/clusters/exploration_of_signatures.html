@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exploration of top-level clusters &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clusters/exploration_of_signatures.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/clusters/exploration_of_signatures.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overall-similarity">
+   Overall similarity
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#characterisation">
+   Characterisation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#countryside">
+     Countryside
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#urban-areas">
+     Urban areas
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#periphery">
+       Periphery
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#suburbs">
+       Suburbs
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cities">
+       Cities
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="exploration-of-top-level-clusters">
+<h1>Exploration of top-level clusters<a class="headerlink" href="#exploration-of-top-level-clusters" title="Permalink to this headline">¶</a></h1>
+<p>This notebook contains intitial exploration of the top-level clusters forming Spatial Signatures in Great Britain.</p>
+<p>The notebook looks at the overall similarity of clusters and picks the selection of representative characters to understand what each of the classes is composed of.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">dask.dataframe</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need the original data in the same form as was used in the clustering.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> standardized_form = dask.dataframe.read_parquet(&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/form/standardized/&quot;).set_index(&#39;hindex&#39;)
+<span class="o">%</span><span class="k">time</span> stand_fn = dask.dataframe.read_parquet(&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/function/standardized/&quot;)
+<span class="o">%</span><span class="k">time</span> data = dask.dataframe.multi.concat([standardized_form, stand_fn], axis=1).replace([np.inf, -np.inf], np.nan).fillna(0)
+<span class="o">%</span><span class="k">time</span> data = data.drop(columns=[&quot;keep_q1&quot;, &quot;keep_q2&quot;, &quot;keep_q3&quot;])
+<span class="o">%</span><span class="k">time</span> data = data.compute()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 38.1 s, sys: 32.9 s, total: 1min 11s
+Wall time: 1min 44s
+CPU times: user 76.8 ms, sys: 461 ms, total: 537 ms
+Wall time: 598 ms
+CPU times: user 45 ms, sys: 4.3 ms, total: 49.4 ms
+Wall time: 43.7 ms
+CPU times: user 18.5 ms, sys: 0 ns, total: 18.5 ms
+Wall time: 18.4 ms
+CPU times: user 2min 40s, sys: 1min 27s, total: 4min 7s
+Wall time: 2min 44s
+</pre></div>
+</div>
+</div>
+</div>
+<p>And labels indicating the final cluster for each enclosed tessellation cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/KMeans10GB.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="overall-similarity">
+<h2>Overall similarity<a class="headerlink" href="#overall-similarity" title="Permalink to this headline">¶</a></h2>
+<p>Similarity of clusters can be represented by hierarchical dendrogram generated using Ward’s agglomerative clustering.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.cluster</span> <span class="kn">import</span> <span class="n">hierarchy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We use cluster centroids (mean value) for the characterisation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="s1">&#39;kmeans10gb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># cluster centroids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can create hierarchical classification based on cluster centers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="s1">&#39;ward&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">dn</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exploration_of_signatures_12_0.png" src="../_images/exploration_of_signatures_12_0.png" />
+</div>
+</div>
+<p>The diagram in the cell above shows that the most dissimilar cluster is the 9 (city centers). The branch on the very right (4, 0, 7) contains predominantly countryside-based signatures. Clusters 2 and 6 form the main bulk of low density development, while the remaining classes (1, 5, 3, 8) cover various industrial, peripheral and fringe locations in cities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="p">[</span><span class="s1">&#39;kmeans10gb&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7    3686554
+0    3022385
+3    2561211
+1    1962830
+2    1115564
+5     707211
+4     595902
+8     564318
+6     209959
+9     113644
+Name: kmeans10gb, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Classification is relatively balanced with no outlier class in terms of number of observations.</p>
+</div>
+<div class="section" id="characterisation">
+<h2>Characterisation<a class="headerlink" href="#characterisation" title="Permalink to this headline">¶</a></h2>
+<p>In the section below, we look at some of the characters used within the clustering to characterise the individual categories for a better understandning how they differ.</p>
+<p>Let’s see which columns are available.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;sdbAre_q1&#39;, &#39;sdbAre_q2&#39;, &#39;sdbAre_q3&#39;, &#39;sdbPer_q1&#39;, &#39;sdbPer_q2&#39;,
+       &#39;sdbPer_q3&#39;, &#39;sdbCoA_q1&#39;, &#39;sdbCoA_q2&#39;, &#39;sdbCoA_q3&#39;, &#39;ssbCCo_q1&#39;,
+       &#39;ssbCCo_q2&#39;, &#39;ssbCCo_q3&#39;, &#39;ssbCor_q1&#39;, &#39;ssbCor_q2&#39;, &#39;ssbCor_q3&#39;,
+       &#39;ssbSqu_q1&#39;, &#39;ssbSqu_q2&#39;, &#39;ssbSqu_q3&#39;, &#39;ssbERI_q1&#39;, &#39;ssbERI_q2&#39;,
+       &#39;ssbERI_q3&#39;, &#39;ssbElo_q1&#39;, &#39;ssbElo_q2&#39;, &#39;ssbElo_q3&#39;, &#39;ssbCCM_q1&#39;,
+       &#39;ssbCCM_q2&#39;, &#39;ssbCCM_q3&#39;, &#39;ssbCCD_q1&#39;, &#39;ssbCCD_q2&#39;, &#39;ssbCCD_q3&#39;,
+       &#39;stbOri_q1&#39;, &#39;stbOri_q2&#39;, &#39;stbOri_q3&#39;, &#39;sdcLAL_q1&#39;, &#39;sdcLAL_q2&#39;,
+       &#39;sdcLAL_q3&#39;, &#39;sdcAre_q1&#39;, &#39;sdcAre_q2&#39;, &#39;sdcAre_q3&#39;, &#39;sscCCo_q1&#39;,
+       &#39;sscCCo_q2&#39;, &#39;sscCCo_q3&#39;, &#39;sscERI_q1&#39;, &#39;sscERI_q2&#39;, &#39;sscERI_q3&#39;,
+       &#39;stcOri_q1&#39;, &#39;stcOri_q2&#39;, &#39;stcOri_q3&#39;, &#39;sicCAR_q1&#39;, &#39;sicCAR_q2&#39;,
+       &#39;sicCAR_q3&#39;, &#39;stbCeA_q1&#39;, &#39;stbCeA_q2&#39;, &#39;stbCeA_q3&#39;, &#39;mtbAli_q1&#39;,
+       &#39;mtbAli_q2&#39;, &#39;mtbAli_q3&#39;, &#39;mtbNDi_q1&#39;, &#39;mtbNDi_q2&#39;, &#39;mtbNDi_q3&#39;,
+       &#39;mtcWNe_q1&#39;, &#39;mtcWNe_q2&#39;, &#39;mtcWNe_q3&#39;, &#39;mdcAre_q1&#39;, &#39;mdcAre_q2&#39;,
+       &#39;mdcAre_q3&#39;, &#39;ltcWRE_q1&#39;, &#39;ltcWRE_q2&#39;, &#39;ltcWRE_q3&#39;, &#39;ltbIBD_q1&#39;,
+       &#39;ltbIBD_q2&#39;, &#39;ltbIBD_q3&#39;, &#39;sdsSPW_q1&#39;, &#39;sdsSPW_q2&#39;, &#39;sdsSPW_q3&#39;,
+       &#39;sdsSWD_q1&#39;, &#39;sdsSWD_q2&#39;, &#39;sdsSWD_q3&#39;, &#39;sdsSPO_q1&#39;, &#39;sdsSPO_q2&#39;,
+       &#39;sdsSPO_q3&#39;, &#39;sdsLen_q1&#39;, &#39;sdsLen_q2&#39;, &#39;sdsLen_q3&#39;, &#39;sssLin_q1&#39;,
+       &#39;sssLin_q2&#39;, &#39;sssLin_q3&#39;, &#39;ldsMSL_q1&#39;, &#39;ldsMSL_q2&#39;, &#39;ldsMSL_q3&#39;,
+       &#39;mtdDeg_q1&#39;, &#39;mtdDeg_q2&#39;, &#39;mtdDeg_q3&#39;, &#39;lcdMes_q1&#39;, &#39;lcdMes_q2&#39;,
+       &#39;lcdMes_q3&#39;, &#39;linP3W_q1&#39;, &#39;linP3W_q2&#39;, &#39;linP3W_q3&#39;, &#39;linP4W_q1&#39;,
+       &#39;linP4W_q2&#39;, &#39;linP4W_q3&#39;, &#39;linPDE_q1&#39;, &#39;linPDE_q2&#39;, &#39;linPDE_q3&#39;,
+       &#39;lcnClo_q1&#39;, &#39;lcnClo_q2&#39;, &#39;lcnClo_q3&#39;, &#39;ldsCDL_q1&#39;, &#39;ldsCDL_q2&#39;,
+       &#39;ldsCDL_q3&#39;, &#39;xcnSCl_q1&#39;, &#39;xcnSCl_q2&#39;, &#39;xcnSCl_q3&#39;, &#39;mtdMDi_q1&#39;,
+       &#39;mtdMDi_q2&#39;, &#39;mtdMDi_q3&#39;, &#39;lddNDe_q1&#39;, &#39;lddNDe_q2&#39;, &#39;lddNDe_q3&#39;,
+       &#39;linWID_q1&#39;, &#39;linWID_q2&#39;, &#39;linWID_q3&#39;, &#39;stbSAl_q1&#39;, &#39;stbSAl_q2&#39;,
+       &#39;stbSAl_q3&#39;, &#39;sddAre_q1&#39;, &#39;sddAre_q2&#39;, &#39;sddAre_q3&#39;, &#39;sdsAre_q1&#39;,
+       &#39;sdsAre_q2&#39;, &#39;sdsAre_q3&#39;, &#39;sisBpM_q1&#39;, &#39;sisBpM_q2&#39;, &#39;sisBpM_q3&#39;,
+       &#39;misCel_q1&#39;, &#39;misCel_q2&#39;, &#39;misCel_q3&#39;, &#39;mdsAre_q1&#39;, &#39;mdsAre_q2&#39;,
+       &#39;mdsAre_q3&#39;, &#39;lisCel_q1&#39;, &#39;lisCel_q2&#39;, &#39;lisCel_q3&#39;, &#39;ldsAre_q1&#39;,
+       &#39;ldsAre_q2&#39;, &#39;ldsAre_q3&#39;, &#39;ltcRea_q1&#39;, &#39;ltcRea_q2&#39;, &#39;ltcRea_q3&#39;,
+       &#39;ltcAre_q1&#39;, &#39;ltcAre_q2&#39;, &#39;ltcAre_q3&#39;, &#39;ldeAre_q1&#39;, &#39;ldeAre_q2&#39;,
+       &#39;ldeAre_q3&#39;, &#39;ldePer_q1&#39;, &#39;ldePer_q2&#39;, &#39;ldePer_q3&#39;, &#39;lseCCo_q1&#39;,
+       &#39;lseCCo_q2&#39;, &#39;lseCCo_q3&#39;, &#39;lseERI_q1&#39;, &#39;lseERI_q2&#39;, &#39;lseERI_q3&#39;,
+       &#39;lseCWA_q1&#39;, &#39;lseCWA_q2&#39;, &#39;lseCWA_q3&#39;, &#39;lteOri_q1&#39;, &#39;lteOri_q2&#39;,
+       &#39;lteOri_q3&#39;, &#39;lteWNB_q1&#39;, &#39;lteWNB_q2&#39;, &#39;lteWNB_q3&#39;, &#39;lieWCe_q1&#39;,
+       &#39;lieWCe_q2&#39;, &#39;lieWCe_q3&#39;, &#39;population_q1&#39;, &#39;population_q2&#39;,
+       &#39;population_q3&#39;, &#39;night_lights_q1&#39;, &#39;night_lights_q2&#39;,
+       &#39;night_lights_q3&#39;, &#39;A, B, D, E. Agriculture, energy and water_q1&#39;,
+       &#39;A, B, D, E. Agriculture, energy and water_q2&#39;,
+       &#39;A, B, D, E. Agriculture, energy and water_q3&#39;,
+       &#39;C. Manufacturing_q1&#39;, &#39;C. Manufacturing_q2&#39;,
+       &#39;C. Manufacturing_q3&#39;, &#39;F. Construction_q1&#39;, &#39;F. Construction_q2&#39;,
+       &#39;F. Construction_q3&#39;,
+       &#39;G, I. Distribution, hotels and restaurants_q1&#39;,
+       &#39;G, I. Distribution, hotels and restaurants_q2&#39;,
+       &#39;G, I. Distribution, hotels and restaurants_q3&#39;,
+       &#39;H, J. Transport and communication_q1&#39;,
+       &#39;H, J. Transport and communication_q2&#39;,
+       &#39;H, J. Transport and communication_q3&#39;,
+       &#39;K, L, M, N. Financial, real estate, professional and administrative activities_q1&#39;,
+       &#39;K, L, M, N. Financial, real estate, professional and administrative activities_q2&#39;,
+       &#39;K, L, M, N. Financial, real estate, professional and administrative activities_q3&#39;,
+       &#39;O,P,Q. Public administration, education and health_q1&#39;,
+       &#39;O,P,Q. Public administration, education and health_q2&#39;,
+       &#39;O,P,Q. Public administration, education and health_q3&#39;,
+       &#39;R, S, T, U. Other_q1&#39;, &#39;R, S, T, U. Other_q2&#39;,
+       &#39;R, S, T, U. Other_q3&#39;, &#39;Code_18_124_q1&#39;, &#39;Code_18_124_q2&#39;,
+       &#39;Code_18_124_q3&#39;, &#39;Code_18_211_q1&#39;, &#39;Code_18_211_q2&#39;,
+       &#39;Code_18_211_q3&#39;, &#39;Code_18_121_q1&#39;, &#39;Code_18_121_q2&#39;,
+       &#39;Code_18_121_q3&#39;, &#39;Code_18_421_q1&#39;, &#39;Code_18_421_q2&#39;,
+       &#39;Code_18_421_q3&#39;, &#39;Code_18_522_q1&#39;, &#39;Code_18_522_q2&#39;,
+       &#39;Code_18_522_q3&#39;, &#39;Code_18_142_q1&#39;, &#39;Code_18_142_q2&#39;,
+       &#39;Code_18_142_q3&#39;, &#39;Code_18_141_q1&#39;, &#39;Code_18_141_q2&#39;,
+       &#39;Code_18_141_q3&#39;, &#39;Code_18_112_q1&#39;, &#39;Code_18_112_q2&#39;,
+       &#39;Code_18_112_q3&#39;, &#39;Code_18_231_q1&#39;, &#39;Code_18_231_q2&#39;,
+       &#39;Code_18_231_q3&#39;, &#39;Code_18_311_q1&#39;, &#39;Code_18_311_q2&#39;,
+       &#39;Code_18_311_q3&#39;, &#39;Code_18_131_q1&#39;, &#39;Code_18_131_q2&#39;,
+       &#39;Code_18_131_q3&#39;, &#39;Code_18_123_q1&#39;, &#39;Code_18_123_q2&#39;,
+       &#39;Code_18_123_q3&#39;, &#39;Code_18_122_q1&#39;, &#39;Code_18_122_q2&#39;,
+       &#39;Code_18_122_q3&#39;, &#39;Code_18_512_q1&#39;, &#39;Code_18_512_q2&#39;,
+       &#39;Code_18_512_q3&#39;, &#39;Code_18_243_q1&#39;, &#39;Code_18_243_q2&#39;,
+       &#39;Code_18_243_q3&#39;, &#39;Code_18_313_q1&#39;, &#39;Code_18_313_q2&#39;,
+       &#39;Code_18_313_q3&#39;, &#39;Code_18_412_q1&#39;, &#39;Code_18_412_q2&#39;,
+       &#39;Code_18_412_q3&#39;, &#39;Code_18_321_q1&#39;, &#39;Code_18_321_q2&#39;,
+       &#39;Code_18_321_q3&#39;, &#39;Code_18_322_q1&#39;, &#39;Code_18_322_q2&#39;,
+       &#39;Code_18_322_q3&#39;, &#39;Code_18_324_q1&#39;, &#39;Code_18_324_q2&#39;,
+       &#39;Code_18_324_q3&#39;, &#39;Code_18_111_q1&#39;, &#39;Code_18_111_q2&#39;,
+       &#39;Code_18_111_q3&#39;, &#39;Code_18_423_q1&#39;, &#39;Code_18_423_q2&#39;,
+       &#39;Code_18_423_q3&#39;, &#39;Code_18_523_q1&#39;, &#39;Code_18_523_q2&#39;,
+       &#39;Code_18_523_q3&#39;, &#39;mean_q1&#39;, &#39;mean_q2&#39;, &#39;mean_q3&#39;,
+       &#39;Code_18_312_q1&#39;, &#39;Code_18_312_q2&#39;, &#39;Code_18_312_q3&#39;,
+       &#39;Code_18_133_q1&#39;, &#39;Code_18_133_q2&#39;, &#39;Code_18_133_q3&#39;,
+       &#39;Code_18_333_q1&#39;, &#39;Code_18_333_q2&#39;, &#39;Code_18_333_q3&#39;,
+       &#39;Code_18_332_q1&#39;, &#39;Code_18_332_q2&#39;, &#39;Code_18_332_q3&#39;,
+       &#39;Code_18_411_q1&#39;, &#39;Code_18_411_q2&#39;, &#39;Code_18_411_q3&#39;,
+       &#39;supermarkets_nearest&#39;, &#39;supermarkets_counts&#39;, &#39;listed_nearest&#39;,
+       &#39;listed_counts&#39;, &#39;fhrs_nearest&#39;, &#39;fhrs_counts&#39;, &#39;culture_nearest&#39;,
+       &#39;culture_counts&#39;, &#39;nearest_water&#39;, &#39;nearest_retail_centre&#39;,
+       &#39;Code_18_132_q1&#39;, &#39;Code_18_331_q2&#39;, &#39;Code_18_222_q1&#39;,
+       &#39;Code_18_511_q3&#39;, &#39;Code_18_242_q1&#39;, &#39;Code_18_511_q2&#39;,
+       &#39;Code_18_242_q3&#39;, &#39;Code_18_331_q1&#39;, &#39;Code_18_334_q2&#39;,
+       &#39;Code_18_511_q1&#39;, &#39;Code_18_334_q1&#39;, &#39;Code_18_222_q3&#39;,
+       &#39;Code_18_242_q2&#39;, &#39;Code_18_244_q3&#39;, &#39;Code_18_521_q2&#39;,
+       &#39;Code_18_334_q3&#39;, &#39;Code_18_244_q1&#39;, &#39;Code_18_244_q2&#39;,
+       &#39;Code_18_331_q3&#39;, &#39;Code_18_132_q2&#39;, &#39;Code_18_132_q3&#39;,
+       &#39;Code_18_521_q1&#39;, &#39;Code_18_222_q2&#39;, &#39;Code_18_521_q3&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the first pass, we can pick a few of the easy-to-interpret characters. When we have more options (q1, q2, q3) it is the best to pick the q2, which is a weighted median.</p>
+<p>We start with the covered area ratio (<code class="docutils literal notranslate"><span class="pre">sicCAR_q2</span></code>) as a straigtforward density measure, population (<code class="docutils literal notranslate"><span class="pre">population_q2</span></code>), NDVI (<code class="docutils literal notranslate"><span class="pre">mean_q2</span></code>), counts of supermarkets (<code class="docutils literal notranslate"><span class="pre">supermarkets_counts</span></code>) and food venues (<code class="docutils literal notranslate"><span class="pre">fhrs_counts</span></code>), and meshedness as an indicator of grid-like street networks (<code class="docutils literal notranslate"><span class="pre">lcdMes_q2</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel</span> <span class="o">=</span> <span class="n">group</span><span class="p">[[</span><span class="s2">&quot;sicCAR_q2&quot;</span><span class="p">,</span> <span class="s2">&quot;population_q2&quot;</span><span class="p">,</span> <span class="s2">&quot;mean_q2&quot;</span><span class="p">,</span> <span class="s2">&quot;supermarkets_counts&quot;</span><span class="p">,</span> <span class="s2">&quot;fhrs_counts&quot;</span><span class="p">,</span> <span class="s2">&quot;lcdMes_q2&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We rescale the data for easier interpretation of diagrams.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sel</span> <span class="o">=</span> <span class="p">(</span><span class="n">sel</span><span class="o">-</span><span class="n">sel</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">sel</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> 
+<span class="n">sel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sicCAR_q2</th>
+      <th>population_q2</th>
+      <th>mean_q2</th>
+      <th>supermarkets_counts</th>
+      <th>fhrs_counts</th>
+      <th>lcdMes_q2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.105075</td>
+      <td>0.029833</td>
+      <td>0.805844</td>
+      <td>0.007099</td>
+      <td>0.004606</td>
+      <td>0.136498</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.697741</td>
+      <td>0.194768</td>
+      <td>0.329771</td>
+      <td>0.219868</td>
+      <td>0.122080</td>
+      <td>0.430553</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.770038</td>
+      <td>0.376868</td>
+      <td>0.187102</td>
+      <td>0.388398</td>
+      <td>0.374039</td>
+      <td>0.714183</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.633622</td>
+      <td>0.182823</td>
+      <td>0.349317</td>
+      <td>0.170066</td>
+      <td>0.089433</td>
+      <td>0.124967</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.566827</td>
+      <td>0.224437</td>
+      <td>0.339287</td>
+      <td>0.165275</td>
+      <td>0.096466</td>
+      <td>0.389650</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.804478</td>
+      <td>0.262524</td>
+      <td>0.147033</td>
+      <td>0.399420</td>
+      <td>0.424760</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.412595</td>
+      <td>0.102122</td>
+      <td>0.542382</td>
+      <td>0.073892</td>
+      <td>0.040357</td>
+      <td>0.096293</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.673634</td>
+      <td>0.271770</td>
+      <td>0.339527</td>
+      <td>0.240730</td>
+      <td>0.125166</td>
+      <td>0.028512</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.840747</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Columns may have cryptic names, so we use custom labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;built-up density&quot;</span><span class="p">,</span> <span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="s2">&quot;NDVI&quot;</span><span class="p">,</span> <span class="s2">&quot;supermarkets&quot;</span><span class="p">,</span> <span class="s2">&quot;FHRS&quot;</span><span class="p">,</span> <span class="s2">&quot;meshedness&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">ugg</span><span class="o">.</span><span class="n">get_colormap</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">randomize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="o">+</span> <span class="mf">.05</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">angles</span> <span class="o">+=</span> <span class="n">angles</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">angles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_rlabel_position</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="n">values</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exploration_of_signatures_24_0.png" src="../_images/exploration_of_signatures_24_0.png" />
+</div>
+</div>
+<p>In the figure above, each score of the selected characters for each cluster is shown as a spider diagram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="o">+</span> <span class="mf">.05</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">angles</span> <span class="o">+=</span> <span class="n">angles</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">angles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_rlabel_position</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">custom_points</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="n">custom_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">leg_points</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_points</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">leg_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd3cfe6cd60&gt;
+</pre></div>
+</div>
+<img alt="../_images/exploration_of_signatures_26_1.png" src="../_images/exploration_of_signatures_26_1.png" />
+</div>
+</div>
+<p>We can also overlap all clusters in the same diagram for a direct comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="o">+</span> <span class="mf">.05</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">angles</span> <span class="o">+=</span> <span class="n">angles</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">angles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_rlabel_position</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">custom_points</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">opts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="n">custom_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">leg_points</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_points</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">leg_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd3cfce3130&gt;
+</pre></div>
+</div>
+<img alt="../_images/exploration_of_signatures_28_1.png" src="../_images/exploration_of_signatures_28_1.png" />
+</div>
+</div>
+<p>Or we can plot only the subset of clusters (urban classes here) if we want to see the differences between those.</p>
+<p>Cluster 2 and 6 are quite similar, let’s check which characters are the most different:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">group</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[</span><span class="o">-</span><span class="mi">40</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F. Construction_q3                      0.649119
+ssbCCo_q1                               0.650907
+linWID_q2                               0.656576
+sdbPer_q3                               0.682242
+F. Construction_q2                      0.723104
+sdsSWD_q3                               0.728287
+population_q3                           0.739577
+population_q2                           0.749769
+H, J. Transport and communication_q1    0.752492
+ssbElo_q3                               0.771562
+xcnSCl_q3                               0.777102
+ssbCCM_q3                               0.777249
+sdbAre_q2                               0.784049
+ssbElo_q2                               0.796450
+sdbAre_q1                               0.800752
+lcdMes_q1                               0.801982
+lcdMes_q3                               0.818693
+lcdMes_q2                               0.838077
+night_lights_q1                         0.868450
+sdbPer_q1                               0.889522
+night_lights_q2                         0.892386
+night_lights_q3                         0.893259
+ssbCCo_q3                               0.909325
+sdbPer_q2                               0.917490
+ssbCCo_q2                               0.921078
+ssbCCM_q1                               0.950964
+ssbCCM_q2                               0.991878
+ltcWRE_q1                               1.198636
+mtdDeg_q3                               1.199064
+linP4W_q3                               1.210924
+linP4W_q2                               1.240299
+lteWNB_q1                               1.243230
+lteWNB_q3                               1.250676
+linP4W_q1                               1.292982
+ltcWRE_q2                               1.372524
+lteWNB_q2                               1.394225
+ltcWRE_q3                               1.459551
+lcnClo_q1                               1.980144
+lcnClo_q2                               2.047555
+lcnClo_q3                               2.127266
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The significant difference is in the street network patterns of both clusters. Cluster 6 is more connected, having a stronger grid-like pattern as shown in local closeness, proportion og 4-way intersections or meshedness. At the same time, it is less dense than cluster 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;population_q2&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.804873
+1    0.276628
+2    1.470679
+3    0.198304
+4   -1.000495
+5    0.471169
+6    0.720910
+7   -0.330870
+8    0.781538
+9    5.556644
+Name: population_q2, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also check workplace population by a type of industry.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selection</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A, B, D, E. Agriculture, energy and water_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;C. Manufacturing_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;F. Construction_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;G, I. Distribution, hotels and restaurants_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;H, J. Transport and communication_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;K, L, M, N. Financial, real estate, professional and administrative activities_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;O,P,Q. Public administration, education and health_q2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;R, S, T, U. Other_q2&#39;</span><span class="p">,</span>
+            <span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">selection</span>
+
+<span class="n">sel</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span>
+<span class="n">sel</span> <span class="o">=</span> <span class="p">(</span><span class="n">sel</span><span class="o">-</span><span class="n">sel</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">sel</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> 
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="o">+</span> <span class="mf">.05</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">angles</span> <span class="o">+=</span> <span class="n">angles</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">angles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_rlabel_position</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="n">values</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exploration_of_signatures_34_0.png" src="../_images/exploration_of_signatures_34_0.png" />
+</div>
+</div>
+<p>As expected, the majority of jobs is in cluster 9 (city centres), with the excepction of agriculture dominant in clusters 4 and 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="o">+</span> <span class="mf">.05</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">angles</span> <span class="o">+=</span> <span class="n">angles</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">angles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_rlabel_position</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">custom_points</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="n">custom_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">leg_points</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_points</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">leg_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd3cf7458e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/exploration_of_signatures_36_1.png" src="../_images/exploration_of_signatures_36_1.png" />
+</div>
+</div>
+<p>The same data can be also plotted in an ovelapping manner for easier comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;polar&#39;</span><span class="p">})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>  <span class="o">+</span> <span class="mf">.05</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">angles</span> <span class="o">+=</span> <span class="n">angles</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">angles</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_rlabel_position</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">custom_points</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">opts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">values</span> <span class="o">+=</span> <span class="n">values</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="n">custom_points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">leg_points</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_points</span><span class="p">,</span> <span class="n">opts</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">leg_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd3cf989bb0&gt;
+</pre></div>
+</div>
+<img alt="../_images/exploration_of_signatures_38_1.png" src="../_images/exploration_of_signatures_38_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="countryside">
+<h3>Countryside<a class="headerlink" href="#countryside" title="Permalink to this headline">¶</a></h3>
+<p>Clusters 0, 4, and 7 can be classified as countryside.</p>
+<p><strong>Cluster 0</strong></p>
+<p>Cluster 0 is located predominantly in England and is can be characterised as agriculture-dominated countryside. It contains both pastures and fields.</p>
+<p><strong>Cluster 4</strong></p>
+<p>Cluster 4 is the most natural of all, covering national parks and large areas of inhabited land like Scottish Highlands, Lake District or the majority of Wales.</p>
+<p><strong>Cluster 7</strong></p>
+<p>Cluster 7 can be characterised as a green belt around cities. It covers mostly agricultural land in the immediate adjacency of towns and cities, often including development on their edges.</p>
+</div>
+<div class="section" id="urban-areas">
+<h3>Urban areas<a class="headerlink" href="#urban-areas" title="Permalink to this headline">¶</a></h3>
+<p>The remaining classes can be classified as urban or semi-urban areas.</p>
+<div class="section" id="periphery">
+<h4>Periphery<a class="headerlink" href="#periphery" title="Permalink to this headline">¶</a></h4>
+<p><strong>Cluster 3</strong></p>
+<p>Cluster 3 is a transition between countryisde and urbanised land. It is located on the outskirts of cities and has typically a large open space area intertwined with different kinds of development from highways to smaller neighbourhoods. If we wanted to call an urban periphery, it would be cluster 3.</p>
+</div>
+<div class="section" id="suburbs">
+<h4>Suburbs<a class="headerlink" href="#suburbs" title="Permalink to this headline">¶</a></h4>
+<p>Clusters 1 and 8 can be described as suburban neighbourhoods. Both are on the edges of cities, both have relative lack of jobs and destinations.</p>
+<p><strong>Cluster 1</strong></p>
+<p>The main difference between them is in street networks. Cluster 1 tends to have more connected networks, even though both lack connectivty compared to some other clusters.</p>
+<p><strong>Cluster 8</strong></p>
+<p>Cluster 8 contains suburban neighbourhoods with the least connected networks.</p>
+</div>
+<div class="section" id="cities">
+<h4>Cities<a class="headerlink" href="#cities" title="Permalink to this headline">¶</a></h4>
+<p>Cluster 2 and 6 cover the majority of residential urban development, whilst cluster 9 represents dense city centers.</p>
+<p><strong>Cluster 2</strong></p>
+<p>In cluster 2 are residential neighbourhoods with some services and jobs. It is a relatively dense development, often terraced housing and other similar kinds. It is the most abundant urban cluster.</p>
+<p><strong>Cluster 6</strong></p>
+<p>Cluster 6 is very similar to the cluster 2. The main difference lies in street networks, where cluster 6 tends to have more connected grid-like patterns. However, it has less jobs than cluster 2.</p>
+<p><strong>Cluster 9</strong></p>
+<p>Cluster 9 is the dense development of city centres with an abundance of jobs and services.</p>
+<p><strong>Cluster 5</strong></p>
+<p>Finally, cluster 5 covers industrial areas in cities.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./clusters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
