@@ -21,7 +21,7 @@
       
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -311,6 +311,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geographical-distribution">
+   Geographical distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -344,6 +349,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-forest">
+   Random Forest
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -363,6 +373,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">dask.dataframe</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
@@ -1046,6 +1057,120 @@ Name: population_q2, dtype: float64
 </div>
 </div>
 </div>
+<div class="section" id="geographical-distribution">
+<h2>Geographical distribution<a class="headerlink" href="#geographical-distribution" title="Permalink to this headline">¶</a></h2>
+<p>We can also check the geographical distribution of clusters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spsig</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_KMeans10_GB_simplified.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">ugg</span><span class="o">.</span><span class="n">get_colormap</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">randomize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># ctx.add_basemap(ax, crs=27700, source=ugg.get_tiles(&#39;roads&#39;, token), zorder=2, alpha=.3)</span>
+<span class="c1"># ctx.add_basemap(ax, crs=27700, source=ugg.get_tiles(&#39;labels&#39;, token), zorder=3, alpha=1)</span>
+<span class="c1"># ctx.add_basemap(ax, crs=27700, source=ugg.get_tiles(&#39;background&#39;, token), zorder=-1, alpha=1)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="c1"># plt.savefig(f&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_KMeans10_GB.png&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroid</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">centroid</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">centroid</span><span class="o">.</span><span class="n">x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">centroid</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span>
+    <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    AAAB</span>
+<span class="sd">    AAAB</span>
+<span class="sd">    AAAB</span>
+<span class="sd">    AAAB</span>
+<span class="sd">    CCCD</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">spsig</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="n">y</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/exploration_of_signatures_44_0.png" src="../_images/exploration_of_signatures_44_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.4</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="n">spsig</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/exploration_of_signatures_45_1.png" src="../_images/exploration_of_signatures_45_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spsig</span><span class="o">.</span><span class="n">kmeans10gb</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3    17357
+1    10919
+0    10882
+5    10675
+7    10636
+8     9418
+2     7214
+4     6214
+6     2561
+9     1655
+Name: kmeans10gb, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># population by class</span>
+<span class="c1"># calinski-harabazs per variable</span>
+<span class="c1"># random forest and feature importance</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="countryside">
@@ -1087,6 +1212,9 @@ Name: population_q2, dtype: float64
 <p>Finally, cluster 5 covers industrial areas in cities.</p>
 </div>
 </div>
+</div>
+<div class="section" id="random-forest">
+<h2>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

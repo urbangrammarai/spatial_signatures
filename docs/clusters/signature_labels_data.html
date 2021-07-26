@@ -1,0 +1,1053 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Create canonical labels attached to tessellation &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clusters/signature_labels_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/clusters/signature_labels_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="create-canonical-labels-attached-to-tessellation">
+<h1>Create canonical labels attached to tessellation<a class="headerlink" href="#create-canonical-labels-attached-to-tessellation" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">dask.dataframe</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">level1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/KMeans10GB.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">level1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kmeans10gb</th>
+    </tr>
+    <tr>
+      <th>hindex</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>c000e094707t0000</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0000</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0001</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0002</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c000e094764t0000</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0111</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0112</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0113</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0114</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0115</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>14539578 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">level2_9</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/clustergram_cl9_labels.pq&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">level2_9</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>113639</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113640</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113641</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113642</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113643</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>113644 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">level2_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/subclustering_cluster2_k3.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">level2_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>subclustering_cluster2_k3</th>
+    </tr>
+    <tr>
+      <th>hindex</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>c000e097919t0003</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>c000e097919t0005</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>c000e097919t0008</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>c000e097919t0009</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>c000e097919t0015</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>c102e639766t0007</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e639766t0010</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e639766t0011</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e639766t0012</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e639766t0013</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1115564 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">level1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">labels</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">]</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">level2_9</span><span class="p">[</span><span class="s2">&quot;9&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span><span class="n">level2_2</span><span class="p">[</span><span class="s2">&quot;subclustering_cluster2_k3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">])</span>
+<span class="n">labels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>signature_type</th>
+    </tr>
+    <tr>
+      <th>hindex</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>c000e094707t0000</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0000</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0001</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0002</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c000e094764t0000</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0111</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0112</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0113</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0114</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0115</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>14539578 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_labels.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;hindex&quot;</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;buildings&quot;</span><span class="p">)</span>
+<span class="n">cells</span> <span class="o">=</span> <span class="n">cells</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;tessellation&quot;</span><span class="p">:</span> <span class="s2">&quot;geometry&quot;</span><span class="p">})</span>
+<span class="n">cells</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>geometry</th>
+      <th>signature_type</th>
+    </tr>
+    <tr>
+      <th>npartitions=103</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>object</td>
+      <td>object</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: rename, 413 tasks</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_dask_dataframe</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><strong>Dask-GeoPandas GeoDataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>geometry</th>
+      <th>signature_type</th>
+    </tr>
+    <tr>
+      <th>npartitions=103</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>object</td>
+      <td>geometry</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: GeoDataFrame, 516 tasks</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">cells</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_tessellation/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/dask/utils.py:35: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  return func(*args, **kwargs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 17min 44s, sys: 2min 26s, total: 20min 11s
+Wall time: 20min 11s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_tessellation/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><strong>Dask-GeoPandas GeoDataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>geometry</th>
+      <th>signature_type</th>
+    </tr>
+    <tr>
+      <th>npartitions=103</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>object</td>
+      <td>geometry</td>
+      <td>int32</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: read-parquet, 103 tasks</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">cells</span><span class="o">.</span><span class="n">calculate_spatial_partitions</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 27min 22s, sys: 34 s, total: 27min 57s
+Wall time: 3min 22s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span><span class="o">.</span><span class="n">spatial_partitions</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      POLYGON Z ((339010.000 426700.000 0.000, 33596...
+1      POLYGON Z ((459529.390 339487.330 0.000, 45951...
+2      POLYGON Z ((380696.000 228900.000 0.000, 37766...
+3      POLYGON Z ((363161.000 541631.000 0.000, 33680...
+4      POLYGON Z ((431181.406 393369.256 0.000, 40940...
+                             ...                        
+98     POLYGON Z ((448173.875 209362.352 0.000, 44814...
+99     POLYGON Z ((513455.520 192183.030 0.000, 50044...
+100    POLYGON Z ((172420.000 603651.000 0.000, 16125...
+101    POLYGON Z ((419376.825 272261.845 0.000, 41514...
+102    POLYGON Z ((367870.000 68210.000 0.000, 367820...
+Length: 103, dtype: geometry
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span><span class="o">.</span><span class="n">spatial_partitions</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;tab20&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/signature_labels_data_21_1.png" src="../_images/signature_labels_data_21_1.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./clusters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

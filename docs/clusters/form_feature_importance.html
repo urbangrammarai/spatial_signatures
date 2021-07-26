@@ -1,0 +1,2128 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form signatures &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clusters/form_feature_importance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/clusters/form_feature_importance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Form signatures
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overall-similarity">
+   Overall similarity
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-importance-per-cluster">
+   Feature importance per cluster
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extremes">
+     Extremes
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">dask.dataframe</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="form-signatures">
+<h1>Form signatures<a class="headerlink" href="#form-signatures" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> data = dask.dataframe.read_parquet(&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/form/standardized/&quot;).set_index(&#39;hindex&#39;)
+<span class="o">%</span><span class="k">time</span> data = data.replace([np.inf, -np.inf], np.nan).fillna(0)
+<span class="o">%</span><span class="k">time</span> data = data.compute()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 38.8 s, sys: 35.3 s, total: 1min 14s
+Wall time: 1min 44s
+CPU times: user 27.6 ms, sys: 0 ns, total: 27.6 ms
+Wall time: 23.8 ms
+CPU times: user 1min 7s, sys: 43.2 s, total: 1min 50s
+Wall time: 1min 51s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sdbAre_q1</th>
+      <th>sdbAre_q2</th>
+      <th>sdbAre_q3</th>
+      <th>sdbPer_q1</th>
+      <th>sdbPer_q2</th>
+      <th>sdbPer_q3</th>
+      <th>sdbCoA_q1</th>
+      <th>sdbCoA_q2</th>
+      <th>sdbCoA_q3</th>
+      <th>ssbCCo_q1</th>
+      <th>...</th>
+      <th>lseCWA_q3</th>
+      <th>lteOri_q1</th>
+      <th>lteOri_q2</th>
+      <th>lteOri_q3</th>
+      <th>lteWNB_q1</th>
+      <th>lteWNB_q2</th>
+      <th>lteWNB_q3</th>
+      <th>lieWCe_q1</th>
+      <th>lieWCe_q2</th>
+      <th>lieWCe_q3</th>
+    </tr>
+    <tr>
+      <th>hindex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>c000e094707t0000</th>
+      <td>-0.947406</td>
+      <td>-0.371977</td>
+      <td>0.020285</td>
+      <td>-0.901199</td>
+      <td>-0.237045</td>
+      <td>-0.023143</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>-0.046170</td>
+      <td>...</td>
+      <td>0.073064</td>
+      <td>0.031571</td>
+      <td>0.196520</td>
+      <td>0.424415</td>
+      <td>-0.611681</td>
+      <td>-0.502087</td>
+      <td>-0.311160</td>
+      <td>-0.022562</td>
+      <td>-0.002733</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0000</th>
+      <td>-0.913567</td>
+      <td>-0.420861</td>
+      <td>-0.271703</td>
+      <td>-0.903627</td>
+      <td>-0.428003</td>
+      <td>-0.336729</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>-0.035325</td>
+      <td>...</td>
+      <td>-0.254395</td>
+      <td>-1.016655</td>
+      <td>-0.161371</td>
+      <td>0.011093</td>
+      <td>0.148709</td>
+      <td>0.214520</td>
+      <td>-0.125943</td>
+      <td>-0.019044</td>
+      <td>-0.002654</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0001</th>
+      <td>-0.878137</td>
+      <td>-0.411587</td>
+      <td>-0.284021</td>
+      <td>-0.900393</td>
+      <td>-0.416250</td>
+      <td>-0.350010</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>-0.034917</td>
+      <td>...</td>
+      <td>-0.285074</td>
+      <td>-0.897625</td>
+      <td>-0.161371</td>
+      <td>0.103698</td>
+      <td>0.148709</td>
+      <td>0.250036</td>
+      <td>-0.200268</td>
+      <td>-0.019323</td>
+      <td>-0.002654</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c000e094763t0002</th>
+      <td>-0.952475</td>
+      <td>-0.421566</td>
+      <td>-0.283919</td>
+      <td>-0.968400</td>
+      <td>-0.429947</td>
+      <td>-0.343165</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>-0.065649</td>
+      <td>...</td>
+      <td>-0.280682</td>
+      <td>-0.927382</td>
+      <td>-0.161371</td>
+      <td>0.177408</td>
+      <td>0.302689</td>
+      <td>0.250036</td>
+      <td>-0.120718</td>
+      <td>-0.018825</td>
+      <td>-0.002654</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c000e094764t0000</th>
+      <td>-0.964878</td>
+      <td>-0.420861</td>
+      <td>-0.271703</td>
+      <td>-0.972440</td>
+      <td>-0.420006</td>
+      <td>-0.315861</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>-0.066832</td>
+      <td>...</td>
+      <td>-0.280682</td>
+      <td>-1.016655</td>
+      <td>-0.104108</td>
+      <td>0.185348</td>
+      <td>0.302689</td>
+      <td>0.250036</td>
+      <td>-0.105044</td>
+      <td>-0.018825</td>
+      <td>-0.002659</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0111</th>
+      <td>-0.311466</td>
+      <td>-0.431706</td>
+      <td>-0.373463</td>
+      <td>-0.082269</td>
+      <td>-0.459270</td>
+      <td>-0.389532</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>0.132837</td>
+      <td>...</td>
+      <td>0.199797</td>
+      <td>1.288365</td>
+      <td>0.440493</td>
+      <td>0.197816</td>
+      <td>-0.351250</td>
+      <td>-0.580453</td>
+      <td>-0.704637</td>
+      <td>-0.000200</td>
+      <td>-0.002667</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0112</th>
+      <td>-0.326671</td>
+      <td>-0.461825</td>
+      <td>-0.371855</td>
+      <td>-0.149873</td>
+      <td>-0.528701</td>
+      <td>-0.386678</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>0.136559</td>
+      <td>...</td>
+      <td>0.195101</td>
+      <td>1.288365</td>
+      <td>0.440493</td>
+      <td>0.290197</td>
+      <td>-0.351250</td>
+      <td>-0.580453</td>
+      <td>-0.693005</td>
+      <td>-0.000669</td>
+      <td>-0.002667</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0113</th>
+      <td>-0.094236</td>
+      <td>-0.364761</td>
+      <td>-0.304254</td>
+      <td>0.024972</td>
+      <td>-0.347371</td>
+      <td>-0.283669</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>0.021411</td>
+      <td>...</td>
+      <td>0.199797</td>
+      <td>1.288365</td>
+      <td>0.440493</td>
+      <td>0.197816</td>
+      <td>-0.351250</td>
+      <td>-0.580453</td>
+      <td>-0.704637</td>
+      <td>-0.000843</td>
+      <td>-0.002667</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0114</th>
+      <td>-0.477667</td>
+      <td>-0.568464</td>
+      <td>-0.390033</td>
+      <td>-0.600170</td>
+      <td>-0.646516</td>
+      <td>-0.472676</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>0.424887</td>
+      <td>...</td>
+      <td>0.008079</td>
+      <td>-0.855901</td>
+      <td>0.189420</td>
+      <td>-0.560233</td>
+      <td>-0.341815</td>
+      <td>-0.580453</td>
+      <td>-0.704637</td>
+      <td>-0.000898</td>
+      <td>-0.002667</td>
+      <td>-0.004738</td>
+    </tr>
+    <tr>
+      <th>c102e644989t0115</th>
+      <td>-0.413094</td>
+      <td>-0.545952</td>
+      <td>-0.382834</td>
+      <td>-0.400108</td>
+      <td>-0.610332</td>
+      <td>-0.440413</td>
+      <td>-0.000419</td>
+      <td>-0.001515</td>
+      <td>-0.010221</td>
+      <td>0.160613</td>
+      <td>...</td>
+      <td>0.008079</td>
+      <td>-0.203827</td>
+      <td>0.440493</td>
+      <td>0.231812</td>
+      <td>-0.351250</td>
+      <td>-0.580453</td>
+      <td>-0.638809</td>
+      <td>-0.000200</td>
+      <td>-0.002543</td>
+      <td>-0.004738</td>
+    </tr>
+  </tbody>
+</table>
+<p>14539578 rows × 177 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_l1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/k8_form_labels.pq&quot;</span><span class="p">)</span>
+<span class="n">labels_l2_4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/clustergram_c4_form_labels.pq&quot;</span><span class="p">)</span>
+<span class="n">labels_l2_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/clustergram_c2_form_labels.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels_l1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">k8</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;k8&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_l2_4</span><span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="mi">40</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">k8</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;k8&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_l2_2</span><span class="p">[</span><span class="s1">&#39;8&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="mi">20</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="o">.</span><span class="n">k8</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1     5544712
+5     3774274
+0     1554431
+25     681861
+22     664692
+21     511727
+23     502758
+26     425631
+27     275571
+20     250872
+24     138339
+40     111659
+3       62701
+42      31800
+45       5105
+41       1680
+47       1128
+7         477
+43         79
+46         65
+48          9
+44          4
+6           3
+Name: k8, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outliers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">43</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">labels</span><span class="o">.</span><span class="n">k8</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overall-similarity">
+<h1>Overall similarity<a class="headerlink" href="#overall-similarity" title="Permalink to this headline">¶</a></h1>
+<p>Similarity of clusters can be represented by hierarchical dendrogram generated using Ward’s agglomerative clustering.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.cluster</span> <span class="kn">import</span> <span class="n">hierarchy</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;k8&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1"># cluster centroids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">linkage</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="s1">&#39;ward&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">dn</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">group</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/form_feature_importance_10_0.png" src="../_images/form_feature_importance_10_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="feature-importance-per-cluster">
+<h1>Feature importance per cluster<a class="headerlink" href="#feature-importance-per-cluster" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="o">.</span><span class="n">k8</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  5, 20, 24,  1, 21, 25, 22, 26, 23, 27, 40, 42,  3, 48, 45,  7,
+        6, 41, 47, 46, 44, 43], dtype=int32)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imps</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">labels</span><span class="o">.</span><span class="n">k8</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">cluster</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">outliers</span><span class="p">:</span>
+        <span class="n">cluster_bool</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s1">&#39;k8&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">cluster</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">clf</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cluster_bool</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+        <span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">imps</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;cluster_</span><span class="si">{</span><span class="n">cluster</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">imps</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;cluster_</span><span class="si">{</span><span class="n">cluster</span><span class="si">}</span><span class="s1">_vals&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">importances</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed: 10.5min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  9.6min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  6.1min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.1min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  8.6min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.1min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.6min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.5min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.8min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.2min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.3min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  5.0min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  4.5min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  6.6min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  2.8min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  1.3min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  2.7min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  2.0min finished
+[Parallel(n_jobs=-1)]: Using backend ThreadingBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:   57.7s finished
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chars</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">imps</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;vals&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
+<span class="n">imps</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">chars</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cluster_0</th>
+      <th>cluster_1</th>
+      <th>cluster_20</th>
+      <th>cluster_21</th>
+      <th>cluster_22</th>
+      <th>cluster_23</th>
+      <th>cluster_24</th>
+      <th>cluster_25</th>
+      <th>cluster_26</th>
+      <th>cluster_27</th>
+      <th>cluster_3</th>
+      <th>cluster_40</th>
+      <th>cluster_41</th>
+      <th>cluster_42</th>
+      <th>cluster_45</th>
+      <th>cluster_46</th>
+      <th>cluster_47</th>
+      <th>cluster_5</th>
+      <th>cluster_7</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sdcLAL_q2</td>
+      <td>stbCeA_q1</td>
+      <td>lteWNB_q3</td>
+      <td>ssbCCM_q3</td>
+      <td>stcOri_q2</td>
+      <td>stcOri_q1</td>
+      <td>mtdDeg_q3</td>
+      <td>linPDE_q2</td>
+      <td>lisCel_q2</td>
+      <td>sdbAre_q3</td>
+      <td>mtcWNe_q1</td>
+      <td>ssbCor_q3</td>
+      <td>ssbCCD_q2</td>
+      <td>ssbCor_q3</td>
+      <td>ssbCCD_q2</td>
+      <td>sdbCoA_q2</td>
+      <td>sdbAre_q3</td>
+      <td>sicCAR_q1</td>
+      <td>sddAre_q2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sdcAre_q2</td>
+      <td>sicCAR_q1</td>
+      <td>mtdDeg_q3</td>
+      <td>sdbPer_q3</td>
+      <td>stbOri_q3</td>
+      <td>stcOri_q2</td>
+      <td>linP4W_q1</td>
+      <td>linPDE_q3</td>
+      <td>ltcWRE_q3</td>
+      <td>ssbCCM_q3</td>
+      <td>sicCAR_q1</td>
+      <td>ssbERI_q1</td>
+      <td>ssbSqu_q1</td>
+      <td>ssbCCD_q2</td>
+      <td>ssbERI_q2</td>
+      <td>sdbAre_q2</td>
+      <td>sdbCoA_q3</td>
+      <td>mtcWNe_q2</td>
+      <td>mdsAre_q2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sisBpM_q2</td>
+      <td>mtcWNe_q1</td>
+      <td>ldePer_q2</td>
+      <td>sdbAre_q3</td>
+      <td>stbSAl_q1</td>
+      <td>stbOri_q1</td>
+      <td>linP4W_q3</td>
+      <td>ssbCCo_q2</td>
+      <td>ltcRea_q1</td>
+      <td>sdbPer_q3</td>
+      <td>sdcLAL_q3</td>
+      <td>sdbAre_q3</td>
+      <td>sdbAre_q3</td>
+      <td>ssbSqu_q3</td>
+      <td>ssbCor_q2</td>
+      <td>ldePer_q2</td>
+      <td>ssbCCM_q3</td>
+      <td>mtcWNe_q1</td>
+      <td>sdsAre_q2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sisBpM_q3</td>
+      <td>stbCeA_q2</td>
+      <td>lteWNB_q2</td>
+      <td>ssbCCo_q1</td>
+      <td>stbCeA_q1</td>
+      <td>stbOri_q2</td>
+      <td>linP4W_q2</td>
+      <td>stcOri_q2</td>
+      <td>misCel_q2</td>
+      <td>sdbAre_q2</td>
+      <td>ltcAre_q3</td>
+      <td>ssbCCD_q3</td>
+      <td>ssbCor_q3</td>
+      <td>sdbPer_q3</td>
+      <td>sdbAre_q2</td>
+      <td>sdbAre_q3</td>
+      <td>sdbPer_q3</td>
+      <td>sdcLAL_q3</td>
+      <td>ldsAre_q2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ltcAre_q1</td>
+      <td>mtbNDi_q2</td>
+      <td>ltcWRE_q3</td>
+      <td>ssbElo_q1</td>
+      <td>stcOri_q3</td>
+      <td>ssbSqu_q1</td>
+      <td>linP3W_q2</td>
+      <td>linPDE_q1</td>
+      <td>ldePer_q2</td>
+      <td>ssbCCD_q3</td>
+      <td>ltbIBD_q2</td>
+      <td>sdbPer_q3</td>
+      <td>sdbPer_q2</td>
+      <td>sdbAre_q3</td>
+      <td>sdbAre_q3</td>
+      <td>sicCAR_q1</td>
+      <td>sicCAR_q1</td>
+      <td>ltbIBD_q2</td>
+      <td>lseCWA_q1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>mtcWNe_q1</td>
+      <td>stbSAl_q1</td>
+      <td>linPDE_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>ldePer_q2</td>
+      <td>ldeAre_q1</td>
+      <td>linP3W_q3</td>
+      <td>stbOri_q2</td>
+      <td>linPDE_q3</td>
+      <td>stbCeA_q1</td>
+      <td>sdsAre_q2</td>
+      <td>ssbCCD_q2</td>
+      <td>sdsSWD_q2</td>
+      <td>ssbERI_q2</td>
+      <td>ssbSqu_q2</td>
+      <td>sdbCoA_q3</td>
+      <td>ssbSqu_q3</td>
+      <td>mtbNDi_q2</td>
+      <td>ldsAre_q1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>mtbNDi_q2</td>
+      <td>sdcAre_q2</td>
+      <td>lteWNB_q1</td>
+      <td>sdbPer_q2</td>
+      <td>ssbCCo_q2</td>
+      <td>stbCeA_q1</td>
+      <td>xcnSCl_q2</td>
+      <td>lcdMes_q2</td>
+      <td>lisCel_q1</td>
+      <td>ssbCCD_q2</td>
+      <td>ltcAre_q1</td>
+      <td>ssbSqu_q3</td>
+      <td>ssbSqu_q2</td>
+      <td>sdbAre_q2</td>
+      <td>sdbPer_q3</td>
+      <td>sdsAre_q2</td>
+      <td>sdbAre_q2</td>
+      <td>sdsAre_q2</td>
+      <td>mtdMDi_q1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ltcWRE_q3</td>
+      <td>ldePer_q2</td>
+      <td>linPDE_q3</td>
+      <td>ssbCCo_q2</td>
+      <td>stbCeA_q3</td>
+      <td>stbSAl_q2</td>
+      <td>lcdMes_q1</td>
+      <td>stcOri_q3</td>
+      <td>linPDE_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>ltcWRE_q3</td>
+      <td>sdbPer_q2</td>
+      <td>ssbCCD_q1</td>
+      <td>ssbERI_q1</td>
+      <td>sdbPer_q1</td>
+      <td>sdsLen_q2</td>
+      <td>misCel_q3</td>
+      <td>ldsAre_q2</td>
+      <td>ltcWRE_q1</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ldsAre_q1</td>
+      <td>linPDE_q3</td>
+      <td>ldeAre_q2</td>
+      <td>stbCeA_q3</td>
+      <td>lteOri_q2</td>
+      <td>linP4W_q2</td>
+      <td>lcdMes_q2</td>
+      <td>ssbCCM_q3</td>
+      <td>ltcRea_q2</td>
+      <td>sdbPer_q2</td>
+      <td>ldsAre_q2</td>
+      <td>sdbAre_q2</td>
+      <td>sdbCoA_q3</td>
+      <td>ssbCor_q2</td>
+      <td>ssbSqu_q3</td>
+      <td>ssbCCM_q1</td>
+      <td>lseERI_q2</td>
+      <td>sisBpM_q2</td>
+      <td>sddAre_q3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>sscERI_q2</td>
+      <td>sdcLAL_q3</td>
+      <td>sdbAre_q3</td>
+      <td>linPDE_q3</td>
+      <td>stcOri_q1</td>
+      <td>ssbCCM_q3</td>
+      <td>ldsMSL_q2</td>
+      <td>stbCeA_q1</td>
+      <td>mtdDeg_q3</td>
+      <td>ssbCCo_q1</td>
+      <td>lcnClo_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>ssbCor_q2</td>
+      <td>ssbCCD_q3</td>
+      <td>ssbERI_q3</td>
+      <td>ssbSqu_q2</td>
+      <td>stcOri_q1</td>
+      <td>sddAre_q3</td>
+      <td>sddAre_q1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>mdcAre_q2</td>
+      <td>ldsAre_q2</td>
+      <td>lcnClo_q3</td>
+      <td>lcdMes_q1</td>
+      <td>linPDE_q2</td>
+      <td>stbOri_q3</td>
+      <td>stbSAl_q1</td>
+      <td>ssbCCo_q1</td>
+      <td>ldeAre_q2</td>
+      <td>ssbCor_q3</td>
+      <td>sdsAre_q3</td>
+      <td>ssbCCo_q3</td>
+      <td>sdbAre_q2</td>
+      <td>ssbSqu_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>ldeAre_q3</td>
+      <td>ssbCCD_q2</td>
+      <td>sddAre_q2</td>
+      <td>mtdMDi_q3</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ltbIBD_q2</td>
+      <td>ltcAre_q1</td>
+      <td>sdbPer_q2</td>
+      <td>ldePer_q2</td>
+      <td>lcdMes_q1</td>
+      <td>sdbAre_q3</td>
+      <td>linPDE_q3</td>
+      <td>stbSAl_q1</td>
+      <td>ltcAre_q1</td>
+      <td>ssbERI_q1</td>
+      <td>mdsAre_q2</td>
+      <td>ssbCCM_q3</td>
+      <td>stbSAl_q1</td>
+      <td>ssbCCM_q3</td>
+      <td>ssbCCM_q3</td>
+      <td>sdsLen_q3</td>
+      <td>sicCAR_q2</td>
+      <td>sscERI_q1</td>
+      <td>mdsAre_q3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>sicCAR_q3</td>
+      <td>sdsAre_q2</td>
+      <td>linP4W_q2</td>
+      <td>sdbAre_q2</td>
+      <td>linPDE_q3</td>
+      <td>stbCeA_q2</td>
+      <td>ltcWRE_q1</td>
+      <td>ssbElo_q1</td>
+      <td>linP4W_q2</td>
+      <td>ssbElo_q1</td>
+      <td>lseCWA_q3</td>
+      <td>misCel_q3</td>
+      <td>ssbERI_q2</td>
+      <td>misCel_q3</td>
+      <td>misCel_q3</td>
+      <td>sddAre_q2</td>
+      <td>lisCel_q1</td>
+      <td>mtcWNe_q3</td>
+      <td>ltcWRE_q2</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>sicCAR_q2</td>
+      <td>ldePer_q1</td>
+      <td>ltcWRE_q2</td>
+      <td>lseCWA_q2</td>
+      <td>ltcWRE_q1</td>
+      <td>stbCeA_q3</td>
+      <td>linP3W_q1</td>
+      <td>stbOri_q3</td>
+      <td>lcdMes_q3</td>
+      <td>lcdMes_q2</td>
+      <td>ltcAre_q2</td>
+      <td>ssbSqu_q1</td>
+      <td>stbCeA_q1</td>
+      <td>misCel_q2</td>
+      <td>sdsSPO_q1</td>
+      <td>misCel_q3</td>
+      <td>stbSAl_q1</td>
+      <td>mdcAre_q1</td>
+      <td>ldsCDL_q2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>sdsAre_q1</td>
+      <td>sddAre_q2</td>
+      <td>ldePer_q1</td>
+      <td>ltcWRE_q2</td>
+      <td>ltcWRE_q3</td>
+      <td>sssLin_q2</td>
+      <td>stbCeA_q1</td>
+      <td>linP3W_q2</td>
+      <td>sdcLAL_q3</td>
+      <td>ssbSqu_q3</td>
+      <td>ldeAre_q3</td>
+      <td>ssbElo_q1</td>
+      <td>sdcAre_q2</td>
+      <td>ssbCCo_q3</td>
+      <td>sicCAR_q3</td>
+      <td>linP3W_q2</td>
+      <td>sdsSWD_q3</td>
+      <td>sicCAR_q3</td>
+      <td>lisCel_q1</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>mdcAre_q1</td>
+      <td>ldsAre_q1</td>
+      <td>stbCeA_q1</td>
+      <td>ssbElo_q2</td>
+      <td>stbOri_q1</td>
+      <td>stcOri_q3</td>
+      <td>ldsMSL_q3</td>
+      <td>linP3W_q3</td>
+      <td>misCel_q1</td>
+      <td>stbCeA_q3</td>
+      <td>mdcAre_q2</td>
+      <td>sdbAre_q1</td>
+      <td>lcnClo_q3</td>
+      <td>ldsAre_q1</td>
+      <td>ssbCCD_q3</td>
+      <td>sdsAre_q1</td>
+      <td>lisCel_q2</td>
+      <td>mtbNDi_q3</td>
+      <td>ltbIBD_q2</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>mtcWNe_q2</td>
+      <td>stbCeA_q3</td>
+      <td>lcnClo_q1</td>
+      <td>stcOri_q2</td>
+      <td>lcdMes_q2</td>
+      <td>sdsAre_q3</td>
+      <td>misCel_q3</td>
+      <td>ldePer_q2</td>
+      <td>sddAre_q1</td>
+      <td>stbSAl_q1</td>
+      <td>ltbIBD_q3</td>
+      <td>misCel_q2</td>
+      <td>ldsAre_q1</td>
+      <td>ssbSqu_q1</td>
+      <td>ldsAre_q1</td>
+      <td>misCel_q1</td>
+      <td>ssbERI_q2</td>
+      <td>mdsAre_q2</td>
+      <td>misCel_q2</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ltcAre_q2</td>
+      <td>ldsCDL_q2</td>
+      <td>mtcWNe_q1</td>
+      <td>stbOri_q1</td>
+      <td>stbCeA_q2</td>
+      <td>lteOri_q1</td>
+      <td>linPDE_q2</td>
+      <td>sdsSPO_q3</td>
+      <td>lcdMes_q2</td>
+      <td>ldePer_q1</td>
+      <td>ltcWRE_q2</td>
+      <td>ssbERI_q2</td>
+      <td>sicCAR_q2</td>
+      <td>sscERI_q1</td>
+      <td>ssbSqu_q1</td>
+      <td>ssbERI_q1</td>
+      <td>misCel_q1</td>
+      <td>mtdMDi_q1</td>
+      <td>lcnClo_q3</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>sdsAre_q3</td>
+      <td>linPDE_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>linP4W_q1</td>
+      <td>ssbCCo_q1</td>
+      <td>linP4W_q1</td>
+      <td>ssbCCD_q3</td>
+      <td>ltcWRE_q3</td>
+      <td>lisCel_q3</td>
+      <td>ssbERI_q2</td>
+      <td>sdcAre_q3</td>
+      <td>lisCel_q1</td>
+      <td>sscERI_q2</td>
+      <td>lisCel_q1</td>
+      <td>ssbElo_q2</td>
+      <td>stbCeA_q3</td>
+      <td>sicCAR_q3</td>
+      <td>sdcLAL_q2</td>
+      <td>lddNDe_q3</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>ltbIBD_q1</td>
+      <td>ldsCDL_q3</td>
+      <td>stcOri_q2</td>
+      <td>ldeAre_q2</td>
+      <td>stbSAl_q2</td>
+      <td>stbSAl_q1</td>
+      <td>lisCel_q3</td>
+      <td>stbCeA_q2</td>
+      <td>sisBpM_q1</td>
+      <td>ssbSqu_q1</td>
+      <td>sdsSPO_q2</td>
+      <td>sicCAR_q2</td>
+      <td>misCel_q2</td>
+      <td>lisCel_q2</td>
+      <td>misCel_q2</td>
+      <td>lcnClo_q1</td>
+      <td>sdbCoA_q2</td>
+      <td>sicCAR_q2</td>
+      <td>sdsAre_q3</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>sdcAre_q3</td>
+      <td>ssbCCo_q2</td>
+      <td>lcnClo_q2</td>
+      <td>sicCAR_q2</td>
+      <td>lteOri_q1</td>
+      <td>linPDE_q3</td>
+      <td>lisCel_q2</td>
+      <td>stbSAl_q2</td>
+      <td>ldsMSL_q1</td>
+      <td>ldeAre_q1</td>
+      <td>mdsAre_q3</td>
+      <td>ssbCCM_q1</td>
+      <td>stbOri_q3</td>
+      <td>sdbPer_q2</td>
+      <td>ssbElo_q1</td>
+      <td>sdsSPO_q2</td>
+      <td>sdcAre_q3</td>
+      <td>sdcAre_q2</td>
+      <td>lcnClo_q2</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>mtbNDi_q3</td>
+      <td>stbSAl_q2</td>
+      <td>ssbCCo_q2</td>
+      <td>stbCeA_q1</td>
+      <td>stbOri_q2</td>
+      <td>ssbCCo_q1</td>
+      <td>sdbAre_q3</td>
+      <td>ssbElo_q2</td>
+      <td>sdcAre_q2</td>
+      <td>linP4W_q2</td>
+      <td>mtcWNe_q2</td>
+      <td>ltcRea_q2</td>
+      <td>misCel_q3</td>
+      <td>mtbAli_q3</td>
+      <td>lisCel_q1</td>
+      <td>sdcAre_q1</td>
+      <td>lseCWA_q2</td>
+      <td>sdsSPO_q2</td>
+      <td>ssbCCD_q3</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>sicCAR_q1</td>
+      <td>lcdMes_q2</td>
+      <td>lcdMes_q2</td>
+      <td>ssbCCD_q2</td>
+      <td>ssbCCM_q3</td>
+      <td>ssbElo_q2</td>
+      <td>stbCeA_q2</td>
+      <td>ssbCCo_q3</td>
+      <td>linPDE_q1</td>
+      <td>ldeAre_q2</td>
+      <td>mdcAre_q3</td>
+      <td>sscERI_q1</td>
+      <td>lisCel_q1</td>
+      <td>sicCAR_q2</td>
+      <td>ssbCor_q3</td>
+      <td>ltcAre_q2</td>
+      <td>ldePer_q2</td>
+      <td>sdcAre_q3</td>
+      <td>sdsAre_q1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>mdsAre_q3</td>
+      <td>ldeAre_q2</td>
+      <td>linP4W_q1</td>
+      <td>misCel_q3</td>
+      <td>sdbPer_q3</td>
+      <td>mdcAre_q2</td>
+      <td>misCel_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>lcdMes_q1</td>
+      <td>sdsSPW_q2</td>
+      <td>sddAre_q3</td>
+      <td>ssbERI_q3</td>
+      <td>ssbCCo_q1</td>
+      <td>ssbCCM_q1</td>
+      <td>ssbCCM_q1</td>
+      <td>ssbERI_q2</td>
+      <td>ldeAre_q2</td>
+      <td>lcnClo_q3</td>
+      <td>linWID_q3</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>mtdMDi_q1</td>
+      <td>sicCAR_q2</td>
+      <td>stbOri_q2</td>
+      <td>ssbCCo_q3</td>
+      <td>ssbElo_q1</td>
+      <td>ltcWRE_q2</td>
+      <td>mdcAre_q2</td>
+      <td>ldsCDL_q2</td>
+      <td>misCel_q3</td>
+      <td>sdbPer_q1</td>
+      <td>ldePer_q3</td>
+      <td>ssbCCo_q2</td>
+      <td>sdsSPW_q1</td>
+      <td>ssbCCM_q2</td>
+      <td>sscCCo_q1</td>
+      <td>sdsSPW_q2</td>
+      <td>ssbElo_q3</td>
+      <td>mdcAre_q2</td>
+      <td>linP3W_q2</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>linWID_q3</td>
+      <td>ldeAre_q1</td>
+      <td>ssbCCM_q3</td>
+      <td>ldePer_q1</td>
+      <td>misCel_q2</td>
+      <td>linPDE_q1</td>
+      <td>ssbCCM_q3</td>
+      <td>stbOri_q1</td>
+      <td>stbSAl_q2</td>
+      <td>ltcWRE_q2</td>
+      <td>lteWNB_q1</td>
+      <td>lisCel_q3</td>
+      <td>sdbAre_q1</td>
+      <td>mdcAre_q2</td>
+      <td>linPDE_q2</td>
+      <td>ssbCCo_q1</td>
+      <td>sdbPer_q1</td>
+      <td>ltcWRE_q2</td>
+      <td>lddNDe_q2</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>mtdMDi_q2</td>
+      <td>mdsAre_q2</td>
+      <td>misCel_q2</td>
+      <td>lisCel_q2</td>
+      <td>linPDE_q1</td>
+      <td>lteOri_q2</td>
+      <td>mtcWNe_q1</td>
+      <td>stcOri_q1</td>
+      <td>stbSAl_q1</td>
+      <td>ssbCCo_q2</td>
+      <td>ldeAre_q2</td>
+      <td>sicCAR_q3</td>
+      <td>ssbSqu_q3</td>
+      <td>sicCAR_q3</td>
+      <td>lisCel_q2</td>
+      <td>mdcAre_q3</td>
+      <td>sdsLen_q2</td>
+      <td>ltbIBD_q1</td>
+      <td>ldsAre_q3</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>sdsSPO_q2</td>
+      <td>sdbPer_q3</td>
+      <td>stcOri_q3</td>
+      <td>stbOri_q2</td>
+      <td>ltcWRE_q2</td>
+      <td>sdbPer_q3</td>
+      <td>xcnSCl_q3</td>
+      <td>linP3W_q1</td>
+      <td>ssbElo_q1</td>
+      <td>linP4W_q3</td>
+      <td>sicCAR_q2</td>
+      <td>ssbCCo_q1</td>
+      <td>mtbNDi_q1</td>
+      <td>sdcAre_q2</td>
+      <td>ssbCCD_q1</td>
+      <td>stbCeA_q2</td>
+      <td>stcOri_q2</td>
+      <td>linWID_q2</td>
+      <td>sdsLen_q2</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>mdcAre_q3</td>
+      <td>sdcAre_q3</td>
+      <td>linP4W_q3</td>
+      <td>sdbPer_q1</td>
+      <td>ssbCCM_q2</td>
+      <td>lteOri_q3</td>
+      <td>lcdMes_q3</td>
+      <td>sicCAR_q2</td>
+      <td>ldsAre_q1</td>
+      <td>linP4W_q1</td>
+      <td>lseCWA_q1</td>
+      <td>sdbPer_q1</td>
+      <td>ssbCCM_q2</td>
+      <td>sdcLAL_q3</td>
+      <td>sdbPer_q2</td>
+      <td>ssbCCM_q3</td>
+      <td>sdbPer_q2</td>
+      <td>sisBpM_q3</td>
+      <td>stbOri_q3</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>sdsLen_q1</td>
+      <td>ssbElo_q1</td>
+      <td>ldsCDL_q2</td>
+      <td>ldeAre_q1</td>
+      <td>linP4W_q2</td>
+      <td>linP4W_q3</td>
+      <td>lisCel_q1</td>
+      <td>sicCAR_q3</td>
+      <td>mdcAre_q3</td>
+      <td>ssbCCM_q1</td>
+      <td>ltcWRE_q1</td>
+      <td>mdcAre_q3</td>
+      <td>ssbERI_q1</td>
+      <td>sdbAre_q1</td>
+      <td>sscCCo_q2</td>
+      <td>lisCel_q2</td>
+      <td>lseERI_q1</td>
+      <td>ldsMSL_q2</td>
+      <td>sdcLAL_q3</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>mtcWNe_q3</td>
+      <td>ssbCCM_q2</td>
+      <td>ldeAre_q1</td>
+      <td>mtdMDi_q3</td>
+      <td>lteOri_q3</td>
+      <td>sdsSPW_q1</td>
+      <td>lseERI_q2</td>
+      <td>sdbPer_q3</td>
+      <td>linP4W_q1</td>
+      <td>sisBpM_q2</td>
+      <td>sddAre_q2</td>
+      <td>ssbSqu_q2</td>
+      <td>mtbAli_q1</td>
+      <td>mdcAre_q3</td>
+      <td>mdcAre_q1</td>
+      <td>ssbCCM_q2</td>
+      <td>lseCCo_q3</td>
+      <td>stbCeA_q1</td>
+      <td>sicCAR_q1</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>sdcLAL_q3</td>
+      <td>sisBpM_q2</td>
+      <td>lcdMes_q3</td>
+      <td>ssbElo_q3</td>
+      <td>lteWNB_q2</td>
+      <td>sdsSPW_q2</td>
+      <td>sdcAre_q3</td>
+      <td>lseCWA_q1</td>
+      <td>ldsCDL_q3</td>
+      <td>linPDE_q3</td>
+      <td>ldePer_q2</td>
+      <td>sdcAre_q2</td>
+      <td>ssbCCM_q3</td>
+      <td>misCel_q1</td>
+      <td>ssbCCo_q3</td>
+      <td>mtbNDi_q1</td>
+      <td>stbCeA_q1</td>
+      <td>sdsLen_q2</td>
+      <td>ssbCCM_q2</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>sdsSPO_q1</td>
+      <td>lcdMes_q3</td>
+      <td>linPDE_q1</td>
+      <td>linP4W_q2</td>
+      <td>ltbIBD_q2</td>
+      <td>ssbElo_q1</td>
+      <td>ssbCCM_q2</td>
+      <td>ltcWRE_q2</td>
+      <td>ssbCCo_q2</td>
+      <td>ssbCCo_q3</td>
+      <td>sdcAre_q2</td>
+      <td>ltcAre_q1</td>
+      <td>mtbAli_q2</td>
+      <td>ltcAre_q2</td>
+      <td>lteWNB_q3</td>
+      <td>sdbPer_q3</td>
+      <td>lteWNB_q1</td>
+      <td>mtdMDi_q2</td>
+      <td>mtbAli_q1</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>sdsLen_q3</td>
+      <td>ssbCCo_q3</td>
+      <td>stbOri_q1</td>
+      <td>stbSAl_q2</td>
+      <td>ssbCCo_q3</td>
+      <td>misCel_q1</td>
+      <td>sssLin_q2</td>
+      <td>sdsSPW_q1</td>
+      <td>linP3W_q2</td>
+      <td>mtdDeg_q3</td>
+      <td>mtdMDi_q3</td>
+      <td>lisCel_q2</td>
+      <td>lteWNB_q3</td>
+      <td>lteWNB_q2</td>
+      <td>ssbERI_q1</td>
+      <td>sdsSPO_q3</td>
+      <td>lseCWA_q3</td>
+      <td>mtdMDi_q3</td>
+      <td>mdsAre_q1</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>ldeAre_q3</td>
+      <td>linWID_q2</td>
+      <td>ssbCCo_q1</td>
+      <td>lcdMes_q2</td>
+      <td>sssLin_q2</td>
+      <td>ltcWRE_q3</td>
+      <td>ltcWRE_q2</td>
+      <td>ldsCDL_q1</td>
+      <td>ldsCDL_q2</td>
+      <td>stbCeA_q2</td>
+      <td>lseCWA_q2</td>
+      <td>mdcAre_q1</td>
+      <td>mtcWNe_q3</td>
+      <td>ltcRea_q1</td>
+      <td>mdcAre_q3</td>
+      <td>sscERI_q1</td>
+      <td>mdcAre_q2</td>
+      <td>lddNDe_q2</td>
+      <td>sicCAR_q2</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>sdcLAL_q1</td>
+      <td>mtbNDi_q3</td>
+      <td>lteOri_q2</td>
+      <td>lisCel_q3</td>
+      <td>ldeAre_q1</td>
+      <td>ssbCCo_q2</td>
+      <td>ltcAre_q3</td>
+      <td>lcdMes_q3</td>
+      <td>sdsSWD_q3</td>
+      <td>ldsCDL_q3</td>
+      <td>mtdMDi_q1</td>
+      <td>sdsSWD_q2</td>
+      <td>lcnClo_q1</td>
+      <td>sdcLAL_q2</td>
+      <td>ldeAre_q2</td>
+      <td>ldeAre_q2</td>
+      <td>sdcAre_q1</td>
+      <td>ltcAre_q2</td>
+      <td>ltbIBD_q3</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>sddAre_q3</td>
+      <td>sdsSPO_q2</td>
+      <td>stbOri_q3</td>
+      <td>stcOri_q1</td>
+      <td>ldeAre_q2</td>
+      <td>sisBpM_q1</td>
+      <td>sdbPer_q2</td>
+      <td>ssbElo_q3</td>
+      <td>ldsMSL_q2</td>
+      <td>ltcAre_q1</td>
+      <td>ltbIBD_q1</td>
+      <td>lcnClo_q1</td>
+      <td>sdbPer_q3</td>
+      <td>sdsSWD_q1</td>
+      <td>lseCWA_q1</td>
+      <td>ssbCCD_q2</td>
+      <td>lteOri_q1</td>
+      <td>mdcAre_q3</td>
+      <td>ltcAre_q1</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>mdsAre_q1</td>
+      <td>ssbCCM_q3</td>
+      <td>sdcAre_q2</td>
+      <td>stbSAl_q1</td>
+      <td>lisCel_q1</td>
+      <td>sddAre_q3</td>
+      <td>sdcLAL_q3</td>
+      <td>ltcWRE_q1</td>
+      <td>sdsSWD_q2</td>
+      <td>sicCAR_q2</td>
+      <td>mtcWNe_q3</td>
+      <td>sdsSWD_q1</td>
+      <td>lisCel_q2</td>
+      <td>ssbElo_q3</td>
+      <td>mtbAli_q2</td>
+      <td>lseCCo_q1</td>
+      <td>linP3W_q2</td>
+      <td>sscCCo_q3</td>
+      <td>sdsSPW_q3</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>mdsAre_q2</td>
+      <td>lteWNB_q2</td>
+      <td>lcdMes_q1</td>
+      <td>linPDE_q2</td>
+      <td>lcdMes_q3</td>
+      <td>ssbCCD_q2</td>
+      <td>lseERI_q1</td>
+      <td>linP4W_q1</td>
+      <td>ssbCCo_q1</td>
+      <td>ssbElo_q2</td>
+      <td>lisCel_q2</td>
+      <td>ssbElo_q2</td>
+      <td>ltcAre_q1</td>
+      <td>ltcWRE_q3</td>
+      <td>sicCAR_q2</td>
+      <td>ldsCDL_q2</td>
+      <td>stbSAl_q3</td>
+      <td>sdcLAL_q1</td>
+      <td>ssbElo_q1</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>mtbNDi_q1</td>
+      <td>ssbElo_q2</td>
+      <td>xcnSCl_q3</td>
+      <td>stcOri_q3</td>
+      <td>ssbElo_q2</td>
+      <td>ssbSqu_q2</td>
+      <td>sssLin_q1</td>
+      <td>lisCel_q2</td>
+      <td>stcOri_q2</td>
+      <td>mdcAre_q2</td>
+      <td>lseERI_q1</td>
+      <td>mdcAre_q2</td>
+      <td>sdsSWD_q1</td>
+      <td>lcnClo_q1</td>
+      <td>sscERI_q3</td>
+      <td>mtcWNe_q3</td>
+      <td>ssbCCM_q2</td>
+      <td>ltcWRE_q3</td>
+      <td>sdbPer_q3</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>ldsMSL_q1</td>
+      <td>linP4W_q1</td>
+      <td>sdsAre_q1</td>
+      <td>misCel_q2</td>
+      <td>linP4W_q3</td>
+      <td>linPDE_q2</td>
+      <td>stbSAl_q2</td>
+      <td>lcdMes_q1</td>
+      <td>stbOri_q2</td>
+      <td>lcdMes_q3</td>
+      <td>sdbAre_q2</td>
+      <td>sisBpM_q2</td>
+      <td>mdcAre_q3</td>
+      <td>sisBpM_q1</td>
+      <td>mtbNDi_q2</td>
+      <td>sdbPer_q2</td>
+      <td>mtdMDi_q1</td>
+      <td>linWID_q1</td>
+      <td>mtdMDi_q2</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>sdcAre_q1</td>
+      <td>ssbCCo_q1</td>
+      <td>lisCel_q2</td>
+      <td>stbOri_q3</td>
+      <td>mtcWNe_q1</td>
+      <td>linP3W_q3</td>
+      <td>ldsMSL_q1</td>
+      <td>misCel_q2</td>
+      <td>ltcWRE_q1</td>
+      <td>ldePer_q2</td>
+      <td>lcnClo_q1</td>
+      <td>ssbCCD_q1</td>
+      <td>sicCAR_q3</td>
+      <td>lddNDe_q1</td>
+      <td>lseCCo_q3</td>
+      <td>ltbIBD_q3</td>
+      <td>linP4W_q3</td>
+      <td>lddNDe_q1</td>
+      <td>mdcAre_q2</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>ltcAre_q3</td>
+      <td>sddAre_q3</td>
+      <td>ldsCDL_q3</td>
+      <td>ltcWRE_q3</td>
+      <td>lisCel_q2</td>
+      <td>sdbPer_q2</td>
+      <td>stbCeA_q3</td>
+      <td>sdbAre_q3</td>
+      <td>ssbElo_q2</td>
+      <td>sdbAre_q1</td>
+      <td>sdsSPO_q1</td>
+      <td>ssbElo_q3</td>
+      <td>lcdMes_q2</td>
+      <td>sdsLen_q2</td>
+      <td>lcdMes_q2</td>
+      <td>ldsCDL_q3</td>
+      <td>sdsSWD_q2</td>
+      <td>sisBpM_q1</td>
+      <td>stbOri_q2</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>ltcWRE_q2</td>
+      <td>lseCWA_q2</td>
+      <td>lteOri_q1</td>
+      <td>ssbCCD_q3</td>
+      <td>sisBpM_q3</td>
+      <td>lcdMes_q2</td>
+      <td>lcnClo_q1</td>
+      <td>lteOri_q2</td>
+      <td>stcOri_q3</td>
+      <td>sicCAR_q3</td>
+      <td>lteWNB_q3</td>
+      <td>lteWNB_q2</td>
+      <td>linPDE_q2</td>
+      <td>mtcWNe_q2</td>
+      <td>ltcRea_q2</td>
+      <td>ltbIBD_q1</td>
+      <td>lteOri_q3</td>
+      <td>sdsLen_q3</td>
+      <td>ssbCCo_q2</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>stbCeA_q1</td>
+      <td>sdsSPO_q3</td>
+      <td>ldeAre_q3</td>
+      <td>ldsCDL_q2</td>
+      <td>linP4W_q1</td>
+      <td>ldePer_q2</td>
+      <td>mdcAre_q1</td>
+      <td>sisBpM_q3</td>
+      <td>sdsSPO_q3</td>
+      <td>ssbElo_q3</td>
+      <td>mtbNDi_q3</td>
+      <td>linPDE_q2</td>
+      <td>sdsLen_q1</td>
+      <td>ldsMSL_q2</td>
+      <td>ssbCCo_q2</td>
+      <td>lseCCo_q3</td>
+      <td>sdsAre_q1</td>
+      <td>stbCeA_q2</td>
+      <td>stbCeA_q3</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>ldsMSL_q2</td>
+      <td>sdbAre_q3</td>
+      <td>mtdMDi_q3</td>
+      <td>stbCeA_q2</td>
+      <td>sdcLAL_q3</td>
+      <td>misCel_q3</td>
+      <td>sdcLAL_q2</td>
+      <td>mdcAre_q1</td>
+      <td>sssLin_q3</td>
+      <td>sdcLAL_q2</td>
+      <td>mdcAre_q1</td>
+      <td>misCel_q1</td>
+      <td>ssbERI_q3</td>
+      <td>stbCeA_q1</td>
+      <td>mtbNDi_q3</td>
+      <td>sdbPer_q1</td>
+      <td>mtbAli_q1</td>
+      <td>ldsAre_q1</td>
+      <td>sdcLAL_q2</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>ldsAre_q2</td>
+      <td>sdcLAL_q2</td>
+      <td>sdbPer_q3</td>
+      <td>ltcWRE_q1</td>
+      <td>ssbSqu_q2</td>
+      <td>ldeAre_q2</td>
+      <td>mdsAre_q2</td>
+      <td>linP4W_q2</td>
+      <td>linP4W_q3</td>
+      <td>linPDE_q2</td>
+      <td>sisBpM_q2</td>
+      <td>lcnClo_q3</td>
+      <td>sdbPer_q1</td>
+      <td>sdsAre_q1</td>
+      <td>sdcLAL_q3</td>
+      <td>sscERI_q3</td>
+      <td>linP3W_q3</td>
+      <td>mdsAre_q3</td>
+      <td>lcdMes_q2</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>mtdMDi_q3</td>
+      <td>ltcWRE_q2</td>
+      <td>stbSAl_q1</td>
+      <td>lisCel_q1</td>
+      <td>ssbElo_q3</td>
+      <td>lddNDe_q2</td>
+      <td>sdbPer_q3</td>
+      <td>sdbPer_q2</td>
+      <td>stbSAl_q3</td>
+      <td>ltcWRE_q3</td>
+      <td>mtdMDi_q2</td>
+      <td>ldsAre_q1</td>
+      <td>ssbCCD_q3</td>
+      <td>lteWNB_q3</td>
+      <td>mdcAre_q2</td>
+      <td>sdsSWD_q2</td>
+      <td>linP4W_q2</td>
+      <td>sdsSPO_q1</td>
+      <td>mtcWNe_q3</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>sdsLen_q2</td>
+      <td>sdbPer_q2</td>
+      <td>misCel_q1</td>
+      <td>lseCWA_q1</td>
+      <td>ldsCDL_q1</td>
+      <td>lisCel_q1</td>
+      <td>lcnClo_q2</td>
+      <td>mtbNDi_q1</td>
+      <td>stbCeA_q3</td>
+      <td>stbSAl_q2</td>
+      <td>sddAre_q1</td>
+      <td>ldeAre_q2</td>
+      <td>linP4W_q2</td>
+      <td>mdcAre_q1</td>
+      <td>ltcAre_q2</td>
+      <td>mdcAre_q2</td>
+      <td>ldsMSL_q1</td>
+      <td>mtbAli_q1</td>
+      <td>ssbElo_q2</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>mtbAli_q1</td>
+      <td>linPDE_q1</td>
+      <td>stbSAl_q2</td>
+      <td>ldePer_q3</td>
+      <td>sdcAre_q2</td>
+      <td>ssbCCM_q2</td>
+      <td>ldsAre_q2</td>
+      <td>sssLin_q2</td>
+      <td>stbCeA_q2</td>
+      <td>linPDE_q1</td>
+      <td>lseERI_q2</td>
+      <td>mtbAli_q2</td>
+      <td>ssbCCM_q1</td>
+      <td>sscERI_q3</td>
+      <td>sdcAre_q2</td>
+      <td>ssbSqu_q3</td>
+      <td>ltcAre_q1</td>
+      <td>ldsMSL_q3</td>
+      <td>ssbERI_q3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imps</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/per_cluster_importance_form.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extremes">
+<h2>Extremes<a class="headerlink" href="#extremes" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/spsig_heatmap.pdf&quot;, bbox_inches=&quot;tight&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/form_feature_importance_18_1.png" src="../_images/form_feature_importance_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">41</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">47</span><span class="p">]),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/spsig_heatmap.pdf&quot;, bbox_inches=&quot;tight&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/form_feature_importance_19_1.png" src="../_images/form_feature_importance_19_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./clusters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
