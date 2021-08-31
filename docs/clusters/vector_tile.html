@@ -21,7 +21,7 @@
       
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -41,7 +41,7 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -77,7 +77,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <p class="caption">
  <span class="caption-text">
@@ -296,7 +296,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="simple visible nav section-nav flex-column">
 </ul>
 
@@ -311,16 +311,42 @@
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig.pq&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># user = os.environ.get(&#39;DB_USER&#39;)</span>
+<span class="c1"># pwd = os.environ.get(&#39;DB_PWD&#39;)</span>
+<span class="c1"># host = os.environ.get(&#39;DB_HOST&#39;)</span>
+<span class="c1"># port = os.environ.get(&#39;DB_PORT&#39;)</span>
+
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;martin&quot;</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="s2">&quot;gdsl2020&quot;</span>
+<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;138.253.73.214&quot;</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">22</span>
+
+<span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_connection_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;SELECT * FROM gb_coastline_2016&#39;</span>
+<span class="n">coastline</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_postgis</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">geom_col</span><span class="o">=</span><span class="s1">&#39;geometry&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coastline</span>
 </pre></div>
 </div>
 </div>
@@ -343,47 +369,47 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>kmeans10gb</th>
+      <th>CODE</th>
+      <th>LEGEND</th>
+      <th>AMENDED</th>
       <th>geometry</th>
-      <th>level2</th>
-      <th>signature_type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>POLYGON Z ((62220.000 798500.000 0.000, 62110....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>1993-01-01</td>
+      <td>LINESTRING (85970.000 14510.000, 85940.000 145...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0</td>
-      <td>POLYGON Z ((63507.682 796515.169 0.000, 63471....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>1993-01-01</td>
+      <td>LINESTRING (86170.000 14440.000, 86200.000 144...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0</td>
-      <td>POLYGON Z ((65953.174 802246.172 0.000, 65950....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>1993-01-01</td>
+      <td>LINESTRING (86330.000 13970.000, 86350.000 139...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0</td>
-      <td>POLYGON Z ((67297.740 803435.800 0.000, 67220....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>1993-01-01</td>
+      <td>LINESTRING (85950.000 13950.000, 85950.000 139...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0</td>
-      <td>POLYGON Z ((75760.000 852670.000 0.000, 75700....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>1993-01-01</td>
+      <td>LINESTRING (86080.000 15470.000, 86080.000 154...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -393,118 +419,192 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>96699</th>
-      <td>9</td>
-      <td>POLYGON ((323321.005 463795.416, 323319.842 46...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <th>2403</th>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>2014-08-05</td>
+      <td>LINESTRING (166426.000 225405.000, 166426.000 ...</td>
     </tr>
     <tr>
-      <th>96700</th>
-      <td>9</td>
-      <td>POLYGON ((325929.840 1008792.061, 325927.377 1...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <th>2404</th>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>2014-08-05</td>
+      <td>LINESTRING (167080.000 225526.000, 167064.000 ...</td>
     </tr>
     <tr>
-      <th>96701</th>
-      <td>9</td>
-      <td>POLYGON ((337804.770 1013422.583, 337800.122 1...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <th>2405</th>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>2014-08-06</td>
+      <td>LINESTRING (171825.000 226293.000, 171839.000 ...</td>
     </tr>
     <tr>
-      <th>96702</th>
-      <td>9</td>
-      <td>POLYGON ((422304.270 1147826.990, 422296.000 1...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <th>2406</th>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>2014-09-03</td>
+      <td>LINESTRING (517572.000 424703.000, 517594.000 ...</td>
     </tr>
     <tr>
-      <th>96703</th>
-      <td>9</td>
-      <td>POLYGON ((525396.260 439215.480, 525360.920 43...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <th>2407</th>
+      <td>5110</td>
+      <td>Coastline (Natural)</td>
+      <td>2014-09-22</td>
+      <td>LINESTRING (327888.000 562274.000, 327971.000 ...</td>
     </tr>
   </tbody>
 </table>
-<p>96704 rows × 4 columns</p>
+<p>2408 rows × 4 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig_4326.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.ops</span> <span class="kn">import</span> <span class="n">polygonize</span>
+
+<span class="n">polygons</span> <span class="o">=</span> <span class="n">polygonize</span><span class="p">(</span><span class="n">coastline</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>! tippecanoe -z16 \
-             --no-tile-compression \
-             --output-to-directory=../../urbangrammar_samba/spatial_signatures/signatures/tiles/ \
-             --drop-densest-as-needed \
-             --coalesce-smallest-as-needed --extend-zooms-if-still-dropping --detect-shared-borders --coalesce --reorder --hilbert \
-             --force \
-             ../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig_4326.geojson
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">polygons</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">poly</span> <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">polygons</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">coastline</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">polygons</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For layer 0, using name &quot;signatures_combined_levels_orig_4326&quot;
-96704 features, 173109745 bytes of geometry, 27607 bytes of separate metadata, 116 bytes of string pool
-tile 5/15/10 size is 716473 with detail 12, &gt;500000    
-Going to try keeping the sparsest 62.81% of the features to make it fit
-tile 5/15/10 size is 696742 with detail 12, &gt;500000    
-Going to try keeping the sparsest 40.57% of the features to make it fit
-tile 5/15/10 size is 621630 with detail 12, &gt;500000    
-Going to try keeping the sparsest 29.37% of the features to make it fit
-tile 5/15/10 size is 564886 with detail 12, &gt;500000    
-Going to try keeping the sparsest 23.39% of the features to make it fit
-tile 6/31/20 size is 778020 with detail 12, &gt;500000    
-Going to try keeping the sparsest 57.84% of the features to make it fit
-tile 6/31/21 size is 695813 with detail 12, &gt;500000    
-Going to try keeping the sparsest 64.67% of the features to make it fit
-tile 6/31/20 size is 707250 with detail 12, &gt;500000    
-Going to try keeping the sparsest 36.80% of the features to make it fit
-tile 6/31/21 size is 668965 with detail 12, &gt;500000    
-Going to try keeping the sparsest 43.50% of the features to make it fit
-tile 6/31/20 size is 591854 with detail 12, &gt;500000    
-Going to try keeping the sparsest 27.98% of the features to make it fit
-tile 6/31/21 size is 561195 with detail 12, &gt;500000    
-Going to try keeping the sparsest 34.88% of the features to make it fit
-tile 6/31/20 size is 511519 with detail 12, &gt;500000    
-Going to try keeping the sparsest 24.62% of the features to make it fit
-tile 6/31/21 size is 501371 with detail 12, &gt;500000    
-Going to try keeping the sparsest 31.31% of the features to make it fit
-tile 7/63/41 size is 885146 with detail 12, &gt;500000    
-Going to try keeping the sparsest 50.84% of the features to make it fit
-tile 7/63/42 size is 889181 with detail 12, &gt;500000    
-Going to try keeping the sparsest 50.61% of the features to make it fit
-tile 7/63/41 size is 728530 with detail 12, &gt;500000    
-Going to try keeping the sparsest 31.40% of the features to make it fit
-tile 7/63/42 size is 698454 with detail 12, &gt;500000    
-Going to try keeping the sparsest 32.61% of the features to make it fit
-tile 7/63/41 size is 550480 with detail 12, &gt;500000    
-Going to try keeping the sparsest 25.67% of the features to make it fit
-tile 7/63/42 size is 547240 with detail 12, &gt;500000    
-Going to try keeping the sparsest 26.81% of the features to make it fit
-tile 8/127/85 size is 613230 with detail 12, &gt;500000    
-Going to try keeping the sparsest 73.38% of the features to make it fit
-tile 8/126/82 size is 659833 with detail 12, &gt;500000    
-Going to try keeping the sparsest 68.20% of the features to make it fit
-tile 8/127/85 size is 582418 with detail 12, &gt;500000    
-Going to try keeping the sparsest 56.70% of the features to make it fit
-tile 8/126/82 size is 560076 with detail 12, &gt;500000    
-Going to try keeping the sparsest 54.80% of the features to make it fit
-tile 8/126/82 size is 506867 with detail 12, &gt;500000    
-Going to try keeping the sparsest 48.65% of the features to make it fit
-tile 8/127/85 size is 535125 with detail 12, &gt;500000    
-Going to try keeping the sparsest 47.68% of the features to make it fit
-tile 9/255/170 size is 500643 with detail 12, &gt;500000    
-Going to try keeping the sparsest 89.88% of the features to make it fit
-  99.9%  16/31762/20461  
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       POLYGON ((85970.000 14510.000, 85940.000 14530...
+1       POLYGON ((86170.000 14440.000, 86200.000 14430...
+2       POLYGON ((86330.000 13970.000, 86350.000 13980...
+3       POLYGON ((85950.000 13950.000, 85950.000 13940...
+4       POLYGON ((86080.000 15470.000, 86080.000 15450...
+                              ...                        
+2394    POLYGON ((166426.000 225405.000, 166426.000 22...
+2395    POLYGON ((167080.000 225526.000, 167064.000 22...
+2396    POLYGON ((171825.000 226293.000, 171839.000 22...
+2397    POLYGON ((517572.000 424703.000, 517594.000 42...
+2398    POLYGON ((327888.000 562274.000, 327971.000 56...
+Length: 2399, dtype: geometry
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">polygons</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 26min 54s, sys: 465 ms, total: 26min 55s
+Wall time: 26min 55s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clipped = clipped.explode()</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">clipped</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">clipped_polys</span> <span class="o">=</span> <span class="n">clipped</span><span class="p">[</span><span class="n">clipped</span><span class="o">.</span><span class="n">geom_type</span><span class="o">==</span><span class="s2">&quot;Polygon&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_polys</span><span class="o">.</span><span class="n">geom_type</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Polygon    96936
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_polys</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_clipped_4326.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>! tippecanoe -z15 \
+             --no-tile-compression \
+             --output-to-directory=../../great-britain/tiles/ \
+             --drop-densest-as-needed \
+             --coalesce-smallest-as-needed --extend-zooms-if-still-dropping --detect-shared-borders --coalesce --reorder --hilbert \
+             --force \
+             ../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_clipped_4326.geojson
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For layer 0, using name &quot;signatures_combined_levels_clipped_4326&quot;
+96936 features, 168540234 bytes of geometry, 13651 bytes of separate metadata, 116 bytes of string pool
+tile 5/15/10 size is 765139 with detail 12, &gt;500000    
+Going to try keeping the sparsest 58.81% of the features to make it fit
+tile 5/15/10 size is 731072 with detail 12, &gt;500000    
+Going to try keeping the sparsest 36.20% of the features to make it fit
+tile 5/15/10 size is 646126 with detail 12, &gt;500000    
+Going to try keeping the sparsest 25.21% of the features to make it fit
+tile 5/15/10 size is 563230 with detail 12, &gt;500000    
+Going to try keeping the sparsest 20.14% of the features to make it fit
+tile 6/31/20 size is 812368 with detail 12, &gt;500000    
+Going to try keeping the sparsest 55.39% of the features to make it fit
+tile 6/31/21 size is 695267 with detail 12, &gt;500000    
+Going to try keeping the sparsest 64.72% of the features to make it fit
+tile 6/31/20 size is 735976 with detail 12, &gt;500000    
+Going to try keeping the sparsest 33.87% of the features to make it fit
+tile 6/31/21 size is 669677 with detail 12, &gt;500000    
+Going to try keeping the sparsest 43.49% of the features to make it fit
+tile 6/31/20 size is 605705 with detail 12, &gt;500000    
+Going to try keeping the sparsest 25.16% of the features to make it fit
+tile 6/31/21 size is 559870 with detail 12, &gt;500000    
+Going to try keeping the sparsest 34.96% of the features to make it fit
+tile 6/31/20 size is 518924 with detail 12, &gt;500000    
+Going to try keeping the sparsest 21.82% of the features to make it fit
+tile 6/31/21 size is 508719 with detail 12, &gt;500000    
+Going to try keeping the sparsest 30.92% of the features to make it fit
+tile 7/63/41 size is 930588 with detail 12, &gt;500000    
+Going to try keeping the sparsest 48.36% of the features to make it fit
+tile 7/63/42 size is 888442 with detail 12, &gt;500000    
+Going to try keeping the sparsest 50.65% of the features to make it fit
+tile 7/63/41 size is 776312 with detail 12, &gt;500000    
+Going to try keeping the sparsest 28.03% of the features to make it fit
+tile 7/63/42 size is 699392 with detail 12, &gt;500000    
+Going to try keeping the sparsest 32.59% of the features to make it fit
+tile 7/63/41 size is 542427 with detail 12, &gt;500000    
+Going to try keeping the sparsest 23.25% of the features to make it fit
+tile 7/63/42 size is 555598 with detail 12, &gt;500000    
+Going to try keeping the sparsest 26.40% of the features to make it fit
+tile 8/127/85 size is 611913 with detail 12, &gt;500000    
+Going to try keeping the sparsest 73.54% of the features to make it fit
+tile 8/126/82 size is 659545 with detail 12, &gt;500000    
+Going to try keeping the sparsest 68.23% of the features to make it fit
+tile 8/127/85 size is 581803 with detail 12, &gt;500000    
+Going to try keeping the sparsest 56.88% of the features to make it fit
+tile 8/126/82 size is 561495 with detail 12, &gt;500000    
+Going to try keeping the sparsest 54.68% of the features to make it fit
+tile 8/126/82 size is 509050 with detail 12, &gt;500000    
+Going to try keeping the sparsest 48.34% of the features to make it fit
+tile 8/127/85 size is 542002 with detail 12, &gt;500000    
+Going to try keeping the sparsest 47.22% of the features to make it fit
+  99.9%  15/16275/10435  
 </pre></div>
 </div>
 </div>
@@ -533,10 +633,14 @@ Going to try keeping the sparsest 89.88% of the features to make it fit
               </div>
               
         
-        <div class='prev-next-bottom'>
             
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
         
         </div>
     </div>
