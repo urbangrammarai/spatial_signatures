@@ -21,6 +21,7 @@
   sections:
     - file: measuring/cross-chunk_indices
     - file: measuring/morphometrics
+    - file: measuring/inscribed_circle
     - file: measuring/functional_data
     - file: measuring/accessibility
     - file: measuring/GHS-composite-S2_ndvi
@@ -46,6 +47,7 @@
     - file: clusters/exploration_of_form_signatures
     - file: clusters/form_feature_importance
     - file: clusters/validation
+    - file: esda/sizeshape
 
 - chapter: Data product
   sections:
