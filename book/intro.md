@@ -2,7 +2,9 @@
 
 This is a Jupyter Book containing the code and documentation for WP 2 (Spatial Signatures) of Urban Grammar AI research project.
 
-The project is currently in progress and the content of this book is reflecting the work done to date. 
+The project is currently in progress and the content of this book is reflecting the work done to date.
+
+Note that Jupyter notebooks in this book and their sections are organised thematically, not sequentially. It may happen that some notebooks need to be processed in between the start and end of a single notebook. Always try to understand individual steps to avoid potential reproducibility issue.
 
 ## Urban Grammar AI research project
 
