@@ -110,13 +110,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
-   Enclosed tessellation (proof of a concept)
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
-   Generating enclosures (proof of a concept)
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
   </a>
  </li>
  <li class="toctree-l1">
@@ -372,7 +372,7 @@
                 
   <div class="section" id="create-inscribed-circles">
 <h1>Create inscribed circles<a class="headerlink" href="#create-inscribed-circles" title="Permalink to this headline">¶</a></h1>
-<p>This notebook creates a center and a radius of a maximum inscribed circle of each enclosed tessellation cell.</p>
+<p>This notebook creates a center and a radius of a maximum inscribed circle of each enclosed tessellation cell. We will need it to generate distance-based weights used to measure contextual characters.</p>
 <p>It requires custom piece of code within pygeos. Therefore, we use a custom docker container based on <code class="docutils literal notranslate"><span class="pre">docker/Dockerfile</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -411,6 +411,7 @@
 </tr>
 </table></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">pygeos.constructive.maximum_inscribed_circle</span></code> is custom function implemented in https://github.com/martinfleis/pygeos/tree/circle branch. It is likely that it will, in some form, be part of the future release of pygeos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_circle</span><span class="p">(</span><span class="n">chunk</span><span class="p">):</span>

@@ -110,13 +110,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
-   Enclosed tessellation (proof of a concept)
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
-   Generating enclosures (proof of a concept)
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
   </a>
  </li>
  <li class="toctree-l1">
@@ -368,6 +368,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#population-estimates">
+   Population estimates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#night-lights">
    Night lights
   </a>
@@ -412,7 +417,8 @@
 <h1>Functional data<a class="headerlink" href="#functional-data" title="Permalink to this headline">¶</a></h1>
 <p>This notebook links various functional layers to ET cells across GB. Various methods are used based on the nature of input data, from areal interpolation to zonal statistics.</p>
 <p>All data are furhter measured within a relevant spatial context.</p>
-<p>## Population estimates</p>
+<div class="section" id="population-estimates">
+<h2>Population estimates<a class="headerlink" href="#population-estimates" title="Permalink to this headline">¶</a></h2>
 <p>Population estimates are linked using area weighted interpolation based on building geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -483,6 +489,7 @@
     <span class="n">pop</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/population/pop_</span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Chunk </span><span class="si">{</span><span class="n">chunk_id</span><span class="si">}</span><span class="s2"> processed sucessfully in </span><span class="si">{</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">s</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>

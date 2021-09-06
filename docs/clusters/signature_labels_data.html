@@ -110,13 +110,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
-   Enclosed tessellation (proof of a concept)
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
-   Generating enclosures (proof of a concept)
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
   </a>
  </li>
  <li class="toctree-l1">
@@ -372,6 +372,7 @@
                 
   <div class="section" id="create-canonical-labels-attached-to-tessellation">
 <h1>Create canonical labels attached to tessellation<a class="headerlink" href="#create-canonical-labels-attached-to-tessellation" title="Permalink to this headline">¶</a></h1>
+<p>This notebook combines results of the first and second level clustering, generating a canonical singature type ID reflecting both levels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -937,6 +938,7 @@ Wall time: 20min 11s
 </div>
 </div>
 </div>
+<p>We can check the result and its spatial partitioning.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cells</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_tessellation/&quot;</span><span class="p">)</span>
@@ -1064,7 +1066,7 @@ Length: 103, dtype: geometry
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/signature_labels_data_21_1.png" src="../_images/signature_labels_data_21_1.png" />
+<img alt="../_images/signature_labels_data_22_1.png" src="../_images/signature_labels_data_22_1.png" />
 </div>
 </div>
 </div>
