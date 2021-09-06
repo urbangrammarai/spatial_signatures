@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Overall similarity &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Feature importance &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Feature importance per signature type" href="cluster_feature_importance.html" />
+    <link rel="prev" title="Exploration of top-level clusters" href="exploration_of_signatures.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -192,13 +194,75 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="exploration_of_signatures.html">
-   Exploration of top-level clusters
+  <a class="reference internal" href="level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="signature_labels_data.html">
+   Create canonical labels attached to tessellation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="form_signatures_GB.html">
    Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_feature_importance.html">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="validation.html">
+   External validation
   </a>
  </li>
 </ul>
@@ -298,17 +362,17 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overall-similarity">
    Overall similarity
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#global-feature-importance">
    Global feature importance
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extremes">
      Extremes
     </a>
@@ -326,7 +390,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="feature-importance">
+<h1>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -917,7 +983,7 @@ Name: kmeans10gb, dtype: int64
 </div>
 </div>
 <div class="section" id="overall-similarity">
-<h1>Overall similarity<a class="headerlink" href="#overall-similarity" title="Permalink to this headline">¶</a></h1>
+<h2>Overall similarity<a class="headerlink" href="#overall-similarity" title="Permalink to this headline">¶</a></h2>
 <p>Similarity of clusters can be represented by hierarchical dendrogram generated using Ward’s agglomerative clustering.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -939,7 +1005,7 @@ Name: kmeans10gb, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/feature_importance_11_0.png" src="../_images/feature_importance_11_0.png" />
+<img alt="../_images/feature_importance_12_0.png" src="../_images/feature_importance_12_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -952,12 +1018,12 @@ Name: kmeans10gb, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/feature_importance_12_0.png" src="../_images/feature_importance_12_0.png" />
+<img alt="../_images/feature_importance_13_0.png" src="../_images/feature_importance_13_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="global-feature-importance">
-<h1>Global feature importance<a class="headerlink" href="#global-feature-importance" title="Permalink to this headline">¶</a></h1>
+<h2>Global feature importance<a class="headerlink" href="#global-feature-importance" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1149,7 +1215,7 @@ Wall time: 1h 19min 23s
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;imp&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/feature_importance_23_1.png" src="../_images/feature_importance_23_1.png" />
+<img alt="../_images/feature_importance_24_1.png" src="../_images/feature_importance_24_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1314,7 +1380,7 @@ Length: 328, dtype: float64
 </div>
 </div>
 <div class="section" id="extremes">
-<h2>Extremes<a class="headerlink" href="#extremes" title="Permalink to this headline">¶</a></h2>
+<h3>Extremes<a class="headerlink" href="#extremes" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -1330,7 +1396,7 @@ Length: 328, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/feature_importance_30_1.png" src="../_images/feature_importance_30_1.png" />
+<img alt="../_images/feature_importance_31_1.png" src="../_images/feature_importance_31_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1342,7 +1408,8 @@ Length: 328, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/feature_importance_31_0.png" src="../_images/feature_importance_31_0.png" />
+<img alt="../_images/feature_importance_32_0.png" src="../_images/feature_importance_32_0.png" />
+</div>
 </div>
 </div>
 </div>
@@ -1377,6 +1444,24 @@ Length: 328, dtype: float64
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="exploration_of_signatures.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Exploration of top-level clusters</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="cluster_feature_importance.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Feature importance per signature type</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

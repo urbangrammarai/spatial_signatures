@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Form signatures &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Feature importance per form type &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="External validation" href="validation.html" />
+    <link rel="prev" title="Exploration of form-based signatures" href="exploration_of_form_signatures.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -192,13 +194,75 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="exploration_of_signatures.html">
-   Exploration of top-level clusters
+  <a class="reference internal" href="level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="signature_labels_data.html">
+   Create canonical labels attached to tessellation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="form_signatures_GB.html">
    Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="feature_importance.html">
+   Feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="validation.html">
+   External validation
   </a>
  </li>
 </ul>
@@ -298,22 +362,22 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#form-signatures">
    Form signatures
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overall-similarity">
    Overall similarity
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-importance-per-cluster">
    Feature importance per cluster
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extremes">
      Extremes
     </a>
@@ -331,7 +395,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="feature-importance-per-form-type">
+<h1>Feature importance per form type<a class="headerlink" href="#feature-importance-per-form-type" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -347,7 +413,7 @@
 </div>
 </div>
 <div class="section" id="form-signatures">
-<h1>Form signatures<a class="headerlink" href="#form-signatures" title="Permalink to this headline">¶</a></h1>
+<h2>Form signatures<a class="headerlink" href="#form-signatures" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> data = dask.dataframe.read_parquet(&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/form/standardized/&quot;).set_index(&#39;hindex&#39;)
@@ -772,7 +838,7 @@ Name: k8, dtype: int64
 </div>
 </div>
 <div class="section" id="overall-similarity">
-<h1>Overall similarity<a class="headerlink" href="#overall-similarity" title="Permalink to this headline">¶</a></h1>
+<h2>Overall similarity<a class="headerlink" href="#overall-similarity" title="Permalink to this headline">¶</a></h2>
 <p>Similarity of clusters can be represented by hierarchical dendrogram generated using Ward’s agglomerative clustering.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -793,12 +859,12 @@ Name: k8, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/form_feature_importance_10_0.png" src="../_images/form_feature_importance_10_0.png" />
+<img alt="../_images/form_feature_importance_11_0.png" src="../_images/form_feature_importance_11_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="feature-importance-per-cluster">
-<h1>Feature importance per cluster<a class="headerlink" href="#feature-importance-per-cluster" title="Permalink to this headline">¶</a></h1>
+<h2>Feature importance per cluster<a class="headerlink" href="#feature-importance-per-cluster" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="o">.</span><span class="n">k8</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -2038,7 +2104,7 @@ Name: k8, dtype: int64
 </div>
 </div>
 <div class="section" id="extremes">
-<h2>Extremes<a class="headerlink" href="#extremes" title="Permalink to this headline">¶</a></h2>
+<h3>Extremes<a class="headerlink" href="#extremes" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -2054,7 +2120,7 @@ Name: k8, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/form_feature_importance_18_1.png" src="../_images/form_feature_importance_18_1.png" />
+<img alt="../_images/form_feature_importance_19_1.png" src="../_images/form_feature_importance_19_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2069,7 +2135,8 @@ Name: k8, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/form_feature_importance_19_1.png" src="../_images/form_feature_importance_19_1.png" />
+<img alt="../_images/form_feature_importance_20_1.png" src="../_images/form_feature_importance_20_1.png" />
+</div>
 </div>
 </div>
 </div>
@@ -2104,6 +2171,24 @@ Name: k8, dtype: int64
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="exploration_of_form_signatures.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Exploration of form-based signatures</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="validation.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">External validation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
