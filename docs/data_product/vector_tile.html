@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Generate vector tiles &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -280,7 +280,7 @@
   Data product
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    Overview of the data product
@@ -294,6 +294,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="oa_interpolation.html">
    Interpolation of signatures to OA and LSOA
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Generate vector tiles
   </a>
  </li>
 </ul>
@@ -388,14 +393,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -404,7 +401,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="generate-vector-tiles">
+<h1>Generate vector tiles<a class="headerlink" href="#generate-vector-tiles" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -701,6 +700,7 @@ tile 8/127/85 size is 542002 with detail 12, &gt;500000
 Going to try keeping the sparsest 47.22% of the features to make it fit
   99.9%  15/16275/10435  
 </pre></div>
+</div>
 </div>
 </div>
 </div>
