@@ -4411,7 +4411,445 @@ Wall time: 3min 42s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">per_type</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/per_type.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">per_type</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>code</th>
+      <th>type</th>
+      <th>form_sdbAre</th>
+      <th>form_sdbPer</th>
+      <th>form_sdbCoA</th>
+      <th>form_ssbCCo</th>
+      <th>form_ssbCor</th>
+      <th>form_ssbSqu</th>
+      <th>form_ssbERI</th>
+      <th>form_ssbElo</th>
+      <th>...</th>
+      <th>func_supermarkets_nearest</th>
+      <th>func_supermarkets_counts</th>
+      <th>func_listed_nearest</th>
+      <th>func_listed_counts</th>
+      <th>func_fhrs_nearest</th>
+      <th>func_fhrs_counts</th>
+      <th>func_culture_nearest</th>
+      <th>func_culture_counts</th>
+      <th>func_water_nearest</th>
+      <th>func_retail_centrenearest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ACS</td>
+      <td>Accessible suburbia</td>
+      <td>176.949135</td>
+      <td>53.902697</td>
+      <td>0.476838</td>
+      <td>0.534856</td>
+      <td>4.253845</td>
+      <td>0.775272</td>
+      <td>0.987707</td>
+      <td>0.642271</td>
+      <td>...</td>
+      <td>828.822261</td>
+      <td>1.890519</td>
+      <td>744.223994</td>
+      <td>11.273578</td>
+      <td>218.460768</td>
+      <td>334.434991</td>
+      <td>5384.638746</td>
+      <td>0.059113</td>
+      <td>542.613661</td>
+      <td>849.447871</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CRN</td>
+      <td>Connected residential neighbourhoods</td>
+      <td>272.522220</td>
+      <td>69.119967</td>
+      <td>1.069872</td>
+      <td>0.480941</td>
+      <td>4.445515</td>
+      <td>1.466426</td>
+      <td>0.979415</td>
+      <td>0.555468</td>
+      <td>...</td>
+      <td>679.958940</td>
+      <td>2.855980</td>
+      <td>596.613654</td>
+      <td>24.279146</td>
+      <td>152.479922</td>
+      <td>692.664050</td>
+      <td>3946.052517</td>
+      <td>0.129197</td>
+      <td>555.964942</td>
+      <td>536.469155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>COA</td>
+      <td>Countryside agriculture</td>
+      <td>204.100400</td>
+      <td>56.048984</td>
+      <td>0.505831</td>
+      <td>0.506275</td>
+      <td>4.371156</td>
+      <td>0.809087</td>
+      <td>0.977789</td>
+      <td>0.600065</td>
+      <td>...</td>
+      <td>4751.226429</td>
+      <td>0.089042</td>
+      <td>557.936276</td>
+      <td>11.223066</td>
+      <td>725.690643</td>
+      <td>44.465529</td>
+      <td>13156.203765</td>
+      <td>0.003804</td>
+      <td>304.488181</td>
+      <td>4943.972107</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>DRN</td>
+      <td>Dense residential neighbourhoods</td>
+      <td>375.598290</td>
+      <td>80.558473</td>
+      <td>2.127340</td>
+      <td>0.472554</td>
+      <td>4.694714</td>
+      <td>1.863620</td>
+      <td>0.969912</td>
+      <td>0.557054</td>
+      <td>...</td>
+      <td>661.765594</td>
+      <td>3.127412</td>
+      <td>506.614715</td>
+      <td>37.474705</td>
+      <td>144.021617</td>
+      <td>860.927102</td>
+      <td>3497.511181</td>
+      <td>0.259194</td>
+      <td>483.124139</td>
+      <td>421.093530</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DUN</td>
+      <td>Dense urban neighbourhoods</td>
+      <td>588.359559</td>
+      <td>107.362849</td>
+      <td>5.034084</td>
+      <td>0.435714</td>
+      <td>5.208242</td>
+      <td>3.278419</td>
+      <td>0.950431</td>
+      <td>0.519821</td>
+      <td>...</td>
+      <td>587.276810</td>
+      <td>4.436632</td>
+      <td>350.890339</td>
+      <td>62.783422</td>
+      <td>106.084358</td>
+      <td>1568.443597</td>
+      <td>2287.432199</td>
+      <td>0.476118</td>
+      <td>528.850109</td>
+      <td>224.326713</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>DIS</td>
+      <td>Disconnected suburbia</td>
+      <td>212.713958</td>
+      <td>61.631662</td>
+      <td>0.519372</td>
+      <td>0.491588</td>
+      <td>4.347900</td>
+      <td>1.019293</td>
+      <td>0.981779</td>
+      <td>0.573786</td>
+      <td>...</td>
+      <td>761.858373</td>
+      <td>2.067315</td>
+      <td>729.608517</td>
+      <td>24.181257</td>
+      <td>217.945624</td>
+      <td>342.081722</td>
+      <td>5831.523433</td>
+      <td>0.077958</td>
+      <td>523.050240</td>
+      <td>725.573382</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>DIU</td>
+      <td>Distilled urbanity</td>
+      <td>3713.379427</td>
+      <td>376.300388</td>
+      <td>159.087608</td>
+      <td>0.425186</td>
+      <td>12.484667</td>
+      <td>18.589482</td>
+      <td>0.776950</td>
+      <td>0.594314</td>
+      <td>...</td>
+      <td>229.903096</td>
+      <td>22.510563</td>
+      <td>31.732228</td>
+      <td>685.156338</td>
+      <td>16.219050</td>
+      <td>6297.607746</td>
+      <td>702.750880</td>
+      <td>10.392254</td>
+      <td>565.248203</td>
+      <td>29.803442</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>GRQ</td>
+      <td>Gridded residential quarters</td>
+      <td>283.892607</td>
+      <td>69.667245</td>
+      <td>0.749026</td>
+      <td>0.491754</td>
+      <td>4.506685</td>
+      <td>1.663151</td>
+      <td>0.976842</td>
+      <td>0.584548</td>
+      <td>...</td>
+      <td>577.683974</td>
+      <td>3.409903</td>
+      <td>516.197376</td>
+      <td>31.771826</td>
+      <td>129.244204</td>
+      <td>1081.376510</td>
+      <td>4094.915253</td>
+      <td>0.240503</td>
+      <td>522.087434</td>
+      <td>445.518972</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>HDU</td>
+      <td>Hyper distilled urbanity</td>
+      <td>3358.099586</td>
+      <td>330.818576</td>
+      <td>90.819544</td>
+      <td>0.446292</td>
+      <td>9.273438</td>
+      <td>22.513954</td>
+      <td>0.802892</td>
+      <td>0.617669</td>
+      <td>...</td>
+      <td>324.416312</td>
+      <td>18.791045</td>
+      <td>69.749236</td>
+      <td>1142.567164</td>
+      <td>14.101269</td>
+      <td>9213.145522</td>
+      <td>351.325110</td>
+      <td>34.197761</td>
+      <td>759.604208</td>
+      <td>32.544669</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>LOU</td>
+      <td>Local urbanity</td>
+      <td>823.354285</td>
+      <td>135.543919</td>
+      <td>12.666729</td>
+      <td>0.409310</td>
+      <td>6.014239</td>
+      <td>5.071848</td>
+      <td>0.919085</td>
+      <td>0.506415</td>
+      <td>...</td>
+      <td>483.017862</td>
+      <td>6.848327</td>
+      <td>216.858599</td>
+      <td>140.031073</td>
+      <td>82.468961</td>
+      <td>2167.909991</td>
+      <td>1273.226897</td>
+      <td>1.129622</td>
+      <td>507.706457</td>
+      <td>161.854989</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>MEU</td>
+      <td>Metropolitan urbanity</td>
+      <td>2413.938716</td>
+      <td>283.935149</td>
+      <td>118.946949</td>
+      <td>0.395862</td>
+      <td>9.717504</td>
+      <td>12.406894</td>
+      <td>0.820142</td>
+      <td>0.527758</td>
+      <td>...</td>
+      <td>299.930496</td>
+      <td>17.271958</td>
+      <td>51.874364</td>
+      <td>456.529630</td>
+      <td>40.063982</td>
+      <td>4490.949206</td>
+      <td>644.531259</td>
+      <td>4.446825</td>
+      <td>467.713631</td>
+      <td>66.318054</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>OPS</td>
+      <td>Open sprawl</td>
+      <td>226.715098</td>
+      <td>59.639780</td>
+      <td>0.900478</td>
+      <td>0.518531</td>
+      <td>4.371939</td>
+      <td>0.985729</td>
+      <td>0.982452</td>
+      <td>0.622301</td>
+      <td>...</td>
+      <td>948.025914</td>
+      <td>1.469023</td>
+      <td>760.257254</td>
+      <td>18.171441</td>
+      <td>267.238602</td>
+      <td>253.875226</td>
+      <td>6309.753341</td>
+      <td>0.061560</td>
+      <td>378.356187</td>
+      <td>1002.663064</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>REU</td>
+      <td>Regional urbanity</td>
+      <td>1480.260902</td>
+      <td>195.978660</td>
+      <td>43.190998</td>
+      <td>0.393035</td>
+      <td>7.776863</td>
+      <td>8.844805</td>
+      <td>0.869514</td>
+      <td>0.512959</td>
+      <td>...</td>
+      <td>331.067781</td>
+      <td>12.531123</td>
+      <td>115.004786</td>
+      <td>324.500752</td>
+      <td>56.865240</td>
+      <td>3163.829678</td>
+      <td>850.254487</td>
+      <td>2.233070</td>
+      <td>461.415859</td>
+      <td>90.874497</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>URB</td>
+      <td>Urban buffer</td>
+      <td>209.421858</td>
+      <td>55.941702</td>
+      <td>0.743395</td>
+      <td>0.523632</td>
+      <td>4.340540</td>
+      <td>0.859973</td>
+      <td>0.982904</td>
+      <td>0.630125</td>
+      <td>...</td>
+      <td>1752.873479</td>
+      <td>0.654018</td>
+      <td>673.931399</td>
+      <td>16.138833</td>
+      <td>379.169823</td>
+      <td>132.661846</td>
+      <td>8939.647136</td>
+      <td>0.024052</td>
+      <td>345.790747</td>
+      <td>2102.455609</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>WAL</td>
+      <td>Warehouse land</td>
+      <td>393.216097</td>
+      <td>75.680270</td>
+      <td>3.263039</td>
+      <td>0.469466</td>
+      <td>4.564890</td>
+      <td>1.352536</td>
+      <td>0.976102</td>
+      <td>0.542256</td>
+      <td>...</td>
+      <td>1043.835409</td>
+      <td>1.427596</td>
+      <td>934.001152</td>
+      <td>10.570084</td>
+      <td>256.220805</td>
+      <td>271.092537</td>
+      <td>5121.469150</td>
+      <td>0.058667</td>
+      <td>417.431851</td>
+      <td>898.174463</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>WIC</td>
+      <td>Wild countryside</td>
+      <td>209.855382</td>
+      <td>57.122052</td>
+      <td>0.223542</td>
+      <td>0.501939</td>
+      <td>4.381272</td>
+      <td>0.706130</td>
+      <td>0.976522</td>
+      <td>0.589908</td>
+      <td>...</td>
+      <td>9854.123937</td>
+      <td>0.028975</td>
+      <td>1324.025044</td>
+      <td>4.212720</td>
+      <td>1699.169649</td>
+      <td>33.073293</td>
+      <td>20695.290665</td>
+      <td>0.001680</td>
+      <td>236.730324</td>
+      <td>11041.324478</td>
+    </tr>
+  </tbody>
+</table>
+<p>16 rows × 118 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">per_type</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/per_type.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4764,14 +5202,14 @@ Wall time: 3min 42s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">per_geometry</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;nodeID&quot;</span><span class="p">,</span> <span class="s2">&quot;edgeID_primary&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/per_geometry.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">per_geometry</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;nodeID&quot;</span><span class="p">,</span> <span class="s2">&quot;edgeID_primary&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/per_geometry.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">type_ids</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/type_code.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">type_ids</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;type_code&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/type_code.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4799,7 +5237,7 @@ Wall time: 3min 42s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa</span><span class="p">[[</span><span class="s2">&quot;LSOA11CD&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_code&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">lsoa</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/lsoa_estimates.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa</span><span class="p">[[</span><span class="s2">&quot;LSOA11CD&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_code&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">lsoa</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/lsoa_estimates.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5141,7 +5579,7 @@ Wall time: 3min 42s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa</span><span class="p">[[</span><span class="s2">&quot;OA11CD&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_code&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">oa</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/output_area_estimates.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa</span><span class="p">[[</span><span class="s2">&quot;OA11CD&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_code&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">oa</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/data_product/output_area_estimates.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
