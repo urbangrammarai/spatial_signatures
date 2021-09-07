@@ -1,0 +1,1109 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Size and shape of signatures &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview of the data product" href="../data_product/overview.html" />
+    <link rel="prev" title="External validation" href="../clusters/validation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/inscribed_circle.html">
+   Create inscribed circles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/signature_labels_data.html">
+   Create canonical labels attached to tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/feature_importance.html">
+   Feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/form_feature_importance.html">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/validation.html">
+   External validation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Size and shape of signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data product
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/overview.html">
+   Overview of the data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/create_data_product.html">
+   Create a data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/oa_interpolation.html">
+   Interpolation of signatures to OA and LSOA
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/esda/sizeshape.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/esda/sizeshape.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="size-and-shape-of-signatures">
+<h1>Size and shape of signatures<a class="headerlink" href="#size-and-shape-of-signatures" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span>
+<span class="kn">import</span> <span class="nn">momepy</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border: 2px solid white;">
+<tr>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Client</h3>
+<ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
+  <li><b>Scheduler: </b>tcp://127.0.0.1:43365</li>
+  <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
+</ul>
+</td>
+<td style="vertical-align: top; border: 0px solid white">
+<h3 style="text-align: left;">Cluster</h3>
+<ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
+  <li><b>Workers: </b>16</li>
+  <li><b>Cores: </b>16</li>
+  <li><b>Memory: </b>134.91 GB</li>
+</ul>
+</td>
+</tr>
+</table></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pygeos</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.9&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig.pq&quot;</span><span class="p">),</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><strong>Dask-GeoPandas GeoDataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kmeans10gb</th>
+      <th>geometry</th>
+      <th>level2</th>
+      <th>signature_type</th>
+    </tr>
+    <tr>
+      <th>npartitions=32</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>int64</td>
+      <td>geometry</td>
+      <td>float64</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>3022</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>93682</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96703</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: from_pandas, 32 tasks</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">area</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">length</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;eri&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">momepy</span><span class="o">.</span><span class="n">EquivalentRectangularIndex</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">))</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">momepy</span><span class="o">.</span><span class="n">CircularCompactness</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">))</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;donut_index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">momepy</span><span class="o">.</span><span class="n">CourtyardIndex</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">momepy</span><span class="o">.</span><span class="n">CourtyardArea</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">))</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;fractality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">momepy</span><span class="o">.</span><span class="n">FractalDimension</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">))</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;convexity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">momepy</span><span class="o">.</span><span class="n">Convexity</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">series</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 12.8 s, sys: 5.15 s, total: 17.9 s
+Wall time: 32.1 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;level2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/sizeshape.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-15-9c695be00e9b&gt;:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  signatures.drop(columns=[&quot;kmeans10gb&quot;, &quot;geometry&quot;, &quot;level2&quot;]).to_parquet(&quot;../../urbangrammar_samba/spatial_signatures/esda/sizeshape.pq&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;level2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/sizeshape.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kmeans10gb</th>
+      <th>geometry</th>
+      <th>level2</th>
+      <th>signature_type</th>
+      <th>area</th>
+      <th>perimeter</th>
+      <th>eri</th>
+      <th>circular_compactness</th>
+      <th>donut_index</th>
+      <th>fractality</th>
+      <th>convexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>POLYGON Z ((62220.000 798500.000 0.000, 62110....</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>1.826984e+07</td>
+      <td>29577.575163</td>
+      <td>0.601828</td>
+      <td>0.439852</td>
+      <td>0.000071</td>
+      <td>1.065559</td>
+      <td>0.788857</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>POLYGON Z ((63507.682 796515.169 0.000, 63471....</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>1.235908e+04</td>
+      <td>555.207264</td>
+      <td>0.892662</td>
+      <td>0.254347</td>
+      <td>0.000000</td>
+      <td>1.047118</td>
+      <td>0.983245</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>POLYGON Z ((65953.174 802246.172 0.000, 65950....</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>7.234542e+05</td>
+      <td>5746.792461</td>
+      <td>0.602136</td>
+      <td>0.339522</td>
+      <td>0.000000</td>
+      <td>1.077707</td>
+      <td>0.629428</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>POLYGON Z ((67297.740 803435.800 0.000, 67220....</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>1.229467e+06</td>
+      <td>6161.670240</td>
+      <td>0.731125</td>
+      <td>0.306803</td>
+      <td>0.000000</td>
+      <td>1.046892</td>
+      <td>0.799648</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>POLYGON Z ((75760.000 852670.000 0.000, 75700....</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>7.604014e+06</td>
+      <td>22500.262066</td>
+      <td>0.539593</td>
+      <td>0.252670</td>
+      <td>0.000281</td>
+      <td>1.089988</td>
+      <td>0.641429</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96699</th>
+      <td>9</td>
+      <td>POLYGON ((323321.005 463795.416, 323319.842 46...</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>4.070783e+04</td>
+      <td>824.963123</td>
+      <td>1.020075</td>
+      <td>0.453320</td>
+      <td>0.000000</td>
+      <td>1.004137</td>
+      <td>0.999224</td>
+    </tr>
+    <tr>
+      <th>96700</th>
+      <td>9</td>
+      <td>POLYGON ((325929.840 1008792.061, 325927.377 1...</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>3.523702e+03</td>
+      <td>270.956057</td>
+      <td>0.959089</td>
+      <td>0.334764</td>
+      <td>0.000000</td>
+      <td>1.032331</td>
+      <td>0.995177</td>
+    </tr>
+    <tr>
+      <th>96701</th>
+      <td>9</td>
+      <td>POLYGON ((337804.770 1013422.583, 337800.122 1...</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>1.236944e+05</td>
+      <td>1525.262336</td>
+      <td>1.017609</td>
+      <td>0.370246</td>
+      <td>0.000000</td>
+      <td>1.013789</td>
+      <td>0.965269</td>
+    </tr>
+    <tr>
+      <th>96702</th>
+      <td>9</td>
+      <td>POLYGON ((422304.270 1147826.990, 422296.000 1...</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>1.526104e+03</td>
+      <td>189.735084</td>
+      <td>0.954954</td>
+      <td>0.277671</td>
+      <td>0.000000</td>
+      <td>1.052956</td>
+      <td>0.921173</td>
+    </tr>
+    <tr>
+      <th>96703</th>
+      <td>9</td>
+      <td>POLYGON ((525396.260 439215.480, 525360.920 43...</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>1.444304e+04</td>
+      <td>477.377607</td>
+      <td>1.026855</td>
+      <td>0.615717</td>
+      <td>0.000000</td>
+      <td>0.998544</td>
+      <td>0.999986</td>
+    </tr>
+  </tbody>
+</table>
+<p>96704 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outliers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;9_8&quot;</span><span class="p">,</span> <span class="s2">&quot;9_3&quot;</span><span class="p">,</span> <span class="s2">&quot;9_6&quot;</span><span class="p">,</span> <span class="s2">&quot;9_7&quot;</span><span class="p">]</span>
+<span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="o">~</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">outliers</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_12_0.png" src="../_images/sizeshape_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;perimeter&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_13_0.png" src="../_images/sizeshape_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;eri&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_14_0.png" src="../_images/sizeshape_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;circular_compactness&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_15_0.png" src="../_images/sizeshape_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;donut_index&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;donut_index&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_16_1.png" src="../_images/sizeshape_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fractality&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;fractality&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_17_1.png" src="../_images/sizeshape_17_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;convexity&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;convexity&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_18_1.png" src="../_images/sizeshape_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;signature_type&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">donut_index</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_19_1.png" src="../_images/sizeshape_19_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signatures</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">signatures</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        False
+1        False
+2        False
+3        False
+4        False
+         ...  
+96687    False
+96688    False
+96689    False
+96690    False
+96691    False
+Length: 96689, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">cl</span><span class="p">]</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">above</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="n">mean</span>
+    <span class="n">mask</span><span class="p">[</span><span class="n">above</span><span class="p">[</span><span class="n">above</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6915
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">significant</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_24_0.png" src="../_images/sizeshape_24_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;eri&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;eri&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_25_1.png" src="../_images/sizeshape_25_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;circular_compactness&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;circular_compactness&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_26_1.png" src="../_images/sizeshape_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;donut_index&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;donut_index&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_27_1.png" src="../_images/sizeshape_27_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;convexity&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;convexity&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_28_1.png" src="../_images/sizeshape_28_1.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./esda"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../clusters/validation.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">External validation</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../data_product/overview.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Overview of the data product</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

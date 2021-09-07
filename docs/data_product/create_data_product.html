@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Signature geometry &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Create a data product &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -50,7 +50,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="vector_tile.html" />
+    <link rel="next" title="Interpolation of signatures to OA and LSOA" href="oa_interpolation.html" />
     <link rel="prev" title="Overview of the data product" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -270,6 +270,11 @@
    External validation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/sizeshape.html">
+   Size and shape of signatures
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -284,7 +289,12 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Signature geometry
+   Create a data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="oa_interpolation.html">
+   Interpolation of signatures to OA and LSOA
   </a>
  </li>
 </ul>
@@ -384,29 +394,29 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signature-geometry">
    Signature geometry
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#remove-z-coordinates">
      Remove Z coordinates
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#link-data">
    Link data
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rename-columns">
    Rename columns
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#use-string-ids">
    Use string IDs
   </a>
@@ -422,7 +432,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="create-a-data-product">
+<h1>Create a data product<a class="headerlink" href="#create-a-data-product" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we need the master version of dask geopandas that has sjoin and recent dask</span>
 <span class="o">!</span>pip install git+https://github.com/geopandas/dask-geopandas.git
@@ -454,7 +466,7 @@
 </div>
 </div>
 <div class="section" id="signature-geometry">
-<h1>Signature geometry<a class="headerlink" href="#signature-geometry" title="Permalink to this headline">¶</a></h1>
+<h2>Signature geometry<a class="headerlink" href="#signature-geometry" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig.pq&quot;</span><span class="p">)</span>
@@ -756,7 +768,7 @@
 </div></div></div>
 </div>
 <div class="section" id="remove-z-coordinates">
-<h2>Remove Z coordinates<a class="headerlink" href="#remove-z-coordinates" title="Permalink to this headline">¶</a></h2>
+<h3>Remove Z coordinates<a class="headerlink" href="#remove-z-coordinates" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygeos</span>
@@ -883,7 +895,7 @@
 </div>
 </div>
 <div class="section" id="link-data">
-<h1>Link data<a class="headerlink" href="#link-data" title="Permalink to this headline">¶</a></h1>
+<h2>Link data<a class="headerlink" href="#link-data" title="Permalink to this headline">¶</a></h2>
 <p>Harmonize Corine data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3484,7 +3496,7 @@ Wall time: 3min 42s
 </div>
 </div>
 <div class="section" id="rename-columns">
-<h1>Rename columns<a class="headerlink" href="#rename-columns" title="Permalink to this headline">¶</a></h1>
+<h2>Rename columns<a class="headerlink" href="#rename-columns" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coded</span> <span class="o">=</span> <span class="p">{</span>
@@ -3771,7 +3783,7 @@ Wall time: 3min 42s
 </div>
 </div>
 <div class="section" id="use-string-ids">
-<h1>Use string IDs<a class="headerlink" href="#use-string-ids" title="Permalink to this headline">¶</a></h1>
+<h2>Use string IDs<a class="headerlink" href="#use-string-ids" title="Permalink to this headline">¶</a></h2>
 <p>Change integer ID for string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5922,6 +5934,7 @@ Wall time: 3min 42s
 </div>
 </div>
 </div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -5962,10 +5975,10 @@ Wall time: 3min 42s
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="vector_tile.html" title="next page">
+        <a class="right-next" href="oa_interpolation.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">&lt;no title&gt;</p>
+                <p class="prevnext-title">Interpolation of signatures to OA and LSOA</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

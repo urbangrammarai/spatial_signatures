@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>OA &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Interpolation of signatures to OA and LSOA &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="vector_tile.html" />
+    <link rel="prev" title="Create a data product" href="create_data_product.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -268,13 +270,18 @@
    External validation
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/sizeshape.html">
+   Size and shape of signatures
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
   Data product
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    Overview of the data product
@@ -282,7 +289,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="create_data_product.html">
-   Signature geometry
+   Create a data product
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Interpolation of signatures to OA and LSOA
   </a>
  </li>
 </ul>
@@ -382,12 +394,12 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oa">
    OA
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lsoa">
    LSOA
   </a>
@@ -403,7 +415,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="interpolation-of-signatures-to-oa-and-lsoa">
+<h1>Interpolation of signatures to OA and LSOA<a class="headerlink" href="#interpolation-of-signatures-to-oa-and-lsoa" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">tobler</span>
@@ -439,7 +453,7 @@ tobler: 0.8.2
 </div>
 </div>
 <div class="section" id="oa">
-<h1>OA<a class="headerlink" href="#oa" title="Permalink to this headline">¶</a></h1>
+<h2>OA<a class="headerlink" href="#oa" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">download</span> <span class="kn">import</span> <span class="n">download</span>
@@ -904,7 +918,7 @@ Wall time: 2h 6min 1s
 </div>
 </div>
 <div class="section" id="lsoa">
-<h1>LSOA<a class="headerlink" href="#lsoa" title="Permalink to this headline">¶</a></h1>
+<h2>LSOA<a class="headerlink" href="#lsoa" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/sharing/rest/content/items/39b8fd75e06f4588b9242bcad1f1a898/data&quot;</span><span class="p">,</span> <span class="s2">&quot;lookup&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
@@ -1503,6 +1517,7 @@ Wall time: 50min 52s
 </div>
 </div>
 </div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1533,6 +1548,24 @@ Wall time: 50min 52s
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="create_data_product.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Create a data product</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="vector_tile.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">&lt;no title&gt;</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
