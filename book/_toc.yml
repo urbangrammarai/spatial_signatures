@@ -53,5 +53,5 @@
   sections:
     - file: data_product/overview
     - file: data_product/create_data_product
-    - file: data_product/oa_interpolate
+    - file: data_product/oa_interpolation
     - file: data_product/vector_tile

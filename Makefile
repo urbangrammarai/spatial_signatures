@@ -6,10 +6,12 @@ build-book:
 	cp -r clusters book/clusters
 	cp -r measuring book/measuring
 	cp -r data_product book/data_product
+	cp -r esda book/esda
 	jupyter-book build book
 	cp -r book/_build/html docs
 	rm -rf book/spatial_unit
 	rm -rf book/clusters
 	rm -rf book/measuring
 	rm -rf book/data_product
+	rm -rf book/esda
 	touch docs/.nojekyll
