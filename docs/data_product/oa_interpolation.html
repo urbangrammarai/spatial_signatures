@@ -1,0 +1,1561 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>OA &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.github.io/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/inscribed_circle.html">
+   Create inscribed circles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/signature_labels_data.html">
+   Create canonical labels attached to tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/feature_importance.html">
+   Feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/form_feature_importance.html">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/validation.html">
+   External validation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data product
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview of the data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="create_data_product.html">
+   Signature geometry
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/data_product/oa_interpolation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/data_product/oa_interpolation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   OA
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsoa">
+   LSOA
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">tobler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;geopandas:&quot;</span><span class="p">,</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tobler:&quot;</span><span class="p">,</span> <span class="n">tobler</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>geopandas: 0.9.0
+tobler: 0.8.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;spatial_signatures_GB.gpkg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/geopandas/geodataframe.py:577: RuntimeWarning: Sequential read of iterator was interrupted. Resetting iterator. This can negatively impact the performance.
+  for feature in features_lst:
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="oa">
+<h1>OA<a class="headerlink" href="#oa" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">download</span> <span class="kn">import</span> <span class="n">download</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://opendata.arcgis.com/api/v3/datasets/09b58d063d4e421a9cad16ba5419a6bd_0/downloads/data?format=geojson&amp;spatialRefId=4326&quot;</span><span class="p">,</span> <span class="s2">&quot;oa_ew.geojson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://opendata.arcgis.com/api/v3/datasets/09b58d063d4e421a9cad16ba5419a6bd_0/downloads/data?format=geojson&amp;spatialRefId=4326 (1 byte)
+
+file_sizes: 2.62GB [01:15, 34.7MB/s]                                            
+Successfully downloaded file to oa_ew.geojson
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;oa_ew.geojson&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://www.nrscotland.gov.uk/files/geography/output-area-2011-mhw.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;oa_scot&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating data folder...
+Downloading data from https://www.nrscotland.gov.uk/files/geography/output-area-2011-mhw.zip (31.2 MB)
+
+file_sizes: 100%|██████████████████████████| 32.7M/32.7M [00:00&lt;00:00, 99.8MB/s]
+Extracting zip file...
+Successfully downloaded / unzipped to oa_scot
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;oa_scot&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_ew</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;oa_ew.geojson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_scot</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;oa_scot&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_ew</span> <span class="o">=</span> <span class="n">oa_ew</span><span class="p">[[</span><span class="s2">&quot;OA11CD&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">27700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_scot</span> <span class="o">=</span> <span class="n">oa_scot</span><span class="p">[[</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;OA11CD&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">oa_ew</span><span class="p">,</span> <span class="n">oa_scot</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">oa_ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">oa</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">oa_ddf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">oa_ddf</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">oa</span> <span class="o">=</span> <span class="n">oa_ddf</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2min 18s, sys: 493 ms, total: 2min 18s
+Wall time: 12.1 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">estimates</span> <span class="o">=</span> <span class="n">tobler</span><span class="o">.</span><span class="n">area_weighted</span><span class="o">.</span><span class="n">area_interpolate</span><span class="p">(</span><span class="n">signatures</span><span class="p">,</span> <span class="n">oa</span><span class="p">,</span> <span class="n">spatial_index</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">categorical_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1h 11min 21s, sys: 13.3 s, total: 1h 11min 35s
+Wall time: 2h 6min 1s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;OA11CD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">OA11CD</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primary</span> <span class="o">=</span> <span class="n">estimates</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;OA11CD&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;primary_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;type_&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;type_&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">estimates</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OA11CD&#39;</span><span class="p">,</span> <span class="s1">&#39;primary_type&#39;</span><span class="p">,</span> <span class="s1">&#39;Countryside agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Accessible suburbia&#39;</span><span class="p">,</span> <span class="s1">&#39;Open sprawl&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Warehouse land&#39;</span><span class="p">,</span> <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Urban buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;Disconnected suburbia&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense residential neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Connected residential neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;outlier&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyper distilled urbanity&#39;</span><span class="p">,</span> 
+       <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_estimated</span> <span class="o">=</span> <span class="n">estimates</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_estimated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OA11CD</th>
+      <th>primary_type</th>
+      <th>Countryside agriculture</th>
+      <th>Accessible suburbia</th>
+      <th>Open sprawl</th>
+      <th>Wild countryside</th>
+      <th>Warehouse land</th>
+      <th>Gridded residential quarters</th>
+      <th>Urban buffer</th>
+      <th>Disconnected suburbia</th>
+      <th>Dense residential neighbourhoods</th>
+      <th>Connected residential neighbourhoods</th>
+      <th>Dense urban neighbourhoods</th>
+      <th>Local urbanity</th>
+      <th>Distilled urbanity</th>
+      <th>Regional urbanity</th>
+      <th>outlier</th>
+      <th>Metropolitan urbanity</th>
+      <th>Hyper distilled urbanity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E00000001</td>
+      <td>Distilled urbanity</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E00000003</td>
+      <td>Distilled urbanity</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E00000005</td>
+      <td>Distilled urbanity</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E00000007</td>
+      <td>Distilled urbanity</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E00000010</td>
+      <td>Distilled urbanity</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>227754</th>
+      <td>S00094726</td>
+      <td>Wild countryside</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.965738</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>227755</th>
+      <td>S00102583</td>
+      <td>Urban buffer</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.076019</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.923981</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>227756</th>
+      <td>S00119179</td>
+      <td>Wild countryside</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.995102</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000594</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>227757</th>
+      <td>S00119262</td>
+      <td>Wild countryside</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.982881</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>227758</th>
+      <td>S00126169</td>
+      <td>Countryside agriculture</td>
+      <td>0.999624</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000377</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>227759 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_estimated</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;output_area_estimates.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lsoa">
+<h1>LSOA<a class="headerlink" href="#lsoa" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/sharing/rest/content/items/39b8fd75e06f4588b9242bcad1f1a898/data&quot;</span><span class="p">,</span> <span class="s2">&quot;lookup&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Creating data folder...
+Downloading data from https://www.arcgis.com/sharing/rest/content/items/39b8fd75e06f4588b9242bcad1f1a898/data (22.4 MB)
+
+file_sizes: 100%|██████████████████████████| 23.5M/23.5M [00:01&lt;00:00, 18.8MB/s]
+Extracting zip file...
+Successfully downloaded / unzipped to lookup
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;lookup&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lookup</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;lookup/Postcode_to_Output_Area_to_Lower_Layer_Super_Output_Area_to_Middle_Layer_Super_Output_Area_to_Local_Authority_District_November_2018_Lookup_in_the_UK.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/IPython/core/interactiveshell.py:3165: DtypeWarning: Columns (13) have mixed types.Specify dtype option on import or set low_memory=False.
+  has_raised = await self.run_ast_nodes(code_ast.body, cell_name,
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lookup</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[[</span><span class="s2">&quot;oa11cd&quot;</span><span class="p">,</span> <span class="s2">&quot;lsoa11cd&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_lsoa</span> <span class="o">=</span> <span class="n">oa</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">lookup</span><span class="p">[</span><span class="o">~</span><span class="n">lookup</span><span class="o">.</span><span class="n">oa11cd</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()],</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;OA11CD&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;oa11cd&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_lsoa</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OA11CD</th>
+      <th>geometry</th>
+      <th>oa11cd</th>
+      <th>lsoa11cd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E00000001</td>
+      <td>POLYGON ((532305.295 181814.350, 532192.035 18...</td>
+      <td>E00000001</td>
+      <td>E01000001</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E00000003</td>
+      <td>POLYGON ((532215.180 181846.434, 532215.756 18...</td>
+      <td>E00000003</td>
+      <td>E01000001</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E00000005</td>
+      <td>POLYGON ((532181.931 181763.261, 532176.493 18...</td>
+      <td>E00000005</td>
+      <td>E01000001</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E00000007</td>
+      <td>POLYGON ((532203.092 181668.419, 532229.800 18...</td>
+      <td>E00000007</td>
+      <td>E01000001</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E00000010</td>
+      <td>POLYGON ((532129.762 182133.441, 532099.885 18...</td>
+      <td>E00000010</td>
+      <td>E01000003</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>227754</th>
+      <td>S00094726</td>
+      <td>MULTIPOLYGON (((140992.500 757140.000, 140998....</td>
+      <td>S00094726</td>
+      <td>S01007285</td>
+    </tr>
+    <tr>
+      <th>227755</th>
+      <td>S00102583</td>
+      <td>MULTIPOLYGON (((249205.272 658381.836, 249199....</td>
+      <td>S00102583</td>
+      <td>S01008322</td>
+    </tr>
+    <tr>
+      <th>227756</th>
+      <td>S00119179</td>
+      <td>MULTIPOLYGON (((180736.000 822983.000, 181184....</td>
+      <td>S00119179</td>
+      <td>S01010669</td>
+    </tr>
+    <tr>
+      <th>227757</th>
+      <td>S00119262</td>
+      <td>POLYGON ((331504.549 973428.233, 332026.118 97...</td>
+      <td>S00119262</td>
+      <td>S01010790</td>
+    </tr>
+    <tr>
+      <th>227758</th>
+      <td>S00126169</td>
+      <td>POLYGON ((314833.000 734046.000, 314950.484 73...</td>
+      <td>S00126169</td>
+      <td>S01011959</td>
+    </tr>
+  </tbody>
+</table>
+<p>227759 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://github.com/geopandas/dask-geopandas/pull/69</span>
+<span class="k">def</span> <span class="nf">dissolve</span><span class="p">(</span><span class="n">ddf</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="n">split_out</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dissolve geometries within `groupby` into a single geometry.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    by : string, default None</span>
+<span class="sd">        Column whose values define groups to be dissolved. If None,</span>
+<span class="sd">        whole GeoDataFrame is considered a single group.</span>
+<span class="sd">    aggfunc : function,  string or dict, default &quot;first&quot;</span>
+<span class="sd">        Aggregation function for manipulation of data associated</span>
+<span class="sd">        with each group. Passed to dask `groupby.agg` method.</span>
+<span class="sd">        Note that ``aggfunc`` needs to be applicable to all column (i.e. ``&quot;mean:``</span>
+<span class="sd">        cannot be used with string dtype). Select only required columns before</span>
+<span class="sd">        ``dissolve`` or pass a dictionary mapping ``aggfunc`` to each column</span>
+<span class="sd">        separately.</span>
+<span class="sd">    split_out : int, default 1</span>
+<span class="sd">        Number of partitions of the output</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        keyword arguments passed to `groupby`</span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; ddf.dissolve(&quot;foo&quot;, split_out=12)</span>
+<span class="sd">    &gt;&gt;&gt; ddf[[&quot;foo&quot;, &quot;bar&quot;, &quot;geometry&quot;]].dissolve(&quot;foo&quot;, aggfunc=&quot;mean&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; ddf.dissolve(&quot;foo&quot;, aggfunc={&quot;bar&quot;: &quot;mean&quot;, &quot;baz&quot;: &quot;first&quot;})</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+    
+    <span class="k">if</span> <span class="n">by</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">by</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="n">drop</span> <span class="o">=</span> <span class="p">[</span><span class="n">ddf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">drop</span> <span class="o">=</span> <span class="p">[</span><span class="n">by</span><span class="p">,</span> <span class="n">ddf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="n">block</span><span class="p">):</span>
+        <span class="n">merged_geom</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">unary_union</span>
+        <span class="k">return</span> <span class="n">merged_geom</span>
+
+    <span class="n">merge_geometries</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">Aggregation</span><span class="p">(</span>
+        <span class="s2">&quot;merge_geometries&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">union</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">s0</span><span class="p">:</span> <span class="n">s0</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">union</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aggfunc</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">data_agg</span> <span class="o">=</span> <span class="n">aggfunc</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_agg</span> <span class="o">=</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">aggfunc</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">ddf</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop</span><span class="p">)}</span>
+    <span class="n">data_agg</span><span class="p">[</span><span class="n">ddf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge_geometries</span>
+    <span class="n">aggregated</span> <span class="o">=</span> <span class="n">ddf</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">by</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">data_agg</span><span class="p">,</span>
+        <span class="n">split_out</span><span class="o">=</span><span class="n">split_out</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">aggregated</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="n">ddf</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oa_lsoa_ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">oa_lsoa</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">lsoa_ddf</span> <span class="o">=</span> <span class="n">dissolve</span><span class="p">(</span><span class="n">oa_lsoa_ddf</span><span class="p">,</span> <span class="s2">&quot;lsoa11cd&quot;</span><span class="p">,</span> <span class="n">split_out</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">lsoa</span> <span class="o">=</span> <span class="n">lsoa_ddf</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">estimates</span> <span class="o">=</span> <span class="n">tobler</span><span class="o">.</span><span class="n">area_weighted</span><span class="o">.</span><span class="n">area_interpolate</span><span class="p">(</span><span class="n">signatures</span><span class="p">,</span> <span class="n">lsoa</span><span class="p">,</span> <span class="n">spatial_index</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">categorical_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 11min 11s, sys: 9.26 s, total: 11min 20s
+Wall time: 50min 52s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;LSOA11CD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lsoa</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primary</span> <span class="o">=</span> <span class="n">estimates</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;LSOA11CD&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="p">[</span><span class="s2">&quot;primary_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">primary</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;type_&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;type_&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">estimates</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LSOA11CD&#39;</span><span class="p">,</span> <span class="s1">&#39;primary_type&#39;</span><span class="p">,</span> <span class="s1">&#39;Countryside agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Accessible suburbia&#39;</span><span class="p">,</span> <span class="s1">&#39;Open sprawl&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Warehouse land&#39;</span><span class="p">,</span> <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Urban buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;Disconnected suburbia&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense residential neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Connected residential neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;outlier&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyper distilled urbanity&#39;</span><span class="p">,</span> 
+       <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_estimated</span> <span class="o">=</span> <span class="n">estimates</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_estimated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LSOA11CD</th>
+      <th>primary_type</th>
+      <th>Countryside agriculture</th>
+      <th>Accessible suburbia</th>
+      <th>Open sprawl</th>
+      <th>Wild countryside</th>
+      <th>Warehouse land</th>
+      <th>Gridded residential quarters</th>
+      <th>Urban buffer</th>
+      <th>Disconnected suburbia</th>
+      <th>Dense residential neighbourhoods</th>
+      <th>Connected residential neighbourhoods</th>
+      <th>Dense urban neighbourhoods</th>
+      <th>Local urbanity</th>
+      <th>Distilled urbanity</th>
+      <th>Regional urbanity</th>
+      <th>outlier</th>
+      <th>Metropolitan urbanity</th>
+      <th>Hyper distilled urbanity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E01000007</td>
+      <td>Dense urban neighbourhoods</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.822703</td>
+      <td>0.177297</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E01000015</td>
+      <td>Dense residential neighbourhoods</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.001117</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.022815</td>
+      <td>0.707635</td>
+      <td>0.136794</td>
+      <td>0.130251</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E01000030</td>
+      <td>Dense residential neighbourhoods</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.427742</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.572258</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E01000085</td>
+      <td>Dense urban neighbourhoods</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.171808</td>
+      <td>0.126567</td>
+      <td>0.701626</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E01000118</td>
+      <td>Connected residential neighbourhoods</td>
+      <td>0.0</td>
+      <td>0.339714</td>
+      <td>0.036230</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.132012</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.004280</td>
+      <td>0.487764</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>41724</th>
+      <td>W01001910</td>
+      <td>Gridded residential quarters</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.981498</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.018502</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>41725</th>
+      <td>W01001914</td>
+      <td>Urban buffer</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000020</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.999980</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>41726</th>
+      <td>W01001923</td>
+      <td>Urban buffer</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.383934</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.005691</td>
+      <td>0.533735</td>
+      <td>0.000000</td>
+      <td>0.003031</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>41727</th>
+      <td>W01001949</td>
+      <td>Accessible suburbia</td>
+      <td>0.0</td>
+      <td>0.922427</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.077573</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>41728</th>
+      <td>W01001952</td>
+      <td>Dense urban neighbourhoods</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.885102</td>
+      <td>0.114898</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>41729 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsoa_estimated</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;lsoa_estimates.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimates</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;lsoa.gpkg&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GPKG&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./data_product"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
