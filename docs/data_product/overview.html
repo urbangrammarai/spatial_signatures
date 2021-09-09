@@ -403,33 +403,31 @@
   <a class="reference internal nav-link" href="#geometry">
    Geometry
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#signature-description">
-     Signature description
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#signature-type-description">
-     Signature type description
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#key">
-     Key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lsoa-interpolation">
-     LSOA interpolation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#oa-interpolation">
-     OA interpolation
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometry-description">
+   Geometry description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signature-type-description">
+   Signature type description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#keys">
+   Keys
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lsoa-interpolation">
+   LSOA interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oa-interpolation">
+   OA interpolation
+  </a>
  </li>
 </ul>
 
@@ -444,6 +442,7 @@
                 
   <div class="section" id="overview-of-the-data-product">
 <h1>Overview of the data product<a class="headerlink" href="#overview-of-the-data-product" title="Permalink to this headline">¶</a></h1>
+<p>The data product of spatial signatures in Great Britain contains the data illustrated by this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../../</span><span class="n">urbangrammar_samba</span><span class="o">/</span><span class="n">spatial_signatures</span><span class="o">/</span><span class="n">data_product</span><span class="o">/</span>
@@ -466,6 +465,7 @@
 </div>
 <div class="section" id="geometry">
 <h2>Geometry<a class="headerlink" href="#geometry" title="Permalink to this headline">¶</a></h2>
+<p>Signature geometry with signature type and polygon ID.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;spatial_signatures_GB.gpkg&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -576,8 +576,10 @@
 </table>
 </div></div></div>
 </div>
-<div class="section" id="signature-description">
-<h3>Signature description<a class="headerlink" href="#signature-description" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="geometry-description">
+<h2>Geometry description<a class="headerlink" href="#geometry-description" title="Permalink to this headline">¶</a></h2>
+<p>Summary of input characters per each geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;per_geometry.csv&quot;</span><span class="p">)</span>
@@ -898,7 +900,8 @@
 </div>
 </div>
 <div class="section" id="signature-type-description">
-<h3>Signature type description<a class="headerlink" href="#signature-type-description" title="Permalink to this headline">¶</a></h3>
+<h2>Signature type description<a class="headerlink" href="#signature-type-description" title="Permalink to this headline">¶</a></h2>
+<p>Summary of input characters per each signature type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;per_type.csv&quot;</span><span class="p">)</span>
@@ -1338,8 +1341,9 @@
 </div></div></div>
 </div>
 </div>
-<div class="section" id="key">
-<h3>Key<a class="headerlink" href="#key" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="keys">
+<h2>Keys<a class="headerlink" href="#keys" title="Permalink to this headline">¶</a></h2>
+<p>Key to codes denoting measured characters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;key.csv&quot;</span><span class="p">)</span>
@@ -1430,6 +1434,7 @@
 <p>116 rows × 2 columns</p>
 </div></div></div>
 </div>
+<p>Key linking signature type and type code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;type_code.csv&quot;</span><span class="p">)</span>
@@ -1551,7 +1556,8 @@
 </div>
 </div>
 <div class="section" id="lsoa-interpolation">
-<h3>LSOA interpolation<a class="headerlink" href="#lsoa-interpolation" title="Permalink to this headline">¶</a></h3>
+<h2>LSOA interpolation<a class="headerlink" href="#lsoa-interpolation" title="Permalink to this headline">¶</a></h2>
+<p>Interpolation of signature types to LSOA geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;lsoa_estimates.csv&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -1836,7 +1842,8 @@
 </div>
 </div>
 <div class="section" id="oa-interpolation">
-<h3>OA interpolation<a class="headerlink" href="#oa-interpolation" title="Permalink to this headline">¶</a></h3>
+<h2>OA interpolation<a class="headerlink" href="#oa-interpolation" title="Permalink to this headline">¶</a></h2>
+<p>Interpolation of signature types to OA geometry.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;output_area_estimates.csv&quot;</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
@@ -2118,7 +2125,6 @@
   </tbody>
 </table>
 </div></div></div>
-</div>
 </div>
 </div>
 </div>

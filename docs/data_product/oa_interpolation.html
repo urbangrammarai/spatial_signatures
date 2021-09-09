@@ -400,8 +400,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#oa">
-   OA
+  <a class="reference internal nav-link" href="#output-areas">
+   Output Areas
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -422,24 +422,12 @@
                 
   <div class="section" id="interpolation-of-signatures-to-oa-and-lsoa">
 <h1>Interpolation of signatures to OA and LSOA<a class="headerlink" href="#interpolation-of-signatures-to-oa-and-lsoa" title="Permalink to this headline">¶</a></h1>
+<p>Signatures are composed of bespoke geometries but can be transferred to other. In  this notebook, we are interpolating signatures to Output Areas and Lower Super Output Area.</p>
+<p>The notebook requires <code class="docutils literal notranslate"><span class="pre">tobler</span> <span class="pre">&gt;</span> <span class="pre">0.8.2</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">tobler</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;geopandas:&quot;</span><span class="p">,</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tobler:&quot;</span><span class="p">,</span> <span class="n">tobler</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>geopandas: 0.9.0
-tobler: 0.8.2
 </pre></div>
 </div>
 </div>
@@ -457,8 +445,9 @@ tobler: 0.8.2
 </div>
 </div>
 </div>
-<div class="section" id="oa">
-<h2>OA<a class="headerlink" href="#oa" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="output-areas">
+<h2>Output Areas<a class="headerlink" href="#output-areas" title="Permalink to this headline">¶</a></h2>
+<p>We fetch OA for England and Wales, and those for Scotlaned and combine them to a single GeoDataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">download</span> <span class="kn">import</span> <span class="n">download</span>
@@ -541,6 +530,7 @@ Successfully downloaded / unzipped to oa_scot
 </div>
 </div>
 </div>
+<p>OA geometries are very dense. For our purpose, we simplify them a bit to speedup the interpolation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -557,6 +547,7 @@ Wall time: 12.1 s
 </div>
 </div>
 </div>
+<p>Using tobler, we interpolate the data and then clean the DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
@@ -578,6 +569,7 @@ Wall time: 2h 6min 1s
 </div>
 </div>
 </div>
+<p>We also want to get the primary type covering the largest portion of each OA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">primary</span> <span class="o">=</span> <span class="n">estimates</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;OA11CD&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -924,6 +916,7 @@ Wall time: 2h 6min 1s
 </div>
 <div class="section" id="lsoa">
 <h2>LSOA<a class="headerlink" href="#lsoa" title="Permalink to this headline">¶</a></h2>
+<p>We re-use OA geometries and combine them to LSOA using the lookup table.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://www.arcgis.com/sharing/rest/content/items/39b8fd75e06f4588b9242bcad1f1a898/data&quot;</span><span class="p">,</span> <span class="s2">&quot;lookup&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;zip&quot;</span><span class="p">)</span>
@@ -1085,6 +1078,7 @@ Successfully downloaded / unzipped to lookup
 <p>227759 rows × 4 columns</p>
 </div></div></div>
 </div>
+<p>Creation of LSOA geometries is done using dask_geopandas dissolve method, that was not released at the time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://github.com/geopandas/dask-geopandas/pull/69</span>
@@ -1150,6 +1144,7 @@ Successfully downloaded / unzipped to lookup
 </div>
 </div>
 </div>
+<p>Now we can interpolate the signature classification to LSOA and clean the DataFrame as above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>

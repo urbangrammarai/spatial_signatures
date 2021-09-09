@@ -415,6 +415,18 @@
   <a class="reference internal nav-link" href="#link-data">
    Link data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#harmonize-corine-data">
+     Harmonize Corine data.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#join-data">
+     Join data
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#rename-columns">
@@ -439,6 +451,8 @@
                 
   <div class="section" id="create-a-data-product">
 <h1>Create a data product<a class="headerlink" href="#create-a-data-product" title="Permalink to this headline">¶</a></h1>
+<p>Spatial signatures in Great Britain are released as a data product.</p>
+<p>This notebook takes the generated results and turn them into clean outputs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we need the master version of dask geopandas that has sjoin and recent dask</span>
@@ -472,6 +486,7 @@
 </div>
 <div class="section" id="signature-geometry">
 <h2>Signature geometry<a class="headerlink" href="#signature-geometry" title="Permalink to this headline">¶</a></h2>
+<p>We create an output with signature geometry and clear columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_orig.pq&quot;</span><span class="p">)</span>
@@ -774,6 +789,7 @@
 </div>
 <div class="section" id="remove-z-coordinates">
 <h3>Remove Z coordinates<a class="headerlink" href="#remove-z-coordinates" title="Permalink to this headline">¶</a></h3>
+<p>Some polygons contain Z coordinates that are not needed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pygeos</span>
@@ -901,7 +917,9 @@
 </div>
 <div class="section" id="link-data">
 <h2>Link data<a class="headerlink" href="#link-data" title="Permalink to this headline">¶</a></h2>
-<p>Harmonize Corine data.</p>
+<p>We also need CSV summarising geometries, but since we want to use the original characters before contextualisation and standardisation, we need to join them to geometry.</p>
+<div class="section" id="harmonize-corine-data">
+<h3>Harmonize Corine data.<a class="headerlink" href="#harmonize-corine-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyarrow.parquet</span> <span class="k">as</span> <span class="nn">pq</span>
@@ -922,6 +940,9 @@
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="join-data">
+<h3>Join data<a class="headerlink" href="#join-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
@@ -1511,114 +1532,6 @@ We&#39;re assuming that the indices of each dataframes are
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">function</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/combined_raw&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="nn">/opt/conda/lib/python3.8/site-packages/dask/dataframe/io/parquet/arrow.py</span> in <span class="ni">_append_row_groups</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">50</span>         <span class="n">metadata</span><span class="o">.</span><span class="n">append_row_groups</span><span class="p">(</span><span class="n">md</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/pyarrow/_parquet.pyx</span> in <span class="ni">pyarrow._parquet.FileMetaData.append_row_groups</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">615</span>         <span class="n">c_metadata</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">sp_metadata</span>
-<span class="ne">--&gt; </span><span class="mi">616</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_metadata</span><span class="o">.</span><span class="n">AppendRowGroups</span><span class="p">(</span><span class="n">deref</span><span class="p">(</span><span class="n">c_metadata</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> 
-
-<span class="ne">RuntimeError</span>: AppendRowGroups requires equal schemas.
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">timed</span> <span class="nb">eval</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/dask/dataframe/core.py</span> in <span class="ni">to_parquet</span><span class="nt">(self, path, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4439</span>         <span class="kn">from</span> <span class="nn">.io</span> <span class="kn">import</span> <span class="n">to_parquet</span>
-<span class="g g-Whitespace">   </span><span class="mi">4440</span> 
-<span class="ne">-&gt; </span><span class="mi">4441</span>         <span class="k">return</span> <span class="n">to_parquet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4442</span> 
-<span class="g g-Whitespace">   </span><span class="mi">4443</span>     <span class="k">def</span> <span class="nf">to_orc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/dask/dataframe/io/parquet/core.py</span> in <span class="ni">to_parquet</span><span class="nt">(df, path, engine, compression, write_index, append, overwrite, ignore_divisions, partition_on, storage_options, custom_metadata, write_metadata_file, compute, compute_kwargs, schema, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">723</span>     <span class="k">if</span> <span class="n">compute</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">724</span>         <span class="k">if</span> <span class="n">write_metadata_file</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">725</span>             <span class="k">return</span> <span class="n">compute_as_if_collection</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">726</span>                 <span class="n">DataFrame</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="p">(</span><span class="n">final_name</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">**</span><span class="n">compute_kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">727</span>             <span class="p">)</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/dask/base.py</span> in <span class="ni">compute_as_if_collection</span><span class="nt">(cls, dsk, keys, scheduler, get, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>     <span class="n">schedule</span> <span class="o">=</span> <span class="n">get_scheduler</span><span class="p">(</span><span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="bp">cls</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="n">dsk2</span> <span class="o">=</span> <span class="n">optimization_function</span><span class="p">(</span><span class="bp">cls</span><span class="p">)(</span><span class="n">dsk</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">313</span>     <span class="k">return</span> <span class="n">schedule</span><span class="p">(</span><span class="n">dsk2</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span> 
-<span class="g g-Whitespace">    </span><span class="mi">315</span> 
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ni">get</span><span class="nt">(self, dsk, keys, workers, allow_other_workers, resources, sync, asynchronous, direct, retries, priority, fifo_timeout, actors, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2669</span>                     <span class="n">should_rejoin</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">2670</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2671</span>                 <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="n">packed</span><span class="p">,</span> <span class="n">asynchronous</span><span class="o">=</span><span class="n">asynchronous</span><span class="p">,</span> <span class="n">direct</span><span class="o">=</span><span class="n">direct</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2672</span>             <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2673</span>                 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">futures</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ni">gather</span><span class="nt">(self, futures, errors, direct, asynchronous)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1946</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1947</span>                 <span class="n">local_worker</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1948</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sync</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1949</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">_gather</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1950</span>                 <span class="n">futures</span><span class="p">,</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ni">sync</span><span class="nt">(self, func, asynchronous, callback_timeout, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">843</span>             <span class="k">return</span> <span class="n">future</span>
-<span class="g g-Whitespace">    </span><span class="mi">844</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">845</span>             <span class="k">return</span> <span class="n">sync</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">846</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">callback_timeout</span><span class="o">=</span><span class="n">callback_timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">847</span>             <span class="p">)</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/distributed/utils.py</span> in <span class="ni">sync</span><span class="nt">(loop, func, callback_timeout, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>     <span class="k">if</span> <span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span>         <span class="n">typ</span><span class="p">,</span> <span class="n">exc</span><span class="p">,</span> <span class="n">tb</span> <span class="o">=</span> <span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">326</span>         <span class="k">raise</span> <span class="n">exc</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/distributed/utils.py</span> in <span class="ni">f</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>             <span class="k">if</span> <span class="n">callback_timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>                 <span class="n">future</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="n">future</span><span class="p">,</span> <span class="n">callback_timeout</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">309</span>             <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">future</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>             <span class="n">error</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/tornado/gen.py</span> in <span class="ni">run</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">760</span> 
-<span class="g g-Whitespace">    </span><span class="mi">761</span>                     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">762</span>                         <span class="n">value</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">763</span>                     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">764</span>                         <span class="n">exc_info</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/distributed/client.py</span> in <span class="ni">_gather</span><span class="nt">(self, futures, errors, direct, local_worker)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1811</span>                             <span class="n">exc</span> <span class="o">=</span> <span class="n">CancelledError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1812</span>                         <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1813</span>                             <span class="k">raise</span> <span class="n">exception</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">traceback</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1814</span>                         <span class="k">raise</span> <span class="n">exc</span>
-<span class="g g-Whitespace">   </span><span class="mi">1815</span>                     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;skip&quot;</span><span class="p">:</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/dask/dataframe/io/parquet/arrow.py</span> in <span class="ni">write_metadata</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">986</span>                 <span class="n">i_start</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">    </span><span class="mi">987</span>             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i_start</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)):</span>
-<span class="ne">--&gt; </span><span class="mi">988</span>                 <span class="n">_append_row_groups</span><span class="p">(</span><span class="n">_meta</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;meta&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">989</span>             <span class="k">with</span> <span class="n">fs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">metadata_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fil</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">990</span>                 <span class="n">_meta</span><span class="o">.</span><span class="n">write_metadata_file</span><span class="p">(</span><span class="n">fil</span><span class="p">)</span>
-
-<span class="nn">/opt/conda/lib/python3.8/site-packages/dask/dataframe/io/parquet/arrow.py</span> in <span class="ni">_append_row_groups</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">if</span> <span class="s2">&quot;requires equal schemas&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">53</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>                 <span class="s2">&quot;Schemas are inconsistent, try using &quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>                 <span class="s1">&#39;`to_parquet(..., schema=&quot;infer&quot;)`, or pass an explicit &#39;</span>
-
-<span class="ne">RuntimeError</span>: Schemas are inconsistent, try using `to_parquet(..., schema=&quot;infer&quot;)`, or pass an explicit pyarrow schema. Such as `to_parquet(..., schema={&quot;column1&quot;: pa.string()})`
 </pre></div>
 </div>
 </div>
@@ -2649,6 +2562,7 @@ Wall time: 37min 11s
 </div>
 </div>
 </div>
+<p>With all data merged together, we can create summaries using groupby.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">per_geometry</span> <span class="o">=</span> <span class="n">merged</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hindex&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -3498,6 +3412,7 @@ Wall time: 3min 42s
 </table>
 <p>96704 rows × 118 columns</p>
 </div></div></div>
+</div>
 </div>
 </div>
 <div class="section" id="rename-columns">

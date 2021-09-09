@@ -393,6 +393,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clip-by-coastline">
+   Clip by coastline
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -403,6 +416,10 @@
                 
   <div class="section" id="generate-vector-tiles">
 <h1>Generate vector tiles<a class="headerlink" href="#generate-vector-tiles" title="Permalink to this headline">¶</a></h1>
+<p>This notebook takes the spatial signature geometries we have saved as a Parquet file and convert them to the vector tiles that can be used in a webmap.</p>
+<div class="section" id="clip-by-coastline">
+<h2>Clip by coastline<a class="headerlink" href="#clip-by-coastline" title="Permalink to this headline">¶</a></h2>
+<p>We first clip the signatures by the coastline of GB using the coastline layer we initially used to delimit enclosures.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -414,15 +431,10 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># user = os.environ.get(&#39;DB_USER&#39;)</span>
-<span class="c1"># pwd = os.environ.get(&#39;DB_PWD&#39;)</span>
-<span class="c1"># host = os.environ.get(&#39;DB_HOST&#39;)</span>
-<span class="c1"># port = os.environ.get(&#39;DB_PORT&#39;)</span>
-
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;martin&quot;</span>
-<span class="n">pwd</span> <span class="o">=</span> <span class="s2">&quot;gdsl2020&quot;</span>
-<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;138.253.73.214&quot;</span>
-<span class="n">port</span> <span class="o">=</span> <span class="mi">22</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">)</span>
+<span class="n">pwd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PWD&#39;</span><span class="p">)</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">)</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">)</span>
 
 <span class="n">db_connection_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;postgres+psycopg2://</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">pwd</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">/built_env&quot;</span>
 <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_connection_url</span><span class="p">)</span>
@@ -437,120 +449,6 @@
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coastline</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CODE</th>
-      <th>LEGEND</th>
-      <th>AMENDED</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>1993-01-01</td>
-      <td>LINESTRING (85970.000 14510.000, 85940.000 145...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>1993-01-01</td>
-      <td>LINESTRING (86170.000 14440.000, 86200.000 144...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>1993-01-01</td>
-      <td>LINESTRING (86330.000 13970.000, 86350.000 139...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>1993-01-01</td>
-      <td>LINESTRING (85950.000 13950.000, 85950.000 139...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>1993-01-01</td>
-      <td>LINESTRING (86080.000 15470.000, 86080.000 154...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2403</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>2014-08-05</td>
-      <td>LINESTRING (166426.000 225405.000, 166426.000 ...</td>
-    </tr>
-    <tr>
-      <th>2404</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>2014-08-05</td>
-      <td>LINESTRING (167080.000 225526.000, 167064.000 ...</td>
-    </tr>
-    <tr>
-      <th>2405</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>2014-08-06</td>
-      <td>LINESTRING (171825.000 226293.000, 171839.000 ...</td>
-    </tr>
-    <tr>
-      <th>2406</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>2014-09-03</td>
-      <td>LINESTRING (517572.000 424703.000, 517594.000 ...</td>
-    </tr>
-    <tr>
-      <th>2407</th>
-      <td>5110</td>
-      <td>Coastline (Natural)</td>
-      <td>2014-09-22</td>
-      <td>LINESTRING (327888.000 562274.000, 327971.000 ...</td>
-    </tr>
-  </tbody>
-</table>
-<p>2408 rows × 4 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -628,6 +526,7 @@ dtype: int64
 </div>
 </div>
 </div>
+<p>Clipped and cleaned signature geometry is now ready to be convereted to vector tiles. We use <code class="docutils literal notranslate"><span class="pre">tippecanoe</span></code> to do that. <code class="docutils literal notranslate"><span class="pre">tippecanoe</span></code> is a command-line toolkit that requires GeoJSON in lat/lon as an input.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clipped_polys</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)[[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="mi">4326</span><span class="p">)</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_clipped_4326.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
@@ -635,6 +534,7 @@ dtype: int64
 </div>
 </div>
 </div>
+<p>Finally, we run <code class="docutils literal notranslate"><span class="pre">tippecanoe</span></code> and create tiles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>! tippecanoe -z15 \
@@ -700,6 +600,7 @@ tile 8/127/85 size is 542002 with detail 12, &gt;500000
 Going to try keeping the sparsest 47.22% of the features to make it fit
   99.9%  15/16275/10435  
 </pre></div>
+</div>
 </div>
 </div>
 </div>
