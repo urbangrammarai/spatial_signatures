@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Feature importance &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Cluster exploration and feature importance &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -247,7 +247,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Feature importance
+   Cluster exploration and feature importance
   </a>
  </li>
  <li class="toctree-l1">
@@ -427,8 +427,9 @@
         
               <div>
                 
-  <div class="section" id="feature-importance">
-<h1>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cluster-exploration-and-feature-importance">
+<h1>Cluster exploration and feature importance<a class="headerlink" href="#cluster-exploration-and-feature-importance" title="Permalink to this headline">¶</a></h1>
+<p>This notebook assesses overall similarity of clusters based on Ward’s agglomerative clustering and uses Random Forest model to explore the importance of individual characters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1061,6 +1062,7 @@ Name: kmeans10gb, dtype: int64
 </div>
 <div class="section" id="global-feature-importance">
 <h2>Global feature importance<a class="headerlink" href="#global-feature-importance" title="Permalink to this headline">¶</a></h2>
+<p>Feature importance indicates which characters are more important in distinguishing between the signature types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1418,6 +1420,7 @@ Length: 328, dtype: float64
 </div>
 <div class="section" id="extremes">
 <h3>Extremes<a class="headerlink" href="#extremes" title="Permalink to this headline">¶</a></h3>
+<p>To better understand the important characters, it is useful to check their actual values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>

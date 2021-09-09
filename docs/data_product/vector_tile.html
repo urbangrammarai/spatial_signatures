@@ -246,7 +246,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../clusters/feature_importance.html">
-   Feature importance
+   Cluster exploration and feature importance
   </a>
  </li>
  <li class="toctree-l1">
@@ -403,6 +403,16 @@
    Clip by coastline
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-to-geojson">
+   Save to GeoJSON
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-tiles">
+   Generate tiles
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -526,6 +536,9 @@ dtype: int64
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="save-to-geojson">
+<h2>Save to GeoJSON<a class="headerlink" href="#save-to-geojson" title="Permalink to this headline">¶</a></h2>
 <p>Clipped and cleaned signature geometry is now ready to be convereted to vector tiles. We use <code class="docutils literal notranslate"><span class="pre">tippecanoe</span></code> to do that. <code class="docutils literal notranslate"><span class="pre">tippecanoe</span></code> is a command-line toolkit that requires GeoJSON in lat/lon as an input.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -534,6 +547,9 @@ dtype: int64
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="generate-tiles">
+<h2>Generate tiles<a class="headerlink" href="#generate-tiles" title="Permalink to this headline">¶</a></h2>
 <p>Finally, we run <code class="docutils literal notranslate"><span class="pre">tippecanoe</span></code> and create tiles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
