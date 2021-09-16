@@ -2,9 +2,9 @@
 
 - chapter: Project
   sections:
-    - url: http://urbangrammarai.github.io
+    - url: http://urbangrammarai.xyz
       title: Project homepage
-    - url: http://urbangrammarai.github.io/data_processing
+    - url: http://urbangrammarai.xyz/data_processing
       title: WP1 - Data processing
 
 - chapter: Spatial unit
