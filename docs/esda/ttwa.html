@@ -1,0 +1,2569 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Composition of signatures within TTWA boundaries &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview of the data product" href="../data_product/overview.html" />
+    <link rel="prev" title="Co-occurence analysis" href="co-occurence.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/inscribed_circle.html">
+   Create inscribed circles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/signature_labels_data.html">
+   Create canonical labels attached to tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/feature_importance.html">
+   Cluster exploration and feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/form_feature_importance.html">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../clusters/validation.html">
+   External validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sizeshape.html">
+   Size and shape of signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="co-occurence.html">
+   Co-occurence analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Composition of signatures within TTWA boundaries
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data product
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/overview.html">
+   Overview of the data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/create_data_product.html">
+   Create a data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/oa_interpolation.html">
+   Interpolation of signatures to OA and LSOA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/vector_tile.html">
+   Generate vector tiles
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/esda/ttwa.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/esda/ttwa.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="composition-of-signatures-within-ttwa-boundaries">
+<h1>Composition of signatures within TTWA boundaries<a class="headerlink" href="#composition-of-signatures-within-ttwa-boundaries" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">tobler</span>
+
+<span class="n">tobler</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.8.2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>https://services1.arcgis.com/ESMARspQHYMw9BZ9/ArcGIS/rest/services/TTWA_2011_UK/FeatureServer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/TTWA_2011_UK/FeatureServer/0/query?where=1%3D1&amp;objectIds=&amp;time=&amp;geometry=&amp;geometryType=esriGeometryPolygon&amp;inSR=&amp;spatialRel=esriSpatialRelIntersects&amp;resultType=none&amp;distance=0.0&amp;units=esriSRUnit_Meter&amp;returnGeodetic=false&amp;outFields=&amp;returnGeometry=true&amp;returnCentroid=false&amp;featureEncoding=esriDefault&amp;multipatchOption=xyFootprint&amp;maxAllowableOffset=&amp;geometryPrecision=&amp;outSR=&amp;datumTransformation=&amp;applyVCSProjection=false&amp;returnIdsOnly=false&amp;returnUniqueIdsOnly=false&amp;returnCountOnly=false&amp;returnExtentOnly=false&amp;returnQueryGeometry=false&amp;returnDistinctValues=false&amp;cacheHint=false&amp;orderByFields=&amp;groupByFieldsForStatistics=&amp;outStatistics=&amp;having=&amp;resultOffset=&amp;resultRecordCount=&amp;returnZ=false&amp;returnM=false&amp;returnExceededLimitFeatures=true&amp;quantizationParameters=&amp;sqlFormat=none&amp;f=pgeojson&amp;token=&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttwa</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttwa</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TTWA11CD</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E30000004</td>
+      <td>POLYGON ((-1.34865 53.58333, -1.32673 53.55813...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>E30000018</td>
+      <td>POLYGON ((-1.93086 53.95027, -1.89833 53.92398...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E30000029</td>
+      <td>POLYGON ((-1.73679 53.70811, -1.73128 53.68037...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E30000039</td>
+      <td>POLYGON ((-2.00451 54.17288, -1.99254 54.15528...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E30000046</td>
+      <td>POLYGON ((-2.26489 50.75912, -2.24239 50.75563...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>W22000030</td>
+      <td>MULTIPOLYGON (((-4.77992 52.76561, -4.80242 52...</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>W22000031</td>
+      <td>POLYGON ((-3.14509 53.26082, -3.17735 53.24382...</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>W22000032</td>
+      <td>POLYGON ((-3.47007 51.82850, -3.47633 51.80947...</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>W22000033</td>
+      <td>POLYGON ((-3.48307 52.86552, -3.50541 52.84191...</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>W22000034</td>
+      <td>POLYGON ((-2.72684 52.98327, -2.73532 52.97002...</td>
+    </tr>
+  </tbody>
+</table>
+<p>228 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop NI</span>
+<span class="n">ttwa</span> <span class="o">=</span> <span class="n">ttwa</span><span class="p">[</span><span class="o">~</span><span class="n">ttwa</span><span class="o">.</span><span class="n">TTWA11CD</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttwa</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_7_1.png" src="../_images/ttwa_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttwa</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-30-01f59cdfba9b&gt;:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  ttwa.to_parquet(&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa.pq&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_simplified.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;0_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Warehouse land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;6_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_4&quot;</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_5&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyper distilled urbanity&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>signature_type</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((62219.999 798499.999, 62109.999 7985...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((63507.682 796515.168, 63471.096 7965...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((65953.174 802246.171, 65523.864 8023...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((67297.740 803435.799, 67220.290 8034...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((75760.000 852669.999, 75699.999 8527...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96687</th>
+      <td>Hyper distilled urbanity</td>
+      <td>POLYGON ((528602.733 181135.451, 528572.629 18...</td>
+    </tr>
+    <tr>
+      <th>96688</th>
+      <td>Hyper distilled urbanity</td>
+      <td>POLYGON ((528643.907 181217.443, 528632.000 18...</td>
+    </tr>
+    <tr>
+      <th>96689</th>
+      <td>Hyper distilled urbanity</td>
+      <td>POLYGON ((528734.583 181316.821, 528722.252 18...</td>
+    </tr>
+    <tr>
+      <th>96690</th>
+      <td>Hyper distilled urbanity</td>
+      <td>POLYGON ((530336.433 181039.754, 530301.430 18...</td>
+    </tr>
+    <tr>
+      <th>96691</th>
+      <td>Hyper distilled urbanity</td>
+      <td>POLYGON ((581275.000 184964.001, 581431.000 18...</td>
+    </tr>
+  </tbody>
+</table>
+<p>96689 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">interpolated</span> <span class="o">=</span> <span class="n">tobler</span><span class="o">.</span><span class="n">area_weighted</span><span class="o">.</span><span class="n">area_interpolate</span><span class="p">(</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ttwa</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">crs</span><span class="p">),</span> <span class="n">categorical_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.54 s, sys: 336 ms, total: 5.88 s
+Wall time: 56.1 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">15</span><span class="p">:]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="p">[</span><span class="s2">&quot;TTWA11CD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttwa</span><span class="o">.</span><span class="n">TTWA11CD</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Countryside agriculture</th>
+      <th>Accessible suburbia</th>
+      <th>Open sprawl</th>
+      <th>Wild countryside</th>
+      <th>Warehouse land</th>
+      <th>Gridded residential quarters</th>
+      <th>Urban buffer</th>
+      <th>Disconnected suburbia</th>
+      <th>Dense residential neighbourhoods</th>
+      <th>Connected residential neighbourhoods</th>
+      <th>Dense urban neighbourhoods</th>
+      <th>Local urbanity</th>
+      <th>Distilled urbanity</th>
+      <th>Regional urbanity</th>
+      <th>Metropolitan urbanity</th>
+      <th>Hyper distilled urbanity</th>
+      <th></th>
+      <th>TTWA11CD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.218571</td>
+      <td>0.043969</td>
+      <td>0.176920</td>
+      <td>0.079282</td>
+      <td>1.235609e-03</td>
+      <td>0.000215</td>
+      <td>0.467117</td>
+      <td>0.003725</td>
+      <td>0.006016</td>
+      <td>7.620440e-04</td>
+      <td>0.002179</td>
+      <td>0.000008</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((443219.518 409835.037, 444696.854 40...</td>
+      <td>E30000004</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.166363</td>
+      <td>0.045175</td>
+      <td>0.229543</td>
+      <td>0.030462</td>
+      <td>8.473206e-03</td>
+      <td>0.002243</td>
+      <td>0.431080</td>
+      <td>0.008993</td>
+      <td>0.032779</td>
+      <td>1.287391e-02</td>
+      <td>0.023451</td>
+      <td>0.008330</td>
+      <td>0.0</td>
+      <td>0.000230</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((404635.122 450465.360, 406774.289 44...</td>
+      <td>E30000018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.504775</td>
+      <td>0.008234</td>
+      <td>0.078947</td>
+      <td>0.115431</td>
+      <td>7.741750e-03</td>
+      <td>0.000413</td>
+      <td>0.254977</td>
+      <td>0.004334</td>
+      <td>0.018119</td>
+      <td>1.105400e-03</td>
+      <td>0.005319</td>
+      <td>0.000605</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((417471.523 423552.896, 417846.958 42...</td>
+      <td>E30000029</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.333012</td>
+      <td>0.000010</td>
+      <td>0.002617</td>
+      <td>0.626129</td>
+      <td>6.710558e-04</td>
+      <td>0.000000</td>
+      <td>0.036716</td>
+      <td>0.000069</td>
+      <td>0.000567</td>
+      <td>4.414055e-07</td>
+      <td>0.000182</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((399803.434 475232.566, 400584.619 47...</td>
+      <td>E30000039</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.802061</td>
+      <td>0.003388</td>
+      <td>0.021588</td>
+      <td>0.029028</td>
+      <td>4.503935e-03</td>
+      <td>0.000505</td>
+      <td>0.122362</td>
+      <td>0.000286</td>
+      <td>0.004367</td>
+      <td>4.048234e-04</td>
+      <td>0.000823</td>
+      <td>0.000234</td>
+      <td>0.0</td>
+      <td>0.000074</td>
+      <td>0.00004</td>
+      <td>0.0</td>
+      <td>POLYGON ((381412.611 95536.380, 382998.301 951...</td>
+      <td>E30000046</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>0.293667</td>
+      <td>0.000214</td>
+      <td>0.000676</td>
+      <td>0.634816</td>
+      <td>1.737027e-05</td>
+      <td>0.000003</td>
+      <td>0.031056</td>
+      <td>0.000000</td>
+      <td>0.000197</td>
+      <td>1.286061e-05</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>MULTIPOLYGON (((212541.096 322292.766, 210936....</td>
+      <td>W22000030</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>0.336676</td>
+      <td>0.009619</td>
+      <td>0.006018</td>
+      <td>0.554385</td>
+      <td>3.207763e-04</td>
+      <td>0.000965</td>
+      <td>0.089908</td>
+      <td>0.000154</td>
+      <td>0.000000</td>
+      <td>2.772906e-04</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((323712.675 374369.204, 321530.068 37...</td>
+      <td>W22000031</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>0.284508</td>
+      <td>0.017178</td>
+      <td>0.035579</td>
+      <td>0.107998</td>
+      <td>1.688731e-02</td>
+      <td>0.007048</td>
+      <td>0.512841</td>
+      <td>0.001141</td>
+      <td>0.003019</td>
+      <td>1.465991e-03</td>
+      <td>0.001280</td>
+      <td>0.000994</td>
+      <td>0.0</td>
+      <td>0.000110</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((298789.856 215454.183, 298315.838 21...</td>
+      <td>W22000032</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>0.226124</td>
+      <td>0.000061</td>
+      <td>0.000709</td>
+      <td>0.750838</td>
+      <td>8.901256e-07</td>
+      <td>0.000000</td>
+      <td>0.016346</td>
+      <td>0.000098</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((300258.629 330812.406, 298700.069 32...</td>
+      <td>W22000033</td>
+    </tr>
+    <tr>
+      <th>217</th>
+      <td>0.679714</td>
+      <td>0.008352</td>
+      <td>0.019098</td>
+      <td>0.066124</td>
+      <td>3.936716e-03</td>
+      <td>0.000004</td>
+      <td>0.216473</td>
+      <td>0.002296</td>
+      <td>0.002831</td>
+      <td>4.258767e-04</td>
+      <td>0.000747</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((351298.707 343128.550, 350714.368 34...</td>
+      <td>W22000034</td>
+    </tr>
+  </tbody>
+</table>
+<p>218 rows × 18 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://opendata.arcgis.com/api/v3/datasets/9ac894d3086641bebcbfa9960895db39_0/downloads/data?format=csv&amp;spatialRefId=4326&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TTWA11CD</th>
+      <th>TTWA11NM</th>
+      <th>FID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>E30000004</td>
+      <td>Barnsley</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>S22000048</td>
+      <td>Alness and Invergordon</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>E30000018</td>
+      <td>Bradford</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>E30000029</td>
+      <td>Halifax</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>E30000039</td>
+      <td>Skipton</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>S22000013</td>
+      <td>Western Isles</td>
+      <td>224</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>S22000032</td>
+      <td>Mull and Islay</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>S22000035</td>
+      <td>Orkney Islands</td>
+      <td>226</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>S22000039</td>
+      <td>Shetland Islands</td>
+      <td>227</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>S22000047</td>
+      <td>Aberdeen</td>
+      <td>228</td>
+    </tr>
+  </tbody>
+</table>
+<p>228 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_names.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">names</span><span class="p">[[</span><span class="s2">&quot;TTWA11CD&quot;</span><span class="p">,</span> <span class="s2">&quot;TTWA11NM&quot;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;TTWA11CD&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Countryside agriculture</th>
+      <th>Accessible suburbia</th>
+      <th>Open sprawl</th>
+      <th>Wild countryside</th>
+      <th>Warehouse land</th>
+      <th>Gridded residential quarters</th>
+      <th>Urban buffer</th>
+      <th>Disconnected suburbia</th>
+      <th>Dense residential neighbourhoods</th>
+      <th>Connected residential neighbourhoods</th>
+      <th>Dense urban neighbourhoods</th>
+      <th>Local urbanity</th>
+      <th>Distilled urbanity</th>
+      <th>Regional urbanity</th>
+      <th>Metropolitan urbanity</th>
+      <th>Hyper distilled urbanity</th>
+      <th></th>
+      <th>TTWA11CD</th>
+      <th>TTWA11NM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.218571</td>
+      <td>0.043969</td>
+      <td>0.176920</td>
+      <td>0.079282</td>
+      <td>1.235609e-03</td>
+      <td>0.000215</td>
+      <td>0.467117</td>
+      <td>0.003725</td>
+      <td>0.006016</td>
+      <td>7.620440e-04</td>
+      <td>0.002179</td>
+      <td>0.000008</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((443219.518 409835.037, 444696.854 40...</td>
+      <td>E30000004</td>
+      <td>Barnsley</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.166363</td>
+      <td>0.045175</td>
+      <td>0.229543</td>
+      <td>0.030462</td>
+      <td>8.473206e-03</td>
+      <td>0.002243</td>
+      <td>0.431080</td>
+      <td>0.008993</td>
+      <td>0.032779</td>
+      <td>1.287391e-02</td>
+      <td>0.023451</td>
+      <td>0.008330</td>
+      <td>0.0</td>
+      <td>0.000230</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((404635.122 450465.360, 406774.289 44...</td>
+      <td>E30000018</td>
+      <td>Bradford</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.504775</td>
+      <td>0.008234</td>
+      <td>0.078947</td>
+      <td>0.115431</td>
+      <td>7.741750e-03</td>
+      <td>0.000413</td>
+      <td>0.254977</td>
+      <td>0.004334</td>
+      <td>0.018119</td>
+      <td>1.105400e-03</td>
+      <td>0.005319</td>
+      <td>0.000605</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((417471.523 423552.896, 417846.958 42...</td>
+      <td>E30000029</td>
+      <td>Halifax</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.333012</td>
+      <td>0.000010</td>
+      <td>0.002617</td>
+      <td>0.626129</td>
+      <td>6.710558e-04</td>
+      <td>0.000000</td>
+      <td>0.036716</td>
+      <td>0.000069</td>
+      <td>0.000567</td>
+      <td>4.414055e-07</td>
+      <td>0.000182</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((399803.434 475232.566, 400584.619 47...</td>
+      <td>E30000039</td>
+      <td>Skipton</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.802061</td>
+      <td>0.003388</td>
+      <td>0.021588</td>
+      <td>0.029028</td>
+      <td>4.503935e-03</td>
+      <td>0.000505</td>
+      <td>0.122362</td>
+      <td>0.000286</td>
+      <td>0.004367</td>
+      <td>4.048234e-04</td>
+      <td>0.000823</td>
+      <td>0.000234</td>
+      <td>0.0</td>
+      <td>0.000074</td>
+      <td>0.00004</td>
+      <td>0.0</td>
+      <td>POLYGON ((381412.611 95536.380, 382998.301 951...</td>
+      <td>E30000046</td>
+      <td>Dorchester and Weymouth</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>0.293667</td>
+      <td>0.000214</td>
+      <td>0.000676</td>
+      <td>0.634816</td>
+      <td>1.737027e-05</td>
+      <td>0.000003</td>
+      <td>0.031056</td>
+      <td>0.000000</td>
+      <td>0.000197</td>
+      <td>1.286061e-05</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>MULTIPOLYGON (((212541.096 322292.766, 210936....</td>
+      <td>W22000030</td>
+      <td>Pwllheli and Porthmadog</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>0.336676</td>
+      <td>0.009619</td>
+      <td>0.006018</td>
+      <td>0.554385</td>
+      <td>3.207763e-04</td>
+      <td>0.000965</td>
+      <td>0.089908</td>
+      <td>0.000154</td>
+      <td>0.000000</td>
+      <td>2.772906e-04</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((323712.675 374369.204, 321530.068 37...</td>
+      <td>W22000031</td>
+      <td>Rhyl</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>0.284508</td>
+      <td>0.017178</td>
+      <td>0.035579</td>
+      <td>0.107998</td>
+      <td>1.688731e-02</td>
+      <td>0.007048</td>
+      <td>0.512841</td>
+      <td>0.001141</td>
+      <td>0.003019</td>
+      <td>1.465991e-03</td>
+      <td>0.001280</td>
+      <td>0.000994</td>
+      <td>0.0</td>
+      <td>0.000110</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((298789.856 215454.183, 298315.838 21...</td>
+      <td>W22000032</td>
+      <td>Swansea</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>0.226124</td>
+      <td>0.000061</td>
+      <td>0.000709</td>
+      <td>0.750838</td>
+      <td>8.901256e-07</td>
+      <td>0.000000</td>
+      <td>0.016346</td>
+      <td>0.000098</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((300258.629 330812.406, 298700.069 32...</td>
+      <td>W22000033</td>
+      <td>Tywyn and Dolgellau</td>
+    </tr>
+    <tr>
+      <th>217</th>
+      <td>0.679714</td>
+      <td>0.008352</td>
+      <td>0.019098</td>
+      <td>0.066124</td>
+      <td>3.936716e-03</td>
+      <td>0.000004</td>
+      <td>0.216473</td>
+      <td>0.002296</td>
+      <td>0.002831</td>
+      <td>4.258767e-04</td>
+      <td>0.000747</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>0.0</td>
+      <td>POLYGON ((351298.707 343128.550, 350714.368 34...</td>
+      <td>W22000034</td>
+      <td>Wrexham</td>
+    </tr>
+  </tbody>
+</table>
+<p>218 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Countryside agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Accessible suburbia&#39;</span><span class="p">,</span> <span class="s1">&#39;Open sprawl&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Warehouse land&#39;</span><span class="p">,</span> <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Urban buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;Disconnected suburbia&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense residential neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Connected residential neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyper distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;TTWA11CD&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;TTWA11NM&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">interpolated</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="mi">27700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_interpolated.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-29-0c6f61fce238&gt;:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+
+This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
+
+To further ignore this warning, you can do: 
+import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
+  geopandas.GeoDataFrame(interpolated, crs=27700).to_parquet(&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_interpolated.pq&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">squarify</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting squarify
+  Downloading squarify-0.4.3-py3-none-any.whl (4.3 kB)
+Installing collected packages: squarify
+Successfully installed squarify-0.4.3
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">squarify</span>
+<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;TTWA11NM&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;TTWA11CD&quot;</span><span class="p">])</span>
+<span class="n">plot_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>TTWA11NM</th>
+      <th>Barnsley</th>
+      <th>Bradford</th>
+      <th>Halifax</th>
+      <th>Skipton</th>
+      <th>Dorchester and Weymouth</th>
+      <th>Falmouth</th>
+      <th>Grantham</th>
+      <th>Hastings</th>
+      <th>Hexham</th>
+      <th>Isle of Wight</th>
+      <th>...</th>
+      <th>Cardiff</th>
+      <th>Cardigan</th>
+      <th>Colwyn Bay</th>
+      <th>Llanelli</th>
+      <th>Merthyr Tydfil</th>
+      <th>Pwllheli and Porthmadog</th>
+      <th>Rhyl</th>
+      <th>Swansea</th>
+      <th>Tywyn and Dolgellau</th>
+      <th>Wrexham</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>0.218571</td>
+      <td>0.166363</td>
+      <td>0.504775</td>
+      <td>0.333012</td>
+      <td>0.802061</td>
+      <td>0.814348</td>
+      <td>0.895776</td>
+      <td>0.760641</td>
+      <td>0.094955</td>
+      <td>0.597957</td>
+      <td>...</td>
+      <td>0.195072</td>
+      <td>0.52362</td>
+      <td>0.247824</td>
+      <td>0.31493</td>
+      <td>0.354032</td>
+      <td>0.293667</td>
+      <td>0.336676</td>
+      <td>0.284508</td>
+      <td>0.226124</td>
+      <td>0.679714</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>0.043969</td>
+      <td>0.045175</td>
+      <td>0.008234</td>
+      <td>0.00001</td>
+      <td>0.003388</td>
+      <td>0.001462</td>
+      <td>0.003265</td>
+      <td>0.029552</td>
+      <td>0.0</td>
+      <td>0.02578</td>
+      <td>...</td>
+      <td>0.026886</td>
+      <td>0.0</td>
+      <td>0.008341</td>
+      <td>0.000882</td>
+      <td>0.001534</td>
+      <td>0.000214</td>
+      <td>0.009619</td>
+      <td>0.017178</td>
+      <td>0.000061</td>
+      <td>0.008352</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>0.17692</td>
+      <td>0.229543</td>
+      <td>0.078947</td>
+      <td>0.002617</td>
+      <td>0.021588</td>
+      <td>0.014442</td>
+      <td>0.008393</td>
+      <td>0.015345</td>
+      <td>0.000812</td>
+      <td>0.019786</td>
+      <td>...</td>
+      <td>0.104492</td>
+      <td>0.000554</td>
+      <td>0.006211</td>
+      <td>0.004573</td>
+      <td>0.043843</td>
+      <td>0.000676</td>
+      <td>0.006018</td>
+      <td>0.035579</td>
+      <td>0.000709</td>
+      <td>0.019098</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>0.079282</td>
+      <td>0.030462</td>
+      <td>0.115431</td>
+      <td>0.626129</td>
+      <td>0.029028</td>
+      <td>0.026181</td>
+      <td>0.00005</td>
+      <td>0.000017</td>
+      <td>0.897122</td>
+      <td>0.000098</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.459751</td>
+      <td>0.668945</td>
+      <td>0.613634</td>
+      <td>0.201801</td>
+      <td>0.634816</td>
+      <td>0.554385</td>
+      <td>0.107998</td>
+      <td>0.750838</td>
+      <td>0.066124</td>
+    </tr>
+    <tr>
+      <th>Warehouse land</th>
+      <td>0.001236</td>
+      <td>0.008473</td>
+      <td>0.007742</td>
+      <td>0.000671</td>
+      <td>0.004504</td>
+      <td>0.000552</td>
+      <td>0.000426</td>
+      <td>0.000163</td>
+      <td>0.000008</td>
+      <td>0.000908</td>
+      <td>...</td>
+      <td>0.034154</td>
+      <td>0.000037</td>
+      <td>0.002057</td>
+      <td>0.000003</td>
+      <td>0.009063</td>
+      <td>0.000017</td>
+      <td>0.000321</td>
+      <td>0.016887</td>
+      <td>0.000001</td>
+      <td>0.003937</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>0.000215</td>
+      <td>0.002243</td>
+      <td>0.000413</td>
+      <td>0.0</td>
+      <td>0.000505</td>
+      <td>0.003124</td>
+      <td>0.000075</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.006856</td>
+      <td>...</td>
+      <td>0.018411</td>
+      <td>0.0</td>
+      <td>0.0008</td>
+      <td>0.001571</td>
+      <td>0.002301</td>
+      <td>0.000003</td>
+      <td>0.000965</td>
+      <td>0.007048</td>
+      <td>0.0</td>
+      <td>0.000004</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>0.467117</td>
+      <td>0.43108</td>
+      <td>0.254977</td>
+      <td>0.036716</td>
+      <td>0.122362</td>
+      <td>0.094889</td>
+      <td>0.09007</td>
+      <td>0.165469</td>
+      <td>0.007009</td>
+      <td>0.325959</td>
+      <td>...</td>
+      <td>0.577927</td>
+      <td>0.007025</td>
+      <td>0.05864</td>
+      <td>0.059869</td>
+      <td>0.385135</td>
+      <td>0.031056</td>
+      <td>0.089908</td>
+      <td>0.512841</td>
+      <td>0.016346</td>
+      <td>0.216473</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>0.003725</td>
+      <td>0.008993</td>
+      <td>0.004334</td>
+      <td>0.000069</td>
+      <td>0.000286</td>
+      <td>0.002359</td>
+      <td>0.000676</td>
+      <td>0.003295</td>
+      <td>0.00001</td>
+      <td>0.000196</td>
+      <td>...</td>
+      <td>0.007809</td>
+      <td>0.000003</td>
+      <td>0.000006</td>
+      <td>0.000143</td>
+      <td>0.00054</td>
+      <td>0.0</td>
+      <td>0.000154</td>
+      <td>0.001141</td>
+      <td>0.000098</td>
+      <td>0.002296</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>0.006016</td>
+      <td>0.032779</td>
+      <td>0.018119</td>
+      <td>0.000567</td>
+      <td>0.004367</td>
+      <td>0.000202</td>
+      <td>0.001139</td>
+      <td>0.005219</td>
+      <td>0.000085</td>
+      <td>0.003164</td>
+      <td>...</td>
+      <td>0.008218</td>
+      <td>0.0</td>
+      <td>0.000323</td>
+      <td>0.000008</td>
+      <td>0.000775</td>
+      <td>0.000197</td>
+      <td>0.0</td>
+      <td>0.003019</td>
+      <td>0.0</td>
+      <td>0.002831</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>0.000762</td>
+      <td>0.012874</td>
+      <td>0.001105</td>
+      <td>0.0</td>
+      <td>0.000405</td>
+      <td>0.001662</td>
+      <td>0.000002</td>
+      <td>0.00368</td>
+      <td>0.0</td>
+      <td>0.000155</td>
+      <td>...</td>
+      <td>0.008751</td>
+      <td>0.0</td>
+      <td>0.002724</td>
+      <td>0.000003</td>
+      <td>0.000977</td>
+      <td>0.000013</td>
+      <td>0.000277</td>
+      <td>0.001466</td>
+      <td>0.0</td>
+      <td>0.000426</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>0.002179</td>
+      <td>0.023451</td>
+      <td>0.005319</td>
+      <td>0.000182</td>
+      <td>0.000823</td>
+      <td>0.0</td>
+      <td>0.000129</td>
+      <td>0.001775</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.011502</td>
+      <td>0.0</td>
+      <td>0.000005</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00128</td>
+      <td>0.0</td>
+      <td>0.000747</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>0.000008</td>
+      <td>0.00833</td>
+      <td>0.000605</td>
+      <td>0.0</td>
+      <td>0.000234</td>
+      <td>0.000201</td>
+      <td>0.0</td>
+      <td>0.000069</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.003291</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000994</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Distilled urbanity</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>0.0</td>
+      <td>0.00023</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000074</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00011</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00004</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Hyper distilled urbanity</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>16 rows × 218 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">ugg</span><span class="o">.</span><span class="n">get_colormap</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">randomize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">colors</span>
+
+<span class="n">symbology</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span>
+             <span class="s1">&#39;1_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span>
+             <span class="s1">&#39;3_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span>
+             <span class="s1">&#39;4_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span>
+             <span class="s1">&#39;5_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span>
+             <span class="s1">&#39;6_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span>
+             <span class="s1">&#39;7_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+             <span class="s1">&#39;8_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span>
+             <span class="s1">&#39;2_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+             <span class="s1">&#39;2_1&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span>
+             <span class="s1">&#39;2_2&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span>
+             <span class="s1">&#39;9_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span>
+             <span class="s1">&#39;9_1&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+             <span class="s1">&#39;9_2&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span>
+             <span class="s1">&#39;9_4&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span>
+             <span class="s1">&#39;9_5&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span>
+            <span class="p">}</span>
+<span class="n">symbology</span> <span class="o">=</span> <span class="p">{</span><span class="n">types</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">symbology</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">place</span> <span class="ow">in</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+    <span class="n">squarify</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="n">plot_data</span><span class="p">[</span><span class="n">place</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.00000001</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">symbology</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_treemaps/</span><span class="si">{</span><span class="n">place</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s2">&quot;Wild countryside&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;TTWA11NM&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_30_1.png" src="../_images/ttwa_30_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_maps/</span><span class="si">{</span><span class="n">sig</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_data</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+    <span class="n">interpolated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ttwa_32_0.png" src="../_images/ttwa_32_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">symbology</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ttwa_33_0.png" src="../_images/ttwa_33_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">[</span><span class="s2">&quot;Barnsley&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">symbology</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x7f833ee4fc10&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_34_1.png" src="../_images/ttwa_34_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>TTWA11NM</th>
+      <th>Barnsley</th>
+      <th>Bradford</th>
+      <th>Halifax</th>
+      <th>Skipton</th>
+      <th>Dorchester and Weymouth</th>
+      <th>Falmouth</th>
+      <th>Grantham</th>
+      <th>Hastings</th>
+      <th>Hexham</th>
+      <th>Isle of Wight</th>
+      <th>...</th>
+      <th>Cardiff</th>
+      <th>Cardigan</th>
+      <th>Colwyn Bay</th>
+      <th>Llanelli</th>
+      <th>Merthyr Tydfil</th>
+      <th>Pwllheli and Porthmadog</th>
+      <th>Rhyl</th>
+      <th>Swansea</th>
+      <th>Tywyn and Dolgellau</th>
+      <th>Wrexham</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>0.218571</td>
+      <td>0.166363</td>
+      <td>0.504775</td>
+      <td>0.333012</td>
+      <td>0.802061</td>
+      <td>0.814348</td>
+      <td>0.895776</td>
+      <td>0.760641</td>
+      <td>0.094955</td>
+      <td>0.597957</td>
+      <td>...</td>
+      <td>0.195072</td>
+      <td>0.52362</td>
+      <td>0.247824</td>
+      <td>0.31493</td>
+      <td>0.354032</td>
+      <td>0.293667</td>
+      <td>0.336676</td>
+      <td>0.284508</td>
+      <td>0.226124</td>
+      <td>0.679714</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>0.043969</td>
+      <td>0.045175</td>
+      <td>0.008234</td>
+      <td>0.00001</td>
+      <td>0.003388</td>
+      <td>0.001462</td>
+      <td>0.003265</td>
+      <td>0.029552</td>
+      <td>0.0</td>
+      <td>0.02578</td>
+      <td>...</td>
+      <td>0.026886</td>
+      <td>0.0</td>
+      <td>0.008341</td>
+      <td>0.000882</td>
+      <td>0.001534</td>
+      <td>0.000214</td>
+      <td>0.009619</td>
+      <td>0.017178</td>
+      <td>0.000061</td>
+      <td>0.008352</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>0.17692</td>
+      <td>0.229543</td>
+      <td>0.078947</td>
+      <td>0.002617</td>
+      <td>0.021588</td>
+      <td>0.014442</td>
+      <td>0.008393</td>
+      <td>0.015345</td>
+      <td>0.000812</td>
+      <td>0.019786</td>
+      <td>...</td>
+      <td>0.104492</td>
+      <td>0.000554</td>
+      <td>0.006211</td>
+      <td>0.004573</td>
+      <td>0.043843</td>
+      <td>0.000676</td>
+      <td>0.006018</td>
+      <td>0.035579</td>
+      <td>0.000709</td>
+      <td>0.019098</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>0.079282</td>
+      <td>0.030462</td>
+      <td>0.115431</td>
+      <td>0.626129</td>
+      <td>0.029028</td>
+      <td>0.026181</td>
+      <td>0.00005</td>
+      <td>0.000017</td>
+      <td>0.897122</td>
+      <td>0.000098</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.459751</td>
+      <td>0.668945</td>
+      <td>0.613634</td>
+      <td>0.201801</td>
+      <td>0.634816</td>
+      <td>0.554385</td>
+      <td>0.107998</td>
+      <td>0.750838</td>
+      <td>0.066124</td>
+    </tr>
+    <tr>
+      <th>Warehouse land</th>
+      <td>0.001236</td>
+      <td>0.008473</td>
+      <td>0.007742</td>
+      <td>0.000671</td>
+      <td>0.004504</td>
+      <td>0.000552</td>
+      <td>0.000426</td>
+      <td>0.000163</td>
+      <td>0.000008</td>
+      <td>0.000908</td>
+      <td>...</td>
+      <td>0.034154</td>
+      <td>0.000037</td>
+      <td>0.002057</td>
+      <td>0.000003</td>
+      <td>0.009063</td>
+      <td>0.000017</td>
+      <td>0.000321</td>
+      <td>0.016887</td>
+      <td>0.000001</td>
+      <td>0.003937</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>0.000215</td>
+      <td>0.002243</td>
+      <td>0.000413</td>
+      <td>0.0</td>
+      <td>0.000505</td>
+      <td>0.003124</td>
+      <td>0.000075</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.006856</td>
+      <td>...</td>
+      <td>0.018411</td>
+      <td>0.0</td>
+      <td>0.0008</td>
+      <td>0.001571</td>
+      <td>0.002301</td>
+      <td>0.000003</td>
+      <td>0.000965</td>
+      <td>0.007048</td>
+      <td>0.0</td>
+      <td>0.000004</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>0.467117</td>
+      <td>0.43108</td>
+      <td>0.254977</td>
+      <td>0.036716</td>
+      <td>0.122362</td>
+      <td>0.094889</td>
+      <td>0.09007</td>
+      <td>0.165469</td>
+      <td>0.007009</td>
+      <td>0.325959</td>
+      <td>...</td>
+      <td>0.577927</td>
+      <td>0.007025</td>
+      <td>0.05864</td>
+      <td>0.059869</td>
+      <td>0.385135</td>
+      <td>0.031056</td>
+      <td>0.089908</td>
+      <td>0.512841</td>
+      <td>0.016346</td>
+      <td>0.216473</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>0.003725</td>
+      <td>0.008993</td>
+      <td>0.004334</td>
+      <td>0.000069</td>
+      <td>0.000286</td>
+      <td>0.002359</td>
+      <td>0.000676</td>
+      <td>0.003295</td>
+      <td>0.00001</td>
+      <td>0.000196</td>
+      <td>...</td>
+      <td>0.007809</td>
+      <td>0.000003</td>
+      <td>0.000006</td>
+      <td>0.000143</td>
+      <td>0.00054</td>
+      <td>0.0</td>
+      <td>0.000154</td>
+      <td>0.001141</td>
+      <td>0.000098</td>
+      <td>0.002296</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>0.006016</td>
+      <td>0.032779</td>
+      <td>0.018119</td>
+      <td>0.000567</td>
+      <td>0.004367</td>
+      <td>0.000202</td>
+      <td>0.001139</td>
+      <td>0.005219</td>
+      <td>0.000085</td>
+      <td>0.003164</td>
+      <td>...</td>
+      <td>0.008218</td>
+      <td>0.0</td>
+      <td>0.000323</td>
+      <td>0.000008</td>
+      <td>0.000775</td>
+      <td>0.000197</td>
+      <td>0.0</td>
+      <td>0.003019</td>
+      <td>0.0</td>
+      <td>0.002831</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>0.000762</td>
+      <td>0.012874</td>
+      <td>0.001105</td>
+      <td>0.0</td>
+      <td>0.000405</td>
+      <td>0.001662</td>
+      <td>0.000002</td>
+      <td>0.00368</td>
+      <td>0.0</td>
+      <td>0.000155</td>
+      <td>...</td>
+      <td>0.008751</td>
+      <td>0.0</td>
+      <td>0.002724</td>
+      <td>0.000003</td>
+      <td>0.000977</td>
+      <td>0.000013</td>
+      <td>0.000277</td>
+      <td>0.001466</td>
+      <td>0.0</td>
+      <td>0.000426</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>0.002179</td>
+      <td>0.023451</td>
+      <td>0.005319</td>
+      <td>0.000182</td>
+      <td>0.000823</td>
+      <td>0.0</td>
+      <td>0.000129</td>
+      <td>0.001775</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.011502</td>
+      <td>0.0</td>
+      <td>0.000005</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00128</td>
+      <td>0.0</td>
+      <td>0.000747</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>0.000008</td>
+      <td>0.00833</td>
+      <td>0.000605</td>
+      <td>0.0</td>
+      <td>0.000234</td>
+      <td>0.000201</td>
+      <td>0.0</td>
+      <td>0.000069</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.003291</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000994</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Distilled urbanity</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>0.0</td>
+      <td>0.00023</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000074</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00011</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00004</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Hyper distilled urbanity</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>16 rows × 218 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">place</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_data</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+    <span class="n">plot_data</span><span class="p">[</span><span class="n">place</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">symbology</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ttwa_36_0.png" src="../_images/ttwa_36_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./esda"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="co-occurence.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Co-occurence analysis</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../data_product/overview.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Overview of the data product</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

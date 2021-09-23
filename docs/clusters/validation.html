@@ -275,6 +275,16 @@
    Size and shape of signatures
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/co-occurence.html">
+   Co-occurence analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/ttwa.html">
+   Composition of signatures within TTWA boundaries
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -450,12 +460,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/ipykernel/ipkernel.py:283: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -468,12 +472,6 @@
     <span class="n">rcorr</span> <span class="o">=</span> <span class="n">r</span><span class="o">-</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">kcorr</span> <span class="o">=</span> <span class="n">k</span><span class="o">-</span><span class="p">((</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">phi2corr</span><span class="o">/</span><span class="nb">min</span><span class="p">((</span><span class="n">kcorr</span><span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="n">rcorr</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/ipykernel/ipkernel.py:283: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -958,7 +956,7 @@ Wall time: 20 s
     <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
     <span class="mi">30</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
     <span class="mi">40</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
-    <span class="mi">50</span><span class="p">:</span> <span class="s2">&quot;Warehouse land&quot;</span><span class="p">,</span>
+    <span class="mi">50</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
     <span class="mi">60</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
     <span class="mi">70</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
     <span class="mi">80</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
@@ -966,10 +964,10 @@ Wall time: 20 s
     <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
     <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
     <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
     <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
     <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1053,7 +1051,7 @@ Wall time: 20 s
       <td>8951880</td>
     </tr>
     <tr>
-      <th>Warehouse land</th>
+      <th>Warehouse/Park land</th>
       <td>1714</td>
       <td>1596</td>
       <td>10016</td>
@@ -1133,7 +1131,7 @@ Wall time: 20 s
       <td>2264</td>
     </tr>
     <tr>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1163,7 +1161,7 @@ Wall time: 20 s
       <td>298</td>
     </tr>
     <tr>
-      <th>Hyper distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
       <td>0</td>
       <td>2</td>
       <td>0</td>
@@ -1185,7 +1183,7 @@ Wall time: 20 s
     <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Warehouse land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
@@ -1193,16 +1191,10 @@ Wall time: 20 s
     <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Distilled urbanity&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Hyper distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 <span class="n">crosstab</span> <span class="o">=</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/ipykernel/ipkernel.py:283: DeprecationWarning: `should_run_async` will not call `transform_cell` automatically in the future. Please pass the result to `transformed_cell` argument and any exception that happen during thetransform in `preprocessing_exc_tuple` in IPython 7.17 and above.
-  and should_run_async(code)
 </pre></div>
 </div>
 </div>
@@ -1958,7 +1950,7 @@ Wall time: 38min 10s
     <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
     <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
     <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
-    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Warehouse land&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
     <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
     <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
     <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
@@ -1966,10 +1958,10 @@ Wall time: 38min 10s
     <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
     <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
     <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
     <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
     <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2058,7 +2050,7 @@ Wall time: 38min 10s
       <td>62</td>
     </tr>
     <tr>
-      <th>Warehouse land</th>
+      <th>Warehouse/Park land</th>
       <td>181327</td>
       <td>41638</td>
       <td>4315</td>
@@ -2146,7 +2138,7 @@ Wall time: 38min 10s
       <td>35536</td>
     </tr>
     <tr>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <td>0</td>
       <td>10</td>
       <td>1099</td>
@@ -2179,7 +2171,7 @@ Wall time: 38min 10s
       <td>1090</td>
     </tr>
     <tr>
-      <th>Hyper distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
       <td>3</td>
       <td>0</td>
       <td>239</td>
@@ -2297,7 +2289,7 @@ Wall time: 38min 10s
       <td>18402</td>
     </tr>
     <tr>
-      <th>Warehouse land</th>
+      <th>Warehouse/Park land</th>
       <td>181327</td>
       <td>41638</td>
       <td>4315</td>
@@ -2385,7 +2377,7 @@ Wall time: 38min 10s
       <td>1090</td>
     </tr>
     <tr>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <td>0</td>
       <td>10</td>
       <td>1099</td>
@@ -2396,7 +2388,7 @@ Wall time: 38min 10s
       <td>238</td>
     </tr>
     <tr>
-      <th>Hyper distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
       <td>3</td>
       <td>0</td>
       <td>239</td>
@@ -3792,7 +3784,7 @@ Wall time: 29min 41s
       <td>64</td>
     </tr>
     <tr>
-      <th>Warehouse land</th>
+      <th>Warehouse/Park land</th>
       <td>1361</td>
       <td>3938</td>
       <td>0</td>
@@ -3984,7 +3976,7 @@ Wall time: 29min 41s
       <td>0</td>
     </tr>
     <tr>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -4056,7 +4048,7 @@ Wall time: 29min 41s
       <td>0</td>
     </tr>
     <tr>
-      <th>Hyper distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
       <td>0</td>
       <td>0</td>
       <td>0</td>

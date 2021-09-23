@@ -50,7 +50,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview of the data product" href="../data_product/overview.html" />
+    <link rel="next" title="Co-occurence analysis" href="co-occurence.html" />
     <link rel="prev" title="External validation" href="../clusters/validation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -275,6 +275,16 @@
    Size and shape of signatures
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="co-occurence.html">
+   Co-occurence analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ttwa.html">
+   Composition of signatures within TTWA boundaries
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -394,6 +404,103 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measure-size-and-shape-characters">
+   Measure size and shape characters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploration-of-results">
+   Exploration of results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area">
+     Area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perimeter">
+     Perimeter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eri">
+     ERI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circlular-compactness">
+     Circlular compactness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#donut-index">
+     Donut index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fractality">
+     Fractality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convexity">
+     Convexity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-only-50-largest-signatures-per-each-type">
+   Using only 50% largest signatures per each type
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Perimeter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     ERI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Circlular compactness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Donut index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Fractality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Convexity
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -421,6 +528,8 @@
 </div>
 </div>
 </div>
+<div class="section" id="measure-size-and-shape-characters">
+<h2>Measure size and shape characters<a class="headerlink" href="#measure-size-and-shape-characters" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">16</span><span class="p">))</span>
@@ -600,6 +709,42 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="exploration-of-results">
+<h2>Exploration of results<a class="headerlink" href="#exploration-of-results" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/sizeshape.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;0_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;6_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_4&quot;</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_5&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
@@ -625,9 +770,6 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>kmeans10gb</th>
-      <th>geometry</th>
-      <th>level2</th>
       <th>signature_type</th>
       <th>area</th>
       <th>perimeter</th>
@@ -641,10 +783,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>POLYGON Z ((62220.000 798500.000 0.000, 62110....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>Countryside agriculture</td>
       <td>1.826984e+07</td>
       <td>29577.575163</td>
       <td>0.601828</td>
@@ -655,10 +794,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>1</th>
-      <td>0</td>
-      <td>POLYGON Z ((63507.682 796515.169 0.000, 63471....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>Countryside agriculture</td>
       <td>1.235908e+04</td>
       <td>555.207264</td>
       <td>0.892662</td>
@@ -669,10 +805,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>2</th>
-      <td>0</td>
-      <td>POLYGON Z ((65953.174 802246.172 0.000, 65950....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>Countryside agriculture</td>
       <td>7.234542e+05</td>
       <td>5746.792461</td>
       <td>0.602136</td>
@@ -683,10 +816,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>3</th>
-      <td>0</td>
-      <td>POLYGON Z ((67297.740 803435.800 0.000, 67220....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>Countryside agriculture</td>
       <td>1.229467e+06</td>
       <td>6161.670240</td>
       <td>0.731125</td>
@@ -697,10 +827,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>4</th>
-      <td>0</td>
-      <td>POLYGON Z ((75760.000 852670.000 0.000, 75700....</td>
-      <td>0.0</td>
-      <td>0_0</td>
+      <td>Countryside agriculture</td>
       <td>7.604014e+06</td>
       <td>22500.262066</td>
       <td>0.539593</td>
@@ -719,16 +846,10 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>96699</th>
-      <td>9</td>
-      <td>POLYGON ((323321.005 463795.416, 323319.842 46...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <td>NaN</td>
       <td>4.070783e+04</td>
       <td>824.963123</td>
       <td>1.020075</td>
@@ -739,10 +860,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>96700</th>
-      <td>9</td>
-      <td>POLYGON ((325929.840 1008792.061, 325927.377 1...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <td>NaN</td>
       <td>3.523702e+03</td>
       <td>270.956057</td>
       <td>0.959089</td>
@@ -753,10 +871,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>96701</th>
-      <td>9</td>
-      <td>POLYGON ((337804.770 1013422.583, 337800.122 1...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <td>NaN</td>
       <td>1.236944e+05</td>
       <td>1525.262336</td>
       <td>1.017609</td>
@@ -767,10 +882,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>96702</th>
-      <td>9</td>
-      <td>POLYGON ((422304.270 1147826.990, 422296.000 1...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <td>NaN</td>
       <td>1.526104e+03</td>
       <td>189.735084</td>
       <td>0.954954</td>
@@ -781,10 +893,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
     <tr>
       <th>96703</th>
-      <td>9</td>
-      <td>POLYGON ((525396.260 439215.480, 525360.920 43...</td>
-      <td>8.0</td>
-      <td>9_8</td>
+      <td>NaN</td>
       <td>1.444304e+04</td>
       <td>477.377607</td>
       <td>1.026855</td>
@@ -795,150 +904,928 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     </tr>
   </tbody>
 </table>
-<p>96704 rows × 11 columns</p>
+<p>96704 rows × 8 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outliers</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;9_8&quot;</span><span class="p">,</span> <span class="s2">&quot;9_3&quot;</span><span class="p">,</span> <span class="s2">&quot;9_6&quot;</span><span class="p">,</span> <span class="s2">&quot;9_7&quot;</span><span class="p">]</span>
-<span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="o">~</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">outliers</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop outlier clusters</span>
+<span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-6-955dbae783e0&gt;:20: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  signatures[&quot;signature_type&quot;] = pandas.Categorical(signatures[&quot;signature_type&quot;], categories=order, ordered=True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;signature_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">grouped</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">area</th>
+      <th colspan="2" halign="left">perimeter</th>
+      <th>...</th>
+      <th colspan="2" halign="left">fractality</th>
+      <th colspan="8" halign="left">convexity</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>...</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>signature_type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Wild countryside</th>
+      <td>6214.0</td>
+      <td>1.469363e+07</td>
+      <td>5.997410e+08</td>
+      <td>0.057032</td>
+      <td>1499.198526</td>
+      <td>6508.082021</td>
+      <td>45560.114847</td>
+      <td>3.944223e+10</td>
+      <td>6214.0</td>
+      <td>5262.662128</td>
+      <td>...</td>
+      <td>1.087244</td>
+      <td>6.436920</td>
+      <td>6214.0</td>
+      <td>0.847012</td>
+      <td>0.144665</td>
+      <td>0.171730</td>
+      <td>0.749014</td>
+      <td>0.897610</td>
+      <td>0.967863</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>10882.0</td>
+      <td>8.624893e+06</td>
+      <td>7.140831e+08</td>
+      <td>0.000150</td>
+      <td>955.663816</td>
+      <td>3089.140723</td>
+      <td>15668.089578</td>
+      <td>7.438020e+10</td>
+      <td>10882.0</td>
+      <td>6103.812918</td>
+      <td>...</td>
+      <td>1.088969</td>
+      <td>13.445506</td>
+      <td>10882.0</td>
+      <td>0.850269</td>
+      <td>0.143361</td>
+      <td>0.174666</td>
+      <td>0.756614</td>
+      <td>0.902827</td>
+      <td>0.966824</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>10636.0</td>
+      <td>2.969990e+06</td>
+      <td>6.339222e+07</td>
+      <td>0.000879</td>
+      <td>774.805352</td>
+      <td>3084.529241</td>
+      <td>27159.387001</td>
+      <td>4.103858e+09</td>
+      <td>10636.0</td>
+      <td>6339.599043</td>
+      <td>...</td>
+      <td>1.088700</td>
+      <td>17.908917</td>
+      <td>10636.0</td>
+      <td>0.851529</td>
+      <td>0.138671</td>
+      <td>0.206889</td>
+      <td>0.754072</td>
+      <td>0.900720</td>
+      <td>0.966431</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>17357.0</td>
+      <td>2.927622e+05</td>
+      <td>3.818980e+06</td>
+      <td>0.000160</td>
+      <td>643.323344</td>
+      <td>1612.151800</td>
+      <td>9317.120739</td>
+      <td>3.672014e+08</td>
+      <td>17357.0</td>
+      <td>2309.238110</td>
+      <td>...</td>
+      <td>1.101593</td>
+      <td>268.246039</td>
+      <td>17357.0</td>
+      <td>0.820230</td>
+      <td>0.159341</td>
+      <td>0.209074</td>
+      <td>0.708346</td>
+      <td>0.878782</td>
+      <td>0.953845</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>9418.0</td>
+      <td>7.528544e+04</td>
+      <td>3.305071e+05</td>
+      <td>0.001150</td>
+      <td>616.810183</td>
+      <td>1447.681618</td>
+      <td>8060.213460</td>
+      <td>9.032649e+06</td>
+      <td>9418.0</td>
+      <td>1017.207867</td>
+      <td>...</td>
+      <td>1.091667</td>
+      <td>4.022005</td>
+      <td>9418.0</td>
+      <td>0.843098</td>
+      <td>0.132009</td>
+      <td>0.292148</td>
+      <td>0.740525</td>
+      <td>0.888421</td>
+      <td>0.957065</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>10919.0</td>
+      <td>2.055632e+05</td>
+      <td>1.280101e+06</td>
+      <td>0.009560</td>
+      <td>588.376394</td>
+      <td>1507.000971</td>
+      <td>18570.817476</td>
+      <td>5.079366e+07</td>
+      <td>10919.0</td>
+      <td>1627.488939</td>
+      <td>...</td>
+      <td>1.090873</td>
+      <td>5.549176</td>
+      <td>10919.0</td>
+      <td>0.844585</td>
+      <td>0.123035</td>
+      <td>0.375821</td>
+      <td>0.753064</td>
+      <td>0.877346</td>
+      <td>0.951271</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>10675.0</td>
+      <td>2.306844e+05</td>
+      <td>3.414580e+06</td>
+      <td>0.016327</td>
+      <td>732.048897</td>
+      <td>1865.205005</td>
+      <td>8534.309518</td>
+      <td>2.257328e+08</td>
+      <td>10675.0</td>
+      <td>1484.178936</td>
+      <td>...</td>
+      <td>1.095447</td>
+      <td>3.629490</td>
+      <td>10675.0</td>
+      <td>0.833803</td>
+      <td>0.152972</td>
+      <td>0.216611</td>
+      <td>0.718129</td>
+      <td>0.894513</td>
+      <td>0.962252</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>2561.0</td>
+      <td>1.020215e+05</td>
+      <td>5.970954e+05</td>
+      <td>0.003155</td>
+      <td>510.032001</td>
+      <td>1176.434329</td>
+      <td>6925.344211</td>
+      <td>1.790986e+07</td>
+      <td>2561.0</td>
+      <td>1101.256942</td>
+      <td>...</td>
+      <td>1.087953</td>
+      <td>1.630874</td>
+      <td>2561.0</td>
+      <td>0.864575</td>
+      <td>0.121242</td>
+      <td>0.342705</td>
+      <td>0.775185</td>
+      <td>0.906935</td>
+      <td>0.968370</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>5802.0</td>
+      <td>9.745088e+04</td>
+      <td>6.036783e+05</td>
+      <td>0.485844</td>
+      <td>644.482072</td>
+      <td>1501.473957</td>
+      <td>7804.156901</td>
+      <td>1.960757e+07</td>
+      <td>5802.0</td>
+      <td>1211.006013</td>
+      <td>...</td>
+      <td>1.093833</td>
+      <td>4.665447</td>
+      <td>5802.0</td>
+      <td>0.838442</td>
+      <td>0.145711</td>
+      <td>0.268105</td>
+      <td>0.729141</td>
+      <td>0.892645</td>
+      <td>0.962229</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>6815.0</td>
+      <td>1.404605e+05</td>
+      <td>1.047595e+06</td>
+      <td>0.000205</td>
+      <td>649.122630</td>
+      <td>1617.513549</td>
+      <td>6993.079521</td>
+      <td>4.613231e+07</td>
+      <td>6815.0</td>
+      <td>1572.557494</td>
+      <td>...</td>
+      <td>1.091611</td>
+      <td>5.789690</td>
+      <td>6815.0</td>
+      <td>0.843006</td>
+      <td>0.149689</td>
+      <td>0.267939</td>
+      <td>0.739355</td>
+      <td>0.902421</td>
+      <td>0.964749</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>3344.0</td>
+      <td>1.706542e+05</td>
+      <td>3.442472e+06</td>
+      <td>0.099989</td>
+      <td>532.894544</td>
+      <td>1272.170461</td>
+      <td>4448.501438</td>
+      <td>1.930257e+08</td>
+      <td>3344.0</td>
+      <td>1400.642709</td>
+      <td>...</td>
+      <td>1.072876</td>
+      <td>3.028465</td>
+      <td>3344.0</td>
+      <td>0.873944</td>
+      <td>0.132032</td>
+      <td>0.239345</td>
+      <td>0.792542</td>
+      <td>0.929865</td>
+      <td>0.977628</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>1598.0</td>
+      <td>1.446739e+05</td>
+      <td>2.727705e+06</td>
+      <td>0.307900</td>
+      <td>501.241702</td>
+      <td>1324.764741</td>
+      <td>4277.220397</td>
+      <td>1.071213e+08</td>
+      <td>1598.0</td>
+      <td>1092.282020</td>
+      <td>...</td>
+      <td>1.068875</td>
+      <td>5.857685</td>
+      <td>1598.0</td>
+      <td>0.888981</td>
+      <td>0.124262</td>
+      <td>0.369595</td>
+      <td>0.817659</td>
+      <td>0.944655</td>
+      <td>0.983643</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>316.0</td>
+      <td>2.419051e+05</td>
+      <td>2.256797e+06</td>
+      <td>0.041376</td>
+      <td>492.984923</td>
+      <td>1230.743132</td>
+      <td>3552.061623</td>
+      <td>3.865336e+07</td>
+      <td>316.0</td>
+      <td>1803.643697</td>
+      <td>...</td>
+      <td>1.070887</td>
+      <td>3.260720</td>
+      <td>316.0</td>
+      <td>0.894825</td>
+      <td>0.133988</td>
+      <td>0.128971</td>
+      <td>0.836158</td>
+      <td>0.951919</td>
+      <td>0.987714</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>135.0</td>
+      <td>1.228652e+05</td>
+      <td>1.138579e+06</td>
+      <td>0.269200</td>
+      <td>356.672983</td>
+      <td>1030.773091</td>
+      <td>3819.015313</td>
+      <td>1.318199e+07</td>
+      <td>135.0</td>
+      <td>1375.312753</td>
+      <td>...</td>
+      <td>1.085932</td>
+      <td>4.011579</td>
+      <td>135.0</td>
+      <td>0.920512</td>
+      <td>0.112035</td>
+      <td>0.476495</td>
+      <td>0.900620</td>
+      <td>0.966404</td>
+      <td>0.994193</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>11.0</td>
+      <td>7.167404e+05</td>
+      <td>2.371545e+06</td>
+      <td>3.496111</td>
+      <td>218.266828</td>
+      <td>349.147183</td>
+      <td>1527.810889</td>
+      <td>7.867210e+06</td>
+      <td>11.0</td>
+      <td>3700.784089</td>
+      <td>...</td>
+      <td>1.090851</td>
+      <td>2.924473</td>
+      <td>11.0</td>
+      <td>0.934777</td>
+      <td>0.100749</td>
+      <td>0.654358</td>
+      <td>0.929441</td>
+      <td>0.970923</td>
+      <td>0.990041</td>
+      <td>0.999957</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>6.0</td>
+      <td>3.823119e+05</td>
+      <td>5.858664e+05</td>
+      <td>1797.907262</td>
+      <td>2096.072097</td>
+      <td>15499.678131</td>
+      <td>747712.533029</td>
+      <td>1.271663e+06</td>
+      <td>6.0</td>
+      <td>3097.160016</td>
+      <td>...</td>
+      <td>1.096803</td>
+      <td>1.125311</td>
+      <td>6.0</td>
+      <td>0.869961</td>
+      <td>0.142417</td>
+      <td>0.625078</td>
+      <td>0.824920</td>
+      <td>0.896392</td>
+      <td>0.977088</td>
+      <td>0.996822</td>
+    </tr>
+  </tbody>
+</table>
+<p>16 rows × 56 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="area">
+<h3>Area<a class="headerlink" href="#area" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/sizeshape_12_0.png" src="../_images/sizeshape_12_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_20_1.png" src="../_images/sizeshape_20_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_21_0.png" src="../_images/sizeshape_21_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_22_0.png" src="../_images/sizeshape_22_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="perimeter">
+<h3>Perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;perimeter&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/sizeshape_13_0.png" src="../_images/sizeshape_13_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_24_1.png" src="../_images/sizeshape_24_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_25_0.png" src="../_images/sizeshape_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_26_0.png" src="../_images/sizeshape_26_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="eri">
+<h3>ERI<a class="headerlink" href="#eri" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;eri&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/sizeshape_14_0.png" src="../_images/sizeshape_14_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_28_1.png" src="../_images/sizeshape_28_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;eri&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;eri&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_29_0.png" src="../_images/sizeshape_29_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="circlular-compactness">
+<h3>Circlular compactness<a class="headerlink" href="#circlular-compactness" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;circular_compactness&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/sizeshape_15_0.png" src="../_images/sizeshape_15_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_31_1.png" src="../_images/sizeshape_31_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_32_0.png" src="../_images/sizeshape_32_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="donut-index">
+<h3>Donut index<a class="headerlink" href="#donut-index" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;donut_index&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;donut_index&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_16_1.png" src="../_images/sizeshape_16_1.png" />
+<img alt="../_images/sizeshape_34_1.png" src="../_images/sizeshape_34_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;donut_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;donut_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_35_0.png" src="../_images/sizeshape_35_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fractality">
+<h3>Fractality<a class="headerlink" href="#fractality" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fractality&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;fractality&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_17_1.png" src="../_images/sizeshape_17_1.png" />
+<img alt="../_images/sizeshape_37_1.png" src="../_images/sizeshape_37_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;fractality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;fractality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_38_0.png" src="../_images/sizeshape_38_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="convexity">
+<h3>Convexity<a class="headerlink" href="#convexity" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;convexity&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">signatures</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;convexity&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_18_1.png" src="../_images/sizeshape_18_1.png" />
+<img alt="../_images/sizeshape_40_1.png" src="../_images/sizeshape_40_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;signature_type&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">donut_index</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;convexity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;convexity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/sizeshape_19_1.png" src="../_images/sizeshape_19_1.png" />
+<img alt="../_images/sizeshape_41_0.png" src="../_images/sizeshape_41_0.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="using-only-50-largest-signatures-per-each-type">
+<h2>Using only 50% largest signatures per each type<a class="headerlink" href="#using-only-50-largest-signatures-per-each-type" title="Permalink to this headline">¶</a></h2>
+<p>The rationale is that it eliminates the “noise”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signatures</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">signatures</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">mask</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        False
-1        False
-2        False
-3        False
-4        False
-         ...  
-96687    False
-96688    False
-96689    False
-96690    False
-96691    False
-Length: 96689, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+
+<span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
     <span class="n">sub</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">cl</span><span class="p">]</span>
     <span class="n">mean</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">above</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="n">mean</span>
@@ -968,74 +1855,394 @@ Length: 96689, dtype: bool
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">significant_grouped</span> <span class="o">=</span> <span class="n">significant</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;signature_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Area<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/sizeshape_24_0.png" src="../_images/sizeshape_24_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_48_1.png" src="../_images/sizeshape_48_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_49_0.png" src="../_images/sizeshape_49_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_50_0.png" src="../_images/sizeshape_50_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Perimeter<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;perimeter&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_52_1.png" src="../_images/sizeshape_52_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_53_0.png" src="../_images/sizeshape_53_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;perimeter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_54_0.png" src="../_images/sizeshape_54_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>ERI<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;eri&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;eri&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_25_1.png" src="../_images/sizeshape_25_1.png" />
+<img alt="../_images/sizeshape_56_1.png" src="../_images/sizeshape_56_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;eri&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;eri&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_57_0.png" src="../_images/sizeshape_57_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Circlular compactness<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;circular_compactness&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;circular_compactness&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_26_1.png" src="../_images/sizeshape_26_1.png" />
+<img alt="../_images/sizeshape_59_1.png" src="../_images/sizeshape_59_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_60_0.png" src="../_images/sizeshape_60_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Donut index<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 <span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;donut_index&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;donut_index&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_27_1.png" src="../_images/sizeshape_27_1.png" />
+<img alt="../_images/sizeshape_62_1.png" src="../_images/sizeshape_62_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;convexity&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
-<span class="c1"># ax.set_yscale(&quot;log&quot;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;donut_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;donut_index&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;, ylabel=&#39;convexity&#39;&gt;
+<img alt="../_images/sizeshape_63_0.png" src="../_images/sizeshape_63_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Fractality<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;fractality&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/sizeshape_28_1.png" src="../_images/sizeshape_28_1.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_65_1.png" src="../_images/sizeshape_65_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;fractality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;fractality&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_66_0.png" src="../_images/sizeshape_66_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>Convexity<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">boxenplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;signature_type&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;convexity&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;signature_type&#39;</span><span class="p">,</span> <span class="n">dodge</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">significant</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">showfliers</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend_</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15]),
+ [Text(0, 0, &#39;Wild countryside&#39;),
+  Text(1, 0, &#39;Countryside agriculture&#39;),
+  Text(2, 0, &#39;Urban buffer&#39;),
+  Text(3, 0, &#39;Open sprawl&#39;),
+  Text(4, 0, &#39;Disconnected suburbia&#39;),
+  Text(5, 0, &#39;Accessible suburbia&#39;),
+  Text(6, 0, &#39;Warehouse/Park land&#39;),
+  Text(7, 0, &#39;Gridded residential quarters&#39;),
+  Text(8, 0, &#39;Connected residential neighbourhoods&#39;),
+  Text(9, 0, &#39;Dense residential neighbourhoods&#39;),
+  Text(10, 0, &#39;Dense urban neighbourhoods&#39;),
+  Text(11, 0, &#39;Local urbanity&#39;),
+  Text(12, 0, &#39;Regional urbanity&#39;),
+  Text(13, 0, &#39;Metropolitan urbanity&#39;),
+  Text(14, 0, &#39;Concentrated urbanity&#39;),
+  Text(15, 0, &#39;Hyper concentrated urbanity&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/sizeshape_68_1.png" src="../_images/sizeshape_68_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">seaborn</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;convexity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span>
+                 <span class="n">x_vars</span><span class="o">=</span><span class="n">significant_grouped</span><span class="p">[</span><span class="s2">&quot;convexity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span>
+                 <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">seaborn</span><span class="o">.</span><span class="n">stripplot</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span> <span class="n">jitter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_69_0.png" src="../_images/sizeshape_69_0.png" />
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1079,10 +2286,10 @@ Length: 96689, dtype: bool
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../data_product/overview.html" title="next page">
+        <a class="right-next" href="co-occurence.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Overview of the data product</p>
+                <p class="prevnext-title">Co-occurence analysis</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
