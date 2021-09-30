@@ -444,6 +444,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pen-portraits-json">
+   Pen portraits JSON
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#use-string-ids">
    Use string IDs
   </a>
@@ -3707,6 +3712,38 @@ Wall time: 3min 42s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;key.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pen-portraits-json">
+<h2>Pen portraits JSON<a class="headerlink" href="#pen-portraits-json" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+    
+<span class="n">portraits</span> <span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;Wild countryside&quot;</span><span class="p">:</span> <span class="s2">&quot;In “Wild countryside”, human influence is the least intensive. This signature covers large open spaces in the countryside where no urbanisation happens apart from occasional roads, cottages, and pastures. You can find it across the Scottish Highlands, numerous national parks such as Lake District, or in the majority of Wales.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">:</span> <span class="s2">&quot;“Countryside agriculture” features much of the English countryside and displays a high degree of agriculture including both fields and pastures. There are a few buildings scattered across the area but, for the most part, it is green space.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Urban buffer&quot;</span><span class="p">:</span> <span class="s2">&quot;“Urban buffer” can be characterised as a green belt around cities. This signature includes mostly agricultural land in the immediate adjacency of towns and cities, often including edge development. It still feels more like countryside than urban, but these signatures are much smaller compared to other countryside types.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Open sprawl&quot;</span><span class="p">:</span> <span class="s2">&quot;“Open sprawl” represents the transition between countryside and urbanised land. It is located in the outskirts of cities or around smaller towns and is typically made up of large open space areas intertwined with different kinds of human development, from highways to smaller neighbourhoods.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">:</span> <span class="s2">&quot;“Disconnected suburbia” includes residential developments in the outskirts of cities or even towns and villages with convoluted, disconnected street networks, low built-up and population densities, and lack of jobs and services. This signature type is entirely car-dependent.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">:</span> <span class="s2">&quot;“Accessible suburbia” covers residential development on the urban periphery with a relatively legible and connected street network, albeit less so than other more urban signature types. Areas in this signature feature low density, both in terms of population and built-up area, lack of jobs and services. For these reasons, “accessible suburbia” largely acts as dormitories.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">:</span> <span class="s2">&quot;“Warehouse/Park land” covers predominantly industrial areas and other work-related developments made of box-like buildings with large footprints. It contains many jobs of manual nature such as manufacturing or construction, and very little population live here compared to the rest of urban areas. Occasionally this type also covers areas of parks with large scale green open areas.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">:</span> <span class="s2">&quot;“Gridded residential quarters” are areas with street networks forming a well-connected grid-like (high density of 4-way intersections) pattern, resulting in places with smaller blocks and higher granularity. This signature is mostly residential but includes some services and jobs, and it tends to be located away from city centres.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">:</span> <span class="s2">&quot;“Connected residential neighbourhoods” are relatively dense urban areas, both in terms of population and built-up area, that tend to be formed around well-connected street networks. They have access to services and some jobs but may be further away from city centres leading to higher dependency on cars and public transport for their residents.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">:</span> <span class="s2">&quot;A “dense residential neighbourhood” is an abundant signature often covering large parts of cities outside of their centres. It has primarily residential purpose and high population density, varied street network patterns, and some services and jobs but not in high intensity.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">:</span> <span class="s2">&quot;“Dense urban neighbourhoods” are areas of inner-city with high population and built-up density of a predominantly residential nature but with direct access to jobs and services. This signature type tends to be relatively walkable and, in the case of some towns, may even form their centres.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Local urbanity&quot;</span><span class="p">:</span> <span class="s2">&quot;“Local urbanity” reflects town centres, outer parts of city centres or even district centres. In all cases, this signature is very much urban in essence, combining high population and built-up density, access to amenities and jobs. Yet, it is on the lower end of the hierarchy of signature types denoting urban centres with only a local significance.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">:</span> <span class="s2">&quot;“Regional urbanity” captures centres of mid-size cities with regional importance such as Liverpool, Plymouth or Newcastle upon Tyne. It is often encircled by “Local urbanity” signatures and can form outer rings of city centres in large cities. It features high population density, as well as a high number of jobs and amenities within walkable distance.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">:</span> <span class="s2">&quot;Signature type “Metropolitan urbanity” captures the centre of the largest cities in Great Britain such as Glasgow, Birmingham or Manchester. It is characterised by a very high number of jobs in the area, high built-up density and often high population density. This type serves as the core centre of the entire metropolitan areas.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity” is a signature type found in the city centre of London and nowhere else in Great Britain. It reflects the uniqueness of London in the British context with an extremely high number of jobs and amenities located nearby, as well as high built-up and population densities. Buildings in this signature are large and tightly packed, forming complex shapes with courtyards and little green space.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">:</span> <span class="s2">&quot;The epitome of urbanity in the British context. “Hyper concentrated urbanity” is a signature type present only in the centre of London, around the Soho district, and covering Oxford and Regent streets. This signature is the result of centuries of urban primacy, with a multitude of historical layers interwoven, very high built-up and population density, and extreme abundance of amenities, services and jobs.&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+    
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pen_portraits.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">portraits</span><span class="p">,</span> <span class="n">outfile</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
