@@ -50,6 +50,7 @@
     - file: esda/sizeshape
     - file: esda/co-occurence
     - file: esda/ttwa
+    - file: esda/geog_distribution
 
 - chapter: Data product
   sections:
