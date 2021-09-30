@@ -498,6 +498,48 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Perimeter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equivalent-rectangular-index">
+     Equivalent rectangular index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circular-compactness">
+     Circular compactness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     Donut index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Fractality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Convexity
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -2243,6 +2285,47 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <img alt="../_images/sizeshape_69_0.png" src="../_images/sizeshape_69_0.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>Area<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><em>Wild countryside</em>, <em>Countryside agriculture</em> and <em>Urban buffer</em> much larger than the rest. The difference between more urban signatures is small, with an exception of <em>Warehouse/Park land</em> that tends to be a bit larger and <em>Disconnected suburbia</em> that tends to be smaller.</p>
+</div>
+<div class="section" id="id9">
+<h3>Perimeter<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Very similar as area, we could almost say the same.</p>
+</div>
+<div class="section" id="equivalent-rectangular-index">
+<h3>Equivalent rectangular index<a class="headerlink" href="#equivalent-rectangular-index" title="Permalink to this headline">¶</a></h3>
+<p><em>(higher the value is, less complex the shape is)</em></p>
+<p>There’s an intereseting tendency shown - more urban signatures tend to be less complex in shape than rural ones and there is almost a gradient of increasing complexity as we lose urbanity. In other words, more urban singatures have much simpler shapes.</p>
+<p>However, this clear tendency is lost when we take into account only 50% largest polygons.</p>
+</div>
+<div class="section" id="circular-compactness">
+<h3>Circular compactness<a class="headerlink" href="#circular-compactness" title="Permalink to this headline">¶</a></h3>
+<p><em>(higher value means more compact, circle-like shape)</em></p>
+<p>Nothing super interesting comes up. Countryside tends to have less compact shapes but the rest doesn’t tell much.</p>
+</div>
+<div class="section" id="id10">
+<h3>Donut index<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p><em>(higher values means more holes)</em></p>
+<p>This is interesting. We have two groups of signatures showing donut-like tendency.</p>
+<ul class="simple">
+<li><p>Countryside right next to the city - <em>urban buffer</em> and <em>open sprawl</em> have a tendency to encircle more urban development</p></li>
+<li><p>Dense central areas - <em>dense urban neighbourhoods</em> and the <em>urbanity</em> singatures tend to form concentric rings, therefore having a donut shape.</p></li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>Fractality<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p><em>(higher means more fractal-like)</em></p>
+<p>There is some variation, especially looking only at top 50% but I am not sure if there is any specific tendency apart from a relative randomness.</p>
+</div>
+<div class="section" id="id12">
+<h3>Convexity<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p><em>(1 means convex, 0 complex)</em></p>
+<p>Again, not sure if it shows anything meaningful.</p>
 </div>
 </div>
 </div>
