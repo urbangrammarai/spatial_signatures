@@ -545,6 +545,90 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#by-area-and-cell-count">
+   By area and cell count
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area-by-count">
+     Area by count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perimeter-by-count">
+     Perimeter by count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eri-by-area">
+     ERI by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circlular-compactness-by-count">
+     Circlular compactness by count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#donut-index-by-count">
+     Donut index by count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fractality-by-count">
+     Fractality by count
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convexity-by-count">
+     Convexity by count
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#area-quartiles">
+   Area quartiles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#area-by-area">
+     Area by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perimeter-by-area">
+     Perimeter by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     ERI by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#circlular-compactness-by-area">
+     Circlular compactness by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#donut-index-by-area">
+     Donut index by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fractality-by-area">
+     Fractality by area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convexity-by-area">
+     Convexity by area
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -569,8 +653,10 @@
 <span class="kn">import</span> <span class="nn">pygeos</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">dask.dataframe</span>
 <span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
 </pre></div>
 </div>
 </div>
@@ -579,7 +665,7 @@
 <h2>Measure size and shape characters<a class="headerlink" href="#measure-size-and-shape-characters" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">(</span><span class="n">n_workers</span><span class="o">=</span><span class="mi">16</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
 <span class="n">client</span>
 </pre></div>
 </div>
@@ -590,16 +676,16 @@
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Client</h3>
 <ul style="text-align: left; list-style: none; margin: 0; padding: 0;">
-  <li><b>Scheduler: </b>tcp://127.0.0.1:43365</li>
+  <li><b>Scheduler: </b>tcp://127.0.0.1:41929</li>
   <li><b>Dashboard: </b><a href='http://127.0.0.1:8787/status' target='_blank'>http://127.0.0.1:8787/status</a></li>
 </ul>
 </td>
 <td style="vertical-align: top; border: 0px solid white">
 <h3 style="text-align: left;">Cluster</h3>
 <ul style="text-align: left; list-style:none; margin: 0; padding: 0;">
-  <li><b>Workers: </b>16</li>
+  <li><b>Workers: </b>4</li>
   <li><b>Cores: </b>16</li>
-  <li><b>Memory: </b>134.91 GB</li>
+  <li><b>Memory: </b>134.80 GB</li>
 </ul>
 </td>
 </tr>
@@ -2331,6 +2417,611 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <h3>Convexity<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p><em>(1 means convex, 0 complex)</em></p>
 <p>Again, not sure if it shows anything meaningful.</p>
+</div>
+</div>
+<div class="section" id="by-area-and-cell-count">
+<h2>By area and cell count<a class="headerlink" href="#by-area-and-cell-count" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>signature_type</th>
+      <th>area</th>
+      <th>perimeter</th>
+      <th>eri</th>
+      <th>circular_compactness</th>
+      <th>donut_index</th>
+      <th>fractality</th>
+      <th>convexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Countryside agriculture</td>
+      <td>1.826984e+07</td>
+      <td>29577.575163</td>
+      <td>0.601828</td>
+      <td>0.439852</td>
+      <td>7.105984e-05</td>
+      <td>1.065559</td>
+      <td>0.788857</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Countryside agriculture</td>
+      <td>1.235908e+04</td>
+      <td>555.207264</td>
+      <td>0.892662</td>
+      <td>0.254347</td>
+      <td>0.000000e+00</td>
+      <td>1.047118</td>
+      <td>0.983245</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Countryside agriculture</td>
+      <td>7.234542e+05</td>
+      <td>5746.792461</td>
+      <td>0.602136</td>
+      <td>0.339522</td>
+      <td>0.000000e+00</td>
+      <td>1.077707</td>
+      <td>0.629428</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Countryside agriculture</td>
+      <td>1.229467e+06</td>
+      <td>6161.670240</td>
+      <td>0.731125</td>
+      <td>0.306803</td>
+      <td>0.000000e+00</td>
+      <td>1.046892</td>
+      <td>0.799648</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Countryside agriculture</td>
+      <td>7.604014e+06</td>
+      <td>22500.262066</td>
+      <td>0.539593</td>
+      <td>0.252670</td>
+      <td>2.808737e-04</td>
+      <td>1.089988</td>
+      <td>0.641429</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96687</th>
+      <td>Hyper concentrated urbanity</td>
+      <td>1.797907e+03</td>
+      <td>187.424114</td>
+      <td>0.981508</td>
+      <td>0.369170</td>
+      <td>0.000000e+00</td>
+      <td>1.026657</td>
+      <td>0.996822</td>
+    </tr>
+    <tr>
+      <th>96688</th>
+      <td>Hyper concentrated urbanity</td>
+      <td>1.271663e+06</td>
+      <td>10882.240090</td>
+      <td>0.415598</td>
+      <td>0.541253</td>
+      <td>1.464732e-14</td>
+      <td>1.125311</td>
+      <td>0.827377</td>
+    </tr>
+    <tr>
+      <th>96689</th>
+      <td>Hyper concentrated urbanity</td>
+      <td>1.872188e+03</td>
+      <td>175.432872</td>
+      <td>0.986566</td>
+      <td>0.621376</td>
+      <td>0.000000e+00</td>
+      <td>1.003591</td>
+      <td>0.980982</td>
+    </tr>
+    <tr>
+      <th>96690</th>
+      <td>Hyper concentrated urbanity</td>
+      <td>2.767724e+03</td>
+      <td>213.469395</td>
+      <td>0.995107</td>
+      <td>0.614557</td>
+      <td>0.000000e+00</td>
+      <td>1.003611</td>
+      <td>0.965406</td>
+    </tr>
+    <tr>
+      <th>96691</th>
+      <td>Hyper concentrated urbanity</td>
+      <td>9.875395e+05</td>
+      <td>5945.760474</td>
+      <td>0.771656</td>
+      <td>0.216829</td>
+      <td>0.000000e+00</td>
+      <td>1.058343</td>
+      <td>0.824101</td>
+    </tr>
+  </tbody>
+</table>
+<p>96689 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joined</span> <span class="o">=</span> <span class="n">dask</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/hindex_to_type&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">joined</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>id</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>459</th>
+      <td>2461180</td>
+      <td>2461180</td>
+    </tr>
+    <tr>
+      <th>2797</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2801</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2817</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2818</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95069</th>
+      <td>313</td>
+      <td>313</td>
+    </tr>
+    <tr>
+      <th>95071</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>95072</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>95075</th>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>95077</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>96704 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;cell_count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-12-a85cca808231&gt;:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  signatures[&quot;cell_count&quot;] = counts.type
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">cat</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">cell_count</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+    <span class="n">signatures</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s2">&quot;count_quartile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">signatures</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">cell_count</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;25%&quot;</span><span class="p">]</span><span class="o">+</span><span class="mf">.1</span><span class="p">,</span> <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;50%&quot;</span><span class="p">]</span><span class="o">+</span><span class="mf">.2</span><span class="p">,</span> <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;75%&quot;</span><span class="p">]</span><span class="o">+</span><span class="mf">.3</span><span class="p">,</span> <span class="n">desc</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q4&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:1676: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self._setitem_single_column(ilocs[0], value, pi)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_by_count_quartile</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">plot_data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q4&quot;</span><span class="p">])</span>
+    <span class="n">plot_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;types&quot;</span>
+    <span class="k">for</span> <span class="n">cat</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q4&quot;</span><span class="p">]):</span>
+        <span class="n">plot_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cat</span><span class="p">,</span> <span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[(</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">cat</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">count_quartile</span> <span class="o">==</span> <span class="n">q</span><span class="p">)][</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_data</span><span class="p">):</span>
+        <span class="n">seaborn</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;types&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="area-by-count">
+<h3>Area by count<a class="headerlink" href="#area-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_80_0.png" src="../_images/sizeshape_80_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_81_0.png" src="../_images/sizeshape_81_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="perimeter-by-count">
+<h3>Perimeter by count<a class="headerlink" href="#perimeter-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;perimeter&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_83_0.png" src="../_images/sizeshape_83_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;perimeter&quot;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_84_0.png" src="../_images/sizeshape_84_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="eri-by-area">
+<h3>ERI by area<a class="headerlink" href="#eri-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;eri&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_86_0.png" src="../_images/sizeshape_86_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="circlular-compactness-by-count">
+<h3>Circlular compactness by count<a class="headerlink" href="#circlular-compactness-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_88_0.png" src="../_images/sizeshape_88_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="donut-index-by-count">
+<h3>Donut index by count<a class="headerlink" href="#donut-index-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;donut_index&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_90_0.png" src="../_images/sizeshape_90_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fractality-by-count">
+<h3>Fractality by count<a class="headerlink" href="#fractality-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;fractality&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_92_0.png" src="../_images/sizeshape_92_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="convexity-by-count">
+<h3>Convexity by count<a class="headerlink" href="#convexity-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_count_quartile</span><span class="p">(</span><span class="s2">&quot;convexity&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_94_0.png" src="../_images/sizeshape_94_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="area-quartiles">
+<h2>Area quartiles<a class="headerlink" href="#area-quartiles" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">cat</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s2">&quot;area&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+    <span class="n">signatures</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s2">&quot;area_quartile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">signatures</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">cell_count</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;25%&quot;</span><span class="p">],</span> <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;50%&quot;</span><span class="p">],</span> <span class="n">desc</span><span class="p">[</span><span class="s2">&quot;75%&quot;</span><span class="p">],</span> <span class="n">desc</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q4&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:1599: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self.obj[key] = infer_fill_value(value)
+/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:1676: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self._setitem_single_column(ilocs[0], value, pi)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_by_area_quartile</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">plot_data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q4&quot;</span><span class="p">])</span>
+    <span class="n">plot_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;types&quot;</span>
+    <span class="k">for</span> <span class="n">cat</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;q1&quot;</span><span class="p">,</span> <span class="s2">&quot;q2&quot;</span><span class="p">,</span> <span class="s2">&quot;q3&quot;</span><span class="p">,</span> <span class="s2">&quot;q4&quot;</span><span class="p">]):</span>
+        <span class="n">plot_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cat</span><span class="p">,</span> <span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[(</span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">cat</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">area_quartile</span> <span class="o">==</span> <span class="n">q</span><span class="p">)][</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">plot_data</span><span class="p">):</span>
+        <span class="n">seaborn</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;types&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="area-by-area">
+<h3>Area by area<a class="headerlink" href="#area-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_99_0.png" src="../_images/sizeshape_99_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_100_0.png" src="../_images/sizeshape_100_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="perimeter-by-area">
+<h3>Perimeter by area<a class="headerlink" href="#perimeter-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;perimeter&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_102_0.png" src="../_images/sizeshape_102_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;perimeter&quot;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_103_0.png" src="../_images/sizeshape_103_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>ERI by area<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;eri&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_105_0.png" src="../_images/sizeshape_105_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="circlular-compactness-by-area">
+<h3>Circlular compactness by area<a class="headerlink" href="#circlular-compactness-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;circular_compactness&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_107_0.png" src="../_images/sizeshape_107_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="donut-index-by-area">
+<h3>Donut index by area<a class="headerlink" href="#donut-index-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;donut_index&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_109_0.png" src="../_images/sizeshape_109_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fractality-by-area">
+<h3>Fractality by area<a class="headerlink" href="#fractality-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;fractality&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_111_0.png" src="../_images/sizeshape_111_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="convexity-by-area">
+<h3>Convexity by area<a class="headerlink" href="#convexity-by-area" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_area_quartile</span><span class="p">(</span><span class="s2">&quot;convexity&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sizeshape_113_0.png" src="../_images/sizeshape_113_0.png" />
+</div>
+</div>
 </div>
 </div>
 </div>
