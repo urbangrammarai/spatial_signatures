@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Geographical distribution of signature types &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Geographical distribution and coverage of signature types &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -287,7 +287,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Geographical distribution of signature types
+   Geographical distribution and coverage of signature types
   </a>
  </li>
 </ul>
@@ -409,6 +409,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coverage">
+   Coverage
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -417,8 +430,8 @@
         
               <div>
                 
-  <div class="section" id="geographical-distribution-of-signature-types">
-<h1>Geographical distribution of signature types<a class="headerlink" href="#geographical-distribution-of-signature-types" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="geographical-distribution-and-coverage-of-signature-types">
+<h1>Geographical distribution and coverage of signature types<a class="headerlink" href="#geographical-distribution-and-coverage-of-signature-types" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span>
@@ -917,6 +930,361 @@ Attributes:
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/geog_distribution_11_0.png" src="../_images/geog_distribution_11_0.png" />
+</div>
+</div>
+<div class="section" id="coverage">
+<h2>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">squarify</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_simplified.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;0_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;6_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_4&quot;</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_5&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">ugg</span><span class="o">.</span><span class="n">get_colormap</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">randomize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">colors</span>
+
+<span class="n">symbology</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;0_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span>
+             <span class="s1">&#39;1_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span>
+             <span class="s1">&#39;3_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span>
+             <span class="s1">&#39;4_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span>
+             <span class="s1">&#39;5_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span>
+             <span class="s1">&#39;6_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span>
+             <span class="s1">&#39;7_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+             <span class="s1">&#39;8_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span>
+             <span class="s1">&#39;2_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
+             <span class="s1">&#39;2_1&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span>
+             <span class="s1">&#39;2_2&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span>
+             <span class="s1">&#39;9_0&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span>
+             <span class="s1">&#39;9_1&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+             <span class="s1">&#39;9_2&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span>
+             <span class="s1">&#39;9_4&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span>
+             <span class="s1">&#39;9_5&#39;</span><span class="p">:</span> <span class="n">cols</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span>
+            <span class="p">}</span>
+<span class="n">symbology</span> <span class="o">=</span> <span class="p">{</span><span class="n">types</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">symbology</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;area&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">area</span>
+<span class="n">types_sum</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[[</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;signature_type&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;signature_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+    </tr>
+    <tr>
+      <th>signature_type</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>2.244586e+09</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>7.883216e+06</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>5.654034e+08</td>
+    </tr>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>9.385615e+10</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>9.572622e+08</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>5.706291e+08</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>7.089617e+08</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>2.612541e+08</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>2.293596e+06</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>2.311573e+08</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>1.658261e+07</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>5.081598e+09</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>7.643967e+07</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>3.158887e+10</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>2.462472e+09</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>9.130631e+10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">squarify</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="n">types_sum</span><span class="o">.</span><span class="n">area</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">symbology</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 100.0, 0.0, 100.0)
+</pre></div>
+</div>
+<img alt="../_images/geog_distribution_20_1.png" src="../_images/geog_distribution_20_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">types_sum</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">symbology</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>color</th>
+    </tr>
+    <tr>
+      <th>signature_type</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>2.244586e+09</td>
+      <td>(0.5625, 0.640625, 0.4921875)</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>7.883216e+06</td>
+      <td>(0.19921875, 0.203125, 0.1953125)</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>5.654034e+08</td>
+      <td>(0.58203125, 0.3984375, 0.4296875)</td>
+    </tr>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>9.385615e+10</td>
+      <td>(0.9475259828670731, 0.9021947232500418, 0.782...</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>9.572622e+08</td>
+      <td>(0.405436326872467, 0.5568241504426759, 0.6493...</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>5.706291e+08</td>
+      <td>(0.9375, 0.78125, 0.34375)</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>7.089617e+08</td>
+      <td>(0.9408069995844273, 0.8211427621191237, 0.488...</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>2.612541e+08</td>
+      <td>(0.8956450438496885, 0.7949476416458632, 0.782...</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>2.293596e+06</td>
+      <td>(0.6550082934095629, 0.716277287243688, 0.6001...</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>2.311573e+08</td>
+      <td>(0.23046875, 0.4296875, 0.55078125)</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>1.658261e+07</td>
+      <td>(0.73828125, 0.35546875, 0.30859375)</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>5.081598e+09</td>
+      <td>(0.8429158144969133, 0.6476876988954169, 0.623...</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>7.643967e+07</td>
+      <td>(0.6718003015294096, 0.5329645862558573, 0.556...</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>3.158887e+10</td>
+      <td>(0.7609260068673207, 0.8151335354690646, 0.849...</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>2.462472e+09</td>
+      <td>(0.7629942586386511, 0.6696270230872043, 0.685...</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>9.130631e+10</td>
+      <td>(0.8429616514480401, 0.8699835216435621, 0.819...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span> <span class="o">=</span> <span class="n">types_sum</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">types_sum</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">types_sum</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/geog_distribution_23_0.png" src="../_images/geog_distribution_23_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">types_sum</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="n">types_sum</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">types_sum</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/geog_distribution_24_0.png" src="../_images/geog_distribution_24_0.png" />
+</div>
 </div>
 </div>
 </div>
