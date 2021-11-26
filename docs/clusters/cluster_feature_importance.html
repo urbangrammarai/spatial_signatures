@@ -441,6 +441,7 @@
 <span class="kn">import</span> <span class="nn">dask.dataframe</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -1567,6 +1568,238 @@ Wall time: 2min 45s
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imps</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/per_cluster_importance.pq&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/per_cluster_importance.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;cluster_4&#39;, &#39;cluster_0&#39;, &#39;cluster_6&#39;, &#39;cluster_1&#39;, &#39;cluster_21&#39;,
+       &#39;cluster_7&#39;, &#39;cluster_3&#39;, &#39;cluster_5&#39;, &#39;cluster_90&#39;, &#39;cluster_20&#39;,
+       &#39;cluster_8&#39;, &#39;cluster_22&#39;, &#39;cluster_92&#39;, &#39;cluster_94&#39;, &#39;cluster_91&#39;,
+       &#39;cluster_95&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_chars</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="n">ims</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ims</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;_vals&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n_chars</span><span class="p">)</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">ims</span><span class="p">[[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ims</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s2">&quot;_vals&quot;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n_chars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coded</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;population&#39;</span><span class="p">:</span> <span class="s1">&#39;func_population&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;night_lights&#39;</span><span class="p">:</span> <span class="s1">&#39;func_night_lights&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;A, B, D, E. Agriculture, energy and water&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_abde&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;C. Manufacturing&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;F. Construction&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;G, I. Distribution, hotels and restaurants&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_gi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;H, J. Transport and communication&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_hj&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;K, L, M, N. Financial, real estate, professional and administrative activities&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_klmn&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;O,P,Q. Public administration, education and health&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_opq&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;R, S, T, U. Other&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_rstu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_124&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_124&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_211&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_211&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_121&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_121&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_421&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_421&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_522&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_522&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_142&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_142&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_141&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_141&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_112&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_112&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_231&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_231&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_311&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_311&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_131&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_131&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_123&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_123&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_122&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_122&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_512&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_512&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_243&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_243&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_313&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_313&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_412&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_412&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_321&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_321&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_322&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_322&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_324&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_324&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_111&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_111&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_423&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_423&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_523&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_523&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_312&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_312&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_133&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_133&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_333&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_333&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_332&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_332&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_411&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_411&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_132&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_132&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_222&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_222&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_242&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_242&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_331&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_331&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_511&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_511&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_334&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_334&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_244&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_244&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_521&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_521&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="s1">&#39;func_ndvi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_supermarkets_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;supermarkets_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_supermarkets_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;listed_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_listed_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;listed_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_listed_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_fhrs_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fhrs_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_fhrs_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;culture_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_culture_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;culture_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_culture_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nearest_water&#39;</span><span class="p">:</span> <span class="s1">&#39;func_water_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nearest_retail_centre&#39;</span><span class="p">:</span> <span class="s1">&#39;func_retail_centrenearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdbAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdbAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdbPer&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdbPer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdbCoA&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdbCoA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCCo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCor&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCor&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbSqu&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbSqu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbERI&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbERI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbElo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbElo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCCM&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCCM&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCCD&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCCD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stbOri&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stbOri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdcLAL&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdcLAL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdcAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sscCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sscCCo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sscERI&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sscERI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stcOri&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stcOri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sicCAR&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sicCAR&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stbCeA&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stbCeA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtbAli&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtbAli&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtbNDi&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtbNDi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtcWNe&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtcWNe&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mdcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mdcAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltcWRE&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltcWRE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltbIBD&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltbIBD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsSPW&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsSPW&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsSWD&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsSWD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsSPO&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsSPO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsLen&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsLen&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sssLin&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sssLin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldsMSL&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldsMSL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtdDeg&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtdDeg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lcdMes&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lcdMes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linP3W&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linP3W&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linP4W&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linP4W&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linPDE&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linPDE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lcnClo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lcnClo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldsCDL&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldsCDL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;xcnSCl&#39;</span><span class="p">:</span> <span class="s1">&#39;form_xcnSCl&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtdMDi&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtdMDi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lddNDe&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lddNDe&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linWID&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linWID&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stbSAl&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stbSAl&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sddAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sddAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sisBpM&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sisBpM&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;misCel&#39;</span><span class="p">:</span> <span class="s1">&#39;form_misCel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mdsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mdsAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lisCel&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lisCel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldsAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltcRea&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltcRea&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltcAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldeAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldeAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldePer&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldePer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lseCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lseCCo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lseERI&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lseERI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lseCWA&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lseCWA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lteOri&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lteOri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lteWNB&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lteWNB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lieWCe&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lieWCe&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">93</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">96</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">97</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">98</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;_q&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">coded</span><span class="p">[</span><span class="n">name</span><span class="p">][:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;form&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ugg</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">coded</span><span class="p">[</span><span class="n">name</span><span class="p">][:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;func&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ugg</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">n_chars</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_chars</span><span class="p">),</span> <span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">/</span> <span class="n">values</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="n">types</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">8</span><span class="p">:])]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">names</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">n_chars</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="c1"># ax.set_axis_off()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">ticks</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;top predictor&quot;</span><span class="p">,</span> <span class="s2">&quot;10th predictor&quot;</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&quot;figs/feature_imp_10.pdf&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cluster_feature_importance_18_0.png" src="../_images/cluster_feature_importance_18_0.png" />
 </div>
 </div>
 </div>

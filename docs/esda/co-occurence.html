@@ -1351,30 +1351,65 @@ Wall time: 1min 31s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;co_occurence.pq&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">ugg</span><span class="o">.</span><span class="n">HEX</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">256</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;co_occurence.pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;co_occurence.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Countryside agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Urban buffer&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Open sprawl&#39;</span><span class="p">,</span> <span class="s1">&#39;Warehouse/Park land&#39;</span><span class="p">,</span> <span class="s1">&#39;Accessible suburbia&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense residential neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Disconnected suburbia&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Connected residential neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span> <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentrated urbanity&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Hyper concentrated urbanity&#39;</span><span class="p">]</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span>
+    <span class="n">matrix</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">ugg</span><span class="o">.</span><span class="n">HEX</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+    <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelright</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&quot;co_occurence.pdf&quot;, bbox_inches=&quot;tight&quot;)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/co-occurence_15_0.png" src="../_images/co-occurence_15_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;co_occurence.pq&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
+<img alt="../_images/co-occurence_18_0.png" src="../_images/co-occurence_18_0.png" />
 </div>
 </div>
 <div class="section" id="chord-diagram">
