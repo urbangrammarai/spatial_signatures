@@ -430,6 +430,13 @@
   <a class="reference internal nav-link" href="#coverage">
    Coverage
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-of-tessellation-cells-by-type">
+     Count of tessellation cells by type
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -1126,6 +1133,75 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/geog_distribution_36_0.png" src="../_images/geog_distribution_36_0.png" />
+</div>
+</div>
+<div class="section" id="count-of-tessellation-cells-by-type">
+<h3>Count of tessellation cells by type<a class="headerlink" href="#count-of-tessellation-cells-by-type" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tess</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/tessellation/tess_*.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_l1</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/KMeans10GB.pq&quot;</span><span class="p">)</span>
+<span class="n">labels_l2_9</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/clustergram_cl9_labels.pq&quot;</span><span class="p">)</span>
+<span class="n">labels_l2_2</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/subclustering_cluster2_k3.pq&quot;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">labels_l1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;kmeans10gb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_l2_9</span><span class="p">[</span><span class="s1">&#39;9&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="mi">90</span>
+<span class="n">labels</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;kmeans10gb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels_l2_2</span><span class="p">[</span><span class="s1">&#39;subclustering_cluster2_k3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="mi">20</span>
+
+<span class="n">outliers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">98</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">97</span><span class="p">]</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">labels</span><span class="o">.</span><span class="n">kmeans10gb</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/counts.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span><span class="p">[</span><span class="n">mask</span><span class="p">][</span><span class="s2">&quot;kmeans10gb&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7     3686554
+0     3022385
+3     2561211
+1     1962830
+5      707211
+4      595902
+8      564318
+20     502835
+21     374090
+22     238639
+6      209959
+90      86380
+92      21760
+94       3739
+91       1390
+95        264
+Name: kmeans10gb, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
