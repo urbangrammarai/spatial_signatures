@@ -6,6 +6,8 @@
       title: Project homepage
     - url: http://urbangrammarai.xyz/data_processing
       title: WP1 - Data processing
+    - url: http://urbangrammarai.xyz/signature_ai
+      title: WP3 - Signature AI
 
 - chapter: Spatial unit
   sections:
