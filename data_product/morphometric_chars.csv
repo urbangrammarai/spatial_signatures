@@ -1,0 +1,60 @@
+﻿context,category,reference,id
+building,dimension,[@hallowell2013],sdbAre
+building,dimension,[@vanderhaegen2017],sdbPer
+building,dimension,[@schirmer2015],sdbCoA
+building,shape,[@dibble2017],ssbCCo
+building,shape,[@steiniger2008],ssbCor
+building,shape,[@steiniger2008],ssbSqu
+building,shape,[@basaraner2017],ssbERI
+building,shape,[@steiniger2008],ssbElo
+building,shape,,ssbCCD
+building,dimension,[@schirmer2015],ssbCCM
+building,distribution,[@schirmer2015],stbOri
+building,distribution,[@schirmer2015],stbSAl
+building,distribution,,stbCeA
+tessellation cell,dimension,,sdcLAL
+tessellation cell,dimension,[@hamaina2012a],sdcAre
+tessellation cell,shape,,sscCCo
+tessellation cell,shape,,sscERI
+tessellation cell,distribution,,stcOri
+tessellation cell,intensity,[@hamaina2013],sicCAR
+street segment,dimension,[@gil2012],sdsLen
+street segment,dimension,[@araldi2019],sdsSPW
+street segment,distribution,[@araldi2019],sdsSPO
+street segment,diversity,[@araldi2019],sdsSWD
+street segment,shape,[@araldi2019],sssLin
+street segment,dimension,,sdsAre
+street segment,intensity,,sisBpM
+street node,dimension,,sddAre
+neighbouring cells (queen),distribution,[@hijazi2016],mtbAli
+neighbouring cells (queen),distribution,[@hijazi2016],mtbNDi
+neighbouring cells (queen),distribution,,mtcWNe
+neighbouring cells (queen),dimension,,mdcAre
+neighbouring segments,intensity,,misCel
+neighbouring segments,dimension,,mdsAre
+neighbouring nodes,distribution,[@boeing2018],mtdDeg
+neighbouring nodes,dimension,,mtdMDi
+cell queen neighbours 3,distribution,[@caruso2017],ltbIBD
+cell queen neighbours 3,intensity,,ltcWRE
+cell queen neighbours 3,intensity,,ltcRea
+cell queen neighbours 3,dimension,,ltcAre
+enclosure,dimension,[@dibble2017],ldeAre
+enclosure,dimension,[@gil2012],ldePer
+enclosure,shape,[@schirmer2015],lseCCo
+enclosure,shape,[@basaraner2017],lseERI
+enclosure,shape,[@feliciotti2018],lseCWA
+enclosure,distribution,[@gil2012],lteOri
+enclosure,distribution,,lteWNB
+enclosure,intensity,,lieWCe
+nodes 5 steps,connectivity,[@feliciotti2018],lcdMes
+segment 3 steps,dimension,,ldsMSL
+nodes 3 steps,dimension,,ldsCDL
+segment 3 steps,dimension,,ldsAre
+segment 3 steps,intensity,,lisCel
+nodes 5 steps,intensity,,lddNDe
+nodes 5 steps,connectivity,[@lowry2014],linPDE
+nodes 5 steps,connectivity,[@boeing2018],linP3W
+nodes 5 steps,connectivity,[@boeing2018],linP4W
+nodes 5 steps,intensity,[@dibble2017],linWID
+nodes 5 steps,connectivity,[@porta2006],lcnClo
+street network,connectivity,,xcnSCl

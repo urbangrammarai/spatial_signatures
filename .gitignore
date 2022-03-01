@@ -143,3 +143,4 @@ dask-worker-space
 clusters/all_data.pickle
 clusters/chunks_data.pickle
 clusters/temp_gla.gpkg
+_temp*

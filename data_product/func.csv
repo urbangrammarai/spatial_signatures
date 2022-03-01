@@ -1,0 +1,12 @@
+data ; source ;input geometry ; transfer method ;
+Population estimates ; ONS Census Output Area population estimates, Statistics.gov.scot ;Vector (output area polygon) ; Building-based dasymetric areal interpolation ;
+Retail POIs (supermarkets) ; Geolytix ;Vector (point) ;Network-constrained accessibility ;
+Water bodies ; OS OpenMap Local ; Vector (water body polygon) ;Euclidean accessibility ;
+Listed Buildings ; Historic England, Historic Environment Scotland, Lle Geo-Portal for Wales ;Vector (point) ; Network-constrained accessibility ;
+Night Lights ; VIIRS DNB Nighttime Lights ; Raster (500m) ;Zonal statistics ;
+Food Hygiene Rating Scheme Ratings ; CDRC.ac.uk ;Vector (point) ;Network-constrained accessibility ;
+Workplace population ; ONS Census Workplace population, Scotland's census Workplace population ;Vector (output area polygon) ; Building-based dasymetric areal interpolation ;
+Culture (theatres, cinemas) ; OpenStreetMap ;Vector (point) ;Network-constrained accessibility ;
+Corine land cover ; Copernicus Land Monitoring Service ; Vector (land cover zone polygon) ;    Areal interpolation ;
+NDVI ; GHS-composite-S2 R2020A ;  Raster (10m) ;Zonal statistics ;
+Retail centres ; CDRC.ac.uk ;   Vector (retail centre polygon) ;Euclidean accessibility ;
