@@ -429,6 +429,11 @@
    Urban Atlas
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#local-climate-zones">
+   Local Climate Zones
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -458,7 +463,7 @@
 <span class="kn">import</span> <span class="nn">tobler</span>
 <span class="kn">import</span> <span class="nn">dask_geopandas</span>
 <span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
-
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">box</span>
 
 <span class="kn">from</span> <span class="nn">download</span> <span class="kn">import</span> <span class="n">download</span>
 <span class="kn">from</span> <span class="nn">geocube.api.core</span> <span class="kn">import</span> <span class="n">make_geocube</span>
@@ -4131,6 +4136,1487 @@ Wall time: 29min 41s
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="local-climate-zones">
+<h2>Local Climate Zones<a class="headerlink" href="#local-climate-zones" title="Permalink to this headline">¶</a></h2>
+<p>Download and read data. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0214474, https://figshare.com/articles/dataset/European_LCZ_map/13322450</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">download</span><span class="p">(</span><span class="s2">&quot;https://figshare.com/ndownloader/files/28352715&quot;</span><span class="p">,</span>
+                      <span class="s1">&#39;../../urbangrammar_samba/spatial_signatures/validation/EU_LCZ_map_epsg4326.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://s3-eu-west-1.amazonaws.com/pfigshare-u-files/28352715/EU_LCZ_map_epsg4326.tif?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIYCQYOYV5JSSROOA/20220223/eu-west-1/s3/aws4_request&amp;X-Amz-Date=20220223T104658Z&amp;X-Amz-Expires=10&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4ab98243608f600c64065a763f57b99cbb32def65f74e32e9975f7b5c341ba99 (113.8 MB)
+
+file_sizes: 100%|████████████████████████████| 119M/119M [00:03&lt;00:00, 38.1MB/s]
+Successfully downloaded file to ../../urbangrammar_samba/spatial_signatures/validation/EU_LCZ_map_epsg4326.tif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lcz</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lcz</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (band: 1, y: 33718, x: 97031)&gt;
+[3271691258 values with dtype=int16]
+Coordinates:
+  * band         (band) int64 1
+  * x            (x) float64 -55.24 -55.24 -55.24 -55.24 ... 75.5 75.5 75.5 75.5
+  * y            (y) float64 74.07 74.07 74.07 74.07 ... 28.64 28.64 28.64 28.64
+    spatial_ref  int64 0
+Attributes:
+    scale_factor:  1.0
+    add_offset:    0.0</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 1</li><li><span class='xr-has-index'>y</span>: 33718</li><li><span class='xr-has-index'>x</span>: 97031</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-51d7a2aa-357e-4099-b60d-3169d193cf97' class='xr-array-in' type='checkbox' checked><label for='section-51d7a2aa-357e-4099-b60d-3169d193cf97' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[3271691258 values with dtype=int16]</pre></div></div></li><li class='xr-section-item'><input id='section-1f8a1660-4598-4e0d-9569-f8821aa7fee6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1f8a1660-4598-4e0d-9569-f8821aa7fee6' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-cceacac8-2b71-40eb-bfc3-25f931001945' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-cceacac8-2b71-40eb-bfc3-25f931001945' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3ac6682f-2711-4c70-9978-003667ab376a' class='xr-var-data-in' type='checkbox'><label for='data-3ac6682f-2711-4c70-9978-003667ab376a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-55.24 -55.24 -55.24 ... 75.5 75.5</div><input id='attrs-29eba844-316a-48d8-b0df-8f1ee6351340' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-29eba844-316a-48d8-b0df-8f1ee6351340' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea50c488-7cd8-48ee-bbf2-ffd5a8419142' class='xr-var-data-in' type='checkbox'><label for='data-ea50c488-7cd8-48ee-bbf2-ffd5a8419142' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-55.244489, -55.243142, -55.241794, ...,  75.49916 ,  75.500507,
+        75.501855])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>74.07 74.07 74.07 ... 28.64 28.64</div><input id='attrs-d099dc63-cb3a-487b-b9d5-b1d6681706e6' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-d099dc63-cb3a-487b-b9d5-b1d6681706e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f9e4384e-2526-43a8-b501-849815e7ba5b' class='xr-var-data-in' type='checkbox'><label for='data-f9e4384e-2526-43a8-b501-849815e7ba5b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([74.073758, 74.07241 , 74.071063, ..., 28.643344, 28.641997, 28.640649])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-67b9e559-4600-4564-b4b4-0f6b34aca4d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-67b9e559-4600-4564-b4b4-0f6b34aca4d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-07ee6a5a-7a59-4431-be22-f0ed1e110140' class='xr-var-data-in' type='checkbox'><label for='data-07ee6a5a-7a59-4431-be22-f0ed1e110140' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>grid_mapping_name :</span></dt><dd>latitude_longitude</dd><dt><span>spatial_ref :</span></dt><dd>GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AXIS[&quot;Latitude&quot;,NORTH],AXIS[&quot;Longitude&quot;,EAST],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>-55.245163095931595 0.0013474837091883192 0.0 74.07443129379674 0.0 -0.0013474837091883192</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-afe8394f-af5b-4668-a247-c526311c8c5c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-afe8394f-af5b-4668-a247-c526311c8c5c' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_simplified.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reproject.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">box</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">([</span><span class="n">box</span><span class="p">(</span><span class="o">*</span><span class="n">signatures</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">)],</span> <span class="n">crs</span><span class="o">=</span><span class="n">signatures</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">lcz</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">lcz_osgb</span> <span class="o">=</span> <span class="n">lcz</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">box</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">)</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:27700&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get signature type as float.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">=</span> <span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">kmeans10gb</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">+</span> <span class="n">signatures</span><span class="o">.</span><span class="n">level2</span>
+<span class="n">signatures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kmeans10gb</th>
+      <th>geometry</th>
+      <th>level2</th>
+      <th>signature_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>POLYGON ((62219.999 798499.999, 62109.999 7985...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>POLYGON ((63507.682 796515.168, 63471.096 7965...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>POLYGON ((65953.174 802246.171, 65523.864 8023...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>POLYGON ((67297.740 803435.799, 67220.290 8034...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>POLYGON ((75760.000 852669.999, 75699.999 8527...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96699</th>
+      <td>9</td>
+      <td>POLYGON ((323321.005 463795.415, 323236.741 46...</td>
+      <td>8.0</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>96700</th>
+      <td>9</td>
+      <td>POLYGON ((325929.840 1008792.060, 325890.989 1...</td>
+      <td>8.0</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>96701</th>
+      <td>9</td>
+      <td>POLYGON ((337804.769 1013422.582, 337547.855 1...</td>
+      <td>8.0</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>96702</th>
+      <td>9</td>
+      <td>POLYGON ((422304.270 1147826.989, 422296.000 1...</td>
+      <td>8.0</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>96703</th>
+      <td>9</td>
+      <td>POLYGON ((525396.260 439215.479, 525360.919 43...</td>
+      <td>8.0</td>
+      <td>98.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>96704 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>Rasterise signatures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">signatures_raster</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span><span class="n">signatures</span><span class="p">,</span> <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">],</span> <span class="n">like</span><span class="o">=</span><span class="n">lcz_osgb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 17.6 s, sys: 1.1 s, total: 18.7 s
+Wall time: 18.6 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save raster to file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures_raster</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_raster_lcz.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create cross tabulation. There may be a smarter way but this one works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spsig_vals</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">lcz_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">lcz_osgb</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># ignoring null</span>
+<span class="n">crosstab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">lcz_vals</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">spsig_vals</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sps</span><span class="p">,</span> <span class="n">so</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">spsig_vals</span><span class="p">,</span> <span class="n">lcz_vals</span><span class="p">):</span>
+    <span class="n">crosstab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sps</span><span class="p">,</span> <span class="n">so</span><span class="p">]</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">signatures_raster</span><span class="o">.</span><span class="n">signature_type</span> <span class="o">==</span> <span class="n">sps</span><span class="p">,</span> <span class="n">lcz_osgb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">so</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crosstab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0</th>
+      <td>25077</td>
+      <td>39</td>
+      <td>195</td>
+      <td>0</td>
+      <td>159</td>
+      <td>30504</td>
+      <td>4819</td>
+      <td>101054</td>
+      <td>0</td>
+      <td>618768</td>
+      <td>460846</td>
+      <td>1518</td>
+      <td>5338608</td>
+      <td>4160</td>
+      <td>1167</td>
+      <td>28298</td>
+    </tr>
+    <tr>
+      <th>10.0</th>
+      <td>765</td>
+      <td>0</td>
+      <td>27</td>
+      <td>0</td>
+      <td>43</td>
+      <td>135527</td>
+      <td>1393</td>
+      <td>1292</td>
+      <td>0</td>
+      <td>1770</td>
+      <td>8372</td>
+      <td>0</td>
+      <td>8474</td>
+      <td>244</td>
+      <td>47</td>
+      <td>384</td>
+    </tr>
+    <tr>
+      <th>30.0</th>
+      <td>1756</td>
+      <td>6</td>
+      <td>224</td>
+      <td>0</td>
+      <td>733</td>
+      <td>218317</td>
+      <td>12039</td>
+      <td>5126</td>
+      <td>0</td>
+      <td>15052</td>
+      <td>49288</td>
+      <td>4</td>
+      <td>51549</td>
+      <td>368</td>
+      <td>162</td>
+      <td>3391</td>
+    </tr>
+    <tr>
+      <th>40.0</th>
+      <td>67832</td>
+      <td>25</td>
+      <td>117</td>
+      <td>0</td>
+      <td>101</td>
+      <td>10253</td>
+      <td>628</td>
+      <td>151456</td>
+      <td>0</td>
+      <td>1201136</td>
+      <td>623736</td>
+      <td>57865</td>
+      <td>4146693</td>
+      <td>54835</td>
+      <td>2814</td>
+      <td>115009</td>
+    </tr>
+    <tr>
+      <th>50.0</th>
+      <td>5314</td>
+      <td>138</td>
+      <td>291</td>
+      <td>36</td>
+      <td>1222</td>
+      <td>76593</td>
+      <td>23508</td>
+      <td>1363</td>
+      <td>43</td>
+      <td>6176</td>
+      <td>26242</td>
+      <td>1</td>
+      <td>27913</td>
+      <td>742</td>
+      <td>89</td>
+      <td>3935</td>
+    </tr>
+    <tr>
+      <th>60.0</th>
+      <td>329</td>
+      <td>34</td>
+      <td>1130</td>
+      <td>0</td>
+      <td>264</td>
+      <td>13452</td>
+      <td>2284</td>
+      <td>52</td>
+      <td>0</td>
+      <td>64</td>
+      <td>466</td>
+      <td>0</td>
+      <td>196</td>
+      <td>78</td>
+      <td>2</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>70.0</th>
+      <td>28392</td>
+      <td>84</td>
+      <td>645</td>
+      <td>5</td>
+      <td>899</td>
+      <td>215584</td>
+      <td>18073</td>
+      <td>57667</td>
+      <td>14</td>
+      <td>206451</td>
+      <td>285617</td>
+      <td>417</td>
+      <td>1390348</td>
+      <td>2579</td>
+      <td>1532</td>
+      <td>17996</td>
+    </tr>
+    <tr>
+      <th>80.0</th>
+      <td>50</td>
+      <td>0</td>
+      <td>24</td>
+      <td>0</td>
+      <td>34</td>
+      <td>47355</td>
+      <td>243</td>
+      <td>182</td>
+      <td>0</td>
+      <td>269</td>
+      <td>1477</td>
+      <td>0</td>
+      <td>334</td>
+      <td>6</td>
+      <td>1</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>20.0</th>
+      <td>782</td>
+      <td>58</td>
+      <td>1519</td>
+      <td>4</td>
+      <td>1300</td>
+      <td>50885</td>
+      <td>6465</td>
+      <td>233</td>
+      <td>4</td>
+      <td>727</td>
+      <td>3643</td>
+      <td>0</td>
+      <td>869</td>
+      <td>114</td>
+      <td>10</td>
+      <td>779</td>
+    </tr>
+    <tr>
+      <th>21.0</th>
+      <td>380</td>
+      <td>5</td>
+      <td>438</td>
+      <td>0</td>
+      <td>208</td>
+      <td>33992</td>
+      <td>1180</td>
+      <td>167</td>
+      <td>0</td>
+      <td>304</td>
+      <td>2313</td>
+      <td>0</td>
+      <td>500</td>
+      <td>24</td>
+      <td>20</td>
+      <td>188</td>
+    </tr>
+    <tr>
+      <th>22.0</th>
+      <td>657</td>
+      <td>271</td>
+      <td>3298</td>
+      <td>5</td>
+      <td>3451</td>
+      <td>21764</td>
+      <td>7107</td>
+      <td>93</td>
+      <td>0</td>
+      <td>179</td>
+      <td>2192</td>
+      <td>0</td>
+      <td>261</td>
+      <td>47</td>
+      <td>8</td>
+      <td>826</td>
+    </tr>
+    <tr>
+      <th>90.0</th>
+      <td>393</td>
+      <td>566</td>
+      <td>1392</td>
+      <td>0</td>
+      <td>5524</td>
+      <td>4409</td>
+      <td>3278</td>
+      <td>31</td>
+      <td>2</td>
+      <td>20</td>
+      <td>383</td>
+      <td>0</td>
+      <td>35</td>
+      <td>13</td>
+      <td>2</td>
+      <td>298</td>
+    </tr>
+    <tr>
+      <th>91.0</th>
+      <td>0</td>
+      <td>467</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>23</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>92.0</th>
+      <td>0</td>
+      <td>920</td>
+      <td>765</td>
+      <td>2</td>
+      <td>2129</td>
+      <td>424</td>
+      <td>825</td>
+      <td>9</td>
+      <td>0</td>
+      <td>12</td>
+      <td>135</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>169</td>
+    </tr>
+    <tr>
+      <th>93.0</th>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>94.0</th>
+      <td>2</td>
+      <td>552</td>
+      <td>78</td>
+      <td>0</td>
+      <td>332</td>
+      <td>17</td>
+      <td>21</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>117</td>
+      <td>0</td>
+      <td>15</td>
+      <td>1</td>
+      <td>0</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>95.0</th>
+      <td>9</td>
+      <td>87</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>96.0</th>
+      <td>29</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97.0</th>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>98.0</th>
+      <td>27</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crosstab</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">crosstab</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/validation/ctab_lcz.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crosstab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/validation/ctab_lcz.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot percentages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">30</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="mi">40</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="mi">50</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="mi">60</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="mi">70</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="mi">80</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">lczs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span><span class="s2">&quot;NA&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span><span class="s2">&quot;Compact highrise&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span><span class="s2">&quot;Compact midrise&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span><span class="s2">&quot;Compact lowrise&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span><span class="s2">&quot;Open highrise&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span><span class="s2">&quot;Open midrise&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span><span class="s2">&quot;Open lowrise&quot;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span><span class="s2">&quot;Lightweight low-rise&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span><span class="s2">&quot;Large lowrise&quot;</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span><span class="s2">&quot;Sparsely built&quot;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span><span class="s2">&quot;Heavy Industry&quot;</span><span class="p">,</span>
+    <span class="mi">11</span> <span class="p">:</span><span class="s2">&quot;Dense trees&quot;</span><span class="p">,</span>
+    <span class="mi">12</span> <span class="p">:</span><span class="s2">&quot;Scattered trees&quot;</span><span class="p">,</span>
+    <span class="mi">13</span> <span class="p">:</span><span class="s2">&quot;Bush, scrub&quot;</span><span class="p">,</span>
+    <span class="mi">14</span> <span class="p">:</span><span class="s2">&quot;Low plants&quot;</span><span class="p">,</span>
+    <span class="mi">15</span> <span class="p">:</span><span class="s2">&quot;Bare rock or paved&quot;</span><span class="p">,</span>
+    <span class="mi">16</span> <span class="p">:</span><span class="s2">&quot;Bare soil or sand&quot;</span><span class="p">,</span>
+    <span class="mi">17</span> <span class="p">:</span><span class="s2">&quot;Water&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crosstab</span> <span class="o">=</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">index</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">types</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+<span class="n">crosstab</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">types</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">crosstab</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">lczs</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">crosstab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>NA</th>
+      <th>Compact midrise</th>
+      <th>Compact lowrise</th>
+      <th>Open highrise</th>
+      <th>Open midrise</th>
+      <th>Open lowrise</th>
+      <th>Large lowrise</th>
+      <th>Sparsely built</th>
+      <th>Heavy Industry</th>
+      <th>Dense trees</th>
+      <th>Scattered trees</th>
+      <th>Bush, scrub</th>
+      <th>Low plants</th>
+      <th>Bare rock or paved</th>
+      <th>Bare soil or sand</th>
+      <th>Water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>25077</td>
+      <td>39</td>
+      <td>195</td>
+      <td>0</td>
+      <td>159</td>
+      <td>30504</td>
+      <td>4819</td>
+      <td>101054</td>
+      <td>0</td>
+      <td>618768</td>
+      <td>460846</td>
+      <td>1518</td>
+      <td>5338608</td>
+      <td>4160</td>
+      <td>1167</td>
+      <td>28298</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>765</td>
+      <td>0</td>
+      <td>27</td>
+      <td>0</td>
+      <td>43</td>
+      <td>135527</td>
+      <td>1393</td>
+      <td>1292</td>
+      <td>0</td>
+      <td>1770</td>
+      <td>8372</td>
+      <td>0</td>
+      <td>8474</td>
+      <td>244</td>
+      <td>47</td>
+      <td>384</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>1756</td>
+      <td>6</td>
+      <td>224</td>
+      <td>0</td>
+      <td>733</td>
+      <td>218317</td>
+      <td>12039</td>
+      <td>5126</td>
+      <td>0</td>
+      <td>15052</td>
+      <td>49288</td>
+      <td>4</td>
+      <td>51549</td>
+      <td>368</td>
+      <td>162</td>
+      <td>3391</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>67832</td>
+      <td>25</td>
+      <td>117</td>
+      <td>0</td>
+      <td>101</td>
+      <td>10253</td>
+      <td>628</td>
+      <td>151456</td>
+      <td>0</td>
+      <td>1201136</td>
+      <td>623736</td>
+      <td>57865</td>
+      <td>4146693</td>
+      <td>54835</td>
+      <td>2814</td>
+      <td>115009</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>5314</td>
+      <td>138</td>
+      <td>291</td>
+      <td>36</td>
+      <td>1222</td>
+      <td>76593</td>
+      <td>23508</td>
+      <td>1363</td>
+      <td>43</td>
+      <td>6176</td>
+      <td>26242</td>
+      <td>1</td>
+      <td>27913</td>
+      <td>742</td>
+      <td>89</td>
+      <td>3935</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>329</td>
+      <td>34</td>
+      <td>1130</td>
+      <td>0</td>
+      <td>264</td>
+      <td>13452</td>
+      <td>2284</td>
+      <td>52</td>
+      <td>0</td>
+      <td>64</td>
+      <td>466</td>
+      <td>0</td>
+      <td>196</td>
+      <td>78</td>
+      <td>2</td>
+      <td>110</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>28392</td>
+      <td>84</td>
+      <td>645</td>
+      <td>5</td>
+      <td>899</td>
+      <td>215584</td>
+      <td>18073</td>
+      <td>57667</td>
+      <td>14</td>
+      <td>206451</td>
+      <td>285617</td>
+      <td>417</td>
+      <td>1390348</td>
+      <td>2579</td>
+      <td>1532</td>
+      <td>17996</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>50</td>
+      <td>0</td>
+      <td>24</td>
+      <td>0</td>
+      <td>34</td>
+      <td>47355</td>
+      <td>243</td>
+      <td>182</td>
+      <td>0</td>
+      <td>269</td>
+      <td>1477</td>
+      <td>0</td>
+      <td>334</td>
+      <td>6</td>
+      <td>1</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>782</td>
+      <td>58</td>
+      <td>1519</td>
+      <td>4</td>
+      <td>1300</td>
+      <td>50885</td>
+      <td>6465</td>
+      <td>233</td>
+      <td>4</td>
+      <td>727</td>
+      <td>3643</td>
+      <td>0</td>
+      <td>869</td>
+      <td>114</td>
+      <td>10</td>
+      <td>779</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>380</td>
+      <td>5</td>
+      <td>438</td>
+      <td>0</td>
+      <td>208</td>
+      <td>33992</td>
+      <td>1180</td>
+      <td>167</td>
+      <td>0</td>
+      <td>304</td>
+      <td>2313</td>
+      <td>0</td>
+      <td>500</td>
+      <td>24</td>
+      <td>20</td>
+      <td>188</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>657</td>
+      <td>271</td>
+      <td>3298</td>
+      <td>5</td>
+      <td>3451</td>
+      <td>21764</td>
+      <td>7107</td>
+      <td>93</td>
+      <td>0</td>
+      <td>179</td>
+      <td>2192</td>
+      <td>0</td>
+      <td>261</td>
+      <td>47</td>
+      <td>8</td>
+      <td>826</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>393</td>
+      <td>566</td>
+      <td>1392</td>
+      <td>0</td>
+      <td>5524</td>
+      <td>4409</td>
+      <td>3278</td>
+      <td>31</td>
+      <td>2</td>
+      <td>20</td>
+      <td>383</td>
+      <td>0</td>
+      <td>35</td>
+      <td>13</td>
+      <td>2</td>
+      <td>298</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>0</td>
+      <td>467</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>23</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>0</td>
+      <td>920</td>
+      <td>765</td>
+      <td>2</td>
+      <td>2129</td>
+      <td>424</td>
+      <td>825</td>
+      <td>9</td>
+      <td>0</td>
+      <td>12</td>
+      <td>135</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>169</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>2</td>
+      <td>552</td>
+      <td>78</td>
+      <td>0</td>
+      <td>332</td>
+      <td>17</td>
+      <td>21</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>117</td>
+      <td>0</td>
+      <td>15</td>
+      <td>1</td>
+      <td>0</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>9</td>
+      <td>87</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">crosstab</span> <span class="o">=</span> <span class="n">crosstab</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crosstab</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;LCZ class&quot;</span>
+<span class="n">crosstab</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Spatial Signature type&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">crosstab</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">crosstab</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">ugg</span><span class="o">.</span><span class="n">HEX</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">n_colors</span><span class="o">=</span><span class="mi">256</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.0f&#39;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;crosstab_lcz.pdf&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/validation_111_0.png" src="../_images/validation_111_0.png" />
+</div>
+</div>
+<p>Compute chi-squared</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chi</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2_contingency</span><span class="p">(</span><span class="n">crosstab</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;chi2: </span><span class="si">{</span><span class="n">chi</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, p: </span><span class="si">{</span><span class="n">chi</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, dof: </span><span class="si">{</span><span class="n">chi</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">, N: </span><span class="si">{</span><span class="n">crosstab</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>chi2: 18467242.8837895, p: 0.0, dof: 225, N: 16203338
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute Cramer’s V.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cramers_v</span><span class="p">(</span><span class="n">crosstab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2756453754603744
+</pre></div>
+</div>
+</div>
+</div>
+<p>Results indicate moderate associtation.</p>
 </div>
 </div>
 
