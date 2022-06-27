@@ -429,6 +429,11 @@
      Remove Z coordinates
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cleanup-sliver-geometries">
+     Cleanup sliver geometries
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -951,9 +956,31 @@
 <p>96704 rows × 3 columns</p>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="cleanup-sliver-geometries">
+<h3>Cleanup sliver geometries<a class="headerlink" href="#cleanup-sliver-geometries" title="Permalink to this headline">¶</a></h3>
+<p>Remove artifacts caused by floating point imprecision in dissolving of ET cells into signature geometries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;spatial_signatures_GB.gpkg&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GPKG&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+
+<span class="n">signatures_ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">signatures</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fix</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="p">:</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Polygon</span><span class="p">(</span><span class="n">shell</span><span class="o">=</span><span class="n">poly</span><span class="o">.</span><span class="n">exterior</span><span class="p">,</span> <span class="n">holes</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">poly</span><span class="o">.</span><span class="n">interiors</span> <span class="k">if</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+
+<span class="n">signatures_ddf</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span><span class="n">fix</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;spatial_signatures_GB.gpkg&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GPKG&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -10577,7 +10604,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/create_data_product_116_0.png" src="../_images/create_data_product_116_0.png" />
+<img alt="../_images/create_data_product_118_0.png" src="../_images/create_data_product_118_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
