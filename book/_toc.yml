@@ -49,6 +49,7 @@
     - file: clusters/exploration_of_form_signatures
     - file: clusters/form_feature_importance
     - file: clusters/validation
+    - file: clusters/validation_GHS_BUILT_C_MSZ
     - file: esda/sizeshape
     - file: esda/co-occurence
     - file: esda/ttwa
