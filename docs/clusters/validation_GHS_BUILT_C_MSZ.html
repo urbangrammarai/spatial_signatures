@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Comparison between Spatial Signatures and GHSL classes &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz/signature_ai">
+   WP3 - Signature AI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/inscribed_circle.html">
+   Create inscribed circles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="signature_labels_data.html">
+   Create canonical labels attached to tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="feature_importance.html">
+   Cluster exploration and feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_feature_importance.html">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="validation.html">
+   External validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/sizeshape.html">
+   Size and shape of signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/co-occurence.html">
+   Co-occurence analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/ttwa.html">
+   Composition of signatures within TTWA boundaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/geog_distribution.html">
+   Geographical distribution and coverage of signature types
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data product
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/overview.html">
+   Overview of the data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/create_data_product.html">
+   Create a data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/oa_interpolation.html">
+   Interpolation of signatures to OA and LSOA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/vector_tile.html">
+   Generate vector tiles
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clusters/validation_GHS_BUILT_C_MSZ.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/clusters/validation_GHS_BUILT_C_MSZ.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ghsl">
+   GHSL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spatial-signatures">
+   Spatial Signatures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overlap">
+   Overlap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparison">
+   Comparison
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="comparison-between-spatial-signatures-and-ghsl-classes">
+<h1>Comparison between Spatial Signatures and GHSL classes<a class="headerlink" href="#comparison-between-spatial-signatures-and-ghsl-classes" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">import</span> <span class="nn">rioxarray</span>
+<span class="kn">import</span> <span class="nn">dask_geopandas</span>
+<span class="kn">from</span> <span class="nn">rasterstats</span> <span class="kn">import</span> <span class="n">zonal_stats</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ghsl">
+<h2>GHSL<a class="headerlink" href="#ghsl" title="Permalink to this headline">¶</a></h2>
+<p>Global file downloaded originally from <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_C_GLOBE_R2022A/GHS_BUILT_C_MSZ_GLOBE_R2022A/GHS_BUILT_C_MSZ_E2018_GLOBE_R2022A_54009_10/V1-0/">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl_path</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;GHS_BUILT_S_P2030LIN_GLOBE_R2022A_54009_100_V1_0/&#39;</span>
+    <span class="s1">&#39;GHS_BUILT_S_P2030LIN_GLOBE_R2022A_54009_100_V1_0.tif&#39;</span>
+<span class="p">)</span>
+<span class="n">ghsl</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">ghsl_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">ghsl_path</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="spatial-signatures">
+<h2>Spatial Signatures<a class="headerlink" href="#spatial-signatures" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
+    <span class="s1">&#39;signatures_form_combined_levels_simplified.pq&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">ghsl</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overlap">
+<h2>Overlap<a class="headerlink" href="#overlap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Single-core approach</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 644 ms, sys: 1.23 s, total: 1.88 s
+Wall time: 3.34 s
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Multi-core on <code class="docutils literal notranslate"><span class="pre">dask</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss_ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
+    <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="n">meta</span><span class="o">=</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/utils.py:182,</span> in <span class="ni">raise_on_meta_error</span><span class="nt">(funcname, udf)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">182</span>     <span class="k">yield</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:6247,</span> in <span class="ni">_emulate</span><span class="nt">(func, udf, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6246</span> <span class="k">with</span> <span class="n">raise_on_meta_error</span><span class="p">(</span><span class="n">funcname</span><span class="p">(</span><span class="n">func</span><span class="p">),</span> <span class="n">udf</span><span class="o">=</span><span class="n">udf</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">6247</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+
+<span class="nn">Input In [31],</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(df)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterstats/main.py:31,</span> in <span class="ni">zonal_stats</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="sd">&quot;&quot;&quot;The primary zonal statistics entry point.</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="sd"> All arguments are passed directly to ``gen_zonal_stats``.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span><span class="sd"> The only difference is that ``zonal_stats`` will</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span><span class="sd"> return a list rather than a generator.&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">31</span> <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">gen_zonal_stats</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterstats/main.py:163,</span> in <span class="ni">gen_zonal_stats</span><span class="nt">(vectors, raster, layer, band, nodata, affine, stats, all_touched, categorical, category_map, add_stats, zone_func, raster_out, prefix, geojson_out, boundless, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="c1"># rasterized geometry</span>
+<span class="ne">--&gt; </span><span class="mi">163</span> <span class="n">rv_array</span> <span class="o">=</span> <span class="n">rasterize_geom</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">like</span><span class="o">=</span><span class="n">fsrc</span><span class="p">,</span> <span class="n">all_touched</span><span class="o">=</span><span class="n">all_touched</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="c1"># nodata mask</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterstats/utils.py:41,</span> in <span class="ni">rasterize_geom</span><span class="nt">(geom, like, all_touched)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="n">geoms</span> <span class="o">=</span> <span class="p">[(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="ne">---&gt; </span><span class="mi">41</span> <span class="n">rv_array</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">rasterize</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">geoms</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">out_shape</span><span class="o">=</span><span class="n">like</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">transform</span><span class="o">=</span><span class="n">like</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="n">fill</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="n">all_touched</span><span class="o">=</span><span class="n">all_touched</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">return</span> <span class="n">rv_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterio/env.py:387,</span> in <span class="ni">ensure_env.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span> <span class="k">with</span> <span class="n">Env</span><span class="o">.</span><span class="n">from_defaults</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">387</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterio/features.py:353,</span> in <span class="ni">rasterize</span><span class="nt">(shapes, out_shape, fill, out, transform, all_touched, merge_alg, default_value, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span> <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">353</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;width and height must be &gt; 0&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">guard_transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: width and height must be &gt; 0
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [31],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:845,</span> in <span class="ni">_Frame.map_partitions</span><span class="nt">(self, func, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span> <span class="nd">@insert_meta_param_description</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span> <span class="k">def</span> <span class="nf">map_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="sd">&quot;&quot;&quot;Apply Python function on each DataFrame partition.</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span><span class="sd">     Note that the index and divisions are assumed to remain unchanged.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">843</span><span class="sd">     None as the division.</span>
+<span class="g g-Whitespace">    </span><span class="mi">844</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">845</span>     <span class="k">return</span> <span class="n">map_partitions</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:6316,</span> in <span class="ni">map_partitions</span><span class="nt">(func, meta, enforce_metadata, transform_divisions, align_dataframes, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6311</span>     <span class="n">parent_meta</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_meta</span>
+<span class="g g-Whitespace">   </span><span class="mi">6313</span> <span class="k">if</span> <span class="n">meta</span> <span class="ow">is</span> <span class="n">no_default</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6314</span>     <span class="c1"># Use non-normalized kwargs here, as we want the real values (not</span>
+<span class="g g-Whitespace">   </span><span class="mi">6315</span>     <span class="c1"># delayed values)</span>
+<span class="ne">-&gt; </span><span class="mi">6316</span>     <span class="n">meta</span> <span class="o">=</span> <span class="n">_emulate</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">udf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6317</span>     <span class="n">meta_is_emulated</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">   </span><span class="mi">6318</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:6247,</span> in <span class="ni">_emulate</span><span class="nt">(func, udf, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6242</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">6243</span><span class="sd"> Apply a function using args / kwargs. If arguments contain dd.DataFrame /</span>
+<span class="g g-Whitespace">   </span><span class="mi">6244</span><span class="sd"> dd.Series, using internal cache (``_meta``) for calculation</span>
+<span class="g g-Whitespace">   </span><span class="mi">6245</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">6246</span> <span class="k">with</span> <span class="n">raise_on_meta_error</span><span class="p">(</span><span class="n">funcname</span><span class="p">(</span><span class="n">func</span><span class="p">),</span> <span class="n">udf</span><span class="o">=</span><span class="n">udf</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">6247</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__exit__</span><span class="nt">(self, typ, value, traceback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">typ</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># Suppress StopIteration *unless* it&#39;s the same exception that</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># was passed to throw().  This prevents a StopIteration</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="c1"># raised inside the &quot;with&quot; statement from being suppressed.</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">return</span> <span class="n">exc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">value</span>
+
+<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/utils.py:203,</span> in <span class="ni">raise_on_meta_error</span><span class="nt">(funcname, udf)</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="n">msg</span> <span class="o">+=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="s2">&quot;Original error is below:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="s2">&quot;------------------------</span><span class="se">\n</span><span class="s2">&quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="s2">&quot;</span><span class="si">{2}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="p">)</span>
+<span class="nn">    202 msg = msg.format(f&quot;</span> in <span class="ni">`{funcname}`&quot; if funcname else &quot;&quot;, repr</span><span class="nt">(e), tb)</span>
+<span class="ne">--&gt; </span><span class="mi">203</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+<span class="ne">ValueError</span>: Metadata inference failed in `lambda`.
+
+<span class="n">You</span> <span class="n">have</span> <span class="n">supplied</span> <span class="n">a</span> <span class="n">custom</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">Dask</span> <span class="ow">is</span> <span class="n">unable</span> <span class="n">to</span> 
+<span class="n">determine</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">output</span> <span class="n">that</span> <span class="n">that</span> <span class="n">function</span> <span class="n">returns</span><span class="o">.</span> 
+
+<span class="n">To</span> <span class="n">resolve</span> <span class="n">this</span> <span class="n">please</span> <span class="n">provide</span> <span class="n">a</span> <span class="n">meta</span><span class="o">=</span> <span class="n">keyword</span><span class="o">.</span>
+<span class="n">The</span> <span class="n">docstring</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Dask</span> <span class="n">function</span> <span class="n">you</span> <span class="n">ran</span> <span class="n">should</span> <span class="n">have</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+
+<span class="n">Original</span> <span class="n">error</span> <span class="ow">is</span> <span class="n">below</span><span class="p">:</span>
+<span class="gt">------------------------</span>
+<span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;width and height must be &gt; 0&#39;</span><span class="p">)</span>
+
+<span class="ne">Traceback</span>:
+<span class="gt">---------</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/dask/dataframe/utils.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">182</span><span class="p">,</span> <span class="ow">in</span> <span class="n">raise_on_meta_error</span>
+    <span class="k">yield</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">6247</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_emulate</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+  <span class="n">File</span> <span class="s2">&quot;/tmp/ipykernel_147/3647013166.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span>
+    <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterstats/main.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">31</span><span class="p">,</span> <span class="ow">in</span> <span class="n">zonal_stats</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">gen_zonal_stats</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterstats/main.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">163</span><span class="p">,</span> <span class="ow">in</span> <span class="n">gen_zonal_stats</span>
+    <span class="n">rv_array</span> <span class="o">=</span> <span class="n">rasterize_geom</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">like</span><span class="o">=</span><span class="n">fsrc</span><span class="p">,</span> <span class="n">all_touched</span><span class="o">=</span><span class="n">all_touched</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterstats/utils.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">41</span><span class="p">,</span> <span class="ow">in</span> <span class="n">rasterize_geom</span>
+    <span class="n">rv_array</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">rasterize</span><span class="p">(</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterio/env.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">387</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterio/features.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">353</span><span class="p">,</span> <span class="ow">in</span> <span class="n">rasterize</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;width and height must be &gt; 0&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>15</th>
+      <th>191</th>
+      <th>63</th>
+      <th>70</th>
+      <th>90</th>
+      <th>140</th>
+      <th>1090</th>
+      <th>488</th>
+      <th>531</th>
+      <th>776</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>36</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>6</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="comparison">
+<h2>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./clusters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
