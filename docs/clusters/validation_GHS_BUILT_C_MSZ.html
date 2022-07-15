@@ -425,13 +425,18 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ghsl">
-   GHSL
+  <a class="reference internal nav-link" href="#global-ghsl">
+   Global GHSL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spatial-signatures">
    Spatial Signatures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signature-rasterisation">
+   Signature rasterisation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -465,18 +470,25 @@
 <span class="kn">import</span> <span class="nn">rioxarray</span>
 <span class="kn">import</span> <span class="nn">dask_geopandas</span>
 <span class="kn">from</span> <span class="nn">rasterstats</span> <span class="kn">import</span> <span class="n">zonal_stats</span>
+<span class="kn">from</span> <span class="nn">geocube.api.core</span> <span class="kn">import</span> <span class="n">make_geocube</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR 1: PROJ: proj_create_from_database: Open of /opt/conda/share/proj failed
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="ghsl">
-<h2>GHSL<a class="headerlink" href="#ghsl" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="global-ghsl">
+<h2>Global GHSL<a class="headerlink" href="#global-ghsl" title="Permalink to this headline">¶</a></h2>
 <p>Global file downloaded originally from <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_BUILT_C_GLOBE_R2022A/GHS_BUILT_C_MSZ_GLOBE_R2022A/GHS_BUILT_C_MSZ_E2018_GLOBE_R2022A_54009_10/V1-0/">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl_path</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="s1">&#39;GHS_BUILT_S_P2030LIN_GLOBE_R2022A_54009_100_V1_0/&#39;</span>
-    <span class="s1">&#39;GHS_BUILT_S_P2030LIN_GLOBE_R2022A_54009_100_V1_0.tif&#39;</span>
+    <span class="s1">&#39;/home/jovyan/data/&#39;</span>
+    <span class="s1">&#39;GHS_BUILT_C_MSZ_E2018_GLOBE_R2022A_54009_10_V1_0/&#39;</span>
+    <span class="s1">&#39;GHS_BUILT_C_MSZ_E2018_GLOBE_R2022A_54009_10_V1_0.tif&#39;</span>
 <span class="p">)</span>
 <span class="n">ghsl</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">ghsl_path</span><span class="p">)</span>
 </pre></div>
@@ -485,7 +497,557 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="n">ghsl_path</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl</span> <span class="o">=</span> <span class="n">rioxarray</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span>
+    <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="mi">11000</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (band: 1, y: 1800000, x: 3608200)&gt;
+dask.array&lt;open_rasterio-b4b095e68e7d08b8eaf98573919622fd&lt;this-array&gt;, shape=(1, 1800000, 3608200), dtype=uint8, chunksize=(1, 11000, 11000), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * band         (band) int64 1
+  * x            (x) float64 -1.804e+07 -1.804e+07 ... 1.804e+07 1.804e+07
+  * y            (y) float64 9e+06 9e+06 9e+06 9e+06 ... -9e+06 -9e+06 -9e+06
+    spatial_ref  int64 0
+Attributes:
+    _FillValue:    255.0
+    scale_factor:  1.0
+    add_offset:    0.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 1</li><li><span class='xr-has-index'>y</span>: 1800000</li><li><span class='xr-has-index'>x</span>: 3608200</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-0028721c-a825-4f11-b225-fc93b45b1ce6' class='xr-array-in' type='checkbox' checked><label for='section-0028721c-a825-4f11-b225-fc93b45b1ce6' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 11000, 11000), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 5.91 TiB </td>
+                        <td> 115.39 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1, 1800000, 3608200) </td>
+                        <td> (1, 11000, 11000) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 53957 Tasks </td>
+                        <td> 53956 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> uint8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="194" height="124" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="2" x2="24" y2="17" />
+  <line x1="10" y1="6" x2="24" y2="21" />
+  <line x1="10" y1="9" x2="24" y2="24" />
+  <line x1="10" y1="12" x2="24" y2="27" />
+  <line x1="10" y1="15" x2="24" y2="30" />
+  <line x1="10" y1="18" x2="24" y2="33" />
+  <line x1="10" y1="21" x2="24" y2="36" />
+  <line x1="10" y1="25" x2="24" y2="40" />
+  <line x1="10" y1="28" x2="24" y2="43" />
+  <line x1="10" y1="31" x2="24" y2="46" />
+  <line x1="10" y1="34" x2="24" y2="49" />
+  <line x1="10" y1="37" x2="24" y2="52" />
+  <line x1="10" y1="40" x2="24" y2="55" />
+  <line x1="10" y1="43" x2="24" y2="58" />
+  <line x1="10" y1="47" x2="24" y2="62" />
+  <line x1="10" y1="50" x2="24" y2="65" />
+  <line x1="10" y1="53" x2="24" y2="68" />
+  <line x1="10" y1="56" x2="24" y2="71" />
+  <line x1="10" y1="59" x2="24" y2="74" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="59" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="24" y2="74" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,74.81224187193166 10.0,59.86364392217726" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="16" y1="0" x2="31" y2="14" />
+  <line x1="22" y1="0" x2="37" y2="14" />
+  <line x1="28" y1="0" x2="43" y2="14" />
+  <line x1="35" y1="0" x2="50" y2="14" />
+  <line x1="41" y1="0" x2="56" y2="14" />
+  <line x1="47" y1="0" x2="62" y2="14" />
+  <line x1="54" y1="0" x2="69" y2="14" />
+  <line x1="60" y1="0" x2="75" y2="14" />
+  <line x1="66" y1="0" x2="81" y2="14" />
+  <line x1="73" y1="0" x2="88" y2="14" />
+  <line x1="79" y1="0" x2="94" y2="14" />
+  <line x1="85" y1="0" x2="100" y2="14" />
+  <line x1="92" y1="0" x2="107" y2="14" />
+  <line x1="98" y1="0" x2="113" y2="14" />
+  <line x1="104" y1="0" x2="119" y2="14" />
+  <line x1="111" y1="0" x2="126" y2="14" />
+  <line x1="117" y1="0" x2="132" y2="14" />
+  <line x1="123" y1="0" x2="138" y2="14" />
+  <line x1="130" y1="0" x2="144" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 144.9485979497544,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="17" x2="144" y2="17" />
+  <line x1="24" y1="21" x2="144" y2="21" />
+  <line x1="24" y1="24" x2="144" y2="24" />
+  <line x1="24" y1="27" x2="144" y2="27" />
+  <line x1="24" y1="30" x2="144" y2="30" />
+  <line x1="24" y1="33" x2="144" y2="33" />
+  <line x1="24" y1="36" x2="144" y2="36" />
+  <line x1="24" y1="40" x2="144" y2="40" />
+  <line x1="24" y1="43" x2="144" y2="43" />
+  <line x1="24" y1="46" x2="144" y2="46" />
+  <line x1="24" y1="49" x2="144" y2="49" />
+  <line x1="24" y1="52" x2="144" y2="52" />
+  <line x1="24" y1="55" x2="144" y2="55" />
+  <line x1="24" y1="58" x2="144" y2="58" />
+  <line x1="24" y1="62" x2="144" y2="62" />
+  <line x1="24" y1="65" x2="144" y2="65" />
+  <line x1="24" y1="68" x2="144" y2="68" />
+  <line x1="24" y1="71" x2="144" y2="71" />
+  <line x1="24" y1="74" x2="144" y2="74" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="74" style="stroke-width:2" />
+  <line x1="31" y1="14" x2="31" y2="74" />
+  <line x1="37" y1="14" x2="37" y2="74" />
+  <line x1="43" y1="14" x2="43" y2="74" />
+  <line x1="50" y1="14" x2="50" y2="74" />
+  <line x1="56" y1="14" x2="56" y2="74" />
+  <line x1="62" y1="14" x2="62" y2="74" />
+  <line x1="69" y1="14" x2="69" y2="74" />
+  <line x1="75" y1="14" x2="75" y2="74" />
+  <line x1="81" y1="14" x2="81" y2="74" />
+  <line x1="88" y1="14" x2="88" y2="74" />
+  <line x1="94" y1="14" x2="94" y2="74" />
+  <line x1="100" y1="14" x2="100" y2="74" />
+  <line x1="107" y1="14" x2="107" y2="74" />
+  <line x1="113" y1="14" x2="113" y2="74" />
+  <line x1="119" y1="14" x2="119" y2="74" />
+  <line x1="126" y1="14" x2="126" y2="74" />
+  <line x1="132" y1="14" x2="132" y2="74" />
+  <line x1="138" y1="14" x2="138" y2="74" />
+  <line x1="144" y1="14" x2="144" y2="74" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.9485979497544,14.948597949754403 144.9485979497544,14.948597949754403 144.9485979497544,74.81224187193166 24.9485979497544,74.81224187193166" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="84.948598" y="94.812242" font-size="1.0rem" font-weight="100" text-anchor="middle" >3608200</text>
+  <text x="164.948598" y="44.880420" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.948598,44.880420)">1800000</text>
+  <text x="7.474299" y="87.337943" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,87.337943)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-bbca13f2-46ca-44eb-a1cf-53a5d89a1744' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bbca13f2-46ca-44eb-a1cf-53a5d89a1744' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-4a514342-4294-44bd-8c3e-afa470e409c9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4a514342-4294-44bd-8c3e-afa470e409c9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-be044d09-ece4-4279-9af9-dc3131eefafd' class='xr-var-data-in' type='checkbox'><label for='data-be044d09-ece4-4279-9af9-dc3131eefafd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1.804e+07 -1.804e+07 ... 1.804e+07</div><input id='attrs-018d1b0e-109f-41bd-906e-4bfaaf4853c7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-018d1b0e-109f-41bd-906e-4bfaaf4853c7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ebf17c93-bf6f-46de-9e03-ae8303e06988' class='xr-var-data-in' type='checkbox'><label for='data-ebf17c93-bf6f-46de-9e03-ae8303e06988' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-18040995., -18040985., -18040975., ...,  18040975.,  18040985.,
+        18040995.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>9e+06 9e+06 9e+06 ... -9e+06 -9e+06</div><input id='attrs-304e3ef2-15cf-4802-9b43-93d7f42448b1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-304e3ef2-15cf-4802-9b43-93d7f42448b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-30da0169-3ec3-4f17-8d74-69a4223adfc2' class='xr-var-data-in' type='checkbox'><label for='data-30da0169-3ec3-4f17-8d74-69a4223adfc2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 8999995.,  8999985.,  8999975., ..., -8999975., -8999985., -8999995.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-14a2f091-1811-457c-9ef9-9900996d11ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-14a2f091-1811-457c-9ef9-9900996d11ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2ce85d2a-3515-4edc-90e6-213979034114' class='xr-var-data-in' type='checkbox'><label for='data-2ce85d2a-3515-4edc-90e6-213979034114' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;World_Mollweide&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Mollweide&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;World_Mollweide&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Mollweide&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]</dd><dt><span>GeoTransform :</span></dt><dd>-18041000.0 10.0 0.0 9000000.0 0.0 -10.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8191cbac-691b-4126-9d22-8f2e0891b906' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8191cbac-691b-4126-9d22-8f2e0891b906' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>_FillValue :</span></dt><dd>255.0</dd><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>Read and parse the color file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_clr</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="nb">map</span><span class="p">(</span><span class="n">parse_line</span><span class="p">,</span> <span class="n">lines</span><span class="p">),</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">colors</span>
+<span class="k">def</span> <span class="nf">parse_line</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">rgba</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]))</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">5</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">code</span><span class="p">,</span> <span class="n">rgba</span><span class="p">,</span> <span class="n">name</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">parse_clr</span><span class="p">(</span>
+    <span class="s1">&#39;/home/jovyan/data/GHS_BUILT_C_MSZ_E2018_GLOBE_R2022A_54009_10_V1_0/&#39;</span>
+    <span class="s1">&#39;GHS_BUILT_C_MSZ_E2018_GLOBE_R2022A_54009_10_V1_0.clr&#39;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -493,33 +1055,1266 @@
 </div>
 <div class="section" id="spatial-signatures">
 <h2>Spatial Signatures<a class="headerlink" href="#spatial-signatures" title="Permalink to this headline">¶</a></h2>
-<p>For simplicity, we use a simplified file that we have accessible internally:</p>
+<p>We use the officially released file with all detail (and a larger footprint) is available from the Figshare repository <a class="reference external" href="https://figshare.com/articles/dataset/Geographical_Characterisation_of_British_Urban_Form_and_Function_using_the_Spatial_Signatures_Framework/16691575/2?file=36049196">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
-    <span class="s1">&#39;signatures_form_combined_levels_simplified.pq&#39;</span>
-<span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">ghsl</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span>
+    <span class="s1">&#39;/home/jovyan/data/spatial_signatures/&#39;</span>
+    <span class="s1">&#39;spatial_signatures_GB.gpkg&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">ghsl</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The officially released file with all detail (and a larger footprint) is available from the Figshare repository <a class="reference external" href="https://figshare.com/articles/dataset/Geographical_Characterisation_of_British_Urban_Form_and_Function_using_the_Spatial_Signatures_Framework/16691575/2?file=36049196">here</a>.</p>
+<p>Build list of types to turn them into ints:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">j</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+    <span class="n">ss</span><span class="p">[[</span><span class="s1">&#39;code&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()</span>
+<span class="p">)}</span>
+<span class="n">types_r</span> <span class="o">=</span> <span class="p">{</span><span class="n">types</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">types</span><span class="p">}</span>
+<span class="n">types</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: &#39;Countryside agriculture&#39;,
+ 1: &#39;Accessible suburbia&#39;,
+ 2: &#39;Open sprawl&#39;,
+ 3: &#39;Wild countryside&#39;,
+ 4: &#39;Warehouse/Park land&#39;,
+ 5: &#39;Gridded residential quarters&#39;,
+ 6: &#39;Urban buffer&#39;,
+ 7: &#39;Disconnected suburbia&#39;,
+ 8: &#39;Dense residential neighbourhoods&#39;,
+ 9: &#39;Connected residential neighbourhoods&#39;,
+ 10: &#39;Dense urban neighbourhoods&#39;,
+ 11: &#39;Local urbanity&#39;,
+ 12: &#39;Concentrated urbanity&#39;,
+ 13: &#39;Regional urbanity&#39;,
+ 14: &#39;outlier&#39;,
+ 15: &#39;Metropolitan urbanity&#39;,
+ 16: &#39;Hyper concentrated urbanity&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add column with class int:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss</span><span class="p">[</span><span class="s1">&#39;code_no&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ss</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types_r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="signature-rasterisation">
+<h2>Signature rasterisation<a class="headerlink" href="#signature-rasterisation" title="Permalink to this headline">¶</a></h2>
+<p>Following similar procedures (e.g., <a class="reference internal" href="validation.html"><span class="doc std std-doc">here</span></a>), we rasterise the signatures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">rss</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span>
+    <span class="n">ss</span><span class="p">,</span> 
+    <span class="n">measurements</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;code_no&#39;</span><span class="p">],</span> 
+    <span class="n">like</span><span class="o">=</span><span class="n">ghsl</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">ss</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rss</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:      (y: 109923, x: 71322)
+Coordinates:
+  * y            (y) float64 6.959e+06 6.959e+06 ... 5.859e+06 5.859e+06
+  * x            (x) float64 -5.837e+05 -5.837e+05 ... 1.295e+05 1.295e+05
+    spatial_ref  int64 0
+Data variables:
+    *empty*</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-4945bee8-7ec4-44d8-a989-9c69a546c51b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-4945bee8-7ec4-44d8-a989-9c69a546c51b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 109923</li><li><span class='xr-has-index'>x</span>: 71322</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-baa58893-851e-4603-baa8-4273f4e1ad69' class='xr-section-summary-in' type='checkbox'  checked><label for='section-baa58893-851e-4603-baa8-4273f4e1ad69' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>6.959e+06 6.959e+06 ... 5.859e+06</div><input id='attrs-65865414-5046-45ca-9730-41783f600387' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-65865414-5046-45ca-9730-41783f600387' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-01dbca01-cdf7-45d4-9d1d-5a2a16e810c7' class='xr-var-data-in' type='checkbox'><label for='data-01dbca01-cdf7-45d4-9d1d-5a2a16e810c7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([6958665., 6958655., 6958645., ..., 5859465., 5859455., 5859445.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-5.837e+05 -5.837e+05 ... 1.295e+05</div><input id='attrs-3a3eb048-44a5-40e8-9efe-263149675ede' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3a3eb048-44a5-40e8-9efe-263149675ede' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0d24b2dd-e651-4ab8-8d9b-6869f6fd4e6a' class='xr-var-data-in' type='checkbox'><label for='data-0d24b2dd-e651-4ab8-8d9b-6869f6fd4e6a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([-583715., -583705., -583695., ...,  129475.,  129485.,  129495.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-8cb6441c-2823-488b-9a14-e5db92b54a7e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8cb6441c-2823-488b-9a14-e5db92b54a7e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d629528-d6a2-440f-9b37-8e0692f35bb7' class='xr-var-data-in' type='checkbox'><label for='data-4d629528-d6a2-440f-9b37-8e0692f35bb7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;World_Mollweide&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Mollweide&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;World_Mollweide&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Mollweide&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2900c433-5de2-4e1c-a0d9-7245ce9714d7' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-2900c433-5de2-4e1c-a0d9-7245ce9714d7' class='xr-section-summary'  title='Expand/collapse section'>Data variables: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-fa6a29fc-edd0-48d8-a3f0-3813ccf700a1' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fa6a29fc-edd0-48d8-a3f0-3813ccf700a1' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ghsl</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip_box</span><span class="p">(</span><span class="o">*</span><span class="n">ss</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (band: 1, y: 109923, x: 71322)&gt;
+dask.array&lt;getitem, shape=(1, 109923, 71322), dtype=uint8, chunksize=(1, 11000, 11000), chunktype=numpy.ndarray&gt;
+Coordinates:
+  * band         (band) int64 1
+  * x            (x) float64 -5.837e+05 -5.837e+05 ... 1.295e+05 1.295e+05
+  * y            (y) float64 6.959e+06 6.959e+06 ... 5.859e+06 5.859e+06
+    spatial_ref  int64 0
+Attributes:
+    scale_factor:  1.0
+    add_offset:    0.0
+    _FillValue:    255</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 1</li><li><span class='xr-has-index'>y</span>: 109923</li><li><span class='xr-has-index'>x</span>: 71322</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-a759b07b-d1f8-48a4-a506-045c363bddad' class='xr-array-in' type='checkbox' checked><label for='section-a759b07b-d1f8-48a4-a506-045c363bddad' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 4867, 3272), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.30 GiB </td>
+                        <td> 115.39 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1, 109923, 71322) </td>
+                        <td> (1, 11000, 11000) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 54045 Tasks </td>
+                        <td> 88 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> uint8 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="152" height="184" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="5" x2="24" y2="20" />
+  <line x1="10" y1="17" x2="24" y2="32" />
+  <line x1="10" y1="29" x2="24" y2="44" />
+  <line x1="10" y1="41" x2="24" y2="56" />
+  <line x1="10" y1="53" x2="24" y2="68" />
+  <line x1="10" y1="65" x2="24" y2="80" />
+  <line x1="10" y1="77" x2="24" y2="92" />
+  <line x1="10" y1="89" x2="24" y2="104" />
+  <line x1="10" y1="101" x2="24" y2="116" />
+  <line x1="10" y1="113" x2="24" y2="128" />
+  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,134.9485979497544 10.0,120.0" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="87" y2="0" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="102" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="13" y1="0" x2="28" y2="14" />
+  <line x1="25" y1="0" x2="40" y2="14" />
+  <line x1="37" y1="0" x2="52" y2="14" />
+  <line x1="49" y1="0" x2="64" y2="14" />
+  <line x1="61" y1="0" x2="76" y2="14" />
+  <line x1="73" y1="0" x2="88" y2="14" />
+  <line x1="85" y1="0" x2="100" y2="14" />
+  <line x1="87" y1="0" x2="102" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 87.86032040610246,0.0 102.80891835585686,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="102" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="20" x2="102" y2="20" />
+  <line x1="24" y1="32" x2="102" y2="32" />
+  <line x1="24" y1="44" x2="102" y2="44" />
+  <line x1="24" y1="56" x2="102" y2="56" />
+  <line x1="24" y1="68" x2="102" y2="68" />
+  <line x1="24" y1="80" x2="102" y2="80" />
+  <line x1="24" y1="92" x2="102" y2="92" />
+  <line x1="24" y1="104" x2="102" y2="104" />
+  <line x1="24" y1="116" x2="102" y2="116" />
+  <line x1="24" y1="128" x2="102" y2="128" />
+  <line x1="24" y1="134" x2="102" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+  <line x1="28" y1="14" x2="28" y2="134" />
+  <line x1="40" y1="14" x2="40" y2="134" />
+  <line x1="52" y1="14" x2="52" y2="134" />
+  <line x1="64" y1="14" x2="64" y2="134" />
+  <line x1="76" y1="14" x2="76" y2="134" />
+  <line x1="88" y1="14" x2="88" y2="134" />
+  <line x1="100" y1="14" x2="100" y2="134" />
+  <line x1="102" y1="14" x2="102" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.9485979497544,14.948597949754403 102.80891835585686,14.948597949754403 102.80891835585686,134.9485979497544 24.9485979497544,134.9485979497544" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="63.878758" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" >71322</text>
+  <text x="122.808918" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,122.808918,74.948598)">109923</text>
+  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-9a9a0b09-79fa-4227-ad45-09a8047bf372' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9a9a0b09-79fa-4227-ad45-09a8047bf372' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1</div><input id='attrs-583623a1-32af-4baf-b8d2-6f9feea6f2d1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-583623a1-32af-4baf-b8d2-6f9feea6f2d1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-37aa1de8-7b74-44f1-a1f6-553626dbd29e' class='xr-var-data-in' type='checkbox'><label for='data-37aa1de8-7b74-44f1-a1f6-553626dbd29e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-5.837e+05 -5.837e+05 ... 1.295e+05</div><input id='attrs-2828105d-fa85-4a00-ba2b-5bda116012ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2828105d-fa85-4a00-ba2b-5bda116012ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b55fd14-4838-49e0-a56b-7f4da9f9e815' class='xr-var-data-in' type='checkbox'><label for='data-1b55fd14-4838-49e0-a56b-7f4da9f9e815' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([-583715., -583705., -583695., ...,  129475.,  129485.,  129495.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>6.959e+06 6.959e+06 ... 5.859e+06</div><input id='attrs-32066574-1e83-489c-8639-bdb3f9f12399' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-32066574-1e83-489c-8639-bdb3f9f12399' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea31e4c9-82a9-4f1e-a17f-c55afbc62631' class='xr-var-data-in' type='checkbox'><label for='data-ea31e4c9-82a9-4f1e-a17f-c55afbc62631' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd><dt><span>units :</span></dt><dd>metre</dd></dl></div><div class='xr-var-data'><pre>array([6958665., 6958655., 6958645., ..., 5859465., 5859455., 5859445.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-ce85b12f-e059-4be3-a883-2b321575de06' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce85b12f-e059-4be3-a883-2b321575de06' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-575949d1-0388-4c87-a7c5-608ef3547d4d' class='xr-var-data-in' type='checkbox'><label for='data-575949d1-0388-4c87-a7c5-608ef3547d4d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;World_Mollweide&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Mollweide&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;World_Mollweide&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Mollweide&quot;],PARAMETER[&quot;central_meridian&quot;,0],PARAMETER[&quot;false_easting&quot;,0],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH]]</dd><dt><span>GeoTransform :</span></dt><dd>-583720.0 10.0 0.0 6958670.0 0.0 -10.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-dc19adf6-a9f3-43d5-afd6-6fc868de7f66' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dc19adf6-a9f3-43d5-afd6-6fc868de7f66' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd><dt><span>_FillValue :</span></dt><dd>255</dd></dl></div></li></ul></div></div></div></div>
+</div>
 </div>
 <div class="section" id="overlap">
 <h2>Overlap<a class="headerlink" href="#overlap" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">LocalCluster</span><span class="p">())</span>
+<span class="n">client</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-dabd9e93-02c2-11ed-9941-0242ac110002</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> distributed.LocalCluster</td>
+
+        </tr>
+
+
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+
+
+        </table>
+
+
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">LocalCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">adcf7f3b</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 4
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 16
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 62.49 GiB
+                </td>
+            </tr>
+
+            <tr>
+    <td style="text-align: left;"><strong>Status:</strong> running</td>
+    <td style="text-align: left;"><strong>Using processes:</strong> True</td>
+</tr>
+
+
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-901ff0a7-75b6-49c1-9459-1437344e090d</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://127.0.0.1:40301
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 4
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="http://127.0.0.1:8787/status" target="_blank">http://127.0.0.1:8787/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 16
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 62.49 GiB
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 0</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:43373
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 4
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:35053/status" target="_blank">http://127.0.0.1:35053/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 15.62 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:36899
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/jovyan/work/code/spatial_signatures/clusters/dask-worker-space/worker-ap4g8rcp
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 1</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:37837
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 4
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:45419/status" target="_blank">http://127.0.0.1:45419/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 15.62 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:43529
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/jovyan/work/code/spatial_signatures/clusters/dask-worker-space/worker-vsfjjqb8
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 2</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:46225
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 4
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:41341/status" target="_blank">http://127.0.0.1:41341/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 15.62 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:36717
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/jovyan/work/code/spatial_signatures/clusters/dask-worker-space/worker-1albu73n
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="width: 24px; height: 24px; background-color: #DBF5FF; border: 3px solid #4CC9FF; border-radius: 5px; position: absolute;"> </div>
+            <div style="margin-left: 48px;">
+            <details>
+                <summary>
+                    <h4 style="margin-bottom: 0px; display: inline;">Worker: 3</h4>
+                </summary>
+                <table style="width: 100%; text-align: left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Comm: </strong> tcp://127.0.0.1:38967
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Total threads: </strong> 4
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Dashboard: </strong> <a href="http://127.0.0.1:45933/status" target="_blank">http://127.0.0.1:45933/status</a>
+                        </td>
+                        <td style="text-align: left;">
+                            <strong>Memory: </strong> 15.62 GiB
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">
+                            <strong>Nanny: </strong> tcp://127.0.0.1:46383
+                        </td>
+                        <td style="text-align: left;"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: left;">
+                            <strong>Local directory: </strong> /home/jovyan/work/code/spatial_signatures/clusters/dask-worker-space/worker-ltqpyxst
+                        </td>
+                    </tr>
+
+
+
+
+
+                </table>
+            </details>
+            </div>
+        </div>
+
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+
+
+    </div>
+</div></div></div>
+</div>
+<hr class="docutils" />
+<hr class="docutils" />
+<p><strong>DEPRECATED</strong></p>
+<p>As of July 13th’22, the approaches below are deprecated because loading imagery for certain signature polygons is deemed unfeasible. The main issue is there are a few very large polygons:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ssa</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">area</span>
+<span class="n">ss</span><span class="p">[</span><span class="n">ssa</span> <span class="o">==</span> <span class="n">ssa</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/validation_GHS_BUILT_C_MSZ_23_0.png" src="../_images/validation_GHS_BUILT_C_MSZ_23_0.png" />
+</div>
+</div>
 <ul class="simple">
 <li><p>Single-core approach</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="n">stats</span> <span class="o">=</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">zonal_stats</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 644 ms, sys: 1.23 s, total: 1.88 s
-Wall time: 3.34 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.14 s, sys: 15.1 s, total: 18.3 s
+Wall time: 18.1 s
 </pre></div>
 </div>
 </div>
@@ -527,173 +2322,19 @@ Wall time: 3.34 s
 <ul class="simple">
 <li><p>Multi-core on <code class="docutils literal notranslate"><span class="pre">dask</span></code></p></li>
 </ul>
+<p>Move signatures to Dask:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss_ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="n">npartitions</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
-    <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-    <span class="n">meta</span><span class="o">=</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ss_ddf</span> <span class="o">=</span> <span class="n">dask_geopandas</span><span class="o">.</span><span class="n">from_geopandas</span><span class="p">(</span>
+    <span class="n">ss</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span>
 <span class="p">)</span>
+<span class="n">ss_ddf</span><span class="o">.</span><span class="n">spatial_shuffle</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/utils.py:182,</span> in <span class="ni">raise_on_meta_error</span><span class="nt">(funcname, udf)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">182</span>     <span class="k">yield</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:6247,</span> in <span class="ni">_emulate</span><span class="nt">(func, udf, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6246</span> <span class="k">with</span> <span class="n">raise_on_meta_error</span><span class="p">(</span><span class="n">funcname</span><span class="p">(</span><span class="n">func</span><span class="p">),</span> <span class="n">udf</span><span class="o">=</span><span class="n">udf</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">6247</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
-
-<span class="nn">Input In [31],</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(df)</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterstats/main.py:31,</span> in <span class="ni">zonal_stats</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="sd">&quot;&quot;&quot;The primary zonal statistics entry point.</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span><span class="sd"> All arguments are passed directly to ``gen_zonal_stats``.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span><span class="sd"> The only difference is that ``zonal_stats`` will</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span><span class="sd"> return a list rather than a generator.&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">31</span> <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">gen_zonal_stats</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterstats/main.py:163,</span> in <span class="ni">gen_zonal_stats</span><span class="nt">(vectors, raster, layer, band, nodata, affine, stats, all_touched, categorical, category_map, add_stats, zone_func, raster_out, prefix, geojson_out, boundless, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">162</span> <span class="c1"># rasterized geometry</span>
-<span class="ne">--&gt; </span><span class="mi">163</span> <span class="n">rv_array</span> <span class="o">=</span> <span class="n">rasterize_geom</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">like</span><span class="o">=</span><span class="n">fsrc</span><span class="p">,</span> <span class="n">all_touched</span><span class="o">=</span><span class="n">all_touched</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="c1"># nodata mask</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterstats/utils.py:41,</span> in <span class="ni">rasterize_geom</span><span class="nt">(geom, like, all_touched)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="n">geoms</span> <span class="o">=</span> <span class="p">[(</span><span class="n">geom</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
-<span class="ne">---&gt; </span><span class="mi">41</span> <span class="n">rv_array</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">rasterize</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="n">geoms</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">out_shape</span><span class="o">=</span><span class="n">like</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="n">transform</span><span class="o">=</span><span class="n">like</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="n">fill</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="n">all_touched</span><span class="o">=</span><span class="n">all_touched</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">return</span> <span class="n">rv_array</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterio/env.py:387,</span> in <span class="ni">ensure_env.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span> <span class="k">with</span> <span class="n">Env</span><span class="o">.</span><span class="n">from_defaults</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">387</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/rasterio/features.py:353,</span> in <span class="ni">rasterize</span><span class="nt">(shapes, out_shape, fill, out, transform, all_touched, merge_alg, default_value, dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span> <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">353</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;width and height must be &gt; 0&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">355</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">guard_transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: width and height must be &gt; 0
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [31],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:845,</span> in <span class="ni">_Frame.map_partitions</span><span class="nt">(self, func, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">730</span> <span class="nd">@insert_meta_param_description</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">731</span> <span class="k">def</span> <span class="nf">map_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="sd">&quot;&quot;&quot;Apply Python function on each DataFrame partition.</span>
-<span class="g g-Whitespace">    </span><span class="mi">733</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">734</span><span class="sd">     Note that the index and divisions are assumed to remain unchanged.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">843</span><span class="sd">     None as the division.</span>
-<span class="g g-Whitespace">    </span><span class="mi">844</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">845</span>     <span class="k">return</span> <span class="n">map_partitions</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:6316,</span> in <span class="ni">map_partitions</span><span class="nt">(func, meta, enforce_metadata, transform_divisions, align_dataframes, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6311</span>     <span class="n">parent_meta</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_meta</span>
-<span class="g g-Whitespace">   </span><span class="mi">6313</span> <span class="k">if</span> <span class="n">meta</span> <span class="ow">is</span> <span class="n">no_default</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6314</span>     <span class="c1"># Use non-normalized kwargs here, as we want the real values (not</span>
-<span class="g g-Whitespace">   </span><span class="mi">6315</span>     <span class="c1"># delayed values)</span>
-<span class="ne">-&gt; </span><span class="mi">6316</span>     <span class="n">meta</span> <span class="o">=</span> <span class="n">_emulate</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">udf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6317</span>     <span class="n">meta_is_emulated</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">6318</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py:6247,</span> in <span class="ni">_emulate</span><span class="nt">(func, udf, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6242</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6243</span><span class="sd"> Apply a function using args / kwargs. If arguments contain dd.DataFrame /</span>
-<span class="g g-Whitespace">   </span><span class="mi">6244</span><span class="sd"> dd.Series, using internal cache (``_meta``) for calculation</span>
-<span class="g g-Whitespace">   </span><span class="mi">6245</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6246</span> <span class="k">with</span> <span class="n">raise_on_meta_error</span><span class="p">(</span><span class="n">funcname</span><span class="p">(</span><span class="n">func</span><span class="p">),</span> <span class="n">udf</span><span class="o">=</span><span class="n">udf</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">6247</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/contextlib.py:137,</span> in <span class="ni">_GeneratorContextManager.__exit__</span><span class="nt">(self, typ, value, traceback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">typ</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="c1"># Suppress StopIteration *unless* it&#39;s the same exception that</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="c1"># was passed to throw().  This prevents a StopIteration</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="c1"># raised inside the &quot;with&quot; statement from being suppressed.</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">return</span> <span class="n">exc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">value</span>
-
-<span class="nn">File /opt/conda/lib/python3.9/site-packages/dask/dataframe/utils.py:203,</span> in <span class="ni">raise_on_meta_error</span><span class="nt">(funcname, udf)</span>
-<span class="g g-Whitespace">    </span><span class="mi">194</span> <span class="n">msg</span> <span class="o">+=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="s2">&quot;Original error is below:</span><span class="se">\n</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="s2">&quot;------------------------</span><span class="se">\n</span><span class="s2">&quot;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="s2">&quot;</span><span class="si">{2}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="p">)</span>
-<span class="nn">    202 msg = msg.format(f&quot;</span> in <span class="ni">`{funcname}`&quot; if funcname else &quot;&quot;, repr</span><span class="nt">(e), tb)</span>
-<span class="ne">--&gt; </span><span class="mi">203</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
-
-<span class="ne">ValueError</span>: Metadata inference failed in `lambda`.
-
-<span class="n">You</span> <span class="n">have</span> <span class="n">supplied</span> <span class="n">a</span> <span class="n">custom</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">Dask</span> <span class="ow">is</span> <span class="n">unable</span> <span class="n">to</span> 
-<span class="n">determine</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">output</span> <span class="n">that</span> <span class="n">that</span> <span class="n">function</span> <span class="n">returns</span><span class="o">.</span> 
-
-<span class="n">To</span> <span class="n">resolve</span> <span class="n">this</span> <span class="n">please</span> <span class="n">provide</span> <span class="n">a</span> <span class="n">meta</span><span class="o">=</span> <span class="n">keyword</span><span class="o">.</span>
-<span class="n">The</span> <span class="n">docstring</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Dask</span> <span class="n">function</span> <span class="n">you</span> <span class="n">ran</span> <span class="n">should</span> <span class="n">have</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
-
-<span class="n">Original</span> <span class="n">error</span> <span class="ow">is</span> <span class="n">below</span><span class="p">:</span>
-<span class="gt">------------------------</span>
-<span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;width and height must be &gt; 0&#39;</span><span class="p">)</span>
-
-<span class="ne">Traceback</span>:
-<span class="gt">---------</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/dask/dataframe/utils.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">182</span><span class="p">,</span> <span class="ow">in</span> <span class="n">raise_on_meta_error</span>
-    <span class="k">yield</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/dask/dataframe/core.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">6247</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_emulate</span>
-    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="o">**</span><span class="n">_extract_meta</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
-  <span class="n">File</span> <span class="s2">&quot;/tmp/ipykernel_147/3647013166.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="k">lambda</span><span class="o">&gt;</span>
-    <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterstats/main.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">31</span><span class="p">,</span> <span class="ow">in</span> <span class="n">zonal_stats</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">gen_zonal_stats</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterstats/main.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">163</span><span class="p">,</span> <span class="ow">in</span> <span class="n">gen_zonal_stats</span>
-    <span class="n">rv_array</span> <span class="o">=</span> <span class="n">rasterize_geom</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">like</span><span class="o">=</span><span class="n">fsrc</span><span class="p">,</span> <span class="n">all_touched</span><span class="o">=</span><span class="n">all_touched</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterstats/utils.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">41</span><span class="p">,</span> <span class="ow">in</span> <span class="n">rasterize_geom</span>
-    <span class="n">rv_array</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">rasterize</span><span class="p">(</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterio/env.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">387</span><span class="p">,</span> <span class="ow">in</span> <span class="n">wrapper</span>
-    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-  <span class="n">File</span> <span class="s2">&quot;/opt/conda/lib/python3.9/site-packages/rasterio/features.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">353</span><span class="p">,</span> <span class="ow">in</span> <span class="n">rasterize</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;width and height must be &gt; 0&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html"><div><strong>Dask-GeoPandas GeoDataFrame Structure:</strong></div>
+<div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -711,93 +2352,124 @@ Wall time: 3.34 s
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>15</th>
-      <th>191</th>
-      <th>63</th>
-      <th>70</th>
-      <th>90</th>
-      <th>140</th>
-      <th>1090</th>
-      <th>488</th>
-      <th>531</th>
-      <th>776</th>
+      <th>id</th>
+      <th>code</th>
+      <th>type</th>
+      <th>geometry</th>
+    </tr>
+    <tr>
+      <th>npartitions=97</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>36</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>245450365</th>
+      <td>object</td>
+      <td>object</td>
+      <td>object</td>
+      <td>geometry</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>6</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>304747790</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <th>4216674416</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>3</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
+      <th>4254422608</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div>
+<div>Dask Name: set_geometry, 3293 tasks</div></div></div>
+</div>
+<p>Set up computation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">do_zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">bb</span> <span class="o">=</span> 
+    <span class="n">out</span> <span class="o">=</span> <span class="n">zonal_stats</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ghsl_path</span><span class="p">,</span> <span class="n">categorical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+        <span class="n">columns</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">ss_ddf</span><span class="o">.</span><span class="n">map_partitions</span><span class="p">(</span>
+    <span class="n">do_zonal_stats</span><span class="p">,</span>
+    <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">):</span> <span class="s1">&#39;int&#39;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+
+<span class="n">out</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span>
+    <span class="s1">&#39;/home/jovyan/data/spatial_signatures/cross_ghsl_c_msz.pq&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 100 entries, 0 to 99
+Data columns (total 15 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   1       0 non-null      float64
+ 1   2       1 non-null      float64
+ 2   3       3 non-null      float64
+ 3   4       0 non-null      float64
+ 4   5       0 non-null      float64
+ 5   11      3 non-null      float64
+ 6   12      0 non-null      float64
+ 7   13      0 non-null      float64
+ 8   14      0 non-null      float64
+ 9   15      0 non-null      float64
+ 10  21      0 non-null      float64
+ 11  22      0 non-null      float64
+ 12  23      0 non-null      float64
+ 13  24      0 non-null      float64
+ 14  25      0 non-null      float64
+dtypes: float64(15)
+memory usage: 11.8 KB
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="comparison">
