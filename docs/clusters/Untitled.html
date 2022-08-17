@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;no title&gt; &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Urban Grammar AI | WP2 - Spatial Signatures</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Project
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz">
+   Project homepage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz/data_processing">
+   WP1 - Data processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="http://urbangrammarai.xyz/signature_ai">
+   WP3 - Signature AI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Spatial unit
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/unit.html">
+   Exploration of tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Parallelized_enclosures.html">
+   Generating enclosures (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/enclosed_tessellation.html">
+   Enclosed tessellation (proof of a concept)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/Generate_enclosures.html">
+   Generate enclosures for the Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunk_uk.html">
+   Geo-chunking Great Britain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/chunked_enclosed_tessellation.html">
+   Generate enclosed tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spatial_unit/hierarchical_ids.html">
+   Generate hierarchical unique IDs
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Populating units with data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/cross-chunk_indices.html">
+   Cross-chunk indices
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/morphometrics.html">
+   Urban morphometrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/inscribed_circle.html">
+   Create inscribed circles
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/functional_data.html">
+   Functional data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/accessibility.html">
+   Accessibility-based characters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../measuring/GHS-composite-S2_ndvi.html">
+   NDVI
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cluster analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="mastermap_openmap_cluster.html">
+   Trial of clustering on OpenMap and MasterMap data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="model_selection.html">
+   Clustering model selection matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spatial_signatures_gb.html">
+   Generate Spatial Signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="level2_ss.html">
+   Second-level signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="signature_labels_data.html">
+   Create canonical labels attached to tessellation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_signatures_GB.html">
+   Form-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leve2_form.html">
+   Second-level form signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="function_signatures_GB.html">
+   Function-based signatures across GB
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="level2_function.html">
+   Second-level function signatures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Signature exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plot_signatures.html">
+   Plot signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_signatures.html">
+   Exploration of top-level clusters
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="feature_importance.html">
+   Cluster exploration and feature importance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cluster_feature_importance.html">
+   Feature importance per signature type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exploration_of_form_signatures.html">
+   Exploration of form-based signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="form_feature_importance.html">
+   Feature importance per form type
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="validation.html">
+   External validation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="validation_GHS_BUILT_C_MSZ.html">
+   Comparison between Spatial Signatures and GHSL classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/sizeshape.html">
+   Size and shape of signatures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/co-occurence.html">
+   Co-occurence analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/ttwa.html">
+   Composition of signatures within TTWA boundaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../esda/geog_distribution.html">
+   Geographical distribution and coverage of signature types
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data product
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/overview.html">
+   Overview of the data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/create_data_product.html">
+   Create a data product
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/oa_interpolation.html">
+   Interpolation of signatures to OA and LSOA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data_product/vector_tile.html">
+   Generate vector tiles
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/clusters/Untitled.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/urbangrammarai/spatial_signatures"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/clusters/Untitled.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ims</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/clustering_data/per_cluster_importance.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">93</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">96</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">97</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">98</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ims</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">types</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">8</span><span class="p">:])]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="s1">&#39;vals&#39;</span> <span class="ow">in</span> <span class="n">c</span> <span class="k">else</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">types</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">])]</span><span class="si">}</span><span class="s2"> (value)&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ims</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coded</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;population&#39;</span><span class="p">:</span> <span class="s1">&#39;func_population&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;night_lights&#39;</span><span class="p">:</span> <span class="s1">&#39;func_night_lights&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;A, B, D, E. Agriculture, energy and water&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_abde&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;C. Manufacturing&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_c&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;F. Construction&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;G, I. Distribution, hotels and restaurants&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_gi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;H, J. Transport and communication&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_hj&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;K, L, M, N. Financial, real estate, professional and administrative activities&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_klmn&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;O,P,Q. Public administration, education and health&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_opq&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;R, S, T, U. Other&#39;</span><span class="p">:</span> <span class="s1">&#39;func_workplace_rstu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_124&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_124&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_211&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_211&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_121&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_121&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_421&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_421&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_522&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_522&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_142&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_142&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_141&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_141&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_112&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_112&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_231&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_231&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_311&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_311&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_131&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_131&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_123&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_123&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_122&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_122&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_512&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_512&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_243&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_243&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_313&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_313&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_412&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_412&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_321&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_321&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_322&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_322&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_324&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_324&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_111&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_111&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_423&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_423&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_523&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_523&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_312&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_312&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_133&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_133&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_333&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_333&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_332&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_332&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_411&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_411&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_132&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_132&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_222&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_222&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_242&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_242&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_331&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_331&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_511&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_511&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_334&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_334&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_244&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_244&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Code_18_521&#39;</span><span class="p">:</span> <span class="s1">&#39;func_corine_521&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;supermarkets_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_supermarkets_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;supermarkets_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_supermarkets_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;listed_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_listed_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;listed_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_listed_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fhrs_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_fhrs_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;fhrs_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_fhrs_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;culture_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;func_culture_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;culture_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;func_culture_counts&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nearest_water&#39;</span><span class="p">:</span> <span class="s1">&#39;func_water_nearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nearest_retail_centre&#39;</span><span class="p">:</span> <span class="s1">&#39;func_retail_centrenearest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdbAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdbAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdbPer&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdbPer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdbCoA&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdbCoA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCCo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCor&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCor&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbSqu&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbSqu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbERI&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbERI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbElo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbElo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCCM&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCCM&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ssbCCD&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ssbCCD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stbOri&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stbOri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdcLAL&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdcLAL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdcAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sscCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sscCCo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sscERI&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sscERI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stcOri&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stcOri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sicCAR&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sicCAR&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stbCeA&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stbCeA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtbAli&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtbAli&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtbNDi&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtbNDi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtcWNe&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtcWNe&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mdcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mdcAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltcWRE&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltcWRE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltbIBD&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltbIBD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsSPW&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsSPW&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsSWD&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsSWD&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsSPO&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsSPO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsLen&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsLen&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sssLin&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sssLin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldsMSL&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldsMSL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtdDeg&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtdDeg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lcdMes&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lcdMes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linP3W&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linP3W&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linP4W&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linP4W&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linPDE&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linPDE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lcnClo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lcnClo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldsCDL&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldsCDL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;xcnSCl&#39;</span><span class="p">:</span> <span class="s1">&#39;form_xcnSCl&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mtdMDi&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mtdMDi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lddNDe&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lddNDe&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;linWID&#39;</span><span class="p">:</span> <span class="s1">&#39;form_linWID&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;stbSAl&#39;</span><span class="p">:</span> <span class="s1">&#39;form_stbSAl&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sddAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sddAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sdsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sdsAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sisBpM&#39;</span><span class="p">:</span> <span class="s1">&#39;form_sisBpM&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;misCel&#39;</span><span class="p">:</span> <span class="s1">&#39;form_misCel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;mdsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_mdsAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lisCel&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lisCel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldsAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltcRea&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltcRea&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ltcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ltcAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldeAre&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldeAre&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ldePer&#39;</span><span class="p">:</span> <span class="s1">&#39;form_ldePer&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lseCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lseCCo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lseERI&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lseERI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lseCWA&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lseCWA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lteOri&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lteOri&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lteWNB&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lteWNB&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lieWCe&#39;</span><span class="p">:</span> <span class="s1">&#39;form_lieWCe&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">key</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;func_population&#39;</span><span class="p">:</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_night_lights&#39;</span><span class="p">:</span> <span class="s1">&#39;Night lights&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_abde&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Agriculture, energy and water]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_c&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Manufacturing]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_f&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Construction]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_gi&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Distribution, hotels and restaurants]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_hj&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Transport and communication]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_klmn&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Financial, real estate, professional and administrative activities]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_opq&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Public administration, education and health]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_workplace_rstu&#39;</span><span class="p">:</span> <span class="s1">&#39;Workplace population [Other]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_124&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Airports]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_211&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Non-irrigated arable land]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_121&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Industrial or commercial units]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_421&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Salt marshes]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_522&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Estuaries]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_142&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Sport and leisure facilities]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_141&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Green urban areas]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_112&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Discontinuous urban fabric]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_231&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Pastures]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_311&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Broad-leaved forest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_131&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Mineral extraction sites]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_123&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Port areas]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_122&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Road and rail networks and associated land]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_512&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Water bodies]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_243&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Land principally occupied by agriculture, with significant areas of natural vegetation]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_313&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Mixed forest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_412&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Peat bogs]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_321&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Natural grasslands]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_322&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Moors and heathland]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_324&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Transitional woodland-shrub]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_111&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Continuous urban fabric]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_423&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Intertidal flats]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_523&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Sea and ocean]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_312&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Coniferous forest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_133&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Construction sites]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_333&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Sparsely vegetated areas]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_332&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Bare rocks]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_411&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Inland marshes]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_132&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Dump sites]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_222&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Fruit trees and berry plantations]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_242&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Complex cultivation patterns]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_331&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Beaches, dunes, sands]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_511&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Water courses]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_334&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Burnt areas]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_244&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Agro-forestry areas]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_corine_521&#39;</span><span class="p">:</span> <span class="s1">&#39;Land cover [Coastal lagoons]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ndvi&#39;</span><span class="p">:</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_supermarkets_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;Supermarkets [distance to nearest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_supermarkets_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;Supermarkets [counts within 1200m]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_listed_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;Listed buildings [distance to nearest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_listed_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;Listed buildings [counts within 1200m]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_fhrs_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;FHRS points [distance to nearest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_fhrs_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;FHRS points [counts within 1200m]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_culture_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;Cultural venues [distance to nearest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_culture_counts&#39;</span><span class="p">:</span> <span class="s1">&#39;Cultural venues [counts within 1200m]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_water_nearest&#39;</span><span class="p">:</span> <span class="s1">&#39;Water bodies [distance to nearest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;func_retail_centrenearest&#39;</span><span class="p">:</span> <span class="s1">&#39;Retail centres [distance to nearest]&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdbAre&#39;</span><span class="p">:</span> <span class="s1">&#39;area of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdbPer&#39;</span><span class="p">:</span> <span class="s1">&#39;perimeter of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdbCoA&#39;</span><span class="p">:</span> <span class="s1">&#39;courtyard area of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;circular compactness of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbCor&#39;</span><span class="p">:</span> <span class="s1">&#39;corners of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbSqu&#39;</span><span class="p">:</span> <span class="s1">&#39;squareness of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbERI&#39;</span><span class="p">:</span> <span class="s1">&#39;equivalent rectangular index of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbElo&#39;</span><span class="p">:</span> <span class="s1">&#39;elongation of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbCCM&#39;</span><span class="p">:</span> <span class="s1">&#39;centroid - corner mean distance of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ssbCCD&#39;</span><span class="p">:</span> <span class="s1">&#39;centroid - corner distance deviation of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_stbOri&#39;</span><span class="p">:</span> <span class="s1">&#39;orientation of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdcLAL&#39;</span><span class="p">:</span> <span class="s1">&#39;longest axis length of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;area of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sscCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;circular compactness of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sscERI&#39;</span><span class="p">:</span> <span class="s1">&#39;equivalent rectangular index of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_stcOri&#39;</span><span class="p">:</span> <span class="s1">&#39;orientation of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sicCAR&#39;</span><span class="p">:</span> <span class="s1">&#39;covered area ratio of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_stbCeA&#39;</span><span class="p">:</span> <span class="s1">&#39;cell alignment of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mtbAli&#39;</span><span class="p">:</span> <span class="s1">&#39;alignment of neighbouring buildings&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mtbNDi&#39;</span><span class="p">:</span> <span class="s1">&#39;mean distance between neighbouring buildings&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mtcWNe&#39;</span><span class="p">:</span> <span class="s1">&#39;perimeter-weighted neighbours of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mdcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;area covered by neighbouring cells&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ltcWRE&#39;</span><span class="p">:</span> <span class="s1">&#39;weighted reached enclosures of ETC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ltbIBD&#39;</span><span class="p">:</span> <span class="s1">&#39;mean inter-building distance&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdsSPW&#39;</span><span class="p">:</span> <span class="s1">&#39;width of street profile&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdsSWD&#39;</span><span class="p">:</span> <span class="s1">&#39;width deviation of street profile&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdsSPO&#39;</span><span class="p">:</span> <span class="s1">&#39;openness of street profile&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdsLen&#39;</span><span class="p">:</span> <span class="s1">&#39;length of street segment&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sssLin&#39;</span><span class="p">:</span> <span class="s1">&#39;linearity of street segment&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ldsMSL&#39;</span><span class="p">:</span> <span class="s1">&#39;mean segment length within 3 steps&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mtdDeg&#39;</span><span class="p">:</span> <span class="s1">&#39;node degree of junction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lcdMes&#39;</span><span class="p">:</span> <span class="s1">&#39;local meshedness of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_linP3W&#39;</span><span class="p">:</span> <span class="s1">&#39;local proportion of 3-way intersections of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_linP4W&#39;</span><span class="p">:</span> <span class="s1">&#39;local proportion of 4-way intersections of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_linPDE&#39;</span><span class="p">:</span> <span class="s1">&#39;local proportion of cul-de-sacs of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lcnClo&#39;</span><span class="p">:</span> <span class="s1">&#39;local closeness of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ldsCDL&#39;</span><span class="p">:</span> <span class="s1">&#39;local cul-de-sac length of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_xcnSCl&#39;</span><span class="p">:</span> <span class="s1">&#39;square clustering of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mtdMDi&#39;</span><span class="p">:</span> <span class="s1">&#39;mean distance to neighbouring nodes of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lddNDe&#39;</span><span class="p">:</span> <span class="s1">&#39;local node density of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_linWID&#39;</span><span class="p">:</span> <span class="s1">&#39;local degree weighted node density of street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_stbSAl&#39;</span><span class="p">:</span> <span class="s1">&#39;street alignment of building&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sddAre&#39;</span><span class="p">:</span> <span class="s1">&#39;area covered by node-attached ETCs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sdsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;area covered by edge-attached ETCs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_sisBpM&#39;</span><span class="p">:</span> <span class="s1">&#39;buildings per meter of street segment&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_misCel&#39;</span><span class="p">:</span> <span class="s1">&#39;reached ETCs by neighbouring segments&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_mdsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;reached area by neighbouring segments&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lisCel&#39;</span><span class="p">:</span> <span class="s1">&#39;reached ETCs by local street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ldsAre&#39;</span><span class="p">:</span> <span class="s1">&#39;reached area by local street network&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ltcRea&#39;</span><span class="p">:</span> <span class="s1">&#39;reached ETCs by tessellation contiguity&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ltcAre&#39;</span><span class="p">:</span> <span class="s1">&#39;reached area by tessellation contiguity&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ldeAre&#39;</span><span class="p">:</span> <span class="s1">&#39;area of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_ldePer&#39;</span><span class="p">:</span> <span class="s1">&#39;perimeter of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lseCCo&#39;</span><span class="p">:</span> <span class="s1">&#39;circular compactness of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lseERI&#39;</span><span class="p">:</span> <span class="s1">&#39;equivalent rectangular index of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lseCWA&#39;</span><span class="p">:</span> <span class="s1">&#39;compactness-weighted axis of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lteOri&#39;</span><span class="p">:</span> <span class="s1">&#39;orientation of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lteWNB&#39;</span><span class="p">:</span> <span class="s1">&#39;perimeter-weighted neighbours of enclosure&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;form_lieWCe&#39;</span><span class="p">:</span> <span class="s1">&#39;area-weighted ETCs of enclosure&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">direct</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">key</span><span class="p">[</span><span class="n">coded</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">coded</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">direct</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;population&#39;: &#39;Population&#39;,
+ &#39;night_lights&#39;: &#39;Night lights&#39;,
+ &#39;A, B, D, E. Agriculture, energy and water&#39;: &#39;Workplace population [Agriculture, energy and water]&#39;,
+ &#39;C. Manufacturing&#39;: &#39;Workplace population [Manufacturing]&#39;,
+ &#39;F. Construction&#39;: &#39;Workplace population [Construction]&#39;,
+ &#39;G, I. Distribution, hotels and restaurants&#39;: &#39;Workplace population [Distribution, hotels and restaurants]&#39;,
+ &#39;H, J. Transport and communication&#39;: &#39;Workplace population [Transport and communication]&#39;,
+ &#39;K, L, M, N. Financial, real estate, professional and administrative activities&#39;: &#39;Workplace population [Financial, real estate, professional and administrative activities]&#39;,
+ &#39;O,P,Q. Public administration, education and health&#39;: &#39;Workplace population [Public administration, education and health]&#39;,
+ &#39;R, S, T, U. Other&#39;: &#39;Workplace population [Other]&#39;,
+ &#39;Code_18_124&#39;: &#39;Land cover [Airports]&#39;,
+ &#39;Code_18_211&#39;: &#39;Land cover [Non-irrigated arable land]&#39;,
+ &#39;Code_18_121&#39;: &#39;Land cover [Industrial or commercial units]&#39;,
+ &#39;Code_18_421&#39;: &#39;Land cover [Salt marshes]&#39;,
+ &#39;Code_18_522&#39;: &#39;Land cover [Estuaries]&#39;,
+ &#39;Code_18_142&#39;: &#39;Land cover [Sport and leisure facilities]&#39;,
+ &#39;Code_18_141&#39;: &#39;Land cover [Green urban areas]&#39;,
+ &#39;Code_18_112&#39;: &#39;Land cover [Discontinuous urban fabric]&#39;,
+ &#39;Code_18_231&#39;: &#39;Land cover [Pastures]&#39;,
+ &#39;Code_18_311&#39;: &#39;Land cover [Broad-leaved forest]&#39;,
+ &#39;Code_18_131&#39;: &#39;Land cover [Mineral extraction sites]&#39;,
+ &#39;Code_18_123&#39;: &#39;Land cover [Port areas]&#39;,
+ &#39;Code_18_122&#39;: &#39;Land cover [Road and rail networks and associated land]&#39;,
+ &#39;Code_18_512&#39;: &#39;Land cover [Water bodies]&#39;,
+ &#39;Code_18_243&#39;: &#39;Land cover [Land principally occupied by agriculture, with significant areas of natural vegetation]&#39;,
+ &#39;Code_18_313&#39;: &#39;Land cover [Mixed forest]&#39;,
+ &#39;Code_18_412&#39;: &#39;Land cover [Peat bogs]&#39;,
+ &#39;Code_18_321&#39;: &#39;Land cover [Natural grasslands]&#39;,
+ &#39;Code_18_322&#39;: &#39;Land cover [Moors and heathland]&#39;,
+ &#39;Code_18_324&#39;: &#39;Land cover [Transitional woodland-shrub]&#39;,
+ &#39;Code_18_111&#39;: &#39;Land cover [Continuous urban fabric]&#39;,
+ &#39;Code_18_423&#39;: &#39;Land cover [Intertidal flats]&#39;,
+ &#39;Code_18_523&#39;: &#39;Land cover [Sea and ocean]&#39;,
+ &#39;Code_18_312&#39;: &#39;Land cover [Coniferous forest]&#39;,
+ &#39;Code_18_133&#39;: &#39;Land cover [Construction sites]&#39;,
+ &#39;Code_18_333&#39;: &#39;Land cover [Sparsely vegetated areas]&#39;,
+ &#39;Code_18_332&#39;: &#39;Land cover [Bare rocks]&#39;,
+ &#39;Code_18_411&#39;: &#39;Land cover [Inland marshes]&#39;,
+ &#39;Code_18_132&#39;: &#39;Land cover [Dump sites]&#39;,
+ &#39;Code_18_222&#39;: &#39;Land cover [Fruit trees and berry plantations]&#39;,
+ &#39;Code_18_242&#39;: &#39;Land cover [Complex cultivation patterns]&#39;,
+ &#39;Code_18_331&#39;: &#39;Land cover [Beaches, dunes, sands]&#39;,
+ &#39;Code_18_511&#39;: &#39;Land cover [Water courses]&#39;,
+ &#39;Code_18_334&#39;: &#39;Land cover [Burnt areas]&#39;,
+ &#39;Code_18_244&#39;: &#39;Land cover [Agro-forestry areas]&#39;,
+ &#39;Code_18_521&#39;: &#39;Land cover [Coastal lagoons]&#39;,
+ &#39;mean&#39;: &#39;NDVI&#39;,
+ &#39;supermarkets_nearest&#39;: &#39;Supermarkets [distance to nearest]&#39;,
+ &#39;supermarkets_counts&#39;: &#39;Supermarkets [counts within 1200m]&#39;,
+ &#39;listed_nearest&#39;: &#39;Listed buildings [distance to nearest]&#39;,
+ &#39;listed_counts&#39;: &#39;Listed buildings [counts within 1200m]&#39;,
+ &#39;fhrs_nearest&#39;: &#39;FHRS points [distance to nearest]&#39;,
+ &#39;fhrs_counts&#39;: &#39;FHRS points [counts within 1200m]&#39;,
+ &#39;culture_nearest&#39;: &#39;Cultural venues [distance to nearest]&#39;,
+ &#39;culture_counts&#39;: &#39;Cultural venues [counts within 1200m]&#39;,
+ &#39;nearest_water&#39;: &#39;Water bodies [distance to nearest]&#39;,
+ &#39;nearest_retail_centre&#39;: &#39;Retail centres [distance to nearest]&#39;,
+ &#39;sdbAre&#39;: &#39;area of building&#39;,
+ &#39;sdbPer&#39;: &#39;perimeter of building&#39;,
+ &#39;sdbCoA&#39;: &#39;courtyard area of building&#39;,
+ &#39;ssbCCo&#39;: &#39;circular compactness of building&#39;,
+ &#39;ssbCor&#39;: &#39;corners of building&#39;,
+ &#39;ssbSqu&#39;: &#39;squareness of building&#39;,
+ &#39;ssbERI&#39;: &#39;equivalent rectangular index of building&#39;,
+ &#39;ssbElo&#39;: &#39;elongation of building&#39;,
+ &#39;ssbCCM&#39;: &#39;centroid - corner mean distance of building&#39;,
+ &#39;ssbCCD&#39;: &#39;centroid - corner distance deviation of building&#39;,
+ &#39;stbOri&#39;: &#39;orientation of building&#39;,
+ &#39;sdcLAL&#39;: &#39;longest axis length of ETC&#39;,
+ &#39;sdcAre&#39;: &#39;area of ETC&#39;,
+ &#39;sscCCo&#39;: &#39;circular compactness of ETC&#39;,
+ &#39;sscERI&#39;: &#39;equivalent rectangular index of ETC&#39;,
+ &#39;stcOri&#39;: &#39;orientation of ETC&#39;,
+ &#39;sicCAR&#39;: &#39;covered area ratio of ETC&#39;,
+ &#39;stbCeA&#39;: &#39;cell alignment of building&#39;,
+ &#39;mtbAli&#39;: &#39;alignment of neighbouring buildings&#39;,
+ &#39;mtbNDi&#39;: &#39;mean distance between neighbouring buildings&#39;,
+ &#39;mtcWNe&#39;: &#39;perimeter-weighted neighbours of ETC&#39;,
+ &#39;mdcAre&#39;: &#39;area covered by neighbouring cells&#39;,
+ &#39;ltcWRE&#39;: &#39;weighted reached enclosures of ETC&#39;,
+ &#39;ltbIBD&#39;: &#39;mean inter-building distance&#39;,
+ &#39;sdsSPW&#39;: &#39;width of street profile&#39;,
+ &#39;sdsSWD&#39;: &#39;width deviation of street profile&#39;,
+ &#39;sdsSPO&#39;: &#39;openness of street profile&#39;,
+ &#39;sdsLen&#39;: &#39;length of street segment&#39;,
+ &#39;sssLin&#39;: &#39;linearity of street segment&#39;,
+ &#39;ldsMSL&#39;: &#39;mean segment length within 3 steps&#39;,
+ &#39;mtdDeg&#39;: &#39;node degree of junction&#39;,
+ &#39;lcdMes&#39;: &#39;local meshedness of street network&#39;,
+ &#39;linP3W&#39;: &#39;local proportion of 3-way intersections of street network&#39;,
+ &#39;linP4W&#39;: &#39;local proportion of 4-way intersections of street network&#39;,
+ &#39;linPDE&#39;: &#39;local proportion of cul-de-sacs of street network&#39;,
+ &#39;lcnClo&#39;: &#39;local closeness of street network&#39;,
+ &#39;ldsCDL&#39;: &#39;local cul-de-sac length of street network&#39;,
+ &#39;xcnSCl&#39;: &#39;square clustering of street network&#39;,
+ &#39;mtdMDi&#39;: &#39;mean distance to neighbouring nodes of street network&#39;,
+ &#39;lddNDe&#39;: &#39;local node density of street network&#39;,
+ &#39;linWID&#39;: &#39;local degree weighted node density of street network&#39;,
+ &#39;stbSAl&#39;: &#39;street alignment of building&#39;,
+ &#39;sddAre&#39;: &#39;area covered by node-attached ETCs&#39;,
+ &#39;sdsAre&#39;: &#39;area covered by edge-attached ETCs&#39;,
+ &#39;sisBpM&#39;: &#39;buildings per meter of street segment&#39;,
+ &#39;misCel&#39;: &#39;reached ETCs by neighbouring segments&#39;,
+ &#39;mdsAre&#39;: &#39;reached area by neighbouring segments&#39;,
+ &#39;lisCel&#39;: &#39;reached ETCs by local street network&#39;,
+ &#39;ldsAre&#39;: &#39;reached area by local street network&#39;,
+ &#39;ltcRea&#39;: &#39;reached ETCs by tessellation contiguity&#39;,
+ &#39;ltcAre&#39;: &#39;reached area by tessellation contiguity&#39;,
+ &#39;ldeAre&#39;: &#39;area of enclosure&#39;,
+ &#39;ldePer&#39;: &#39;perimeter of enclosure&#39;,
+ &#39;lseCCo&#39;: &#39;circular compactness of enclosure&#39;,
+ &#39;lseERI&#39;: &#39;equivalent rectangular index of enclosure&#39;,
+ &#39;lseCWA&#39;: &#39;compactness-weighted axis of enclosure&#39;,
+ &#39;lteOri&#39;: &#39;orientation of enclosure&#39;,
+ &#39;lteWNB&#39;: &#39;perimeter-weighted neighbours of enclosure&#39;,
+ &#39;lieWCe&#39;: &#39;area-weighted ETCs of enclosure&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./clusters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Dani Arribas-Bel, Martin Fleischmann<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -434,12 +434,12 @@
      Remove Z coordinates
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cleanup-sliver-geometries">
-     Cleanup sliver geometries
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cleanup-sliver-geometries">
+   Cleanup sliver geometries
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#link-data">
@@ -962,8 +962,9 @@
 </div></div></div>
 </div>
 </div>
+</div>
 <div class="section" id="cleanup-sliver-geometries">
-<h3>Cleanup sliver geometries<a class="headerlink" href="#cleanup-sliver-geometries" title="Permalink to this headline">¶</a></h3>
+<h2>Cleanup sliver geometries<a class="headerlink" href="#cleanup-sliver-geometries" title="Permalink to this headline">¶</a></h2>
 <p>Remove artifacts caused by floating point imprecision in dissolving of ET cells into signature geometries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -987,7 +988,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;spatial_signatures_GB.gpkg&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GPKG&quot;</span><span class="p">)</span>
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -10407,15 +10407,28 @@ We&#39;re assuming that the indices of each dataframes are
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">morph</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">morph</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">escape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">longtable</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{tabular}{lll}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{longtable}{lll}
 \toprule
                                          character &amp;     category &amp;               reference \\
 \midrule
+\endfirsthead
+
+\toprule
+                                         character &amp;     category &amp;               reference \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
                                   area of building &amp;    dimension &amp;    \cite{hallowell2013} \\
                              perimeter of building &amp;    dimension &amp; \cite{vanderhaegen2017} \\
                         courtyard area of building &amp;    dimension &amp;     \cite{schirmer2015} \\
@@ -10475,141 +10488,9 @@ local proportion of 4-way intersections of stre... &amp; connectivity &amp;     
 local degree weighted node density of street ne... &amp;    intensity &amp;       \cite{dibble2017} \\
                  local closeness of street network &amp; connectivity &amp;        \cite{porta2006} \\
                square clustering of street network &amp; connectivity &amp;  \cite{fleischmann2021} \\
-\bottomrule
-\end{tabular}
+\end{longtable}
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="figure-of-context">
-<h2>Figure of context<a class="headerlink" href="#figure-of-context" title="Permalink to this headline">¶</a></h2>
-<p>Create a figure illustrating context.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tess</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_76.pq&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hindex&quot;</span><span class="p">,</span> <span class="s2">&quot;tessellation&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
-<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
-<span class="kn">import</span> <span class="nn">contextily</span>
-<span class="kn">from</span> <span class="nn">matplotlib_scalebar.scalebar</span> <span class="kn">import</span> <span class="n">ScaleBar</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">357500</span><span class="p">,</span> <span class="mi">360000</span><span class="p">,</span> <span class="mi">173500</span><span class="p">,</span> <span class="mi">176000</span><span class="p">)</span>
-<span class="n">subset</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">cx</span><span class="p">[</span><span class="n">minx</span><span class="p">:</span><span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">:</span><span class="n">maxy</span><span class="p">]</span>
-<span class="n">central</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">Point</span><span class="p">((</span><span class="n">maxx</span><span class="o">+</span><span class="n">minx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">maxy</span><span class="o">+</span><span class="n">miny</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">central</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>hindex</th>
-      <th>tessellation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>79425</th>
-      <td>c076e329053t0011</td>
-      <td>POLYGON ((358723.682 174746.214, 358724.705 17...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">momepy</span>
-
-<span class="n">W</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="s2">&quot;hindex&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighbors</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="o">.</span><span class="n">hindex</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="s1">&#39;c076e329053t0011&#39;</span><span class="p">])]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighbors</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">central</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  super().__setitem__(key, value)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Point</span><span class="p">((</span><span class="n">maxx</span><span class="o">+</span><span class="n">minx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">maxy</span><span class="o">+</span><span class="n">miny</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1200</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">central</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">neighbors</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">ugg</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">256</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
-
-<span class="c1"># buildings.plot(ax=ax, color=ugg.COLORS[1], alpha=.1, zorder=-1)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-
-<span class="n">scalebar</span> <span class="o">=</span> <span class="n">ScaleBar</span><span class="p">(</span><span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span>
-                    <span class="n">location</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span>
-                    <span class="n">height_fraction</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
-                    <span class="n">pad</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
-                    <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                    <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scalebar</span><span class="p">)</span>
-
-<span class="n">contextily</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">contextily</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Esri</span><span class="o">.</span><span class="n">WorldImagery</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">subset</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;cell_context.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/create_data_product_118_0.png" src="../_images/create_data_product_118_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -10725,15 +10606,28 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">pandas</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s2">&quot;max_colwidth&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">functional</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">functional</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">longtable</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{tabular}{lllll}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{longtable}{lllll}
 \toprule
                                                                                           character &amp;                               data  &amp;                                                                     source  &amp;                    input geometry  &amp;                                transfer method  \\
 \midrule
+\endfirsthead
+
+\toprule
+                                                                                          character &amp;                               data  &amp;                                                                     source  &amp;                    input geometry  &amp;                                transfer method  \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
                                                                                          Population &amp;               Population estimates  &amp;           ONS Census Output Area population estimates, Statistics.gov.scot  &amp;      Vector (output area polygon)  &amp;  Building-based dasymetric areal interpolation  \\
                                                                                        Night lights &amp;                       Night Lights  &amp;                                                 VIIRS DNB Nighttime Lights  &amp;                     Raster (500m)  &amp;                               Zonal statistics  \\
                                                Workplace population [Agriculture, energy and water] &amp;               Workplace population  &amp;    ONS Census Workplace population, Scotland&#39;s census Workplace population  &amp;      Vector (output area polygon)  &amp;  Building-based dasymetric areal interpolation  \\
@@ -10791,520 +10685,7 @@ Land cover [Land principally occupied by agriculture, with significant areas of 
                                                               Cultural venues [counts within 1200m] &amp;        Culture (theatres, cinemas)  &amp;                                                              OpenStreetMap  &amp;                    Vector (point)  &amp;              Network-constrained accessibility  \\
                                                                  Water bodies [distance to nearest] &amp;                       Water bodies  &amp;                                                           OS OpenMap Local  &amp;       Vector (water body polygon)  &amp;                        Euclidean accessibility  \\
                                                                Retail centres [distance to nearest] &amp;                     Retail centres  &amp;                                                                 CDRC.ac.uk  &amp;    Vector (retail centre polygon)  &amp;                        Euclidean accessibility  \\
-\bottomrule
-\end{tabular}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">functional</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;fn_krasen.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">functional</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>character</th>
-      <th>data</th>
-      <th>source</th>
-      <th>input geometry</th>
-      <th>transfer method</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Population</td>
-      <td>Population estimates</td>
-      <td>ONS Census Output Area population estimates, ...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Night lights</td>
-      <td>Night Lights</td>
-      <td>VIIRS DNB Nighttime Lights</td>
-      <td>Raster (500m)</td>
-      <td>Zonal statistics</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Workplace population [Agriculture, energy and ...</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Workplace population [Manufacturing]</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Workplace population [Construction]</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Workplace population [Distribution, hotels and...</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Workplace population [Transport and communicat...</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Workplace population [Financial, real estate, ...</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Workplace population [Public administration, e...</td>
-      <td>Workplace population</td>
-      <td>ONS Census Workplace population, Scotland's c...</td>
-      <td>Vector (output area polygon)</td>
-      <td>Building-based dasymetric areal interpolation</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Workplace population [Other]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Land cover [Airports]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Land cover [Non-irrigated arable land]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>Land cover [Industrial or commercial units]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Land cover [Salt marshes]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Land cover [Estuaries]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Land cover [Sport and leisure facilities]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Land cover [Green urban areas]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Land cover [Discontinuous urban fabric]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Land cover [Pastures]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Land cover [Broad-leaved forest]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Land cover [Mineral extraction sites]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>Land cover [Port areas]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Land cover [Road and rail networks and associa...</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>Land cover [Water bodies]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Land cover [Land principally occupied by agric...</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Land cover [Mixed forest]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Land cover [Peat bogs]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>Land cover [Natural grasslands]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>Land cover [Moors and heathland]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>Land cover [Transitional woodland-shrub]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>Land cover [Continuous urban fabric]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>Land cover [Intertidal flats]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>Land cover [Sea and ocean]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>Land cover [Coniferous forest]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>Land cover [Construction sites]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>Land cover [Sparsely vegetated areas]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>Land cover [Bare rocks]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>Land cover [Inland marshes]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>Land cover [Dump sites]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>Land cover [Fruit trees and berry plantations]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>Land cover [Complex cultivation patterns]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>Land cover [Beaches, dunes, sands]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>Land cover [Water courses]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>Land cover [Burnt areas]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>Land cover [Agro-forestry areas]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>Land cover [Coastal lagoons]</td>
-      <td>Corine land cover</td>
-      <td>Copernicus Land Monitoring Service</td>
-      <td>Vector (land cover zone polygon)</td>
-      <td>Areal interpolation</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>NDVI</td>
-      <td>NDVI</td>
-      <td>GHS-composite-S2 R2020A</td>
-      <td>Raster (10m)</td>
-      <td>Zonal statistics</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>Supermarkets [distance to nearest]</td>
-      <td>Retail POIs (supermarkets)</td>
-      <td>Geolytix</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>Supermarkets [counts within 1200m]</td>
-      <td>Retail POIs (supermarkets)</td>
-      <td>Geolytix</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>Listed buildings [distance to nearest]</td>
-      <td>Listed Buildings</td>
-      <td>Historic England, Historic Environment Scotla...</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>Listed buildings [counts within 1200m]</td>
-      <td>Listed Buildings</td>
-      <td>Historic England, Historic Environment Scotla...</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>FHRS points [distance to nearest]</td>
-      <td>Food Hygiene Rating Scheme Ratings</td>
-      <td>CDRC.ac.uk</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>FHRS points [counts within 1200m]</td>
-      <td>Food Hygiene Rating Scheme Ratings</td>
-      <td>CDRC.ac.uk</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>Cultural venues [distance to nearest]</td>
-      <td>Culture (theatres, cinemas)</td>
-      <td>OpenStreetMap</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>Cultural venues [counts within 1200m]</td>
-      <td>Culture (theatres, cinemas)</td>
-      <td>OpenStreetMap</td>
-      <td>Vector (point)</td>
-      <td>Network-constrained accessibility</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>Water bodies [distance to nearest]</td>
-      <td>Water bodies</td>
-      <td>OS OpenMap Local</td>
-      <td>Vector (water body polygon)</td>
-      <td>Euclidean accessibility</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>Retail centres [distance to nearest]</td>
-      <td>Retail centres</td>
-      <td>CDRC.ac.uk</td>
-      <td>Vector (retail centre polygon)</td>
-      <td>Euclidean accessibility</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">48</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>154
+\end{longtable}
 </pre></div>
 </div>
 </div>
@@ -11511,6 +10892,98 @@ Retail centres [distance to nearest]                                            
 </div>
 </div>
 </div>
+<div class="section" id="figure-of-context">
+<h2>Figure of context<a class="headerlink" href="#figure-of-context" title="Permalink to this headline">¶</a></h2>
+<p>Create a figure illustrating context.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tess</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/morphometrics/cells/cells_76.pq&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;hindex&quot;</span><span class="p">,</span> <span class="s2">&quot;tessellation&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
+<span class="kn">import</span> <span class="nn">contextily</span>
+<span class="kn">from</span> <span class="nn">matplotlib_scalebar.scalebar</span> <span class="kn">import</span> <span class="n">ScaleBar</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minx</span><span class="p">,</span> <span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">357500</span><span class="p">,</span> <span class="mi">360000</span><span class="p">,</span> <span class="mi">173500</span><span class="p">,</span> <span class="mi">176000</span><span class="p">)</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">tess</span><span class="o">.</span><span class="n">cx</span><span class="p">[</span><span class="n">minx</span><span class="p">:</span><span class="n">maxx</span><span class="p">,</span> <span class="n">miny</span><span class="p">:</span><span class="n">maxy</span><span class="p">]</span>
+<span class="n">central</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">Point</span><span class="p">((</span><span class="n">maxx</span><span class="o">+</span><span class="n">minx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">maxy</span><span class="o">+</span><span class="n">miny</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">momepy</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">momepy</span><span class="o">.</span><span class="n">sw_high</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">subset</span><span class="p">,</span> <span class="n">ids</span><span class="o">=</span><span class="s2">&quot;hindex&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighbors</span> <span class="o">=</span> <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="o">.</span><span class="n">hindex</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">neighbors</span><span class="p">[</span><span class="s1">&#39;c076e329053t0011&#39;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neighbors</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">central</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">Point</span><span class="p">((</span><span class="n">maxx</span><span class="o">+</span><span class="n">minx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">maxy</span><span class="o">+</span><span class="n">miny</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1200</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">central</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">ugg</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">neighbors</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="n">ugg</span><span class="o">.</span><span class="n">COLORS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">256</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
+
+<span class="c1"># buildings.plot(ax=ax, color=ugg.COLORS[1], alpha=.1, zorder=-1)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+<span class="n">scalebar</span> <span class="o">=</span> <span class="n">ScaleBar</span><span class="p">(</span><span class="n">dx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span>
+                    <span class="n">location</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span>
+                    <span class="n">height_fraction</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span>
+                    <span class="n">pad</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+                    <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">scalebar</span><span class="p">)</span>
+
+<span class="n">contextily</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">contextily</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Esri</span><span class="o">.</span><span class="n">WorldImagery</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">subset</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;cell_context.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/create_data_product_129_0.png" src="../_images/create_data_product_129_0.png" />
+</div>
+</div>
+</div>
 <div class="section" id="feature-importance">
 <h2>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -11536,15 +11009,28 @@ Retail centres [distance to nearest]                                            
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">importances</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_latex</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">importances</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">longtable</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{tabular}{lr}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{longtable}{lr}
 \toprule
 {} &amp;  relative importance \\
 \midrule
+\endfirsthead
+
+\toprule
+{} &amp;  relative importance \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+
+\bottomrule
+\endlastfoot
 covered area ratio of ETC (Q1)             &amp;             0.036944 \\
 covered area ratio of ETC (Q2)             &amp;             0.031717 \\
 perimeter-weighted neighbours of ETC (Q2)  &amp;             0.023476 \\
@@ -11555,8 +11041,7 @@ longest axis length of ETC (Q2)            &amp;             0.014501 \\
 weighted reached enclosures of ETC (Q1)    &amp;             0.014115 \\
 reached area by neighbouring segments (Q3) &amp;             0.014000 \\
 reached area by neighbouring segments (Q1) &amp;             0.013904 \\
-\bottomrule
-\end{tabular}
+\end{longtable}
 </pre></div>
 </div>
 </div>
@@ -11570,6 +11055,13 @@ reached area by neighbouring segments (Q1) &amp;             0.013904 \\
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>relative importance    0.196135
 dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">importances</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;importances.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -11643,28 +11135,523 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">type_imp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">type_imp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">longtable</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{tabular}{lrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlr}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\begin{longtable}{llrlrlrlrlrlrlrlrlrlrlrlrlrlrlrlr}
 \toprule
-                                 Wild countryside &amp; \multicolumn{2}{l}{Countryside agriculture} &amp; \multicolumn{2}{l}{Gridded residential quarters} &amp; \multicolumn{2}{l}{Accessible suburbia} &amp; \multicolumn{2}{l}{Connected residential neighbourhoods} &amp; \multicolumn{2}{l}{Urban buffer} &amp; \multicolumn{2}{l}{Open sprawl} &amp; \multicolumn{2}{l}{Warehouse/Park land} &amp; \multicolumn{2}{l}{Local urbanity} &amp; \multicolumn{2}{l}{Dense residential neighbourhoods} &amp; \multicolumn{2}{l}{Disconnected suburbia} &amp; \multicolumn{2}{l}{Dense urban neighbourhoods} &amp; \multicolumn{2}{l}{Regional urbanity} &amp; \multicolumn{2}{l}{Metropolitan urbanity} &amp; \multicolumn{2}{l}{Concentrated urbanity} &amp; \multicolumn{2}{l}{Hyper concentrated urbanity} \\
-                                             name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                         name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                        name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                             name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance \\
+{} &amp; \multicolumn{2}{l}{Wild countryside} &amp; \multicolumn{2}{l}{Countryside agriculture} &amp; \multicolumn{2}{l}{Gridded residential quarters} &amp; \multicolumn{2}{l}{Accessible suburbia} &amp; \multicolumn{2}{l}{Connected residential neighbourhoods} &amp; \multicolumn{2}{l}{Urban buffer} &amp; \multicolumn{2}{l}{Open sprawl} &amp; \multicolumn{2}{l}{Warehouse/Park land} &amp; \multicolumn{2}{l}{Local urbanity} &amp; \multicolumn{2}{l}{Dense residential neighbourhoods} &amp; \multicolumn{2}{l}{Disconnected suburbia} &amp; \multicolumn{2}{l}{Dense urban neighbourhoods} &amp; \multicolumn{2}{l}{Regional urbanity} &amp; \multicolumn{2}{l}{Metropolitan urbanity} &amp; \multicolumn{2}{l}{Concentrated urbanity} &amp; \multicolumn{2}{l}{Hyper concentrated urbanity} \\
+{} &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                          name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                         name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                              name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance \\
 \midrule
-                  longest axis length of ETC (Q1) &amp;        0.196609 &amp;                     covered area ratio of ETC (Q1) &amp;        0.154212 &amp;             local closeness of street network (Q3) &amp;        0.095416 &amp;      weighted reached enclosures of ETC (Q3) &amp;        0.063690 &amp;                    cell alignment of building (Q1) &amp;        0.028481 &amp;            area covered by neighbouring cells (Q2) &amp;        0.071780 &amp;   reached area by local street network (Q1) &amp;        0.058349 &amp;                        elongation of building (Q1) &amp;        0.033986 &amp;                         perimeter of building (Q2) &amp;        0.101218 &amp; centroid - corner mean distance of building (Q2) &amp;        0.036962 &amp; local proportion of cul-de-sacs of street netwo... &amp;        0.023643 &amp;                         perimeter of building (Q2) &amp;        0.106663 &amp; centroid - corner distance deviation of buildin... &amp;        0.115378 &amp;      equivalent rectangular index of building (Q2) &amp;        0.110605 &amp;                              area of building (Q1) &amp;        0.128233 &amp;                     covered area ratio of ETC (Q2) &amp;        0.154124 \\
-                   covered area ratio of ETC (Q2) &amp;        0.151118 &amp;                     covered area ratio of ETC (Q2) &amp;        0.144279 &amp;             local closeness of street network (Q2) &amp;        0.046007 &amp; reached ETCs by tessellation contiguity (Q3) &amp;        0.062061 &amp; local proportion of 4-way intersections of stre... &amp;        0.022801 &amp;                     covered area ratio of ETC (Q2) &amp;        0.049986 &amp;  reached area by neighbouring segments (Q1) &amp;        0.033786 &amp;   centroid - corner mean distance of building (Q3) &amp;        0.028038 &amp;      equivalent rectangular index of building (Q1) &amp;        0.093518 &amp; centroid - corner mean distance of building (Q3) &amp;        0.030172 &amp;            local meshedness of street network (Q3) &amp;        0.021436 &amp;   centroid - corner mean distance of building (Q2) &amp;        0.084484 &amp;   centroid - corner mean distance of building (Q2) &amp;        0.088275 &amp;   centroid - corner mean distance of building (Q2) &amp;        0.087236 &amp; Workplace population [Distribution, hotels and ... &amp;        0.099872 &amp;          Workplace population [Manufacturing] (Q2) &amp;        0.143669 \\
-                   covered area ratio of ETC (Q1) &amp;        0.145754 &amp;                  mean inter-building distance (Q2) &amp;        0.078928 &amp;                        perimeter of enclosure (Q1) &amp;        0.044369 &amp; reached area by tessellation contiguity (Q2) &amp;        0.047628 &amp;                    cell alignment of building (Q2) &amp;        0.017361 &amp; mean distance to neighbouring nodes of street n... &amp;        0.048812 &amp;     area covered by node-attached ETCs (Q2) &amp;        0.023548 &amp;                        elongation of building (Q2) &amp;        0.025310 &amp;   centroid - corner mean distance of building (Q2) &amp;        0.082040 &amp;                            area of building (Q3) &amp;        0.029425 &amp;            local meshedness of street network (Q2) &amp;        0.020520 &amp;                         perimeter of building (Q3) &amp;        0.082203 &amp;                        squareness of building (Q3) &amp;        0.082130 &amp; centroid - corner distance deviation of buildin... &amp;        0.080684 &amp; Workplace population [Financial, real estate, p... &amp;        0.076751 &amp;                  Workplace population [Other] (Q2) &amp;        0.101678 \\
-                                 area of ETC (Q2) &amp;        0.096485 &amp;                                   area of ETC (Q2) &amp;        0.072977 &amp;                             area of enclosure (Q2) &amp;        0.037296 &amp;                             area of ETC (Q2) &amp;        0.045100 &amp;                             area of enclosure (Q2) &amp;        0.017232 &amp;                     covered area ratio of ETC (Q1) &amp;        0.046002 &amp;              covered area ratio of ETC (Q2) &amp;        0.022004 &amp;              circular compactness of building (Q1) &amp;        0.019596 &amp;                        squareness of building (Q3) &amp;        0.054375 &amp;                                  Population (Q3) &amp;        0.028051 &amp;      equivalent rectangular index of building (Q1) &amp;        0.020273 &amp;                              area of building (Q2) &amp;        0.066331 &amp; Workplace population [Financial, real estate, p... &amp;        0.071195 &amp;                           corners of building (Q2) &amp;        0.071910 &amp;                  Workplace population [Other] (Q2) &amp;        0.075844 &amp; Workplace population [Distribution, hotels and ... &amp;        0.081796 \\
-        perimeter-weighted neighbours of ETC (Q3) &amp;        0.075078 &amp;            area covered by node-attached ETCs (Q2) &amp;        0.066916 &amp;             local closeness of street network (Q1) &amp;        0.036698 &amp;   reached ETCs by neighbouring segments (Q1) &amp;        0.036865 &amp;                            orientation of ETC (Q2) &amp;        0.016519 &amp;         reached area by neighbouring segments (Q1) &amp;        0.038292 &amp;   local node density of street network (Q3) &amp;        0.018821 &amp; centroid - corner distance deviation of buildin... &amp;        0.017568 &amp;                              area of building (Q2) &amp;        0.051383 &amp;                       perimeter of building (Q2) &amp;        0.025995 &amp;              circular compactness of building (Q1) &amp;        0.019361 &amp;                                    Population (Q3) &amp;        0.039538 &amp;                         perimeter of building (Q2) &amp;        0.065223 &amp; Workplace population [Financial, real estate, p... &amp;        0.060205 &amp; Workplace population [Distribution, hotels and ... &amp;        0.070516 &amp;                     covered area ratio of ETC (Q1) &amp;        0.079165 \\
-       reached area by neighbouring segments (Q1) &amp;        0.048869 &amp; mean distance to neighbouring nodes of street n... &amp;        0.066150 &amp;            weighted reached enclosures of ETC (Q3) &amp;        0.031708 &amp;   reached ETCs by neighbouring segments (Q2) &amp;        0.029904 &amp;      equivalent rectangular index of building (Q1) &amp;        0.016281 &amp;                   circular compactness of ETC (Q2) &amp;        0.034693 &amp;  reached area by neighbouring segments (Q2) &amp;        0.018065 &amp;                         perimeter of building (Q3) &amp;        0.017147 &amp; centroid - corner distance deviation of buildin... &amp;        0.044975 &amp;                            area of building (Q2) &amp;        0.022935 &amp;                                    Population (Q1) &amp;        0.017855 &amp;                        squareness of building (Q3) &amp;        0.039269 &amp;                         perimeter of building (Q3) &amp;        0.057863 &amp; Workplace population [Distribution, hotels and ... &amp;        0.051041 &amp; Workplace population [Financial, real estate, p... &amp;        0.060396 &amp;          Workplace population [Manufacturing] (Q3) &amp;        0.074537 \\
-     reached area by tessellation contiguity (Q1) &amp;        0.018289 &amp;         reached area by neighbouring segments (Q1) &amp;        0.062776 &amp; local proportion of 4-way intersections of stre... &amp;        0.020617 &amp;    reached ETCs by local street network (Q2) &amp;        0.026220 &amp; local proportion of 4-way intersections of stre... &amp;        0.014317 &amp;            area covered by neighbouring cells (Q1) &amp;        0.033082 &amp;              covered area ratio of ETC (Q1) &amp;        0.018036 &amp;                       width of street profile (Q2) &amp;        0.016790 &amp; Workplace population [Financial, real estate, p... &amp;        0.044019 &amp;                      perimeter of enclosure (Q1) &amp;        0.020672 &amp;                        elongation of building (Q2) &amp;        0.016115 &amp; centroid - corner distance deviation of buildin... &amp;        0.034407 &amp;                              area of building (Q2) &amp;        0.050349 &amp;                         perimeter of building (Q2) &amp;        0.046511 &amp;          Workplace population [Manufacturing] (Q2) &amp;        0.054662 &amp;   centroid - corner mean distance of building (Q2) &amp;        0.070363 \\
-                                 area of ETC (Q3) &amp;        0.015991 &amp;       Land cover [Discontinuous urban fabric] (Q2) &amp;        0.055444 &amp;            area covered by node-attached ETCs (Q1) &amp;        0.019211 &amp;    perimeter-weighted neighbours of ETC (Q1) &amp;        0.023718 &amp;                        perimeter of enclosure (Q1) &amp;        0.014305 &amp;         buildings per meter of street segment (Q2) &amp;        0.032175 &amp;                      area of enclosure (Q2) &amp;        0.017156 &amp;              circular compactness of building (Q2) &amp;        0.016306 &amp; Workplace population [Distribution, hotels and ... &amp;        0.035144 &amp;                    orientation of enclosure (Q2) &amp;        0.017636 &amp;         reached area by neighbouring segments (Q2) &amp;        0.015907 &amp; Workplace population [Financial, real estate, p... &amp;        0.029293 &amp; Workplace population [Distribution, hotels and ... &amp;        0.048963 &amp;                        squareness of building (Q3) &amp;        0.039035 &amp;                         perimeter of building (Q2) &amp;        0.046941 &amp;                         perimeter of building (Q2) &amp;        0.054542 \\
-mean distance between neighbouring buildings (Q2) &amp;        0.015013 &amp;          perimeter-weighted neighbours of ETC (Q2) &amp;        0.021903 &amp;            area covered by node-attached ETCs (Q2) &amp;        0.018326 &amp; reached area by tessellation contiguity (Q1) &amp;        0.022821 &amp; local proportion of cul-de-sacs of street netwo... &amp;        0.013748 &amp;       reached area by tessellation contiguity (Q1) &amp;        0.029531 &amp; compactness-weighted axis of enclosure (Q3) &amp;        0.016709 &amp;       reached area by tessellation contiguity (Q1) &amp;        0.016248 &amp;                         perimeter of building (Q3) &amp;        0.033695 &amp;                       perimeter of building (Q3) &amp;        0.016561 &amp;            area covered by edge-attached ETCs (Q3) &amp;        0.015526 &amp;      equivalent rectangular index of building (Q1) &amp;        0.017548 &amp;                           corners of building (Q3) &amp;        0.029268 &amp; Workplace population [Financial, real estate, p... &amp;        0.029708 &amp;   centroid - corner mean distance of building (Q2) &amp;        0.044694 &amp;                    openness of street profile (Q2) &amp;        0.031258 \\
-                mean inter-building distance (Q2) &amp;        0.010559 &amp;                    longest axis length of ETC (Q2) &amp;        0.020504 &amp;            weighted reached enclosures of ETC (Q2) &amp;        0.016607 &amp;    reached ETCs by local street network (Q1) &amp;        0.020275 &amp;                      orientation of enclosure (Q1) &amp;        0.013305 &amp;            area covered by node-attached ETCs (Q3) &amp;        0.027952 &amp;                            area of ETC (Q2) &amp;        0.015707 &amp;                         perimeter of building (Q2) &amp;        0.014735 &amp;                              area of building (Q1) &amp;        0.022769 &amp;                           area of enclosure (Q1) &amp;        0.015454 &amp;              circular compactness of building (Q2) &amp;        0.015257 &amp;                  Workplace population [Other] (Q2) &amp;        0.016284 &amp; centroid - corner distance deviation of buildin... &amp;        0.020625 &amp;   centroid - corner mean distance of building (Q1) &amp;        0.018957 &amp;        Land cover [Non-irrigated arable land] (Q1) &amp;        0.025912 &amp;                                          NDVI (Q3) &amp;        0.027406 \\
+\endfirsthead
+
+\toprule
+{} &amp; \multicolumn{2}{l}{Wild countryside} &amp; \multicolumn{2}{l}{Countryside agriculture} &amp; \multicolumn{2}{l}{Gridded residential quarters} &amp; \multicolumn{2}{l}{Accessible suburbia} &amp; \multicolumn{2}{l}{Connected residential neighbourhoods} &amp; \multicolumn{2}{l}{Urban buffer} &amp; \multicolumn{2}{l}{Open sprawl} &amp; \multicolumn{2}{l}{Warehouse/Park land} &amp; \multicolumn{2}{l}{Local urbanity} &amp; \multicolumn{2}{l}{Dense residential neighbourhoods} &amp; \multicolumn{2}{l}{Disconnected suburbia} &amp; \multicolumn{2}{l}{Dense urban neighbourhoods} &amp; \multicolumn{2}{l}{Regional urbanity} &amp; \multicolumn{2}{l}{Metropolitan urbanity} &amp; \multicolumn{2}{l}{Concentrated urbanity} &amp; \multicolumn{2}{l}{Hyper concentrated urbanity} \\
+{} &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                          name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                         name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                              name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance &amp;                                               name &amp; rel. importance \\
+\midrule
+\endhead
+\midrule
+\multicolumn{33}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+
 \bottomrule
-\end{tabular}
+\endlastfoot
+0 &amp;                    longest axis length of ETC (Q1) &amp;           0.197 &amp;                     covered area ratio of ETC (Q1) &amp;           0.154 &amp;             local closeness of street network (Q3) &amp;           0.095 &amp;       weighted reached enclosures of ETC (Q3) &amp;           0.064 &amp;                    cell alignment of building (Q1) &amp;           0.028 &amp;            area covered by neighbouring cells (Q2) &amp;           0.072 &amp;    reached area by local street network (Q1) &amp;           0.058 &amp;                        elongation of building (Q1) &amp;           0.034 &amp;                         perimeter of building (Q2) &amp;           0.101 &amp;  centroid - corner mean distance of building (Q2) &amp;           0.037 &amp;  local proportion of cul-de-sacs of street netw... &amp;           0.024 &amp;                         perimeter of building (Q2) &amp;           0.107 &amp;  centroid - corner distance deviation of buildi... &amp;           0.115 &amp;      equivalent rectangular index of building (Q2) &amp;           0.111 &amp;                              area of building (Q1) &amp;           0.128 &amp;                     covered area ratio of ETC (Q2) &amp;           0.154 \\
+1 &amp;                     covered area ratio of ETC (Q2) &amp;           0.151 &amp;                     covered area ratio of ETC (Q2) &amp;           0.144 &amp;             local closeness of street network (Q2) &amp;           0.046 &amp;  reached ETCs by tessellation contiguity (Q3) &amp;           0.062 &amp;  local proportion of 4-way intersections of str... &amp;           0.023 &amp;                     covered area ratio of ETC (Q2) &amp;           0.050 &amp;   reached area by neighbouring segments (Q1) &amp;           0.034 &amp;   centroid - corner mean distance of building (Q3) &amp;           0.028 &amp;      equivalent rectangular index of building (Q1) &amp;           0.094 &amp;  centroid - corner mean distance of building (Q3) &amp;           0.030 &amp;            local meshedness of street network (Q3) &amp;           0.021 &amp;   centroid - corner mean distance of building (Q2) &amp;           0.084 &amp;   centroid - corner mean distance of building (Q2) &amp;           0.088 &amp;   centroid - corner mean distance of building (Q2) &amp;           0.087 &amp;  Workplace population [Distribution, hotels and... &amp;           0.100 &amp;          Workplace population [Manufacturing] (Q2) &amp;           0.144 \\
+2 &amp;                     covered area ratio of ETC (Q1) &amp;           0.146 &amp;                  mean inter-building distance (Q2) &amp;           0.079 &amp;                        perimeter of enclosure (Q1) &amp;           0.044 &amp;  reached area by tessellation contiguity (Q2) &amp;           0.048 &amp;                    cell alignment of building (Q2) &amp;           0.017 &amp;  mean distance to neighbouring nodes of street ... &amp;           0.049 &amp;      area covered by node-attached ETCs (Q2) &amp;           0.024 &amp;                        elongation of building (Q2) &amp;           0.025 &amp;   centroid - corner mean distance of building (Q2) &amp;           0.082 &amp;                             area of building (Q3) &amp;           0.029 &amp;            local meshedness of street network (Q2) &amp;           0.021 &amp;                         perimeter of building (Q3) &amp;           0.082 &amp;                        squareness of building (Q3) &amp;           0.082 &amp;  centroid - corner distance deviation of buildi... &amp;           0.081 &amp;  Workplace population [Financial, real estate, ... &amp;           0.077 &amp;                  Workplace population [Other] (Q2) &amp;           0.102 \\
+3 &amp;                                   area of ETC (Q2) &amp;           0.096 &amp;                                   area of ETC (Q2) &amp;           0.073 &amp;                             area of enclosure (Q2) &amp;           0.037 &amp;                              area of ETC (Q2) &amp;           0.045 &amp;                             area of enclosure (Q2) &amp;           0.017 &amp;                     covered area ratio of ETC (Q1) &amp;           0.046 &amp;               covered area ratio of ETC (Q2) &amp;           0.022 &amp;              circular compactness of building (Q1) &amp;           0.020 &amp;                        squareness of building (Q3) &amp;           0.054 &amp;                                   Population (Q3) &amp;           0.028 &amp;      equivalent rectangular index of building (Q1) &amp;           0.020 &amp;                              area of building (Q2) &amp;           0.066 &amp;  Workplace population [Financial, real estate, ... &amp;           0.071 &amp;                           corners of building (Q2) &amp;           0.072 &amp;                  Workplace population [Other] (Q2) &amp;           0.076 &amp;  Workplace population [Distribution, hotels and... &amp;           0.082 \\
+4 &amp;          perimeter-weighted neighbours of ETC (Q3) &amp;           0.075 &amp;            area covered by node-attached ETCs (Q2) &amp;           0.067 &amp;             local closeness of street network (Q1) &amp;           0.037 &amp;    reached ETCs by neighbouring segments (Q1) &amp;           0.037 &amp;                            orientation of ETC (Q2) &amp;           0.017 &amp;         reached area by neighbouring segments (Q1) &amp;           0.038 &amp;    local node density of street network (Q3) &amp;           0.019 &amp;  centroid - corner distance deviation of buildi... &amp;           0.018 &amp;                              area of building (Q2) &amp;           0.051 &amp;                        perimeter of building (Q2) &amp;           0.026 &amp;              circular compactness of building (Q1) &amp;           0.019 &amp;                                    Population (Q3) &amp;           0.040 &amp;                         perimeter of building (Q2) &amp;           0.065 &amp;  Workplace population [Financial, real estate, ... &amp;           0.060 &amp;  Workplace population [Distribution, hotels and... &amp;           0.071 &amp;                     covered area ratio of ETC (Q1) &amp;           0.079 \\
+5 &amp;         reached area by neighbouring segments (Q1) &amp;           0.049 &amp;  mean distance to neighbouring nodes of street ... &amp;           0.066 &amp;            weighted reached enclosures of ETC (Q3) &amp;           0.032 &amp;    reached ETCs by neighbouring segments (Q2) &amp;           0.030 &amp;      equivalent rectangular index of building (Q1) &amp;           0.016 &amp;                   circular compactness of ETC (Q2) &amp;           0.035 &amp;   reached area by neighbouring segments (Q2) &amp;           0.018 &amp;                         perimeter of building (Q3) &amp;           0.017 &amp;  centroid - corner distance deviation of buildi... &amp;           0.045 &amp;                             area of building (Q2) &amp;           0.023 &amp;                                    Population (Q1) &amp;           0.018 &amp;                        squareness of building (Q3) &amp;           0.039 &amp;                         perimeter of building (Q3) &amp;           0.058 &amp;  Workplace population [Distribution, hotels and... &amp;           0.051 &amp;  Workplace population [Financial, real estate, ... &amp;           0.060 &amp;          Workplace population [Manufacturing] (Q3) &amp;           0.075 \\
+6 &amp;       reached area by tessellation contiguity (Q1) &amp;           0.018 &amp;         reached area by neighbouring segments (Q1) &amp;           0.063 &amp;  local proportion of 4-way intersections of str... &amp;           0.021 &amp;     reached ETCs by local street network (Q2) &amp;           0.026 &amp;  local proportion of 4-way intersections of str... &amp;           0.014 &amp;            area covered by neighbouring cells (Q1) &amp;           0.033 &amp;               covered area ratio of ETC (Q1) &amp;           0.018 &amp;                       width of street profile (Q2) &amp;           0.017 &amp;  Workplace population [Financial, real estate, ... &amp;           0.044 &amp;                       perimeter of enclosure (Q1) &amp;           0.021 &amp;                        elongation of building (Q2) &amp;           0.016 &amp;  centroid - corner distance deviation of buildi... &amp;           0.034 &amp;                              area of building (Q2) &amp;           0.050 &amp;                         perimeter of building (Q2) &amp;           0.047 &amp;          Workplace population [Manufacturing] (Q2) &amp;           0.055 &amp;   centroid - corner mean distance of building (Q2) &amp;           0.070 \\
+7 &amp;                                   area of ETC (Q3) &amp;           0.016 &amp;       Land cover [Discontinuous urban fabric] (Q2) &amp;           0.055 &amp;            area covered by node-attached ETCs (Q1) &amp;           0.019 &amp;     perimeter-weighted neighbours of ETC (Q1) &amp;           0.024 &amp;                        perimeter of enclosure (Q1) &amp;           0.014 &amp;         buildings per meter of street segment (Q2) &amp;           0.032 &amp;                       area of enclosure (Q2) &amp;           0.017 &amp;              circular compactness of building (Q2) &amp;           0.016 &amp;  Workplace population [Distribution, hotels and... &amp;           0.035 &amp;                     orientation of enclosure (Q2) &amp;           0.018 &amp;         reached area by neighbouring segments (Q2) &amp;           0.016 &amp;  Workplace population [Financial, real estate, ... &amp;           0.029 &amp;  Workplace population [Distribution, hotels and... &amp;           0.049 &amp;                        squareness of building (Q3) &amp;           0.039 &amp;                         perimeter of building (Q2) &amp;           0.047 &amp;                         perimeter of building (Q2) &amp;           0.055 \\
+8 &amp;  mean distance between neighbouring buildings (Q2) &amp;           0.015 &amp;          perimeter-weighted neighbours of ETC (Q2) &amp;           0.022 &amp;            area covered by node-attached ETCs (Q2) &amp;           0.018 &amp;  reached area by tessellation contiguity (Q1) &amp;           0.023 &amp;  local proportion of cul-de-sacs of street netw... &amp;           0.014 &amp;       reached area by tessellation contiguity (Q1) &amp;           0.030 &amp;  compactness-weighted axis of enclosure (Q3) &amp;           0.017 &amp;       reached area by tessellation contiguity (Q1) &amp;           0.016 &amp;                         perimeter of building (Q3) &amp;           0.034 &amp;                        perimeter of building (Q3) &amp;           0.017 &amp;            area covered by edge-attached ETCs (Q3) &amp;           0.016 &amp;      equivalent rectangular index of building (Q1) &amp;           0.018 &amp;                           corners of building (Q3) &amp;           0.029 &amp;  Workplace population [Financial, real estate, ... &amp;           0.030 &amp;   centroid - corner mean distance of building (Q2) &amp;           0.045 &amp;                    openness of street profile (Q2) &amp;           0.031 \\
+9 &amp;                  mean inter-building distance (Q2) &amp;           0.011 &amp;                    longest axis length of ETC (Q2) &amp;           0.021 &amp;            weighted reached enclosures of ETC (Q2) &amp;           0.017 &amp;     reached ETCs by local street network (Q1) &amp;           0.020 &amp;                      orientation of enclosure (Q1) &amp;           0.013 &amp;            area covered by node-attached ETCs (Q3) &amp;           0.028 &amp;                             area of ETC (Q2) &amp;           0.016 &amp;                         perimeter of building (Q2) &amp;           0.015 &amp;                              area of building (Q1) &amp;           0.023 &amp;                            area of enclosure (Q1) &amp;           0.015 &amp;              circular compactness of building (Q2) &amp;           0.015 &amp;                  Workplace population [Other] (Q2) &amp;           0.016 &amp;  centroid - corner distance deviation of buildi... &amp;           0.021 &amp;   centroid - corner mean distance of building (Q1) &amp;           0.019 &amp;        Land cover [Non-irrigated arable land] (Q1) &amp;           0.026 &amp;                                          NDVI (Q3) &amp;           0.027 \\
+\end{longtable}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">type_imp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Wild countryside</th>
+      <th>name</th>
+      <td>longest axis length of ETC (Q1)</td>
+      <td>covered area ratio of ETC (Q2)</td>
+      <td>covered area ratio of ETC (Q1)</td>
+      <td>area of ETC (Q2)</td>
+      <td>perimeter-weighted neighbours of ETC (Q3)</td>
+      <td>reached area by neighbouring segments (Q1)</td>
+      <td>reached area by tessellation contiguity (Q1)</td>
+      <td>area of ETC (Q3)</td>
+      <td>mean distance between neighbouring buildings (Q2)</td>
+      <td>mean inter-building distance (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.197</td>
+      <td>0.151</td>
+      <td>0.146</td>
+      <td>0.096</td>
+      <td>0.075</td>
+      <td>0.049</td>
+      <td>0.018</td>
+      <td>0.016</td>
+      <td>0.015</td>
+      <td>0.011</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Countryside agriculture</th>
+      <th>name</th>
+      <td>covered area ratio of ETC (Q1)</td>
+      <td>covered area ratio of ETC (Q2)</td>
+      <td>mean inter-building distance (Q2)</td>
+      <td>area of ETC (Q2)</td>
+      <td>area covered by node-attached ETCs (Q2)</td>
+      <td>mean distance to neighbouring nodes of street ...</td>
+      <td>reached area by neighbouring segments (Q1)</td>
+      <td>Land cover [Discontinuous urban fabric] (Q2)</td>
+      <td>perimeter-weighted neighbours of ETC (Q2)</td>
+      <td>longest axis length of ETC (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.154</td>
+      <td>0.144</td>
+      <td>0.079</td>
+      <td>0.073</td>
+      <td>0.067</td>
+      <td>0.066</td>
+      <td>0.063</td>
+      <td>0.055</td>
+      <td>0.022</td>
+      <td>0.021</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Gridded residential quarters</th>
+      <th>name</th>
+      <td>local closeness of street network (Q3)</td>
+      <td>local closeness of street network (Q2)</td>
+      <td>perimeter of enclosure (Q1)</td>
+      <td>area of enclosure (Q2)</td>
+      <td>local closeness of street network (Q1)</td>
+      <td>weighted reached enclosures of ETC (Q3)</td>
+      <td>local proportion of 4-way intersections of str...</td>
+      <td>area covered by node-attached ETCs (Q1)</td>
+      <td>area covered by node-attached ETCs (Q2)</td>
+      <td>weighted reached enclosures of ETC (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.095</td>
+      <td>0.046</td>
+      <td>0.044</td>
+      <td>0.037</td>
+      <td>0.037</td>
+      <td>0.032</td>
+      <td>0.021</td>
+      <td>0.019</td>
+      <td>0.018</td>
+      <td>0.017</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Accessible suburbia</th>
+      <th>name</th>
+      <td>weighted reached enclosures of ETC (Q3)</td>
+      <td>reached ETCs by tessellation contiguity (Q3)</td>
+      <td>reached area by tessellation contiguity (Q2)</td>
+      <td>area of ETC (Q2)</td>
+      <td>reached ETCs by neighbouring segments (Q1)</td>
+      <td>reached ETCs by neighbouring segments (Q2)</td>
+      <td>reached ETCs by local street network (Q2)</td>
+      <td>perimeter-weighted neighbours of ETC (Q1)</td>
+      <td>reached area by tessellation contiguity (Q1)</td>
+      <td>reached ETCs by local street network (Q1)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.064</td>
+      <td>0.062</td>
+      <td>0.048</td>
+      <td>0.045</td>
+      <td>0.037</td>
+      <td>0.03</td>
+      <td>0.026</td>
+      <td>0.024</td>
+      <td>0.023</td>
+      <td>0.02</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Connected residential neighbourhoods</th>
+      <th>name</th>
+      <td>cell alignment of building (Q1)</td>
+      <td>local proportion of 4-way intersections of str...</td>
+      <td>cell alignment of building (Q2)</td>
+      <td>area of enclosure (Q2)</td>
+      <td>orientation of ETC (Q2)</td>
+      <td>equivalent rectangular index of building (Q1)</td>
+      <td>local proportion of 4-way intersections of str...</td>
+      <td>perimeter of enclosure (Q1)</td>
+      <td>local proportion of cul-de-sacs of street netw...</td>
+      <td>orientation of enclosure (Q1)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.028</td>
+      <td>0.023</td>
+      <td>0.017</td>
+      <td>0.017</td>
+      <td>0.017</td>
+      <td>0.016</td>
+      <td>0.014</td>
+      <td>0.014</td>
+      <td>0.014</td>
+      <td>0.013</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Urban buffer</th>
+      <th>name</th>
+      <td>area covered by neighbouring cells (Q2)</td>
+      <td>covered area ratio of ETC (Q2)</td>
+      <td>mean distance to neighbouring nodes of street ...</td>
+      <td>covered area ratio of ETC (Q1)</td>
+      <td>reached area by neighbouring segments (Q1)</td>
+      <td>circular compactness of ETC (Q2)</td>
+      <td>area covered by neighbouring cells (Q1)</td>
+      <td>buildings per meter of street segment (Q2)</td>
+      <td>reached area by tessellation contiguity (Q1)</td>
+      <td>area covered by node-attached ETCs (Q3)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.072</td>
+      <td>0.05</td>
+      <td>0.049</td>
+      <td>0.046</td>
+      <td>0.038</td>
+      <td>0.035</td>
+      <td>0.033</td>
+      <td>0.032</td>
+      <td>0.03</td>
+      <td>0.028</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Open sprawl</th>
+      <th>name</th>
+      <td>reached area by local street network (Q1)</td>
+      <td>reached area by neighbouring segments (Q1)</td>
+      <td>area covered by node-attached ETCs (Q2)</td>
+      <td>covered area ratio of ETC (Q2)</td>
+      <td>local node density of street network (Q3)</td>
+      <td>reached area by neighbouring segments (Q2)</td>
+      <td>covered area ratio of ETC (Q1)</td>
+      <td>area of enclosure (Q2)</td>
+      <td>compactness-weighted axis of enclosure (Q3)</td>
+      <td>area of ETC (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.058</td>
+      <td>0.034</td>
+      <td>0.024</td>
+      <td>0.022</td>
+      <td>0.019</td>
+      <td>0.018</td>
+      <td>0.018</td>
+      <td>0.017</td>
+      <td>0.017</td>
+      <td>0.016</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Warehouse/Park land</th>
+      <th>name</th>
+      <td>elongation of building (Q1)</td>
+      <td>centroid - corner mean distance of building (Q3)</td>
+      <td>elongation of building (Q2)</td>
+      <td>circular compactness of building (Q1)</td>
+      <td>centroid - corner distance deviation of buildi...</td>
+      <td>perimeter of building (Q3)</td>
+      <td>width of street profile (Q2)</td>
+      <td>circular compactness of building (Q2)</td>
+      <td>reached area by tessellation contiguity (Q1)</td>
+      <td>perimeter of building (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.034</td>
+      <td>0.028</td>
+      <td>0.025</td>
+      <td>0.02</td>
+      <td>0.018</td>
+      <td>0.017</td>
+      <td>0.017</td>
+      <td>0.016</td>
+      <td>0.016</td>
+      <td>0.015</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Local urbanity</th>
+      <th>name</th>
+      <td>perimeter of building (Q2)</td>
+      <td>equivalent rectangular index of building (Q1)</td>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>squareness of building (Q3)</td>
+      <td>area of building (Q2)</td>
+      <td>centroid - corner distance deviation of buildi...</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>Workplace population [Distribution, hotels and...</td>
+      <td>perimeter of building (Q3)</td>
+      <td>area of building (Q1)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.101</td>
+      <td>0.094</td>
+      <td>0.082</td>
+      <td>0.054</td>
+      <td>0.051</td>
+      <td>0.045</td>
+      <td>0.044</td>
+      <td>0.035</td>
+      <td>0.034</td>
+      <td>0.023</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Dense residential neighbourhoods</th>
+      <th>name</th>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>centroid - corner mean distance of building (Q3)</td>
+      <td>area of building (Q3)</td>
+      <td>Population (Q3)</td>
+      <td>perimeter of building (Q2)</td>
+      <td>area of building (Q2)</td>
+      <td>perimeter of enclosure (Q1)</td>
+      <td>orientation of enclosure (Q2)</td>
+      <td>perimeter of building (Q3)</td>
+      <td>area of enclosure (Q1)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.037</td>
+      <td>0.03</td>
+      <td>0.029</td>
+      <td>0.028</td>
+      <td>0.026</td>
+      <td>0.023</td>
+      <td>0.021</td>
+      <td>0.018</td>
+      <td>0.017</td>
+      <td>0.015</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Disconnected suburbia</th>
+      <th>name</th>
+      <td>local proportion of cul-de-sacs of street netw...</td>
+      <td>local meshedness of street network (Q3)</td>
+      <td>local meshedness of street network (Q2)</td>
+      <td>equivalent rectangular index of building (Q1)</td>
+      <td>circular compactness of building (Q1)</td>
+      <td>Population (Q1)</td>
+      <td>elongation of building (Q2)</td>
+      <td>reached area by neighbouring segments (Q2)</td>
+      <td>area covered by edge-attached ETCs (Q3)</td>
+      <td>circular compactness of building (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.024</td>
+      <td>0.021</td>
+      <td>0.021</td>
+      <td>0.02</td>
+      <td>0.019</td>
+      <td>0.018</td>
+      <td>0.016</td>
+      <td>0.016</td>
+      <td>0.016</td>
+      <td>0.015</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Dense urban neighbourhoods</th>
+      <th>name</th>
+      <td>perimeter of building (Q2)</td>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>perimeter of building (Q3)</td>
+      <td>area of building (Q2)</td>
+      <td>Population (Q3)</td>
+      <td>squareness of building (Q3)</td>
+      <td>centroid - corner distance deviation of buildi...</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>equivalent rectangular index of building (Q1)</td>
+      <td>Workplace population [Other] (Q2)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.107</td>
+      <td>0.084</td>
+      <td>0.082</td>
+      <td>0.066</td>
+      <td>0.04</td>
+      <td>0.039</td>
+      <td>0.034</td>
+      <td>0.029</td>
+      <td>0.018</td>
+      <td>0.016</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Regional urbanity</th>
+      <th>name</th>
+      <td>centroid - corner distance deviation of buildi...</td>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>squareness of building (Q3)</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>perimeter of building (Q2)</td>
+      <td>perimeter of building (Q3)</td>
+      <td>area of building (Q2)</td>
+      <td>Workplace population [Distribution, hotels and...</td>
+      <td>corners of building (Q3)</td>
+      <td>centroid - corner distance deviation of buildi...</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.115</td>
+      <td>0.088</td>
+      <td>0.082</td>
+      <td>0.071</td>
+      <td>0.065</td>
+      <td>0.058</td>
+      <td>0.05</td>
+      <td>0.049</td>
+      <td>0.029</td>
+      <td>0.021</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Metropolitan urbanity</th>
+      <th>name</th>
+      <td>equivalent rectangular index of building (Q2)</td>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>centroid - corner distance deviation of buildi...</td>
+      <td>corners of building (Q2)</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>Workplace population [Distribution, hotels and...</td>
+      <td>perimeter of building (Q2)</td>
+      <td>squareness of building (Q3)</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>centroid - corner mean distance of building (Q1)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.111</td>
+      <td>0.087</td>
+      <td>0.081</td>
+      <td>0.072</td>
+      <td>0.06</td>
+      <td>0.051</td>
+      <td>0.047</td>
+      <td>0.039</td>
+      <td>0.03</td>
+      <td>0.019</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Concentrated urbanity</th>
+      <th>name</th>
+      <td>area of building (Q1)</td>
+      <td>Workplace population [Distribution, hotels and...</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>Workplace population [Other] (Q2)</td>
+      <td>Workplace population [Distribution, hotels and...</td>
+      <td>Workplace population [Financial, real estate, ...</td>
+      <td>Workplace population [Manufacturing] (Q2)</td>
+      <td>perimeter of building (Q2)</td>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>Land cover [Non-irrigated arable land] (Q1)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.128</td>
+      <td>0.1</td>
+      <td>0.077</td>
+      <td>0.076</td>
+      <td>0.071</td>
+      <td>0.06</td>
+      <td>0.055</td>
+      <td>0.047</td>
+      <td>0.045</td>
+      <td>0.026</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Hyper concentrated urbanity</th>
+      <th>name</th>
+      <td>covered area ratio of ETC (Q2)</td>
+      <td>Workplace population [Manufacturing] (Q2)</td>
+      <td>Workplace population [Other] (Q2)</td>
+      <td>Workplace population [Distribution, hotels and...</td>
+      <td>covered area ratio of ETC (Q1)</td>
+      <td>Workplace population [Manufacturing] (Q3)</td>
+      <td>centroid - corner mean distance of building (Q2)</td>
+      <td>perimeter of building (Q2)</td>
+      <td>openness of street profile (Q2)</td>
+      <td>NDVI (Q3)</td>
+    </tr>
+    <tr>
+      <th>rel. importance</th>
+      <td>0.154</td>
+      <td>0.144</td>
+      <td>0.102</td>
+      <td>0.082</td>
+      <td>0.079</td>
+      <td>0.075</td>
+      <td>0.07</td>
+      <td>0.055</td>
+      <td>0.031</td>
+      <td>0.027</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">type_imp</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;importances_type.xlsx&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
