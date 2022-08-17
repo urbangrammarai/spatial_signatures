@@ -1,0 +1,329 @@
+,relative importance
+covered area ratio of ETC (Q1),0.0369441628998086
+covered area ratio of ETC (Q2),0.0317167605355269
+perimeter-weighted neighbours of ETC (Q2),0.0234756497206171
+mean inter-building distance (Q2),0.0166620523660334
+area of ETC (Q3),0.016004502064894
+area covered by node-attached ETCs (Q3),0.0148127579806641
+longest axis length of ETC (Q2),0.0145009650171013
+weighted reached enclosures of ETC (Q1),0.0141145285637235
+reached area by neighbouring segments (Q3),0.0139998924383623
+reached area by neighbouring segments (Q1),0.0139038842168188
+mean distance between neighbouring buildings (Q3),0.0138803310996219
+area covered by edge-attached ETCs (Q2),0.0137587267176893
+area covered by edge-attached ETCs (Q3),0.01343685448545
+area covered by neighbouring cells (Q2),0.0124058124712072
+area of ETC (Q2),0.0123491262616644
+mean distance between neighbouring buildings (Q2),0.011736689470447
+weighted reached enclosures of ETC (Q3),0.0117276750079646
+reached ETCs by local street network (Q1),0.0116729840016331
+reached area by tessellation contiguity (Q2),0.0106508399372922
+longest axis length of ETC (Q3),0.0103974648460589
+openness of street profile (Q2),0.0098637777948951
+mean inter-building distance (Q1),0.0098426129793641
+perimeter-weighted neighbours of ETC (Q1),0.0095591324723849
+covered area ratio of ETC (Q3),0.0094605560238566
+reached ETCs by local street network (Q2),0.0094325547703474
+area covered by edge-attached ETCs (Q1),0.0093531385668866
+reached ETCs by neighbouring segments (Q2),0.0091769744307065
+centroid - corner mean distance of building (Q3),0.0089671312030663
+weighted reached enclosures of ETC (Q2),0.0087263021276135
+reached area by tessellation contiguity (Q1),0.0085984614795039
+perimeter of building (Q3),0.0082919816527223
+buildings per meter of street segment (Q2),0.0081174030487022
+area covered by node-attached ETCs (Q2),0.0080807132312017
+cell alignment of building (Q2),0.0079992667880832
+circular compactness of ETC (Q2),0.0079396522693439
+circular compactness of building (Q2),0.0078862163445285
+reached area by local street network (Q1),0.0077328245546909
+mean distance to neighbouring nodes of street network (Q2),0.0075131816357082
+circular compactness of building (Q1),0.0074279551719323
+equivalent rectangular index of building (Q1),0.0072401878318169
+buildings per meter of street segment (Q1),0.0071235393833053
+cell alignment of building (Q1),0.007097839689735
+local node density of street network (Q1),0.007061626404685
+mean inter-building distance (Q3),0.0069938055426063
+reached ETCs by local street network (Q3),0.0069042861484076
+mean distance to neighbouring nodes of street network (Q3),0.0064666124434273
+local degree weighted node density of street network (Q2),0.0064297511038411
+Population (Q3),0.0063977761716241
+reached area by neighbouring segments (Q2),0.0062819235482952
+street alignment of building (Q1),0.0061840074011542
+elongation of building (Q1),0.006119086149682
+reached area by local street network (Q3),0.0060769864471772
+local proportion of cul-de-sacs of street network (Q2),0.0060485899219888
+local proportion of cul-de-sacs of street network (Q3),0.0059964047672987
+area of building (Q3),0.0059936694909951
+elongation of building (Q2),0.0059153504880582
+centroid - corner mean distance of building (Q2),0.005911182440423
+length of street segment (Q2),0.0059079557839149
+reached ETCs by neighbouring segments (Q1),0.0057129880542793
+perimeter of building (Q2),0.0057068709238617
+length of street segment (Q3),0.0056939416423741
+Population (Q2),0.0055528094982867
+area covered by neighbouring cells (Q3),0.0053770573344549
+buildings per meter of street segment (Q3),0.0053380799958549
+local degree weighted node density of street network (Q1),0.0052753571705902
+mean segment length within 3 steps (Q2),0.0050818914009251
+mean segment length within 3 steps (Q1),0.0050554039711786
+street alignment of building (Q2),0.0050390609685181
+local meshedness of street network (Q2),0.0050219006108293
+centroid - corner distance deviation of building (Q2),0.0049430055404405
+mean segment length within 3 steps (Q3),0.0049424572223923
+circular compactness of ETC (Q3),0.0049418840332754
+openness of street profile (Q3),0.0047864230727718
+compactness-weighted axis of enclosure (Q2),0.0047492680620522
+local node density of street network (Q2),0.0047169863686782
+area covered by neighbouring cells (Q1),0.0046918864476111
+openness of street profile (Q1),0.0046452833051238
+circular compactness of building (Q3),0.0046214063202664
+perimeter-weighted neighbours of ETC (Q3),0.0044258330642253
+area of building (Q2),0.0044120026302593
+perimeter of enclosure (Q2),0.0043319316052788
+reached area by local street network (Q2),0.0043113148515424
+area of enclosure (Q2),0.0043044074874339
+longest axis length of ETC (Q1),0.004263682825535
+orientation of ETC (Q2),0.0042096049313901
+reached ETCs by tessellation contiguity (Q2),0.0041457621780385
+circular compactness of ETC (Q1),0.0040809001264992
+Night lights (Q2),0.0039494572076459
+local meshedness of street network (Q1),0.0039307818248562
+Night lights (Q1),0.0038928437512379
+reached area by tessellation contiguity (Q3),0.0037423298154118
+orientation of building (Q2),0.0036924511159648
+reached ETCs by neighbouring segments (Q3),0.0036022757597505
+area covered by node-attached ETCs (Q1),0.0035760754569213
+centroid - corner distance deviation of building (Q3),0.0035647853094222
+cell alignment of building (Q3),0.0035463938651799
+perimeter of enclosure (Q1),0.0034497769993026
+mean distance to neighbouring nodes of street network (Q1),0.0034081271361499
+linearity of street segment (Q2),0.0033982952774294
+area of enclosure (Q1),0.0033810176713852
+reached ETCs by tessellation contiguity (Q1),0.0033615892660015
+NDVI (Q1),0.0033249617626425
+area of ETC (Q1),0.0032812705050339
+local cul-de-sac length of street network (Q2),0.0032148680688186
+local closeness of street network (Q2),0.0031839912914944
+orientation of ETC (Q1),0.0031418700467084
+Population (Q1),0.003124804253895
+local closeness of street network (Q3),0.003090329356099
+local closeness of street network (Q1),0.0030888606724506
+orientation of ETC (Q3),0.0030492443742629
+centroid - corner distance deviation of building (Q1),0.0030439699123806
+local proportion of cul-de-sacs of street network (Q1),0.0029478070164481
+area of enclosure (Q3),0.0029361030878278
+orientation of building (Q3),0.0029171531398071
+orientation of building (Q1),0.0028724170339636
+NDVI (Q3),0.002862988105
+Night lights (Q3),0.0028379211555917
+elongation of building (Q3),0.0028291592432139
+squareness of building (Q2),0.0028040737595029
+local meshedness of street network (Q3),0.0026988434175254
+equivalent rectangular index of building (Q2),0.0026907543720939
+equivalent rectangular index of ETC (Q2),0.0026566197193453
+NDVI (Q2),0.0026299929560168
+mean distance between neighbouring buildings (Q1),0.0025523891418832
+local proportion of 4-way intersections of street network (Q2),0.0024579760318388
+equivalent rectangular index of ETC (Q1),0.0024164653761022
+street alignment of building (Q3),0.0024158825236646
+orientation of enclosure (Q2),0.0024039423526471
+local cul-de-sac length of street network (Q3),0.0023825084136673
+width deviation of street profile (Q2),0.0023728499601099
+local node density of street network (Q3),0.0023248799814959
+local degree weighted node density of street network (Q3),0.0022242249631706
+local cul-de-sac length of street network (Q1),0.0021478204351291
+local proportion of 4-way intersections of street network (Q3),0.0020830350054904
+centroid - corner mean distance of building (Q1),0.002077259301193
+width deviation of street profile (Q3),0.0020762253693577
+Workplace population [Other] (Q3),0.002055444070469
+squareness of building (Q1),0.0020041355051051
+equivalent rectangular index of enclosure (Q3),0.001993898557764
+orientation of enclosure (Q1),0.0019634561671873
+local proportion of 4-way intersections of street network (Q1),0.0019433161768767
+"Workplace population [Financial, real estate, professional and administrative activities] (Q3)",0.0019216422967157
+Workplace population [Construction] (Q3),0.0018850531003032
+squareness of building (Q3),0.0018680180231214
+width of street profile (Q1),0.0018616113269432
+"Workplace population [Distribution, hotels and restaurants] (Q3)",0.001857164544896
+orientation of enclosure (Q3),0.0018563694377405
+width of street profile (Q2),0.0018159118805632
+"Workplace population [Distribution, hotels and restaurants] (Q2)",0.0017971671385607
+compactness-weighted axis of enclosure (Q1),0.0017747339795402
+"Workplace population [Public administration, education and health] (Q3)",0.001755033895064
+alignment of neighbouring buildings (Q2),0.0017468597648432
+alignment of neighbouring buildings (Q1),0.001719815729641
+Workplace population [Construction] (Q2),0.0017022303269439
+reached ETCs by tessellation contiguity (Q3),0.0016897204305459
+"Workplace population [Financial, real estate, professional and administrative activities] (Q2)",0.0016868274971516
+equivalent rectangular index of enclosure (Q2),0.0016801591937412
+compactness-weighted axis of enclosure (Q3),0.001676603486015
+Workplace population [Transport and communication] (Q3),0.0016747658977468
+Workplace population [Construction] (Q1),0.0016718271331887
+length of street segment (Q1),0.0016499137922609
+perimeter of building (Q1),0.0016356280184593
+perimeter of enclosure (Q3),0.0015906983035422
+linearity of street segment (Q3),0.0015874151472769
+width of street profile (Q3),0.0015676716621629
+"Workplace population [Public administration, education and health] (Q2)",0.0015425101992443
+Workplace population [Transport and communication] (Q2),0.0015191253565925
+Workplace population [Manufacturing] (Q3),0.0015156101621477
+Workplace population [Manufacturing] (Q2),0.0014880463456698
+alignment of neighbouring buildings (Q3),0.0014855375226664
+Land cover [Discontinuous urban fabric] (Q1),0.0014815763356283
+area of building (Q1),0.0014776401001254
+"Workplace population [Financial, real estate, professional and administrative activities] (Q1)",0.0014520369804332
+width deviation of street profile (Q1),0.0014347142017534
+Workplace population [Other] (Q2),0.0014327045712848
+local proportion of 3-way intersections of street network (Q2),0.0013883536828276
+"Workplace population [Distribution, hotels and restaurants] (Q1)",0.0013603216854606
+"Workplace population [Public administration, education and health] (Q1)",0.0013590069427136
+local proportion of 3-way intersections of street network (Q3),0.0013401765766742
+Workplace population [Transport and communication] (Q1),0.0013312392577757
+local proportion of 3-way intersections of street network (Q1),0.0013068402463402
+perimeter-weighted neighbours of enclosure (Q2),0.0012999803252736
+"Workplace population [Agriculture, energy and water] (Q2)",0.0012698430588833
+linearity of street segment (Q1),0.0012653510545156
+Workplace population [Manufacturing] (Q1),0.001255709874086
+perimeter-weighted neighbours of enclosure (Q3),0.001248689589575
+equivalent rectangular index of enclosure (Q1),0.0012276911327631
+Workplace population [Other] (Q1),0.0012239610738494
+"Workplace population [Agriculture, energy and water] (Q3)",0.001211084213676
+equivalent rectangular index of ETC (Q3),0.0011703485714672
+Cultural venues [distance to nearest],0.0011148216087444
+Retail centres [distance to nearest],0.0011063144072911
+"Workplace population [Agriculture, energy and water] (Q1)",0.001076807805951
+perimeter-weighted neighbours of enclosure (Q1),0.0010679533134005
+circular compactness of enclosure (Q2),0.000898157956107
+FHRS points [counts within 1200m],0.0008679540794429
+Water bodies [distance to nearest],0.0008672273404162
+circular compactness of enclosure (Q1),0.00084773232614
+circular compactness of enclosure (Q3),0.0008248218340914
+equivalent rectangular index of building (Q3),0.0007960448104698
+area-weighted ETCs of enclosure (Q1),0.0007641797007108
+Listed buildings [counts within 1200m],0.0007537346580925
+corners of building (Q3),0.000746845786348
+area-weighted ETCs of enclosure (Q2),0.0007442496198578
+Supermarkets [distance to nearest],0.0007258391064562
+Land cover [Discontinuous urban fabric] (Q2),0.000642197907368
+Land cover [Non-irrigated arable land] (Q3),0.0005632782035504
+Listed buildings [distance to nearest],0.0005449964624742
+square clustering of street network (Q3),0.0003907623547313
+Land cover [Non-irrigated arable land] (Q2),0.0003790456403686
+FHRS points [distance to nearest],0.000359242219421
+Land cover [Industrial or commercial units] (Q3),0.0003584813189521
+Land cover [Pastures] (Q3),0.0003258392194543
+Supermarkets [counts within 1200m],0.0002963618885615
+Land cover [Pastures] (Q2),0.0002632911764168
+Land cover [Discontinuous urban fabric] (Q3),0.0002497903361135
+Land cover [Pastures] (Q1),0.0002250225968324
+Land cover [Continuous urban fabric] (Q3),0.0001840543802721
+Land cover [Peat bogs] (Q3),0.0001220526813545
+Land cover [Fruit trees and berry plantations] (Q3),0.0001131008929061
+Land cover [Fruit trees and berry plantations] (Q1),0.0001108401711942
+Land cover [Fruit trees and berry plantations] (Q2),0.0001108397491408
+Land cover [Sparsely vegetated areas] (Q3),0.0001103086033784
+Land cover [Inland marshes] (Q3),0.0001095077076935
+Land cover [Water courses] (Q3),0.0001088039870118
+Land cover [Sparsely vegetated areas] (Q2),0.000108445565594
+Land cover [Sparsely vegetated areas] (Q1),0.0001084262802794
+Land cover [Inland marshes] (Q2),0.0001067770260832
+Land cover [Complex cultivation patterns] (Q1),0.0001042504591452
+Land cover [Complex cultivation patterns] (Q3),0.0001034689634501
+Land cover [Complex cultivation patterns] (Q2),0.0001029768794976
+Land cover [Port areas] (Q3),0.0001016260430419
+Land cover [Dump sites] (Q3),0.0001015815633761
+Land cover [Natural grasslands] (Q2),0.0001005870135599
+node degree of junction (Q3),0.0001003816074133
+Land cover [Salt marshes] (Q3),0.0001002828966839
+Land cover [Port areas] (Q2),0.00010006521865
+Land cover [Natural grasslands] (Q1),9.926535753540256e-05
+Land cover [Port areas] (Q1),9.921825226557654e-05
+Land cover [Natural grasslands] (Q3),9.73095596222985e-05
+Land cover [Bare rocks] (Q1),9.6911055942114e-05
+Land cover [Salt marshes] (Q2),9.615844747880904e-05
+Land cover [Estuaries] (Q3),9.593479121969216e-05
+Land cover [Bare rocks] (Q3),9.5905883865322e-05
+Land cover [Estuaries] (Q1),9.502083597449242e-05
+Land cover [Estuaries] (Q2),9.468647956775552e-05
+Land cover [Bare rocks] (Q2),9.404630496909788e-05
+Land cover [Peat bogs] (Q2),9.241307727801764e-05
+"Land cover [Beaches, dunes, sands] (Q2)",9.226428483958032e-05
+"Land cover [Beaches, dunes, sands] (Q3)",9.115416009448802e-05
+Land cover [Salt marshes] (Q1),8.99327003404803e-05
+Land cover [Sea and ocean] (Q3),8.969625101829913e-05
+Land cover [Peat bogs] (Q1),8.94504954844995e-05
+"Land cover [Beaches, dunes, sands] (Q1)",8.852247633267773e-05
+Cultural venues [counts within 1200m],8.76489282710807e-05
+Land cover [Sea and ocean] (Q2),8.72537238987517e-05
+Land cover [Intertidal flats] (Q3),8.715699799182096e-05
+Land cover [Intertidal flats] (Q2),8.600733931296425e-05
+Land cover [Intertidal flats] (Q1),8.59164841521382e-05
+Land cover [Moors and heathland] (Q3),8.279604753515311e-05
+Land cover [Sea and ocean] (Q1),8.193572106218462e-05
+Land cover [Construction sites] (Q3),8.157596856806687e-05
+Land cover [Moors and heathland] (Q2),8.010476439902104e-05
+Land cover [Continuous urban fabric] (Q2),7.999894017187289e-05
+Land cover [Industrial or commercial units] (Q2),7.918285317631809e-05
+Land cover [Coniferous forest] (Q3),7.766315651802335e-05
+Land cover [Construction sites] (Q2),7.720576185750398e-05
+Land cover [Construction sites] (Q1),7.56260243097918e-05
+Land cover [Moors and heathland] (Q1),7.213164938695482e-05
+Land cover [Coniferous forest] (Q2),6.851638688691041e-05
+Land cover [Transitional woodland-shrub] (Q3),6.642633731447089e-05
+Land cover [Coniferous forest] (Q1),6.614402086339698e-05
+Land cover [Transitional woodland-shrub] (Q1),6.486097785365802e-05
+Land cover [Transitional woodland-shrub] (Q2),6.324633201777571e-05
+Land cover [Airports] (Q3),6.265713981591424e-05
+Land cover [Airports] (Q2),5.992183133213089e-05
+"Land cover [Land principally occupied by agriculture, with significant areas of natural vegetation] (Q3)",5.415207010692154e-05
+"Land cover [Land principally occupied by agriculture, with significant areas of natural vegetation] (Q2)",5.0340927500876174e-05
+Land cover [Water bodies] (Q2),4.999057238840895e-05
+Land cover [Water bodies] (Q3),4.94012209448869e-05
+Land cover [Non-irrigated arable land] (Q1),4.870476229214733e-05
+"Land cover [Land principally occupied by agriculture, with significant areas of natural vegetation] (Q1)",4.857090208627599e-05
+Land cover [Road and rail networks and associated land] (Q2),4.7136218235196215e-05
+Land cover [Road and rail networks and associated land] (Q3),4.587243526942442e-05
+node degree of junction (Q1),4.007576240175492e-05
+Land cover [Continuous urban fabric] (Q1),3.632193025850327e-05
+corners of building (Q2),2.8486614147420177e-05
+Land cover [Mineral extraction sites] (Q3),2.597117322764935e-05
+Land cover [Mixed forest] (Q3),2.3326758892896675e-05
+Land cover [Mixed forest] (Q1),2.211369411633897e-05
+Land cover [Mineral extraction sites] (Q2),2.1802733676412408e-05
+Land cover [Mixed forest] (Q2),2.1723852668012204e-05
+Land cover [Green urban areas] (Q3),1.7157240649687537e-05
+Land cover [Sport and leisure facilities] (Q3),1.472705609059408e-05
+Land cover [Broad-leaved forest] (Q3),1.0489738541530504e-05
+square clustering of street network (Q2),8.842498253453039e-06
+Land cover [Industrial or commercial units] (Q1),7.240644431799881e-06
+node degree of junction (Q2),4.812494221077706e-06
+Land cover [Sport and leisure facilities] (Q2),3.5222729836829754e-06
+courtyard area of building (Q3),1.7518704659436388e-06
+area-weighted ETCs of enclosure (Q3),1.6671454030850575e-06
+Land cover [Sport and leisure facilities] (Q1),1.139103380071333e-06
+Land cover [Broad-leaved forest] (Q2),5.870860893013752e-07
+square clustering of street network (Q1),1.6866489511731893e-07
+Land cover [Green urban areas] (Q2),1.0310136313646005e-07
+corners of building (Q1),1.004750483393863e-07
+courtyard area of building (Q1),6.751301247736873e-08
+courtyard area of building (Q2),3.984640373323161e-08
+Land cover [Broad-leaved forest] (Q1),1.8893679799378312e-08
+Land cover [Dump sites] (Q1),0.0
+Land cover [Burnt areas] (Q3),0.0
+Land cover [Water bodies] (Q1),0.0
+Land cover [Coastal lagoons] (Q1),0.0
+Land cover [Inland marshes] (Q1),0.0
+Land cover [Dump sites] (Q2),0.0
+Land cover [Road and rail networks and associated land] (Q1),0.0
+Land cover [Agro-forestry areas] (Q2),0.0
+Land cover [Agro-forestry areas] (Q1),0.0
+Land cover [Agro-forestry areas] (Q3),0.0
+Land cover [Coastal lagoons] (Q2),0.0
+Land cover [Mineral extraction sites] (Q1),0.0
+Land cover [Burnt areas] (Q1),0.0
+Land cover [Water courses] (Q1),0.0
+Land cover [Burnt areas] (Q2),0.0
+Land cover [Green urban areas] (Q1),0.0
+Land cover [Airports] (Q1),0.0
+Land cover [Water courses] (Q2),0.0
+Land cover [Coastal lagoons] (Q3),0.0
