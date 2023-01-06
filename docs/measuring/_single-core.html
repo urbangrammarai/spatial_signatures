@@ -294,6 +294,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../esda/fua.html">
+   Composition of signatures within FUAs
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../esda/geog_distribution.html">
    Geographical distribution and coverage of signature types
   </a>
@@ -745,7 +750,7 @@ Chunk 101 processed sucessfully.
 <span class="n">ret</span> <span class="o">=</span> <span class="n">measure</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
 
 <span class="n">current</span><span class="p">,</span> <span class="n">peak</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">get_traced_memory</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current memory usage is </span><span class="si">{</span><span class="n">current</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="si">}</span><span class="s2">MB; Peak was </span><span class="si">{</span><span class="n">peak</span> <span class="o">/</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="si">}</span><span class="s2">MB&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current memory usage is </span><span class="si">{</span><span class="n">current</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="si">}</span><span class="s2">MB; Peak was </span><span class="si">{</span><span class="n">peak</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="si">}</span><span class="s2">MB&quot;</span><span class="p">)</span>
 <span class="n">tracemalloc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
