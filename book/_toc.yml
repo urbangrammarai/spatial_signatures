@@ -53,6 +53,7 @@
     - file: esda/sizeshape
     - file: esda/co-occurence
     - file: esda/ttwa
+    - file: esda/fua
     - file: esda/geog_distribution
 
 - chapter: Data product
