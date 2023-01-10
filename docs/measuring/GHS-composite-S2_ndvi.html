@@ -296,6 +296,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../esda/fua.html">
+   Composition of signatures within FUAs
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../esda/geog_distribution.html">
    Geographical distribution and coverage of signature types
   </a>
@@ -499,7 +504,7 @@
 <p>This document shows the computation of NDVI scores for each of the enclosed tesselations (ETs) in GB.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> <span class="nb">echo</span> <span class="s2">&quot;Run this notebook using version </span><span class="nv">$GDS_ENV_VERSION</span><span class="s2"> of the gds_env&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Run this notebook using version </span><span class="nv">$GDS_ENV_VERSION</span><span class="s2"> of the gds_env&quot;</span>
 <span class="c1">#SERVER_IP = open(&quot;../../SERVER_IP&quot;).read().strip(&quot;\n&quot;)</span>
 <span class="n">SERVER_IP</span> <span class="o">=</span> <span class="s2">&quot;0.0.0.0&quot;</span>
 </pre></div>
@@ -542,7 +547,7 @@
 <p>Since we will run some computations on a Dask cluster, let’s set it up first:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cat ../../worker-spec.yml
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>cat<span class="w"> </span>../../worker-spec.yml
 </pre></div>
 </div>
 </div>
@@ -1164,7 +1169,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">format_bytes</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert bytes to human-readable units</span>
 <span class="sd">    </span>
 <span class="sd">    Taken from: https://stackoverflow.com/a/49361727</span>

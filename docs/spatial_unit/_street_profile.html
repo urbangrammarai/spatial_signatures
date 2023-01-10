@@ -294,6 +294,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../esda/fua.html">
+   Composition of signatures within FUAs
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../esda/geog_distribution.html">
    Geographical distribution and coverage of signature types
   </a>
@@ -490,7 +495,7 @@
 <span class="c1"># https://glenbambrick.com/tag/perpendicular/</span>
 <span class="c1"># angle between two points</span>
 <span class="k">def</span> <span class="nf">_getAngle</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">pt2</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    pt1, pt2 : tuple</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x_diff</span> <span class="o">=</span> <span class="n">pt2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pt1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -500,7 +505,7 @@
 <span class="c1"># start and end points of chainage tick</span>
 <span class="c1"># get the first end point of a tick</span>
 <span class="k">def</span> <span class="nf">_getPoint1</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">bearing</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    pt : tuple</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="n">bearing</span> <span class="o">+</span> <span class="mi">90</span>
@@ -511,7 +516,7 @@
 
 <span class="c1"># get the second end point of a tick</span>
 <span class="k">def</span> <span class="nf">_getPoint2</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">bearing</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    pt : tuple</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">bearing</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">bearing</span><span class="p">)</span>
