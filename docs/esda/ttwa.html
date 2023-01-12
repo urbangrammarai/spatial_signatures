@@ -440,7 +440,12 @@
 <span class="kn">import</span> <span class="nn">pandas</span>
 <span class="kn">import</span> <span class="nn">tobler</span>
 
-<span class="c1"># tobler.__version__</span>
+<span class="n">tobler</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0.9.0&#39;
 </pre></div>
 </div>
 </div>
@@ -591,7 +596,22 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttwa</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_simplified.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop an outlier island</span>
+<span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">96691</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -603,7 +623,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     <span class="s2">&quot;1_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
     <span class="s2">&quot;3_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
     <span class="s2">&quot;4_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;5_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Warehouse land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
     <span class="s2">&quot;6_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
     <span class="s2">&quot;7_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
     <span class="s2">&quot;8_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
@@ -611,10 +631,10 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
     <span class="s2">&quot;2_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
     <span class="s2">&quot;2_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
     <span class="s2">&quot;9_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;9_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;9_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
     <span class="s2">&quot;9_4&quot;</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;9_5&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyper distilled urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_5&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;signature_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
@@ -690,33 +710,33 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
       <td>...</td>
     </tr>
     <tr>
+      <th>96686</th>
+      <td>Hyper concentrated urbanity</td>
+      <td>POLYGON ((528530.169 181095.720, 528544.721 18...</td>
+    </tr>
+    <tr>
       <th>96687</th>
-      <td>Hyper distilled urbanity</td>
+      <td>Hyper concentrated urbanity</td>
       <td>POLYGON ((528602.733 181135.451, 528572.629 18...</td>
     </tr>
     <tr>
       <th>96688</th>
-      <td>Hyper distilled urbanity</td>
+      <td>Hyper concentrated urbanity</td>
       <td>POLYGON ((528643.907 181217.443, 528632.000 18...</td>
     </tr>
     <tr>
       <th>96689</th>
-      <td>Hyper distilled urbanity</td>
+      <td>Hyper concentrated urbanity</td>
       <td>POLYGON ((528734.583 181316.821, 528722.252 18...</td>
     </tr>
     <tr>
       <th>96690</th>
-      <td>Hyper distilled urbanity</td>
+      <td>Hyper concentrated urbanity</td>
       <td>POLYGON ((530336.433 181039.754, 530301.430 18...</td>
-    </tr>
-    <tr>
-      <th>96691</th>
-      <td>Hyper distilled urbanity</td>
-      <td>POLYGON ((581275.000 184964.001, 581431.000 18...</td>
     </tr>
   </tbody>
 </table>
-<p>96689 rows × 2 columns</p>
+<p>96688 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -727,15 +747,22 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.54 s, sys: 336 ms, total: 5.88 s
-Wall time: 56.1 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.63 s, sys: 304 ms, total: 5.93 s
+Wall time: 56.2 s
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">15</span><span class="p">:]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">15</span><span class="p">:]</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="s2">&quot;geometry&quot;</span> <span class="k">else</span> <span class="n">c</span> <span class="k">for</span> <span class="n">c</span>  <span class="ow">in</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span> <span class="o">=</span> <span class="n">interpolated</span><span class="p">[</span><span class="o">~</span><span class="n">interpolated</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
 </div>
 </div>
@@ -749,400 +776,147 @@ Wall time: 56.1 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Countryside agriculture</th>
-      <th>Accessible suburbia</th>
-      <th>Open sprawl</th>
-      <th>Wild countryside</th>
-      <th>Warehouse land</th>
-      <th>Gridded residential quarters</th>
-      <th>Urban buffer</th>
-      <th>Disconnected suburbia</th>
-      <th>Dense residential neighbourhoods</th>
-      <th>Connected residential neighbourhoods</th>
-      <th>Dense urban neighbourhoods</th>
-      <th>Local urbanity</th>
-      <th>Distilled urbanity</th>
-      <th>Regional urbanity</th>
-      <th>Metropolitan urbanity</th>
-      <th>Hyper distilled urbanity</th>
-      <th></th>
-      <th>TTWA11CD</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.218571</td>
-      <td>0.043969</td>
-      <td>0.176920</td>
-      <td>0.079282</td>
-      <td>1.235609e-03</td>
-      <td>0.000215</td>
-      <td>0.467117</td>
-      <td>0.003725</td>
-      <td>0.006016</td>
-      <td>7.620440e-04</td>
-      <td>0.002179</td>
-      <td>0.000008</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((443219.518 409835.037, 444696.854 40...</td>
-      <td>E30000004</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.166363</td>
-      <td>0.045175</td>
-      <td>0.229543</td>
-      <td>0.030462</td>
-      <td>8.473206e-03</td>
-      <td>0.002243</td>
-      <td>0.431080</td>
-      <td>0.008993</td>
-      <td>0.032779</td>
-      <td>1.287391e-02</td>
-      <td>0.023451</td>
-      <td>0.008330</td>
-      <td>0.0</td>
-      <td>0.000230</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((404635.122 450465.360, 406774.289 44...</td>
-      <td>E30000018</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.504775</td>
-      <td>0.008234</td>
-      <td>0.078947</td>
-      <td>0.115431</td>
-      <td>7.741750e-03</td>
-      <td>0.000413</td>
-      <td>0.254977</td>
-      <td>0.004334</td>
-      <td>0.018119</td>
-      <td>1.105400e-03</td>
-      <td>0.005319</td>
-      <td>0.000605</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((417471.523 423552.896, 417846.958 42...</td>
-      <td>E30000029</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0.333012</td>
-      <td>0.000010</td>
-      <td>0.002617</td>
-      <td>0.626129</td>
-      <td>6.710558e-04</td>
-      <td>0.000000</td>
-      <td>0.036716</td>
-      <td>0.000069</td>
-      <td>0.000567</td>
-      <td>4.414055e-07</td>
-      <td>0.000182</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((399803.434 475232.566, 400584.619 47...</td>
-      <td>E30000039</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.802061</td>
-      <td>0.003388</td>
-      <td>0.021588</td>
-      <td>0.029028</td>
-      <td>4.503935e-03</td>
-      <td>0.000505</td>
-      <td>0.122362</td>
-      <td>0.000286</td>
-      <td>0.004367</td>
-      <td>4.048234e-04</td>
-      <td>0.000823</td>
-      <td>0.000234</td>
-      <td>0.0</td>
-      <td>0.000074</td>
-      <td>0.00004</td>
-      <td>0.0</td>
-      <td>POLYGON ((381412.611 95536.380, 382998.301 951...</td>
-      <td>E30000046</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>213</th>
-      <td>0.293667</td>
-      <td>0.000214</td>
-      <td>0.000676</td>
-      <td>0.634816</td>
-      <td>1.737027e-05</td>
-      <td>0.000003</td>
-      <td>0.031056</td>
-      <td>0.000000</td>
-      <td>0.000197</td>
-      <td>1.286061e-05</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>MULTIPOLYGON (((212541.096 322292.766, 210936....</td>
-      <td>W22000030</td>
-    </tr>
-    <tr>
-      <th>214</th>
-      <td>0.336676</td>
-      <td>0.009619</td>
-      <td>0.006018</td>
-      <td>0.554385</td>
-      <td>3.207763e-04</td>
-      <td>0.000965</td>
-      <td>0.089908</td>
-      <td>0.000154</td>
-      <td>0.000000</td>
-      <td>2.772906e-04</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((323712.675 374369.204, 321530.068 37...</td>
-      <td>W22000031</td>
-    </tr>
-    <tr>
-      <th>215</th>
-      <td>0.284508</td>
-      <td>0.017178</td>
-      <td>0.035579</td>
-      <td>0.107998</td>
-      <td>1.688731e-02</td>
-      <td>0.007048</td>
-      <td>0.512841</td>
-      <td>0.001141</td>
-      <td>0.003019</td>
-      <td>1.465991e-03</td>
-      <td>0.001280</td>
-      <td>0.000994</td>
-      <td>0.0</td>
-      <td>0.000110</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((298789.856 215454.183, 298315.838 21...</td>
-      <td>W22000032</td>
-    </tr>
-    <tr>
-      <th>216</th>
-      <td>0.226124</td>
-      <td>0.000061</td>
-      <td>0.000709</td>
-      <td>0.750838</td>
-      <td>8.901256e-07</td>
-      <td>0.000000</td>
-      <td>0.016346</td>
-      <td>0.000098</td>
-      <td>0.000000</td>
-      <td>0.000000e+00</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((300258.629 330812.406, 298700.069 32...</td>
-      <td>W22000033</td>
-    </tr>
-    <tr>
-      <th>217</th>
-      <td>0.679714</td>
-      <td>0.008352</td>
-      <td>0.019098</td>
-      <td>0.066124</td>
-      <td>3.936716e-03</td>
-      <td>0.000004</td>
-      <td>0.216473</td>
-      <td>0.002296</td>
-      <td>0.002831</td>
-      <td>4.258767e-04</td>
-      <td>0.000747</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.0</td>
-      <td>POLYGON ((351298.707 343128.550, 350714.368 34...</td>
-      <td>W22000034</td>
-    </tr>
-  </tbody>
-</table>
-<p>218 rows × 18 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
 
 <span class="n">names</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://opendata.arcgis.com/api/v3/datasets/9ac894d3086641bebcbfa9960895db39_0/downloads/data?format=csv&amp;spatialRefId=4326&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_420209</span><span class="o">/</span><span class="mf">3679243829.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">names</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://opendata.arcgis.com/api/v3/datasets/9ac894d3086641bebcbfa9960895db39_0/downloads/data?format=csv&amp;spatialRefId=4326&quot;</span><span class="p">)</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> 
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> 
+<span class="ne">--&gt; </span><span class="mi">586</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> 
+<span class="g g-Whitespace">    </span><span class="mi">588</span> 
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> 
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span> 
+<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span> 
+<span class="ne">--&gt; </span><span class="mi">811</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">812</span> 
+<span class="g g-Whitespace">    </span><span class="mi">813</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1038</span>             <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1039</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1041</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1042</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/parsers/c_parser_wrapper.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> 
+<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="c1"># open handles</span>
+<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> 
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/parsers/base_parser.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>         <span class="n">Let</span> <span class="n">the</span> <span class="n">readers</span> <span class="nb">open</span> <span class="n">IOHandles</span> <span class="n">after</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span> <span class="n">their</span> <span class="n">potential</span> <span class="n">raises</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">222</span><span class="s2">         self.handles = get_handle(</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span><span class="s2">             src,</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span><span class="s2">             &quot;r&quot;,</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span><span class="s2">     # open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">609</span><span class="s2">     ioargs = _get_filepath_or_buffer(</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span><span class="s2">         path_or_buf,</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span><span class="s2">         encoding=encoding,</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/common.py</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span><span class="s2">         # assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span><span class="s2">         req_info = urllib.request.Request(filepath_or_buffer, headers=storage_options)</span>
+<span class="ne">--&gt; </span><span class="mi">312</span><span class="s2">         with urlopen(req_info) as req:</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span><span class="s2">             content_encoding = req.headers.get(&quot;Content-Encoding&quot;, None)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span><span class="s2">             if content_encoding == &quot;gzip&quot;:</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/pandas/io/common.py</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span><span class="s2">     import urllib.request</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">212</span><span class="s2">     return urllib.request.urlopen(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span><span class="s2"> </span>
+
+<span class="nn">/opt/conda/lib/python3.9/urllib/request.py</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span><span class="s2">     else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span><span class="s2">         opener = _opener</span>
+<span class="ne">--&gt; </span><span class="mi">214</span><span class="s2">     return opener.open(url, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="s2"> def install_opener(opener):</span>
+
+<span class="nn">/opt/conda/lib/python3.9/urllib/request.py</span> in <span class="ni">open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span><span class="s2">         for processor in self.process_response.get(protocol, []):</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span><span class="s2">             meth = getattr(processor, meth_name)</span>
+<span class="ne">--&gt; </span><span class="mi">523</span><span class="s2">             response = meth(req, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span><span class="s2">         return response</span>
+
+<span class="nn">/opt/conda/lib/python3.9/urllib/request.py</span> in <span class="ni">http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span><span class="s2">         # request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span><span class="s2">         if not (200 &lt;= code &lt; 300):</span>
+<span class="ne">--&gt; </span><span class="mi">632</span><span class="s2">             response = self.parent.error(</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span><span class="s2">                 &#39;http&#39;, request, response, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">634</span><span class="s2"> </span>
+
+<span class="nn">/opt/conda/lib/python3.9/urllib/request.py</span> in <span class="ni">error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span><span class="s2">         if http_err:</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span><span class="s2">             args = (dict, &#39;default&#39;, &#39;http_error_default&#39;) + orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">561</span><span class="s2">             return self._call_chain(*args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">563</span><span class="s2"> # XXX probably also want an abstract factory that knows when it makes</span>
+
+<span class="nn">/opt/conda/lib/python3.9/urllib/request.py</span> in <span class="ni">_call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span><span class="s2">         for handler in handlers:</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span><span class="s2">             func = getattr(handler, meth_name)</span>
+<span class="ne">--&gt; </span><span class="mi">494</span><span class="s2">             result = func(*args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span><span class="s2">             if result is not None:</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span><span class="s2">                 return result</span>
+
+<span class="nn">/opt/conda/lib/python3.9/urllib/request.py</span> in <span class="ni">http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span><span class="s2"> class HTTPDefaultErrorHandler(BaseHandler):</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span><span class="s2">     def http_error_default(self, req, fp, code, msg, hdrs):</span>
+<span class="ne">--&gt; </span><span class="mi">641</span><span class="s2">         raise HTTPError(req.full_url, code, msg, hdrs, fp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span><span class="s2"> class HTTPRedirectHandler(BaseHandler):</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 500: Internal Server Error
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>TTWA11CD</th>
-      <th>TTWA11NM</th>
-      <th>FID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>E30000004</td>
-      <td>Barnsley</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>S22000048</td>
-      <td>Alness and Invergordon</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>E30000018</td>
-      <td>Bradford</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>E30000029</td>
-      <td>Halifax</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>E30000039</td>
-      <td>Skipton</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>223</th>
-      <td>S22000013</td>
-      <td>Western Isles</td>
-      <td>224</td>
-    </tr>
-    <tr>
-      <th>224</th>
-      <td>S22000032</td>
-      <td>Mull and Islay</td>
-      <td>225</td>
-    </tr>
-    <tr>
-      <th>225</th>
-      <td>S22000035</td>
-      <td>Orkney Islands</td>
-      <td>226</td>
-    </tr>
-    <tr>
-      <th>226</th>
-      <td>S22000039</td>
-      <td>Shetland Islands</td>
-      <td>227</td>
-    </tr>
-    <tr>
-      <th>227</th>
-      <td>S22000047</td>
-      <td>Aberdeen</td>
-      <td>228</td>
-    </tr>
-  </tbody>
-</table>
-<p>228 rows × 3 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_names.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_names.pq&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1183,7 +957,7 @@ Wall time: 56.1 s
       <th>Accessible suburbia</th>
       <th>Open sprawl</th>
       <th>Wild countryside</th>
-      <th>Warehouse land</th>
+      <th>Warehouse/Park land</th>
       <th>Gridded residential quarters</th>
       <th>Urban buffer</th>
       <th>Disconnected suburbia</th>
@@ -1191,11 +965,11 @@ Wall time: 56.1 s
       <th>Connected residential neighbourhoods</th>
       <th>Dense urban neighbourhoods</th>
       <th>Local urbanity</th>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <th>Regional urbanity</th>
       <th>Metropolitan urbanity</th>
-      <th>Hyper distilled urbanity</th>
-      <th></th>
+      <th>Hyper concentrated urbanity</th>
+      <th>geometry</th>
       <th>TTWA11CD</th>
       <th>TTWA11NM</th>
     </tr>
@@ -1203,111 +977,111 @@ Wall time: 56.1 s
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.218571</td>
-      <td>0.043969</td>
-      <td>0.176920</td>
-      <td>0.079282</td>
-      <td>1.235609e-03</td>
+      <td>0.223470</td>
+      <td>0.043759</td>
+      <td>0.176207</td>
+      <td>0.078137</td>
+      <td>1.209109e-03</td>
       <td>0.000215</td>
-      <td>0.467117</td>
-      <td>0.003725</td>
-      <td>0.006016</td>
-      <td>7.620440e-04</td>
+      <td>0.464410</td>
+      <td>0.003625</td>
+      <td>0.006018</td>
+      <td>7.622296e-04</td>
       <td>0.002179</td>
       <td>0.000008</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((443219.518 409835.037, 444696.854 40...</td>
+      <td>POLYGON ((443116.607 409861.824, 444593.769 40...</td>
       <td>E30000004</td>
       <td>Barnsley</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.166363</td>
-      <td>0.045175</td>
-      <td>0.229543</td>
-      <td>0.030462</td>
-      <td>8.473206e-03</td>
+      <td>0.167767</td>
+      <td>0.044535</td>
+      <td>0.228543</td>
+      <td>0.031195</td>
+      <td>8.260556e-03</td>
       <td>0.002243</td>
-      <td>0.431080</td>
-      <td>0.008993</td>
-      <td>0.032779</td>
-      <td>1.287391e-02</td>
-      <td>0.023451</td>
-      <td>0.008330</td>
+      <td>0.431150</td>
+      <td>0.008945</td>
+      <td>0.032706</td>
+      <td>1.263258e-02</td>
+      <td>0.023457</td>
+      <td>0.008332</td>
       <td>0.0</td>
       <td>0.000230</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((404635.122 450465.360, 406774.289 44...</td>
+      <td>POLYGON ((404536.924 450487.224, 406675.831 44...</td>
       <td>E30000018</td>
       <td>Bradford</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.504775</td>
-      <td>0.008234</td>
-      <td>0.078947</td>
-      <td>0.115431</td>
-      <td>7.741750e-03</td>
+      <td>0.506016</td>
+      <td>0.008178</td>
+      <td>0.078606</td>
+      <td>0.116988</td>
+      <td>7.743638e-03</td>
       <td>0.000413</td>
-      <td>0.254977</td>
-      <td>0.004334</td>
-      <td>0.018119</td>
-      <td>1.105400e-03</td>
-      <td>0.005319</td>
+      <td>0.252566</td>
+      <td>0.004335</td>
+      <td>0.018123</td>
+      <td>1.105669e-03</td>
+      <td>0.005320</td>
       <td>0.000605</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((417471.523 423552.896, 417846.958 42...</td>
+      <td>POLYGON ((417371.807 423577.976, 417747.206 42...</td>
       <td>E30000029</td>
       <td>Halifax</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.333012</td>
+      <td>0.333247</td>
       <td>0.000010</td>
-      <td>0.002617</td>
-      <td>0.626129</td>
-      <td>6.710558e-04</td>
+      <td>0.002516</td>
+      <td>0.626520</td>
+      <td>6.712196e-04</td>
       <td>0.000000</td>
-      <td>0.036716</td>
+      <td>0.036192</td>
       <td>0.000069</td>
-      <td>0.000567</td>
-      <td>4.414055e-07</td>
+      <td>0.000568</td>
+      <td>4.415132e-07</td>
       <td>0.000182</td>
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((399803.434 475232.566, 400584.619 47...</td>
+      <td>POLYGON ((399705.754 475251.492, 400486.847 47...</td>
       <td>E30000039</td>
       <td>Skipton</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.802061</td>
-      <td>0.003388</td>
-      <td>0.021588</td>
-      <td>0.029028</td>
-      <td>4.503935e-03</td>
+      <td>0.803093</td>
+      <td>0.003389</td>
+      <td>0.021314</td>
+      <td>0.029620</td>
+      <td>4.454053e-03</td>
       <td>0.000505</td>
-      <td>0.122362</td>
+      <td>0.121557</td>
       <td>0.000286</td>
-      <td>0.004367</td>
-      <td>4.048234e-04</td>
-      <td>0.000823</td>
-      <td>0.000234</td>
+      <td>0.004360</td>
+      <td>4.049208e-04</td>
+      <td>0.000706</td>
+      <td>0.000240</td>
       <td>0.0</td>
       <td>0.000074</td>
-      <td>0.00004</td>
+      <td>0.000021</td>
       <td>0.0</td>
-      <td>POLYGON ((381412.611 95536.380, 382998.301 951...</td>
+      <td>POLYGON ((381318.618 95599.564, 382904.110 952...</td>
       <td>E30000046</td>
       <td>Dorchester and Weymouth</td>
     </tr>
@@ -1335,79 +1109,79 @@ Wall time: 56.1 s
     </tr>
     <tr>
       <th>213</th>
-      <td>0.293667</td>
-      <td>0.000214</td>
-      <td>0.000676</td>
-      <td>0.634816</td>
-      <td>1.737027e-05</td>
+      <td>0.294169</td>
+      <td>0.000185</td>
+      <td>0.000677</td>
+      <td>0.637449</td>
+      <td>1.737449e-05</td>
       <td>0.000003</td>
-      <td>0.031056</td>
+      <td>0.031029</td>
       <td>0.000000</td>
-      <td>0.000197</td>
-      <td>1.286061e-05</td>
+      <td>0.000199</td>
+      <td>1.370748e-05</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>MULTIPOLYGON (((212541.096 322292.766, 210936....</td>
+      <td>MULTIPOLYGON (((212467.543 322328.962, 210862....</td>
       <td>W22000030</td>
       <td>Pwllheli and Porthmadog</td>
     </tr>
     <tr>
       <th>214</th>
-      <td>0.336676</td>
-      <td>0.009619</td>
-      <td>0.006018</td>
-      <td>0.554385</td>
-      <td>3.207763e-04</td>
-      <td>0.000965</td>
-      <td>0.089908</td>
+      <td>0.335685</td>
+      <td>0.009770</td>
+      <td>0.006090</td>
+      <td>0.555019</td>
+      <td>3.346282e-04</td>
+      <td>0.001034</td>
+      <td>0.089543</td>
       <td>0.000154</td>
       <td>0.000000</td>
-      <td>2.772906e-04</td>
+      <td>2.896387e-04</td>
       <td>0.000000</td>
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((323712.675 374369.204, 321530.068 37...</td>
+      <td>POLYGON ((323624.950 374399.714, 321442.625 37...</td>
       <td>W22000031</td>
       <td>Rhyl</td>
     </tr>
     <tr>
       <th>215</th>
-      <td>0.284508</td>
-      <td>0.017178</td>
-      <td>0.035579</td>
-      <td>0.107998</td>
-      <td>1.688731e-02</td>
-      <td>0.007048</td>
-      <td>0.512841</td>
+      <td>0.285298</td>
+      <td>0.017182</td>
+      <td>0.035248</td>
+      <td>0.108456</td>
+      <td>1.686457e-02</td>
+      <td>0.007052</td>
+      <td>0.510910</td>
       <td>0.001141</td>
-      <td>0.003019</td>
-      <td>1.465991e-03</td>
-      <td>0.001280</td>
-      <td>0.000994</td>
+      <td>0.002975</td>
+      <td>1.466345e-03</td>
+      <td>0.001266</td>
+      <td>0.000990</td>
       <td>0.0</td>
-      <td>0.000110</td>
-      <td>0.00000</td>
+      <td>0.000086</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((298789.856 215454.183, 298315.838 21...</td>
+      <td>POLYGON ((298705.805 215503.170, 298231.853 21...</td>
       <td>W22000032</td>
       <td>Swansea</td>
     </tr>
     <tr>
       <th>216</th>
-      <td>0.226124</td>
-      <td>0.000061</td>
-      <td>0.000709</td>
-      <td>0.750838</td>
-      <td>8.901256e-07</td>
+      <td>0.226700</td>
+      <td>0.000080</td>
+      <td>0.000736</td>
+      <td>0.749014</td>
+      <td>8.903418e-07</td>
       <td>0.000000</td>
-      <td>0.016346</td>
+      <td>0.016699</td>
       <td>0.000098</td>
       <td>0.000000</td>
       <td>0.000000e+00</td>
@@ -1415,31 +1189,31 @@ Wall time: 56.1 s
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((300258.629 330812.406, 298700.069 32...</td>
+      <td>POLYGON ((300174.007 330847.935, 298615.652 32...</td>
       <td>W22000033</td>
       <td>Tywyn and Dolgellau</td>
     </tr>
     <tr>
       <th>217</th>
-      <td>0.679714</td>
-      <td>0.008352</td>
-      <td>0.019098</td>
-      <td>0.066124</td>
-      <td>3.936716e-03</td>
+      <td>0.677904</td>
+      <td>0.008354</td>
+      <td>0.019103</td>
+      <td>0.068111</td>
+      <td>3.937673e-03</td>
       <td>0.000004</td>
-      <td>0.216473</td>
+      <td>0.216287</td>
       <td>0.002296</td>
       <td>0.002831</td>
-      <td>4.258767e-04</td>
+      <td>4.259803e-04</td>
       <td>0.000747</td>
       <td>0.000000</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>0.00000</td>
+      <td>0.000000</td>
       <td>0.0</td>
-      <td>POLYGON ((351298.707 343128.550, 350714.368 34...</td>
+      <td>POLYGON ((351207.619 343162.826, 350623.359 34...</td>
       <td>W22000034</td>
       <td>Wrexham</td>
     </tr>
@@ -1451,12 +1225,12 @@ Wall time: 56.1 s
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Countryside agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Accessible suburbia&#39;</span><span class="p">,</span> <span class="s1">&#39;Open sprawl&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Warehouse land&#39;</span><span class="p">,</span> <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Warehouse/Park land&#39;</span><span class="p">,</span> <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span>
        <span class="s1">&#39;Urban buffer&#39;</span><span class="p">,</span> <span class="s1">&#39;Disconnected suburbia&#39;</span><span class="p">,</span>
        <span class="s1">&#39;Dense residential neighbourhoods&#39;</span><span class="p">,</span>
        <span class="s1">&#39;Connected residential neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyper distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;TTWA11CD&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentrated urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyper concentrated urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;geometry&#39;</span><span class="p">,</span> <span class="s1">&#39;TTWA11CD&#39;</span><span class="p">,</span>
        <span class="s1">&#39;TTWA11NM&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1476,15 +1250,28 @@ Wall time: 56.1 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-29-0c6f61fce238&gt;:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_420582/3951706392.py:1: UserWarning: this is an initial implementation of Parquet/Feather file support and associated metadata.  This is tracking version 0.1.0 of the metadata specification at https://github.com/geopandas/geo-arrow-spec
 
 This metadata specification does not yet make stability promises.  We do not yet recommend using this in a production setting unless you are able to rewrite your Parquet/Feather files.
 
 To further ignore this warning, you can do: 
 import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initial implementation of Parquet.*&#39;)
-  geopandas.GeoDataFrame(interpolated, crs=27700).to_parquet(&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_interpolated.pq&quot;)
+  interpolated.to_parquet(&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_interpolated.pq&quot;)
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_27_1.png" src="../_images/ttwa_27_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1496,24 +1283,7 @@ import warnings; warnings.filterwarnings(&#39;ignore&#39;, message=&#39;.*initia
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">squarify</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting squarify
-  Downloading squarify-0.4.3-py3-none-any.whl (4.3 kB)
-Installing collected packages: squarify
-Successfully installed squarify-0.4.3
-Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1"># import squarify</span>
 <span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
 </pre></div>
 </div>
@@ -1571,123 +1341,123 @@ Note: you may need to restart the kernel to use updated packages.
   <tbody>
     <tr>
       <th>Countryside agriculture</th>
-      <td>0.218571</td>
-      <td>0.166363</td>
-      <td>0.504775</td>
-      <td>0.333012</td>
-      <td>0.802061</td>
-      <td>0.814348</td>
-      <td>0.895776</td>
-      <td>0.760641</td>
-      <td>0.094955</td>
-      <td>0.597957</td>
+      <td>0.22347</td>
+      <td>0.167767</td>
+      <td>0.506016</td>
+      <td>0.333247</td>
+      <td>0.803093</td>
+      <td>0.818335</td>
+      <td>0.895052</td>
+      <td>0.767591</td>
+      <td>0.094503</td>
+      <td>0.599603</td>
       <td>...</td>
-      <td>0.195072</td>
-      <td>0.52362</td>
-      <td>0.247824</td>
-      <td>0.31493</td>
-      <td>0.354032</td>
-      <td>0.293667</td>
-      <td>0.336676</td>
-      <td>0.284508</td>
-      <td>0.226124</td>
-      <td>0.679714</td>
+      <td>0.195818</td>
+      <td>0.523145</td>
+      <td>0.248822</td>
+      <td>0.314656</td>
+      <td>0.355109</td>
+      <td>0.294169</td>
+      <td>0.335685</td>
+      <td>0.285298</td>
+      <td>0.2267</td>
+      <td>0.677904</td>
     </tr>
     <tr>
       <th>Accessible suburbia</th>
-      <td>0.043969</td>
-      <td>0.045175</td>
-      <td>0.008234</td>
+      <td>0.043759</td>
+      <td>0.044535</td>
+      <td>0.008178</td>
       <td>0.00001</td>
-      <td>0.003388</td>
+      <td>0.003389</td>
       <td>0.001462</td>
-      <td>0.003265</td>
-      <td>0.029552</td>
+      <td>0.003266</td>
+      <td>0.029322</td>
       <td>0.0</td>
-      <td>0.02578</td>
+      <td>0.025276</td>
       <td>...</td>
-      <td>0.026886</td>
+      <td>0.026761</td>
       <td>0.0</td>
-      <td>0.008341</td>
+      <td>0.008323</td>
       <td>0.000882</td>
       <td>0.001534</td>
-      <td>0.000214</td>
-      <td>0.009619</td>
-      <td>0.017178</td>
-      <td>0.000061</td>
-      <td>0.008352</td>
+      <td>0.000185</td>
+      <td>0.00977</td>
+      <td>0.017182</td>
+      <td>0.00008</td>
+      <td>0.008354</td>
     </tr>
     <tr>
       <th>Open sprawl</th>
-      <td>0.17692</td>
-      <td>0.229543</td>
-      <td>0.078947</td>
-      <td>0.002617</td>
-      <td>0.021588</td>
-      <td>0.014442</td>
-      <td>0.008393</td>
-      <td>0.015345</td>
+      <td>0.176207</td>
+      <td>0.228543</td>
+      <td>0.078606</td>
+      <td>0.002516</td>
+      <td>0.021314</td>
+      <td>0.014444</td>
+      <td>0.008395</td>
+      <td>0.015181</td>
       <td>0.000812</td>
-      <td>0.019786</td>
+      <td>0.019297</td>
       <td>...</td>
-      <td>0.104492</td>
+      <td>0.104238</td>
       <td>0.000554</td>
-      <td>0.006211</td>
+      <td>0.006357</td>
       <td>0.004573</td>
-      <td>0.043843</td>
-      <td>0.000676</td>
-      <td>0.006018</td>
-      <td>0.035579</td>
-      <td>0.000709</td>
-      <td>0.019098</td>
+      <td>0.04385</td>
+      <td>0.000677</td>
+      <td>0.00609</td>
+      <td>0.035248</td>
+      <td>0.000736</td>
+      <td>0.019103</td>
     </tr>
     <tr>
       <th>Wild countryside</th>
-      <td>0.079282</td>
-      <td>0.030462</td>
-      <td>0.115431</td>
-      <td>0.626129</td>
-      <td>0.029028</td>
-      <td>0.026181</td>
+      <td>0.078137</td>
+      <td>0.031195</td>
+      <td>0.116988</td>
+      <td>0.62652</td>
+      <td>0.02962</td>
+      <td>0.025869</td>
       <td>0.00005</td>
       <td>0.000017</td>
-      <td>0.897122</td>
-      <td>0.000098</td>
+      <td>0.897572</td>
+      <td>0.000087</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.459751</td>
-      <td>0.668945</td>
-      <td>0.613634</td>
-      <td>0.201801</td>
-      <td>0.634816</td>
-      <td>0.554385</td>
-      <td>0.107998</td>
-      <td>0.750838</td>
-      <td>0.066124</td>
+      <td>0.457116</td>
+      <td>0.666861</td>
+      <td>0.614383</td>
+      <td>0.203098</td>
+      <td>0.637449</td>
+      <td>0.555019</td>
+      <td>0.108456</td>
+      <td>0.749014</td>
+      <td>0.068111</td>
     </tr>
     <tr>
-      <th>Warehouse land</th>
-      <td>0.001236</td>
-      <td>0.008473</td>
-      <td>0.007742</td>
+      <th>Warehouse/Park land</th>
+      <td>0.001209</td>
+      <td>0.008261</td>
+      <td>0.007744</td>
       <td>0.000671</td>
-      <td>0.004504</td>
-      <td>0.000552</td>
+      <td>0.004454</td>
+      <td>0.000537</td>
       <td>0.000426</td>
       <td>0.000163</td>
       <td>0.000008</td>
       <td>0.000908</td>
       <td>...</td>
-      <td>0.034154</td>
+      <td>0.033123</td>
       <td>0.000037</td>
-      <td>0.002057</td>
+      <td>0.002164</td>
       <td>0.000003</td>
-      <td>0.009063</td>
+      <td>0.009065</td>
       <td>0.000017</td>
-      <td>0.000321</td>
-      <td>0.016887</td>
+      <td>0.000335</td>
+      <td>0.016865</td>
       <td>0.000001</td>
-      <td>0.003937</td>
+      <td>0.003938</td>
     </tr>
     <tr>
       <th>Gridded residential quarters</th>
@@ -1700,7 +1470,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.000075</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.006856</td>
+      <td>0.006657</td>
       <td>...</td>
       <td>0.018411</td>
       <td>0.0</td>
@@ -1708,53 +1478,53 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.001571</td>
       <td>0.002301</td>
       <td>0.000003</td>
-      <td>0.000965</td>
-      <td>0.007048</td>
+      <td>0.001034</td>
+      <td>0.007052</td>
       <td>0.0</td>
       <td>0.000004</td>
     </tr>
     <tr>
       <th>Urban buffer</th>
-      <td>0.467117</td>
-      <td>0.43108</td>
-      <td>0.254977</td>
-      <td>0.036716</td>
-      <td>0.122362</td>
-      <td>0.094889</td>
-      <td>0.09007</td>
-      <td>0.165469</td>
-      <td>0.007009</td>
-      <td>0.325959</td>
+      <td>0.46441</td>
+      <td>0.43115</td>
+      <td>0.252566</td>
+      <td>0.036192</td>
+      <td>0.121557</td>
+      <td>0.094407</td>
+      <td>0.09079</td>
+      <td>0.165562</td>
+      <td>0.007011</td>
+      <td>0.32411</td>
       <td>...</td>
-      <td>0.577927</td>
-      <td>0.007025</td>
-      <td>0.05864</td>
-      <td>0.059869</td>
-      <td>0.385135</td>
-      <td>0.031056</td>
-      <td>0.089908</td>
-      <td>0.512841</td>
-      <td>0.016346</td>
-      <td>0.216473</td>
+      <td>0.579492</td>
+      <td>0.007042</td>
+      <td>0.059214</td>
+      <td>0.059388</td>
+      <td>0.382751</td>
+      <td>0.031029</td>
+      <td>0.089543</td>
+      <td>0.51091</td>
+      <td>0.016699</td>
+      <td>0.216287</td>
     </tr>
     <tr>
       <th>Disconnected suburbia</th>
-      <td>0.003725</td>
-      <td>0.008993</td>
-      <td>0.004334</td>
+      <td>0.003625</td>
+      <td>0.008945</td>
+      <td>0.004335</td>
       <td>0.000069</td>
       <td>0.000286</td>
       <td>0.002359</td>
       <td>0.000676</td>
-      <td>0.003295</td>
+      <td>0.003296</td>
       <td>0.00001</td>
       <td>0.000196</td>
       <td>...</td>
-      <td>0.007809</td>
+      <td>0.007812</td>
       <td>0.000003</td>
       <td>0.000006</td>
       <td>0.000143</td>
-      <td>0.00054</td>
+      <td>0.000539</td>
       <td>0.0</td>
       <td>0.000154</td>
       <td>0.001141</td>
@@ -1763,48 +1533,48 @@ Note: you may need to restart the kernel to use updated packages.
     </tr>
     <tr>
       <th>Dense residential neighbourhoods</th>
-      <td>0.006016</td>
-      <td>0.032779</td>
-      <td>0.018119</td>
-      <td>0.000567</td>
-      <td>0.004367</td>
+      <td>0.006018</td>
+      <td>0.032706</td>
+      <td>0.018123</td>
+      <td>0.000568</td>
+      <td>0.00436</td>
       <td>0.000202</td>
       <td>0.001139</td>
-      <td>0.005219</td>
+      <td>0.004595</td>
       <td>0.000085</td>
-      <td>0.003164</td>
+      <td>0.003108</td>
       <td>...</td>
-      <td>0.008218</td>
+      <td>0.008038</td>
       <td>0.0</td>
       <td>0.000323</td>
       <td>0.000008</td>
       <td>0.000775</td>
-      <td>0.000197</td>
+      <td>0.000199</td>
       <td>0.0</td>
-      <td>0.003019</td>
+      <td>0.002975</td>
       <td>0.0</td>
       <td>0.002831</td>
     </tr>
     <tr>
       <th>Connected residential neighbourhoods</th>
       <td>0.000762</td>
-      <td>0.012874</td>
-      <td>0.001105</td>
+      <td>0.012633</td>
+      <td>0.001106</td>
       <td>0.0</td>
       <td>0.000405</td>
       <td>0.001662</td>
       <td>0.000002</td>
-      <td>0.00368</td>
+      <td>0.003681</td>
       <td>0.0</td>
       <td>0.000155</td>
       <td>...</td>
-      <td>0.008751</td>
+      <td>0.008753</td>
       <td>0.0</td>
-      <td>0.002724</td>
+      <td>0.002737</td>
       <td>0.000003</td>
       <td>0.000977</td>
-      <td>0.000013</td>
-      <td>0.000277</td>
+      <td>0.000014</td>
+      <td>0.00029</td>
       <td>0.001466</td>
       <td>0.0</td>
       <td>0.000426</td>
@@ -1812,13 +1582,13 @@ Note: you may need to restart the kernel to use updated packages.
     <tr>
       <th>Dense urban neighbourhoods</th>
       <td>0.002179</td>
-      <td>0.023451</td>
-      <td>0.005319</td>
+      <td>0.023457</td>
+      <td>0.00532</td>
       <td>0.000182</td>
-      <td>0.000823</td>
+      <td>0.000706</td>
       <td>0.0</td>
       <td>0.000129</td>
-      <td>0.001775</td>
+      <td>0.001751</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
@@ -1829,36 +1599,36 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00128</td>
+      <td>0.001266</td>
       <td>0.0</td>
       <td>0.000747</td>
     </tr>
     <tr>
       <th>Local urbanity</th>
       <td>0.000008</td>
-      <td>0.00833</td>
+      <td>0.008332</td>
       <td>0.000605</td>
       <td>0.0</td>
-      <td>0.000234</td>
-      <td>0.000201</td>
+      <td>0.00024</td>
+      <td>0.000177</td>
       <td>0.0</td>
       <td>0.000069</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
-      <td>0.003291</td>
+      <td>0.003292</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000994</td>
+      <td>0.00099</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1901,7 +1671,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00011</td>
+      <td>0.000086</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -1911,7 +1681,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00004</td>
+      <td>0.000021</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1930,7 +1700,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
     </tr>
     <tr>
-      <th>Hyper distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -1987,18 +1757,6 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">place</span> <span class="ow">in</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-    <span class="n">squarify</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="n">plot_data</span><span class="p">[</span><span class="n">place</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.00000001</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">symbology</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_treemaps/</span><span class="si">{</span><span class="n">place</span><span class="si">}</span><span class="s2">.pdf&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="s2">&quot;Wild countryside&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2007,7 +1765,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;TTWA11NM&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/ttwa_31_1.png" src="../_images/ttwa_31_1.png" />
+<img alt="../_images/ttwa_32_1.png" src="../_images/ttwa_32_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2020,6 +1778,69 @@ Note: you may need to restart the kernel to use updated packages.
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_420582</span><span class="o">/</span><span class="mf">2376116443.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">ax</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_maps/</span><span class="si">{</span><span class="n">sig</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/matplotlib/pyplot.py</span> in <span class="ni">savefig</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">964</span> <span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="n">fig</span> <span class="o">=</span> <span class="n">gcf</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">966</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">967</span>     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw_idle</span><span class="p">()</span>   <span class="c1"># need this if &#39;transparent=True&#39; to reset colors</span>
+<span class="g g-Whitespace">    </span><span class="mi">968</span>     <span class="k">return</span> <span class="n">res</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/matplotlib/figure.py</span> in <span class="ni">savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3013</span>                 <span class="n">patch</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3014</span> 
+<span class="ne">-&gt; </span><span class="mi">3015</span>         <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3016</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3017</span>         <span class="k">if</span> <span class="n">transparent</span><span class="p">:</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2253</span>                 <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2254</span>                 <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2255</span>                     <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2256</span>                         <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2257</span>                         <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/matplotlib/backend_bases.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1667</span>             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1668</span> 
+<span class="ne">-&gt; </span><span class="mi">1669</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1670</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1671</span>     <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/matplotlib/backends/backend_agg.py</span> in <span class="ni">print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span><span class="s2">         FigureCanvasAgg.draw(self)</span>
+<span class="ne">--&gt; </span><span class="mi">509</span><span class="s2">         mpl.image.imsave(</span>
+<span class="g g-Whitespace">    </span><span class="mi">510</span><span class="s2">             filename_or_obj, self.buffer_rgba(), format=&quot;png&quot;, origin=&quot;upper&quot;,</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span><span class="s2">             dpi=self.figure.dpi, metadata=metadata, pil_kwargs=pil_kwargs)</span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/matplotlib/image.py</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1614</span><span class="s2">         pil_kwargs.setdefault(&quot;format&quot;, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1615</span><span class="s2">         pil_kwargs.setdefault(&quot;dpi&quot;, (dpi, dpi))</span>
+<span class="ne">-&gt; </span><span class="mi">1616</span><span class="s2">         image.save(fname, **pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1618</span><span class="s2"> </span>
+
+<span class="nn">/opt/conda/lib/python3.9/site-packages/PIL/Image.py</span> in <span class="ni">save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2230</span><span class="s2">                 fp = builtins.open(filename, &quot;r+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2231</span><span class="s2">             else:</span>
+<span class="ne">-&gt; </span><span class="mi">2232</span><span class="s2">                 fp = builtins.open(filename, &quot;w+b&quot;)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2233</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">2234</span><span class="s2">         try:</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../../urbangrammar_samba/spatial_signatures/esda/ttwa_maps/Warehouse/Park land.png&#39;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_33_1.png" src="../_images/ttwa_33_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2034,7 +1855,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ttwa_33_0.png" src="../_images/ttwa_33_0.png" />
+<img alt="../_images/ttwa_34_0.png" src="../_images/ttwa_34_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2044,7 +1865,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ttwa_34_0.png" src="../_images/ttwa_34_0.png" />
+<img alt="../_images/ttwa_35_0.png" src="../_images/ttwa_35_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2055,10 +1876,10 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x7f68082afe20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x7f24417c2f70&gt;
 </pre></div>
 </div>
-<img alt="../_images/ttwa_35_1.png" src="../_images/ttwa_35_1.png" />
+<img alt="../_images/ttwa_36_1.png" src="../_images/ttwa_36_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2112,123 +1933,123 @@ Note: you may need to restart the kernel to use updated packages.
   <tbody>
     <tr>
       <th>Countryside agriculture</th>
-      <td>0.218571</td>
-      <td>0.166363</td>
-      <td>0.504775</td>
-      <td>0.333012</td>
-      <td>0.802061</td>
-      <td>0.814348</td>
-      <td>0.895776</td>
-      <td>0.760641</td>
-      <td>0.094955</td>
-      <td>0.597957</td>
+      <td>0.22347</td>
+      <td>0.167767</td>
+      <td>0.506016</td>
+      <td>0.333247</td>
+      <td>0.803093</td>
+      <td>0.818335</td>
+      <td>0.895052</td>
+      <td>0.767591</td>
+      <td>0.094503</td>
+      <td>0.599603</td>
       <td>...</td>
-      <td>0.195072</td>
-      <td>0.52362</td>
-      <td>0.247824</td>
-      <td>0.31493</td>
-      <td>0.354032</td>
-      <td>0.293667</td>
-      <td>0.336676</td>
-      <td>0.284508</td>
-      <td>0.226124</td>
-      <td>0.679714</td>
+      <td>0.195818</td>
+      <td>0.523145</td>
+      <td>0.248822</td>
+      <td>0.314656</td>
+      <td>0.355109</td>
+      <td>0.294169</td>
+      <td>0.335685</td>
+      <td>0.285298</td>
+      <td>0.2267</td>
+      <td>0.677904</td>
     </tr>
     <tr>
       <th>Accessible suburbia</th>
-      <td>0.043969</td>
-      <td>0.045175</td>
-      <td>0.008234</td>
+      <td>0.043759</td>
+      <td>0.044535</td>
+      <td>0.008178</td>
       <td>0.00001</td>
-      <td>0.003388</td>
+      <td>0.003389</td>
       <td>0.001462</td>
-      <td>0.003265</td>
-      <td>0.029552</td>
+      <td>0.003266</td>
+      <td>0.029322</td>
       <td>0.0</td>
-      <td>0.02578</td>
+      <td>0.025276</td>
       <td>...</td>
-      <td>0.026886</td>
+      <td>0.026761</td>
       <td>0.0</td>
-      <td>0.008341</td>
+      <td>0.008323</td>
       <td>0.000882</td>
       <td>0.001534</td>
-      <td>0.000214</td>
-      <td>0.009619</td>
-      <td>0.017178</td>
-      <td>0.000061</td>
-      <td>0.008352</td>
+      <td>0.000185</td>
+      <td>0.00977</td>
+      <td>0.017182</td>
+      <td>0.00008</td>
+      <td>0.008354</td>
     </tr>
     <tr>
       <th>Open sprawl</th>
-      <td>0.17692</td>
-      <td>0.229543</td>
-      <td>0.078947</td>
-      <td>0.002617</td>
-      <td>0.021588</td>
-      <td>0.014442</td>
-      <td>0.008393</td>
-      <td>0.015345</td>
+      <td>0.176207</td>
+      <td>0.228543</td>
+      <td>0.078606</td>
+      <td>0.002516</td>
+      <td>0.021314</td>
+      <td>0.014444</td>
+      <td>0.008395</td>
+      <td>0.015181</td>
       <td>0.000812</td>
-      <td>0.019786</td>
+      <td>0.019297</td>
       <td>...</td>
-      <td>0.104492</td>
+      <td>0.104238</td>
       <td>0.000554</td>
-      <td>0.006211</td>
+      <td>0.006357</td>
       <td>0.004573</td>
-      <td>0.043843</td>
-      <td>0.000676</td>
-      <td>0.006018</td>
-      <td>0.035579</td>
-      <td>0.000709</td>
-      <td>0.019098</td>
+      <td>0.04385</td>
+      <td>0.000677</td>
+      <td>0.00609</td>
+      <td>0.035248</td>
+      <td>0.000736</td>
+      <td>0.019103</td>
     </tr>
     <tr>
       <th>Wild countryside</th>
-      <td>0.079282</td>
-      <td>0.030462</td>
-      <td>0.115431</td>
-      <td>0.626129</td>
-      <td>0.029028</td>
-      <td>0.026181</td>
+      <td>0.078137</td>
+      <td>0.031195</td>
+      <td>0.116988</td>
+      <td>0.62652</td>
+      <td>0.02962</td>
+      <td>0.025869</td>
       <td>0.00005</td>
       <td>0.000017</td>
-      <td>0.897122</td>
-      <td>0.000098</td>
+      <td>0.897572</td>
+      <td>0.000087</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.459751</td>
-      <td>0.668945</td>
-      <td>0.613634</td>
-      <td>0.201801</td>
-      <td>0.634816</td>
-      <td>0.554385</td>
-      <td>0.107998</td>
-      <td>0.750838</td>
-      <td>0.066124</td>
+      <td>0.457116</td>
+      <td>0.666861</td>
+      <td>0.614383</td>
+      <td>0.203098</td>
+      <td>0.637449</td>
+      <td>0.555019</td>
+      <td>0.108456</td>
+      <td>0.749014</td>
+      <td>0.068111</td>
     </tr>
     <tr>
-      <th>Warehouse land</th>
-      <td>0.001236</td>
-      <td>0.008473</td>
-      <td>0.007742</td>
+      <th>Warehouse/Park land</th>
+      <td>0.001209</td>
+      <td>0.008261</td>
+      <td>0.007744</td>
       <td>0.000671</td>
-      <td>0.004504</td>
-      <td>0.000552</td>
+      <td>0.004454</td>
+      <td>0.000537</td>
       <td>0.000426</td>
       <td>0.000163</td>
       <td>0.000008</td>
       <td>0.000908</td>
       <td>...</td>
-      <td>0.034154</td>
+      <td>0.033123</td>
       <td>0.000037</td>
-      <td>0.002057</td>
+      <td>0.002164</td>
       <td>0.000003</td>
-      <td>0.009063</td>
+      <td>0.009065</td>
       <td>0.000017</td>
-      <td>0.000321</td>
-      <td>0.016887</td>
+      <td>0.000335</td>
+      <td>0.016865</td>
       <td>0.000001</td>
-      <td>0.003937</td>
+      <td>0.003938</td>
     </tr>
     <tr>
       <th>Gridded residential quarters</th>
@@ -2241,7 +2062,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.000075</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.006856</td>
+      <td>0.006657</td>
       <td>...</td>
       <td>0.018411</td>
       <td>0.0</td>
@@ -2249,53 +2070,53 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.001571</td>
       <td>0.002301</td>
       <td>0.000003</td>
-      <td>0.000965</td>
-      <td>0.007048</td>
+      <td>0.001034</td>
+      <td>0.007052</td>
       <td>0.0</td>
       <td>0.000004</td>
     </tr>
     <tr>
       <th>Urban buffer</th>
-      <td>0.467117</td>
-      <td>0.43108</td>
-      <td>0.254977</td>
-      <td>0.036716</td>
-      <td>0.122362</td>
-      <td>0.094889</td>
-      <td>0.09007</td>
-      <td>0.165469</td>
-      <td>0.007009</td>
-      <td>0.325959</td>
+      <td>0.46441</td>
+      <td>0.43115</td>
+      <td>0.252566</td>
+      <td>0.036192</td>
+      <td>0.121557</td>
+      <td>0.094407</td>
+      <td>0.09079</td>
+      <td>0.165562</td>
+      <td>0.007011</td>
+      <td>0.32411</td>
       <td>...</td>
-      <td>0.577927</td>
-      <td>0.007025</td>
-      <td>0.05864</td>
-      <td>0.059869</td>
-      <td>0.385135</td>
-      <td>0.031056</td>
-      <td>0.089908</td>
-      <td>0.512841</td>
-      <td>0.016346</td>
-      <td>0.216473</td>
+      <td>0.579492</td>
+      <td>0.007042</td>
+      <td>0.059214</td>
+      <td>0.059388</td>
+      <td>0.382751</td>
+      <td>0.031029</td>
+      <td>0.089543</td>
+      <td>0.51091</td>
+      <td>0.016699</td>
+      <td>0.216287</td>
     </tr>
     <tr>
       <th>Disconnected suburbia</th>
-      <td>0.003725</td>
-      <td>0.008993</td>
-      <td>0.004334</td>
+      <td>0.003625</td>
+      <td>0.008945</td>
+      <td>0.004335</td>
       <td>0.000069</td>
       <td>0.000286</td>
       <td>0.002359</td>
       <td>0.000676</td>
-      <td>0.003295</td>
+      <td>0.003296</td>
       <td>0.00001</td>
       <td>0.000196</td>
       <td>...</td>
-      <td>0.007809</td>
+      <td>0.007812</td>
       <td>0.000003</td>
       <td>0.000006</td>
       <td>0.000143</td>
-      <td>0.00054</td>
+      <td>0.000539</td>
       <td>0.0</td>
       <td>0.000154</td>
       <td>0.001141</td>
@@ -2304,48 +2125,48 @@ Note: you may need to restart the kernel to use updated packages.
     </tr>
     <tr>
       <th>Dense residential neighbourhoods</th>
-      <td>0.006016</td>
-      <td>0.032779</td>
-      <td>0.018119</td>
-      <td>0.000567</td>
-      <td>0.004367</td>
+      <td>0.006018</td>
+      <td>0.032706</td>
+      <td>0.018123</td>
+      <td>0.000568</td>
+      <td>0.00436</td>
       <td>0.000202</td>
       <td>0.001139</td>
-      <td>0.005219</td>
+      <td>0.004595</td>
       <td>0.000085</td>
-      <td>0.003164</td>
+      <td>0.003108</td>
       <td>...</td>
-      <td>0.008218</td>
+      <td>0.008038</td>
       <td>0.0</td>
       <td>0.000323</td>
       <td>0.000008</td>
       <td>0.000775</td>
-      <td>0.000197</td>
+      <td>0.000199</td>
       <td>0.0</td>
-      <td>0.003019</td>
+      <td>0.002975</td>
       <td>0.0</td>
       <td>0.002831</td>
     </tr>
     <tr>
       <th>Connected residential neighbourhoods</th>
       <td>0.000762</td>
-      <td>0.012874</td>
-      <td>0.001105</td>
+      <td>0.012633</td>
+      <td>0.001106</td>
       <td>0.0</td>
       <td>0.000405</td>
       <td>0.001662</td>
       <td>0.000002</td>
-      <td>0.00368</td>
+      <td>0.003681</td>
       <td>0.0</td>
       <td>0.000155</td>
       <td>...</td>
-      <td>0.008751</td>
+      <td>0.008753</td>
       <td>0.0</td>
-      <td>0.002724</td>
+      <td>0.002737</td>
       <td>0.000003</td>
       <td>0.000977</td>
-      <td>0.000013</td>
-      <td>0.000277</td>
+      <td>0.000014</td>
+      <td>0.00029</td>
       <td>0.001466</td>
       <td>0.0</td>
       <td>0.000426</td>
@@ -2353,13 +2174,13 @@ Note: you may need to restart the kernel to use updated packages.
     <tr>
       <th>Dense urban neighbourhoods</th>
       <td>0.002179</td>
-      <td>0.023451</td>
-      <td>0.005319</td>
+      <td>0.023457</td>
+      <td>0.00532</td>
       <td>0.000182</td>
-      <td>0.000823</td>
+      <td>0.000706</td>
       <td>0.0</td>
       <td>0.000129</td>
-      <td>0.001775</td>
+      <td>0.001751</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
@@ -2370,36 +2191,36 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00128</td>
+      <td>0.001266</td>
       <td>0.0</td>
       <td>0.000747</td>
     </tr>
     <tr>
       <th>Local urbanity</th>
       <td>0.000008</td>
-      <td>0.00833</td>
+      <td>0.008332</td>
       <td>0.000605</td>
       <td>0.0</td>
-      <td>0.000234</td>
-      <td>0.000201</td>
+      <td>0.00024</td>
+      <td>0.000177</td>
       <td>0.0</td>
       <td>0.000069</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
-      <td>0.003291</td>
+      <td>0.003292</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000994</td>
+      <td>0.00099</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>Distilled urbanity</th>
+      <th>Concentrated urbanity</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2442,7 +2263,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00011</td>
+      <td>0.000086</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
@@ -2452,7 +2273,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00004</td>
+      <td>0.000021</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2471,7 +2292,7 @@ Note: you may need to restart the kernel to use updated packages.
       <td>0.0</td>
     </tr>
     <tr>
-      <th>Hyper distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -2512,7 +2333,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ttwa_37_0.png" src="../_images/ttwa_37_0.png" />
+<img alt="../_images/ttwa_38_0.png" src="../_images/ttwa_38_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2538,16 +2359,9 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapdata</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">set_geometry</span><span class="p">(</span><span class="n">interpolated</span><span class="o">.</span><span class="n">centroid</span><span class="p">)</span>
 
-<span class="n">centres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hyper distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Distilled urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">]</span>
+<span class="n">centres</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hyper concentrated urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentrated urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">]</span>
 <span class="n">sizes</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">centre</span> <span class="ow">in</span> <span class="n">centres</span><span class="p">:</span>
     <span class="n">sizes</span><span class="p">[</span><span class="n">centre</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolated</span><span class="p">[</span><span class="n">centre</span><span class="p">]</span> <span class="o">*</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">area</span>
@@ -2576,334 +2390,30 @@ Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   super().__setitem__(key, value)
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
 /opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   super().__setitem__(key, value)
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
 /opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   super().__setitem__(key, value)
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
 /opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   super().__setitem__(key, value)
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
 /opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   super().__setitem__(key, value)
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
-/opt/conda/lib/python3.9/site-packages/numpy/core/fromnumeric.py:3162: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
-  return asarray(a).ndim
 </pre></div>
 </div>
 </div>
@@ -2945,41 +2455,41 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <th>London</th>
       <td>0</td>
       <td>0</td>
-      <td>7.883216e+06</td>
-      <td>Distilled urbanity</td>
-      <td>POINT (538859.548 181287.313)</td>
+      <td>1.306116e+06</td>
+      <td>Hyper concentrated urbanity</td>
+      <td>POINT (538745.517 181341.137)</td>
     </tr>
     <tr>
       <th>Birmingham</th>
-      <td>1</td>
+      <td>2</td>
       <td>0</td>
       <td>1.075148e+06</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (411486.764 285105.634)</td>
+      <td>POINT (411388.314 285146.915)</td>
     </tr>
     <tr>
       <th>Edinburgh</th>
-      <td>1</td>
+      <td>2</td>
       <td>1</td>
       <td>6.384964e+05</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (336480.582 665538.228)</td>
+      <td>POINT (336390.208 665534.358)</td>
     </tr>
     <tr>
       <th>Glasgow</th>
-      <td>1</td>
+      <td>2</td>
       <td>2</td>
       <td>6.059172e+05</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (254427.143 665611.252)</td>
+      <td>POINT (254347.160 665607.051)</td>
     </tr>
     <tr>
       <th>Manchester</th>
-      <td>1</td>
+      <td>2</td>
       <td>3</td>
       <td>5.153730e+05</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (386884.766 394820.807)</td>
+      <td>POINT (386789.011 394849.149)</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2991,43 +2501,43 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </tr>
     <tr>
       <th>Clacton</th>
-      <td>4</td>
-      <td>42</td>
+      <td>5</td>
+      <td>44</td>
       <td>1.356900e+03</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (616999.223 223054.267)</td>
+      <td>POINT (616875.217 223103.518)</td>
     </tr>
     <tr>
       <th>Yeovil</th>
-      <td>4</td>
-      <td>43</td>
+      <td>5</td>
+      <td>45</td>
       <td>1.311523e+03</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (353541.196 119693.402)</td>
+      <td>POINT (353450.605 119753.694)</td>
     </tr>
     <tr>
       <th>Kendal</th>
-      <td>4</td>
-      <td>44</td>
+      <td>5</td>
+      <td>46</td>
       <td>8.299633e+02</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (352816.440 492003.682)</td>
+      <td>POINT (352724.630 492020.453)</td>
     </tr>
     <tr>
       <th>Worksop and Retford</th>
-      <td>4</td>
-      <td>45</td>
+      <td>5</td>
+      <td>47</td>
       <td>6.096959e+02</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (468458.241 381521.949)</td>
+      <td>POINT (468352.260 381552.153)</td>
     </tr>
     <tr>
       <th>Bridport</th>
-      <td>4</td>
-      <td>46</td>
+      <td>5</td>
+      <td>48</td>
       <td>1.525966e+02</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (344817.841 97711.329)</td>
+      <td>POINT (344728.416 97774.130)</td>
     </tr>
   </tbody>
 </table>
@@ -3066,8 +2576,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Hyper distilled urbanity</th>
-      <th>Distilled urbanity</th>
+      <th>Hyper concentrated urbanity</th>
+      <th>Concentrated urbanity</th>
       <th>Metropolitan urbanity</th>
       <th>Regional urbanity</th>
       <th>Local urbanity</th>
@@ -3124,10 +2634,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <th>Dorchester and Weymouth</th>
       <td>0.0</td>
       <td>0.0</td>
-      <td>28749.791016</td>
-      <td>81876.955078</td>
-      <td>2.495261e+05</td>
-      <td>8.396391e+05</td>
+      <td>15383.532227</td>
+      <td>68559.571289</td>
+      <td>2.408603e+05</td>
+      <td>7.469582e+05</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3161,9 +2671,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.0</td>
       <td>0.0</td>
       <td>0.000000</td>
-      <td>111034.203125</td>
-      <td>1.112047e+06</td>
-      <td>2.400959e+06</td>
+      <td>86499.750000</td>
+      <td>1.083695e+06</td>
+      <td>2.358544e+06</td>
     </tr>
     <tr>
       <th>Tywyn and Dolgellau</th>
@@ -3266,41 +2776,41 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <th>London</th>
       <td>0</td>
       <td>0</td>
-      <td>7.883216e+06</td>
-      <td>Distilled urbanity</td>
-      <td>POINT (538859.548 181287.313)</td>
+      <td>1.306116e+06</td>
+      <td>Hyper concentrated urbanity</td>
+      <td>POINT (538745.517 181341.137)</td>
     </tr>
     <tr>
       <th>Birmingham</th>
-      <td>1</td>
+      <td>2</td>
       <td>0</td>
       <td>1.075148e+06</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (411486.764 285105.634)</td>
+      <td>POINT (411388.314 285146.915)</td>
     </tr>
     <tr>
       <th>Edinburgh</th>
-      <td>1</td>
+      <td>2</td>
       <td>1</td>
       <td>6.384964e+05</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (336480.582 665538.228)</td>
+      <td>POINT (336390.208 665534.358)</td>
     </tr>
     <tr>
       <th>Glasgow</th>
-      <td>1</td>
+      <td>2</td>
       <td>2</td>
       <td>6.059172e+05</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (254427.143 665611.252)</td>
+      <td>POINT (254347.160 665607.051)</td>
     </tr>
     <tr>
       <th>Manchester</th>
-      <td>1</td>
+      <td>2</td>
       <td>3</td>
       <td>5.153730e+05</td>
       <td>Metropolitan urbanity</td>
-      <td>POINT (386884.766 394820.807)</td>
+      <td>POINT (386789.011 394849.149)</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3312,43 +2822,43 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </tr>
     <tr>
       <th>Clacton</th>
-      <td>4</td>
-      <td>42</td>
+      <td>5</td>
+      <td>44</td>
       <td>1.356900e+03</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (616999.223 223054.267)</td>
+      <td>POINT (616875.217 223103.518)</td>
     </tr>
     <tr>
       <th>Yeovil</th>
-      <td>4</td>
-      <td>43</td>
+      <td>5</td>
+      <td>45</td>
       <td>1.311523e+03</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (353541.196 119693.402)</td>
+      <td>POINT (353450.605 119753.694)</td>
     </tr>
     <tr>
       <th>Kendal</th>
-      <td>4</td>
-      <td>44</td>
+      <td>5</td>
+      <td>46</td>
       <td>8.299633e+02</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (352816.440 492003.682)</td>
+      <td>POINT (352724.630 492020.453)</td>
     </tr>
     <tr>
       <th>Worksop and Retford</th>
-      <td>4</td>
-      <td>45</td>
+      <td>5</td>
+      <td>47</td>
       <td>6.096959e+02</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (468458.241 381521.949)</td>
+      <td>POINT (468352.260 381552.153)</td>
     </tr>
     <tr>
       <th>Bridport</th>
-      <td>4</td>
-      <td>46</td>
+      <td>5</td>
+      <td>48</td>
       <td>1.525966e+02</td>
       <td>Dense urban neighbourhoods</td>
-      <td>POINT (344817.841 97711.329)</td>
+      <td>POINT (344728.416 97774.130)</td>
     </tr>
   </tbody>
 </table>
@@ -3369,7 +2879,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67
 </pre></div>
 </div>
 </div>
@@ -3440,6 +2950,1067 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/ttwa_57_0.png" src="../_images/ttwa_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/esda/ttwa_interpolated.pq&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;TTWA11NM&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interpolated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Countryside agriculture</th>
+      <th>Accessible suburbia</th>
+      <th>Open sprawl</th>
+      <th>Wild countryside</th>
+      <th>Warehouse/Park land</th>
+      <th>Gridded residential quarters</th>
+      <th>Urban buffer</th>
+      <th>Disconnected suburbia</th>
+      <th>Dense residential neighbourhoods</th>
+      <th>Connected residential neighbourhoods</th>
+      <th>Dense urban neighbourhoods</th>
+      <th>Local urbanity</th>
+      <th>Concentrated urbanity</th>
+      <th>Regional urbanity</th>
+      <th>Metropolitan urbanity</th>
+      <th>Hyper concentrated urbanity</th>
+      <th>geometry</th>
+      <th>TTWA11CD</th>
+    </tr>
+    <tr>
+      <th>TTWA11NM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Barnsley</th>
+      <td>0.223470</td>
+      <td>0.043759</td>
+      <td>0.176207</td>
+      <td>0.078137</td>
+      <td>1.209109e-03</td>
+      <td>0.000215</td>
+      <td>0.464410</td>
+      <td>0.003625</td>
+      <td>0.006018</td>
+      <td>7.622296e-04</td>
+      <td>0.002179</td>
+      <td>0.000008</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((443116.607 409861.824, 444593.769 40...</td>
+      <td>E30000004</td>
+    </tr>
+    <tr>
+      <th>Bradford</th>
+      <td>0.167767</td>
+      <td>0.044535</td>
+      <td>0.228543</td>
+      <td>0.031195</td>
+      <td>8.260556e-03</td>
+      <td>0.002243</td>
+      <td>0.431150</td>
+      <td>0.008945</td>
+      <td>0.032706</td>
+      <td>1.263258e-02</td>
+      <td>0.023457</td>
+      <td>0.008332</td>
+      <td>0.0</td>
+      <td>0.000230</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((404536.924 450487.224, 406675.831 44...</td>
+      <td>E30000018</td>
+    </tr>
+    <tr>
+      <th>Halifax</th>
+      <td>0.506016</td>
+      <td>0.008178</td>
+      <td>0.078606</td>
+      <td>0.116988</td>
+      <td>7.743638e-03</td>
+      <td>0.000413</td>
+      <td>0.252566</td>
+      <td>0.004335</td>
+      <td>0.018123</td>
+      <td>1.105669e-03</td>
+      <td>0.005320</td>
+      <td>0.000605</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((417371.807 423577.976, 417747.206 42...</td>
+      <td>E30000029</td>
+    </tr>
+    <tr>
+      <th>Skipton</th>
+      <td>0.333247</td>
+      <td>0.000010</td>
+      <td>0.002516</td>
+      <td>0.626520</td>
+      <td>6.712196e-04</td>
+      <td>0.000000</td>
+      <td>0.036192</td>
+      <td>0.000069</td>
+      <td>0.000568</td>
+      <td>4.415132e-07</td>
+      <td>0.000182</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((399705.754 475251.492, 400486.847 47...</td>
+      <td>E30000039</td>
+    </tr>
+    <tr>
+      <th>Dorchester and Weymouth</th>
+      <td>0.803093</td>
+      <td>0.003389</td>
+      <td>0.021314</td>
+      <td>0.029620</td>
+      <td>4.454053e-03</td>
+      <td>0.000505</td>
+      <td>0.121557</td>
+      <td>0.000286</td>
+      <td>0.004360</td>
+      <td>4.049208e-04</td>
+      <td>0.000706</td>
+      <td>0.000240</td>
+      <td>0.0</td>
+      <td>0.000074</td>
+      <td>0.000021</td>
+      <td>0.0</td>
+      <td>POLYGON ((381318.618 95599.564, 382904.110 952...</td>
+      <td>E30000046</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Pwllheli and Porthmadog</th>
+      <td>0.294169</td>
+      <td>0.000185</td>
+      <td>0.000677</td>
+      <td>0.637449</td>
+      <td>1.737449e-05</td>
+      <td>0.000003</td>
+      <td>0.031029</td>
+      <td>0.000000</td>
+      <td>0.000199</td>
+      <td>1.370748e-05</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>MULTIPOLYGON (((212467.543 322328.962, 210862....</td>
+      <td>W22000030</td>
+    </tr>
+    <tr>
+      <th>Rhyl</th>
+      <td>0.335685</td>
+      <td>0.009770</td>
+      <td>0.006090</td>
+      <td>0.555019</td>
+      <td>3.346282e-04</td>
+      <td>0.001034</td>
+      <td>0.089543</td>
+      <td>0.000154</td>
+      <td>0.000000</td>
+      <td>2.896387e-04</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((323624.950 374399.714, 321442.625 37...</td>
+      <td>W22000031</td>
+    </tr>
+    <tr>
+      <th>Swansea</th>
+      <td>0.285298</td>
+      <td>0.017182</td>
+      <td>0.035248</td>
+      <td>0.108456</td>
+      <td>1.686457e-02</td>
+      <td>0.007052</td>
+      <td>0.510910</td>
+      <td>0.001141</td>
+      <td>0.002975</td>
+      <td>1.466345e-03</td>
+      <td>0.001266</td>
+      <td>0.000990</td>
+      <td>0.0</td>
+      <td>0.000086</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((298705.805 215503.170, 298231.853 21...</td>
+      <td>W22000032</td>
+    </tr>
+    <tr>
+      <th>Tywyn and Dolgellau</th>
+      <td>0.226700</td>
+      <td>0.000080</td>
+      <td>0.000736</td>
+      <td>0.749014</td>
+      <td>8.903418e-07</td>
+      <td>0.000000</td>
+      <td>0.016699</td>
+      <td>0.000098</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((300174.007 330847.935, 298615.652 32...</td>
+      <td>W22000033</td>
+    </tr>
+    <tr>
+      <th>Wrexham</th>
+      <td>0.677904</td>
+      <td>0.008354</td>
+      <td>0.019103</td>
+      <td>0.068111</td>
+      <td>3.937673e-03</td>
+      <td>0.000004</td>
+      <td>0.216287</td>
+      <td>0.002296</td>
+      <td>0.002831</td>
+      <td>4.259803e-04</td>
+      <td>0.000747</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+      <td>POLYGON ((351207.619 343162.826, 350623.359 34...</td>
+      <td>W22000034</td>
+    </tr>
+  </tbody>
+</table>
+<p>218 rows × 18 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">for_heatmap</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;TTWA11CD&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">for_heatmap</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>TTWA11NM</th>
+      <th>Barnsley</th>
+      <th>Bradford</th>
+      <th>Halifax</th>
+      <th>Skipton</th>
+      <th>Dorchester and Weymouth</th>
+      <th>Falmouth</th>
+      <th>Grantham</th>
+      <th>Hastings</th>
+      <th>Hexham</th>
+      <th>Isle of Wight</th>
+      <th>...</th>
+      <th>Cardiff</th>
+      <th>Cardigan</th>
+      <th>Colwyn Bay</th>
+      <th>Llanelli</th>
+      <th>Merthyr Tydfil</th>
+      <th>Pwllheli and Porthmadog</th>
+      <th>Rhyl</th>
+      <th>Swansea</th>
+      <th>Tywyn and Dolgellau</th>
+      <th>Wrexham</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>0.223470</td>
+      <td>0.167767</td>
+      <td>0.506016</td>
+      <td>3.332466e-01</td>
+      <td>0.803093</td>
+      <td>0.818335</td>
+      <td>0.895052</td>
+      <td>0.767591</td>
+      <td>0.094503</td>
+      <td>0.599603</td>
+      <td>...</td>
+      <td>0.195818</td>
+      <td>0.523145</td>
+      <td>0.248822</td>
+      <td>0.314656</td>
+      <td>0.355109</td>
+      <td>0.294169</td>
+      <td>0.335685</td>
+      <td>0.285298</td>
+      <td>2.267002e-01</td>
+      <td>0.677904</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>0.043759</td>
+      <td>0.044535</td>
+      <td>0.008178</td>
+      <td>9.679447e-06</td>
+      <td>0.003389</td>
+      <td>0.001462</td>
+      <td>0.003266</td>
+      <td>0.029322</td>
+      <td>0.000000</td>
+      <td>0.025276</td>
+      <td>...</td>
+      <td>0.026761</td>
+      <td>0.000000</td>
+      <td>0.008323</td>
+      <td>0.000882</td>
+      <td>0.001534</td>
+      <td>0.000185</td>
+      <td>0.009770</td>
+      <td>0.017182</td>
+      <td>7.951733e-05</td>
+      <td>0.008354</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>0.176207</td>
+      <td>0.228543</td>
+      <td>0.078606</td>
+      <td>2.516165e-03</td>
+      <td>0.021314</td>
+      <td>0.014444</td>
+      <td>0.008395</td>
+      <td>0.015181</td>
+      <td>0.000812</td>
+      <td>0.019297</td>
+      <td>...</td>
+      <td>0.104238</td>
+      <td>0.000554</td>
+      <td>0.006357</td>
+      <td>0.004573</td>
+      <td>0.043850</td>
+      <td>0.000677</td>
+      <td>0.006090</td>
+      <td>0.035248</td>
+      <td>7.362045e-04</td>
+      <td>0.019103</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>0.078137</td>
+      <td>0.031195</td>
+      <td>0.116988</td>
+      <td>6.265198e-01</td>
+      <td>0.029620</td>
+      <td>0.025869</td>
+      <td>0.000050</td>
+      <td>0.000017</td>
+      <td>0.897572</td>
+      <td>0.000087</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.457116</td>
+      <td>0.666861</td>
+      <td>0.614383</td>
+      <td>0.203098</td>
+      <td>0.637449</td>
+      <td>0.555019</td>
+      <td>0.108456</td>
+      <td>7.490144e-01</td>
+      <td>0.068111</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>0.001209</td>
+      <td>0.008261</td>
+      <td>0.007744</td>
+      <td>6.712196e-04</td>
+      <td>0.004454</td>
+      <td>0.000537</td>
+      <td>0.000426</td>
+      <td>0.000163</td>
+      <td>0.000008</td>
+      <td>0.000908</td>
+      <td>...</td>
+      <td>0.033123</td>
+      <td>0.000037</td>
+      <td>0.002164</td>
+      <td>0.000003</td>
+      <td>0.009065</td>
+      <td>0.000017</td>
+      <td>0.000335</td>
+      <td>0.016865</td>
+      <td>8.903418e-07</td>
+      <td>0.003938</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>0.000215</td>
+      <td>0.002243</td>
+      <td>0.000413</td>
+      <td>0.000000e+00</td>
+      <td>0.000505</td>
+      <td>0.003124</td>
+      <td>0.000075</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.006657</td>
+      <td>...</td>
+      <td>0.018411</td>
+      <td>0.000000</td>
+      <td>0.000800</td>
+      <td>0.001571</td>
+      <td>0.002301</td>
+      <td>0.000003</td>
+      <td>0.001034</td>
+      <td>0.007052</td>
+      <td>0.000000e+00</td>
+      <td>0.000004</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>0.464410</td>
+      <td>0.431150</td>
+      <td>0.252566</td>
+      <td>3.619192e-02</td>
+      <td>0.121557</td>
+      <td>0.094407</td>
+      <td>0.090790</td>
+      <td>0.165562</td>
+      <td>0.007011</td>
+      <td>0.324110</td>
+      <td>...</td>
+      <td>0.579492</td>
+      <td>0.007042</td>
+      <td>0.059214</td>
+      <td>0.059388</td>
+      <td>0.382751</td>
+      <td>0.031029</td>
+      <td>0.089543</td>
+      <td>0.510910</td>
+      <td>1.669930e-02</td>
+      <td>0.216287</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>0.003625</td>
+      <td>0.008945</td>
+      <td>0.004335</td>
+      <td>6.877031e-05</td>
+      <td>0.000286</td>
+      <td>0.002359</td>
+      <td>0.000676</td>
+      <td>0.003296</td>
+      <td>0.000010</td>
+      <td>0.000196</td>
+      <td>...</td>
+      <td>0.007812</td>
+      <td>0.000003</td>
+      <td>0.000006</td>
+      <td>0.000143</td>
+      <td>0.000539</td>
+      <td>0.000000</td>
+      <td>0.000154</td>
+      <td>0.001141</td>
+      <td>9.760898e-05</td>
+      <td>0.002296</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>0.006018</td>
+      <td>0.032706</td>
+      <td>0.018123</td>
+      <td>5.675908e-04</td>
+      <td>0.004360</td>
+      <td>0.000202</td>
+      <td>0.001139</td>
+      <td>0.004595</td>
+      <td>0.000085</td>
+      <td>0.003108</td>
+      <td>...</td>
+      <td>0.008038</td>
+      <td>0.000000</td>
+      <td>0.000323</td>
+      <td>0.000008</td>
+      <td>0.000775</td>
+      <td>0.000199</td>
+      <td>0.000000</td>
+      <td>0.002975</td>
+      <td>0.000000e+00</td>
+      <td>0.002831</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>0.000762</td>
+      <td>0.012633</td>
+      <td>0.001106</td>
+      <td>4.415132e-07</td>
+      <td>0.000405</td>
+      <td>0.001662</td>
+      <td>0.000002</td>
+      <td>0.003681</td>
+      <td>0.000000</td>
+      <td>0.000155</td>
+      <td>...</td>
+      <td>0.008753</td>
+      <td>0.000000</td>
+      <td>0.002737</td>
+      <td>0.000003</td>
+      <td>0.000977</td>
+      <td>0.000014</td>
+      <td>0.000290</td>
+      <td>0.001466</td>
+      <td>0.000000e+00</td>
+      <td>0.000426</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>0.002179</td>
+      <td>0.023457</td>
+      <td>0.005320</td>
+      <td>1.824795e-04</td>
+      <td>0.000706</td>
+      <td>0.000000</td>
+      <td>0.000129</td>
+      <td>0.001751</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.011502</td>
+      <td>0.000000</td>
+      <td>0.000005</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.001266</td>
+      <td>0.000000e+00</td>
+      <td>0.000747</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>0.000008</td>
+      <td>0.008332</td>
+      <td>0.000605</td>
+      <td>0.000000e+00</td>
+      <td>0.000240</td>
+      <td>0.000177</td>
+      <td>0.000000</td>
+      <td>0.000069</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.003292</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000990</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>0.000000</td>
+      <td>0.000230</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000074</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000086</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000021</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>16 rows × 218 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LogNorm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Wild countryside&#39;</span><span class="p">,</span> <span class="s1">&#39;Countryside agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Urban buffer&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Warehouse/Park land&#39;</span><span class="p">,</span> <span class="s1">&#39;Open sprawl&#39;</span><span class="p">,</span> <span class="s1">&#39;Disconnected suburbia&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Accessible suburbia&#39;</span><span class="p">,</span> <span class="s1">&#39;Connected residential neighbourhoods&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense residential neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Gridded residential quarters&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Dense urban neighbourhoods&#39;</span><span class="p">,</span> <span class="s1">&#39;Local urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Regional urbanity&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Metropolitan urbanity&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentrated urbanity&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Hyper concentrated urbanity&#39;</span>
+    <span class="p">]</span>
+<span class="n">order</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="n">for_heatmap</span> <span class="o">=</span> <span class="n">for_heatmap</span><span class="p">[</span>
+    <span class="n">order</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data2</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;level&quot;</span><span class="p">,</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span> <span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;urbanity&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">interpolated</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">centre</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
+    <span class="n">sizes</span><span class="p">[</span><span class="n">centre</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolated</span><span class="p">[</span><span class="n">centre</span><span class="p">]</span> <span class="o">*</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">area</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centroids</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">centroid</span>
+<span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">interpolated</span><span class="p">[</span><span class="n">interpolated</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">area</span>
+    <span class="n">sub</span><span class="p">[</span><span class="s2">&quot;sorter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">*</span> <span class="n">area</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;sorter&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+        <span class="n">plot_data2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">level</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">sub</span><span class="p">[</span><span class="s2">&quot;sorter&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix</span><span class="p">],</span> <span class="n">c</span><span class="p">,</span> <span class="n">centroids</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix</span><span class="p">]]</span>
+    <span class="n">interpolated</span> <span class="o">=</span> <span class="n">interpolated</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_data2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>level</th>
+      <th>order</th>
+      <th>area</th>
+      <th>urbanity</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>London</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1.306116e+06</td>
+      <td>Hyper concentrated urbanity</td>
+      <td>POINT (538745.517 181341.137)</td>
+    </tr>
+    <tr>
+      <th>Birmingham</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1.075148e+06</td>
+      <td>Metropolitan urbanity</td>
+      <td>POINT (411388.314 285146.915)</td>
+    </tr>
+    <tr>
+      <th>Edinburgh</th>
+      <td>2</td>
+      <td>1</td>
+      <td>6.384964e+05</td>
+      <td>Metropolitan urbanity</td>
+      <td>POINT (336390.208 665534.358)</td>
+    </tr>
+    <tr>
+      <th>Glasgow</th>
+      <td>2</td>
+      <td>2</td>
+      <td>6.059172e+05</td>
+      <td>Metropolitan urbanity</td>
+      <td>POINT (254347.160 665607.051)</td>
+    </tr>
+    <tr>
+      <th>Manchester</th>
+      <td>2</td>
+      <td>3</td>
+      <td>5.153730e+05</td>
+      <td>Metropolitan urbanity</td>
+      <td>POINT (386789.011 394849.149)</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Portree</th>
+      <td>11</td>
+      <td>1</td>
+      <td>4.187323e+05</td>
+      <td>Open sprawl</td>
+      <td>POINT (139392.915 845200.808)</td>
+    </tr>
+    <tr>
+      <th>Newton Stewart</th>
+      <td>11</td>
+      <td>2</td>
+      <td>3.890446e+05</td>
+      <td>Open sprawl</td>
+      <td>POINT (243111.771 562519.436)</td>
+    </tr>
+    <tr>
+      <th>Mull and Islay</th>
+      <td>13</td>
+      <td>0</td>
+      <td>3.332326e+06</td>
+      <td>Urban buffer</td>
+      <td>POINT (143779.227 704221.821)</td>
+    </tr>
+    <tr>
+      <th>Lochgilphead</th>
+      <td>13</td>
+      <td>1</td>
+      <td>6.808734e+05</td>
+      <td>Urban buffer</td>
+      <td>POINT (188024.719 687097.024)</td>
+    </tr>
+    <tr>
+      <th>Broadford and Kyle of Lochalsh</th>
+      <td>13</td>
+      <td>2</td>
+      <td>2.705685e+05</td>
+      <td>Urban buffer</td>
+      <td>POINT (187338.604 832547.182)</td>
+    </tr>
+  </tbody>
+</table>
+<p>218 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>Per proportion within TTWA</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">for_heatmap</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">plot_data2</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_70_1.png" src="../_images/ttwa_70_1.png" />
+</div>
+</div>
+<p>Per proportion of type within ttwa</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="n">for_heatmap</span> <span class="o">/</span> <span class="n">for_heatmap</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">plot_data2</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_72_1.png" src="../_images/ttwa_72_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">(</span><span class="n">for_heatmap</span> <span class="o">/</span> <span class="n">for_heatmap</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">plot_data2</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;magma_r&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/ttwa_73_1.png" src="../_images/ttwa_73_1.png" />
 </div>
 </div>
 </div>
