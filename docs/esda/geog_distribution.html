@@ -477,7 +477,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">urbangrammar_graphics</span> <span class="k">as</span> <span class="nn">ugg</span>
-
+<span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
 <span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span>
 <span class="kn">from</span> <span class="nn">matplotlib_scalebar.scalebar</span> <span class="kn">import</span> <span class="n">ScaleBar</span>
 
@@ -1397,67 +1397,67 @@ Name: kmeans10gb, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>7_0</th>
+      <th>7</th>
       <td>3686554</td>
     </tr>
     <tr>
-      <th>0_0</th>
+      <th>0</th>
       <td>3022385</td>
     </tr>
     <tr>
-      <th>3_0</th>
+      <th>3</th>
       <td>2561211</td>
     </tr>
     <tr>
-      <th>1_0</th>
+      <th>1</th>
       <td>1962830</td>
     </tr>
     <tr>
-      <th>5_0</th>
+      <th>5</th>
       <td>707211</td>
     </tr>
     <tr>
-      <th>4_0</th>
+      <th>4</th>
       <td>595902</td>
     </tr>
     <tr>
-      <th>8_0</th>
+      <th>8</th>
       <td>564318</td>
     </tr>
     <tr>
-      <th>2_0</th>
+      <th>20</th>
       <td>502835</td>
     </tr>
     <tr>
-      <th>2_1</th>
+      <th>21</th>
       <td>374090</td>
     </tr>
     <tr>
-      <th>2_2</th>
+      <th>22</th>
       <td>238639</td>
     </tr>
     <tr>
-      <th>6_0</th>
+      <th>6</th>
       <td>209959</td>
     </tr>
     <tr>
-      <th>9_0</th>
+      <th>90</th>
       <td>86380</td>
     </tr>
     <tr>
-      <th>9_2</th>
+      <th>92</th>
       <td>21760</td>
     </tr>
     <tr>
-      <th>9_4</th>
+      <th>94</th>
       <td>3739</td>
     </tr>
     <tr>
-      <th>9_1</th>
+      <th>91</th>
       <td>1390</td>
     </tr>
     <tr>
-      <th>9_5</th>
+      <th>95</th>
       <td>264</td>
     </tr>
   </tbody>
@@ -1500,13 +1500,13 @@ Name: kmeans10gb, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3551/3349044170.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_419951/3349044170.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   types_sum[&quot;area_perc&quot;] = (types_sum.area / types_sum.area.sum()) * 100
-/tmp/ipykernel_3551/3349044170.py:2: SettingWithCopyWarning: 
+/tmp/ipykernel_419951/3349044170.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -1704,6 +1704,686 @@ Hyper concentrated urbanity          &amp;     2293596 &amp;     264 &amp;      
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/population&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_path</span> <span class="o">=</span> <span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_tessellation&quot;</span>
+<span class="n">sig_types</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">types_path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hindex&#39;</span><span class="p">,</span> <span class="s1">&#39;signature_type&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sig_types</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>signature_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>c000e109777t0000</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>c000e109777t0001</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c000e109777t0002</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>c000e109777t0003</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>c000e109777t0004</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span> <span class="o">=</span> <span class="n">population</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sig_types</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">combined</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><strong>Dask DataFrame Structure:</strong></div>
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hindex</th>
+      <th>population</th>
+      <th>signature_type</th>
+    </tr>
+    <tr>
+      <th>npartitions=103</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th></th>
+      <td>object</td>
+      <td>float64</td>
+      <td>int32</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th></th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>Dask Name: hash-join, 1549 tasks</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;signature_type&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">,</span> <span class="s2">&quot;hindex&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the sum, should be above 67 mio.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67140883.00504927
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;hindex&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="mi">93</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">96</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">97</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="mi">98</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">summary</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;outlier&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span>
+<span class="n">types_sum</span><span class="p">[</span><span class="s2">&quot;population_perc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">types_sum</span><span class="o">.</span><span class="n">population</span> <span class="o">/</span> <span class="n">types_sum</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_419951/1263051370.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  types_sum[&#39;population&#39;] = summary[&#39;population&#39;]
+/tmp/ipykernel_419951/1263051370.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  types_sum[&quot;population_perc&quot;] = (types_sum.population / types_sum.population.sum()) * 100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>counts</th>
+      <th>area_perc</th>
+      <th>count_perc</th>
+      <th>population</th>
+      <th>population_perc</th>
+    </tr>
+    <tr>
+      <th>signature_type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>9.385615e+10</td>
+      <td>3022385.0</td>
+      <td>40.818050</td>
+      <td>20.787454</td>
+      <td>5.765794e+06</td>
+      <td>8.587620</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>2.244586e+09</td>
+      <td>1962830.0</td>
+      <td>0.976171</td>
+      <td>13.500013</td>
+      <td>8.848915e+06</td>
+      <td>13.179644</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>9.572622e+08</td>
+      <td>502835.0</td>
+      <td>0.416313</td>
+      <td>3.458414</td>
+      <td>5.016013e+06</td>
+      <td>7.470889</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>5.654034e+08</td>
+      <td>374090.0</td>
+      <td>0.245894</td>
+      <td>2.572928</td>
+      <td>3.200903e+06</td>
+      <td>4.767450</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>5.706291e+08</td>
+      <td>238639.0</td>
+      <td>0.248167</td>
+      <td>1.641319</td>
+      <td>4.160981e+06</td>
+      <td>6.197399</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>5.081598e+09</td>
+      <td>2561211.0</td>
+      <td>2.209988</td>
+      <td>17.615577</td>
+      <td>1.291983e+07</td>
+      <td>19.242892</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>9.130631e+10</td>
+      <td>595902.0</td>
+      <td>39.709124</td>
+      <td>4.098513</td>
+      <td>7.738578e+05</td>
+      <td>1.152590</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>2.462472e+09</td>
+      <td>707211.0</td>
+      <td>1.070930</td>
+      <td>4.864078</td>
+      <td>4.885898e+06</td>
+      <td>7.277095</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>2.612541e+08</td>
+      <td>209959.0</td>
+      <td>0.113619</td>
+      <td>1.444063</td>
+      <td>1.622579e+06</td>
+      <td>2.416682</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>3.158887e+10</td>
+      <td>3686554.0</td>
+      <td>13.738005</td>
+      <td>25.355496</td>
+      <td>1.262026e+07</td>
+      <td>18.796710</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>7.089617e+08</td>
+      <td>564318.0</td>
+      <td>0.308328</td>
+      <td>3.881284</td>
+      <td>3.695715e+06</td>
+      <td>5.504427</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>2.311573e+08</td>
+      <td>86380.0</td>
+      <td>0.100530</td>
+      <td>0.594107</td>
+      <td>2.481154e+06</td>
+      <td>3.695450</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>7.883216e+06</td>
+      <td>1390.0</td>
+      <td>0.003428</td>
+      <td>0.009560</td>
+      <td>4.979667e+04</td>
+      <td>0.074168</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>7.643967e+07</td>
+      <td>21760.0</td>
+      <td>0.033244</td>
+      <td>0.149662</td>
+      <td>9.265150e+05</td>
+      <td>1.379959</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>1.658261e+07</td>
+      <td>3739.0</td>
+      <td>0.007212</td>
+      <td>0.025716</td>
+      <td>1.626733e+05</td>
+      <td>0.242287</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>2.293596e+06</td>
+      <td>264.0</td>
+      <td>0.000997</td>
+      <td>0.001816</td>
+      <td>9.895050e+03</td>
+      <td>0.014738</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;summary.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span><span class="p">[</span><span class="s1">&#39;population_perc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/geog_distribution_70_1.png" src="../_images/geog_distribution_70_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span><span class="p">[</span><span class="s1">&#39;area_perc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/geog_distribution_71_1.png" src="../_images/geog_distribution_71_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span><span class="p">[</span><span class="s1">&#39;count_perc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/geog_distribution_72_1.png" src="../_images/geog_distribution_72_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_sum</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>area</th>
+      <th>counts</th>
+      <th>area_perc</th>
+      <th>count_perc</th>
+      <th>population</th>
+      <th>population_perc</th>
+    </tr>
+    <tr>
+      <th>signature_type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Countryside agriculture</th>
+      <td>9.385615e+10</td>
+      <td>3022385.0</td>
+      <td>40.818050</td>
+      <td>20.787454</td>
+      <td>5.765794e+06</td>
+      <td>8.587620</td>
+    </tr>
+    <tr>
+      <th>Accessible suburbia</th>
+      <td>2.244586e+09</td>
+      <td>1962830.0</td>
+      <td>0.976171</td>
+      <td>13.500013</td>
+      <td>8.848915e+06</td>
+      <td>13.179644</td>
+    </tr>
+    <tr>
+      <th>Dense residential neighbourhoods</th>
+      <td>9.572622e+08</td>
+      <td>502835.0</td>
+      <td>0.416313</td>
+      <td>3.458414</td>
+      <td>5.016013e+06</td>
+      <td>7.470889</td>
+    </tr>
+    <tr>
+      <th>Connected residential neighbourhoods</th>
+      <td>5.654034e+08</td>
+      <td>374090.0</td>
+      <td>0.245894</td>
+      <td>2.572928</td>
+      <td>3.200903e+06</td>
+      <td>4.767450</td>
+    </tr>
+    <tr>
+      <th>Dense urban neighbourhoods</th>
+      <td>5.706291e+08</td>
+      <td>238639.0</td>
+      <td>0.248167</td>
+      <td>1.641319</td>
+      <td>4.160981e+06</td>
+      <td>6.197399</td>
+    </tr>
+    <tr>
+      <th>Open sprawl</th>
+      <td>5.081598e+09</td>
+      <td>2561211.0</td>
+      <td>2.209988</td>
+      <td>17.615577</td>
+      <td>1.291983e+07</td>
+      <td>19.242892</td>
+    </tr>
+    <tr>
+      <th>Wild countryside</th>
+      <td>9.130631e+10</td>
+      <td>595902.0</td>
+      <td>39.709124</td>
+      <td>4.098513</td>
+      <td>7.738578e+05</td>
+      <td>1.152590</td>
+    </tr>
+    <tr>
+      <th>Warehouse/Park land</th>
+      <td>2.462472e+09</td>
+      <td>707211.0</td>
+      <td>1.070930</td>
+      <td>4.864078</td>
+      <td>4.885898e+06</td>
+      <td>7.277095</td>
+    </tr>
+    <tr>
+      <th>Gridded residential quarters</th>
+      <td>2.612541e+08</td>
+      <td>209959.0</td>
+      <td>0.113619</td>
+      <td>1.444063</td>
+      <td>1.622579e+06</td>
+      <td>2.416682</td>
+    </tr>
+    <tr>
+      <th>Urban buffer</th>
+      <td>3.158887e+10</td>
+      <td>3686554.0</td>
+      <td>13.738005</td>
+      <td>25.355496</td>
+      <td>1.262026e+07</td>
+      <td>18.796710</td>
+    </tr>
+    <tr>
+      <th>Disconnected suburbia</th>
+      <td>7.089617e+08</td>
+      <td>564318.0</td>
+      <td>0.308328</td>
+      <td>3.881284</td>
+      <td>3.695715e+06</td>
+      <td>5.504427</td>
+    </tr>
+    <tr>
+      <th>Local urbanity</th>
+      <td>2.311573e+08</td>
+      <td>86380.0</td>
+      <td>0.100530</td>
+      <td>0.594107</td>
+      <td>2.481154e+06</td>
+      <td>3.695450</td>
+    </tr>
+    <tr>
+      <th>Concentrated urbanity</th>
+      <td>7.883216e+06</td>
+      <td>1390.0</td>
+      <td>0.003428</td>
+      <td>0.009560</td>
+      <td>4.979667e+04</td>
+      <td>0.074168</td>
+    </tr>
+    <tr>
+      <th>Regional urbanity</th>
+      <td>7.643967e+07</td>
+      <td>21760.0</td>
+      <td>0.033244</td>
+      <td>0.149662</td>
+      <td>9.265150e+05</td>
+      <td>1.379959</td>
+    </tr>
+    <tr>
+      <th>Metropolitan urbanity</th>
+      <td>1.658261e+07</td>
+      <td>3739.0</td>
+      <td>0.007212</td>
+      <td>0.025716</td>
+      <td>1.626733e+05</td>
+      <td>0.242287</td>
+    </tr>
+    <tr>
+      <th>Hyper concentrated urbanity</th>
+      <td>2.293596e+06</td>
+      <td>264.0</td>
+      <td>0.000997</td>
+      <td>0.001816</td>
+      <td>9.895050e+03</td>
+      <td>0.014738</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 </div>

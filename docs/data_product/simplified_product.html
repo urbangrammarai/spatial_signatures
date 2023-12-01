@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Summary of coverage (units, area, population) &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
+    <title>Prepare simplified signatures for upload &#8212; Urban Grammar AI | WP2 - Spatial Signatures</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -279,27 +279,27 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="sizeshape.html">
+  <a class="reference internal" href="../esda/sizeshape.html">
    Size and shape of signatures
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="co-occurence.html">
+  <a class="reference internal" href="../esda/co-occurence.html">
    Co-occurence analysis
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ttwa.html">
+  <a class="reference internal" href="../esda/ttwa.html">
    Composition of signatures within TTWA boundaries
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="fua.html">
+  <a class="reference internal" href="../esda/fua.html">
    Composition of signatures within FUAs
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="geog_distribution.html">
+  <a class="reference internal" href="../esda/geog_distribution.html">
    Geographical distribution and coverage of signature types
   </a>
  </li>
@@ -311,22 +311,22 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../data_product/overview.html">
+  <a class="reference internal" href="overview.html">
    Overview of the data product
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../data_product/create_data_product.html">
+  <a class="reference internal" href="create_data_product.html">
    Create a data product
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../data_product/oa_interpolation.html">
+  <a class="reference internal" href="oa_interpolation.html">
    Interpolation of signatures to OA and LSOA
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../data_product/vector_tile.html">
+  <a class="reference internal" href="vector_tile.html">
    Generate vector tiles
   </a>
  </li>
@@ -367,7 +367,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/esda/counts.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/data_product/simplified_product.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -405,7 +405,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/esda/counts.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/urbangrammarai/spatial_signatures/master?urlpath=tree/data_product/simplified_product.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -422,6 +422,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cleanup-sliver-geometries">
+   Cleanup sliver geometries
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -430,107 +443,27 @@
         
               <div>
                 
-  <div class="section" id="summary-of-coverage-units-area-population">
-<h1>Summary of coverage (units, area, population)<a class="headerlink" href="#summary-of-coverage-units-area-population" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="prepare-simplified-signatures-for-upload">
+<h1>Prepare simplified signatures for upload<a class="headerlink" href="#prepare-simplified-signatures-for-upload" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dask_geopandas</span>
 <span class="kn">import</span> <span class="nn">geopandas</span>
+<span class="kn">import</span> <span class="nn">pyogrio</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/functional/population&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">pyogrio</span><span class="o">.</span><span class="n">read_dataframe</span><span class="p">(</span><span class="s1">&#39;urbangrammar_samba/spatial_signatures/signatures/signatures_combined_levels_simplified.gpkg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">population</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><strong>Dask DataFrame Structure:</strong></div>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>hindex</th>
-      <th>population</th>
-    </tr>
-    <tr>
-      <th>npartitions=103</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th></th>
-      <td>object</td>
-      <td>float64</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<div>Dask Name: read-parquet, 103 tasks</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types_path</span> <span class="o">=</span> <span class="s2">&quot;../../urbangrammar_samba/spatial_signatures/signatures/signatures_combined_tessellation&quot;</span>
-<span class="n">types</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">types_path</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;hindex&#39;</span><span class="p">,</span> <span class="s1">&#39;signature_type&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
 </pre></div>
 </div>
 </div>
@@ -553,202 +486,134 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>hindex</th>
+      <th>kmeans10gb</th>
+      <th>level2</th>
       <th>signature_type</th>
+      <th>geometry</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>c000e109777t0000</td>
-      <td>6</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((62219.999 798499.999, 62109.999 7985...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>c000e109777t0001</td>
-      <td>6</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((63507.682 796515.168, 63471.096 7965...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>c000e109777t0002</td>
-      <td>6</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((65953.174 802246.171, 65523.864 8023...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>c000e109777t0003</td>
-      <td>6</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((67297.740 803435.799, 67220.290 8034...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>c000e109777t0004</td>
-      <td>6</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">combined</span> <span class="o">=</span> <span class="n">population</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;hindex&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
-<span class="n">combined</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><strong>Dask DataFrame Structure:</strong></div>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>hindex</th>
-      <th>population</th>
-      <th>signature_type</th>
-    </tr>
-    <tr>
-      <th>npartitions=103</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th></th>
-      <td>object</td>
-      <td>float64</td>
-      <td>int32</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((75760.000 852669.999, 75699.999 8527...</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
       <td>...</td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
     </tr>
     <tr>
-      <th></th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <th>96699</th>
+      <td>9</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>POLYGON ((323321.005 463795.415, 323236.741 46...</td>
+    </tr>
+    <tr>
+      <th>96700</th>
+      <td>9</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>POLYGON ((325929.840 1008792.060, 325890.989 1...</td>
+    </tr>
+    <tr>
+      <th>96701</th>
+      <td>9</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>POLYGON ((337804.769 1013422.582, 337547.855 1...</td>
+    </tr>
+    <tr>
+      <th>96702</th>
+      <td>9</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>POLYGON ((422304.270 1147826.989, 422296.000 1...</td>
+    </tr>
+    <tr>
+      <th>96703</th>
+      <td>9</td>
+      <td>8.0</td>
+      <td>9_8</td>
+      <td>POLYGON ((525396.260 439215.479, 525360.919 43...</td>
     </tr>
   </tbody>
 </table>
-</div>
-<div>Dask Name: hash-join, 1549 tasks</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;signature_type&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;population&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">,</span> <span class="s2">&quot;hindex&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">population</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67140883.00504927
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;hindex&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span>
-<span class="p">})</span>
-</pre></div>
-</div>
-</div>
+<p>96704 rows × 4 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
-    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
-    <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
-    <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
-    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
-    <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
-    <span class="mi">7</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
-    <span class="mi">8</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
-    <span class="mi">20</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
-    <span class="mi">21</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
-    <span class="mi">22</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
-    <span class="mi">90</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">91</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">92</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">94</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">95</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
-    <span class="mi">93</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
-    <span class="mi">96</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
-    <span class="mi">97</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
-    <span class="mi">98</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;0_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Countryside agriculture&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;1_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Accessible suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Open sprawl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Wild countryside&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;5_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Warehouse/Park land&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;6_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Gridded residential quarters&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;7_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Urban buffer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Disconnected suburbia&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Connected residential neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;2_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Dense urban neighbourhoods&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_0&quot;</span><span class="p">:</span> <span class="s2">&quot;Local urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_1&quot;</span><span class="p">:</span> <span class="s2">&quot;Concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_2&quot;</span><span class="p">:</span> <span class="s2">&quot;Regional urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_4&quot;</span><span class="p">:</span> <span class="s2">&quot;Metropolitan urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_5&quot;</span><span class="p">:</span> <span class="s2">&quot;Hyper concentrated urbanity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_3&quot;</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_6&quot;</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_7&quot;</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;9_8&quot;</span><span class="p">:</span> <span class="s2">&quot;outlier&quot;</span><span class="p">,</span>
 <span class="p">}</span>
-
-<span class="n">summary</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;summary.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">signatures</span><span class="o">.</span><span class="n">signature_type</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">types</span><span class="p">)</span>
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signatures</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;signature_type&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/counts_14_1.png" src="../_images/counts_14_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -771,119 +636,209 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>population</th>
-      <th>count</th>
-    </tr>
-    <tr>
+      <th>kmeans10gb</th>
+      <th>level2</th>
       <th>signature_type</th>
-      <th></th>
-      <th></th>
+      <th>geometry</th>
+      <th>type</th>
+      <th>id</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Countryside agriculture</th>
-      <td>5.765794e+06</td>
-      <td>3022385</td>
+      <th>0</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((62219.999 798499.999, 62109.999 7985...</td>
+      <td>Countryside agriculture</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>Accessible suburbia</th>
-      <td>8.848915e+06</td>
-      <td>1962830</td>
+      <th>1</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((63507.682 796515.168, 63471.096 7965...</td>
+      <td>Countryside agriculture</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>Open sprawl</th>
-      <td>1.291983e+07</td>
-      <td>2561211</td>
-    </tr>
-    <tr>
-      <th>Wild countryside</th>
-      <td>7.738578e+05</td>
-      <td>595902</td>
-    </tr>
-    <tr>
-      <th>Warehouse/Park land</th>
-      <td>4.885898e+06</td>
-      <td>707211</td>
-    </tr>
-    <tr>
-      <th>Gridded residential quarters</th>
-      <td>1.622579e+06</td>
-      <td>209959</td>
-    </tr>
-    <tr>
-      <th>Urban buffer</th>
-      <td>1.262026e+07</td>
-      <td>3686554</td>
-    </tr>
-    <tr>
-      <th>Disconnected suburbia</th>
-      <td>3.695715e+06</td>
-      <td>564318</td>
-    </tr>
-    <tr>
-      <th>Dense residential neighbourhoods</th>
-      <td>5.016013e+06</td>
-      <td>502835</td>
-    </tr>
-    <tr>
-      <th>Connected residential neighbourhoods</th>
-      <td>3.200903e+06</td>
-      <td>374090</td>
-    </tr>
-    <tr>
-      <th>Dense urban neighbourhoods</th>
-      <td>4.160981e+06</td>
-      <td>238639</td>
-    </tr>
-    <tr>
-      <th>Local urbanity</th>
-      <td>2.481154e+06</td>
-      <td>86380</td>
-    </tr>
-    <tr>
-      <th>Concentrated urbanity</th>
-      <td>4.979667e+04</td>
-      <td>1390</td>
-    </tr>
-    <tr>
-      <th>Regional urbanity</th>
-      <td>9.265150e+05</td>
-      <td>21760</td>
-    </tr>
-    <tr>
-      <th>outlier</th>
-      <td>2.601733e+01</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>Metropolitan urbanity</th>
-      <td>1.626733e+05</td>
-      <td>3739</td>
-    </tr>
-    <tr>
-      <th>Hyper concentrated urbanity</th>
-      <td>9.895050e+03</td>
-      <td>264</td>
-    </tr>
-    <tr>
-      <th>outlier</th>
-      <td>2.664581e+00</td>
+      <th>2</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((65953.174 802246.171, 65523.864 8023...</td>
+      <td>Countryside agriculture</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>outlier</th>
-      <td>7.765722e+01</td>
-      <td>98</td>
+      <th>3</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((67297.740 803435.799, 67220.290 8034...</td>
+      <td>Countryside agriculture</td>
+      <td>3</td>
     </tr>
     <tr>
-      <th>outlier</th>
-      <td>4.516088e+00</td>
-      <td>8</td>
+      <th>4</th>
+      <td>0</td>
+      <td>0.0</td>
+      <td>0_0</td>
+      <td>POLYGON ((75760.000 852669.999, 75699.999 8527...</td>
+      <td>Countryside agriculture</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span> <span class="o">=</span> <span class="n">signatures</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>type</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((62219.999 798499.999, 62109.999 7985...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((63507.682 796515.168, 63471.096 7965...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((65953.174 802246.171, 65523.864 8023...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((67297.740 803435.799, 67220.290 8034...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Countryside agriculture</td>
+      <td>POLYGON ((75760.000 852669.999, 75699.999 8527...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>96699</th>
+      <td>96699</td>
+      <td>outlier</td>
+      <td>POLYGON ((323321.005 463795.415, 323236.741 46...</td>
+    </tr>
+    <tr>
+      <th>96700</th>
+      <td>96700</td>
+      <td>outlier</td>
+      <td>POLYGON ((325929.840 1008792.060, 325890.989 1...</td>
+    </tr>
+    <tr>
+      <th>96701</th>
+      <td>96701</td>
+      <td>outlier</td>
+      <td>POLYGON ((337804.769 1013422.582, 337547.855 1...</td>
+    </tr>
+    <tr>
+      <th>96702</th>
+      <td>96702</td>
+      <td>outlier</td>
+      <td>POLYGON ((422304.270 1147826.989, 422296.000 1...</td>
+    </tr>
+    <tr>
+      <th>96703</th>
+      <td>96703</td>
+      <td>outlier</td>
+      <td>POLYGON ((525396.260 439215.479, 525360.919 43...</td>
+    </tr>
+  </tbody>
+</table>
+<p>96704 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="cleanup-sliver-geometries">
+<h2>Cleanup sliver geometries<a class="headerlink" href="#cleanup-sliver-geometries" title="Permalink to this headline">¶</a></h2>
+<p>Remove artifacts caused by floating point imprecision in dissolving of ET cells into signature geometries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Polygon</span>
+
+<span class="k">def</span> <span class="nf">fix</span><span class="p">(</span><span class="n">gdf</span><span class="p">):</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="p">:</span>
+        <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Polygon</span><span class="p">(</span><span class="n">shell</span><span class="o">=</span><span class="n">poly</span><span class="o">.</span><span class="n">exterior</span><span class="p">,</span> <span class="n">holes</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">poly</span><span class="o">.</span><span class="n">interiors</span> <span class="k">if</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">area</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+
+<span class="n">signatures</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">signatures</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/conda/lib/python3.9/site-packages/geopandas/geodataframe.py:1351: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signatures</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;spatial_signatures_GB_simplified.gpkg&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GPKG&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -900,7 +855,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./esda"
+            path: "./data_product"
         },
         predefinedOutput: true
     }
