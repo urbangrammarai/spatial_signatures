@@ -144,3 +144,5 @@ clusters/all_data.pickle
 clusters/chunks_data.pickle
 clusters/temp_gla.gpkg
 _temp*
+esda/opname_gpkg_gb.zip
+
